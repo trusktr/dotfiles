@@ -1,0 +1,28 @@
+[push]
+	default = simple
+[user]
+	name = Joseph Orbegoso Pea
+	email = joe@trusktr.io
+[core]
+	editor = vim
+	autocrlf = input
+[alias]
+	co = checkout
+	br = branch
+	s = status
+	st = status
+	sta = status
+	stat = status
+	statu = status
+	status = status
+	statsu = status
+	dif = diff
+	staus = status
+	statis = status
+	stauts = status
+	l = log
+	pul = pull
+	d = diff
+	sattus = status
+	sttus = status
+	satus = status
