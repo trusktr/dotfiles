@@ -1,8 +1,12 @@
+[user]
+	email = joe@trusktr.io
+	name = Joseph Orbegoso Pea
 [push]
 	default = simple
-[user]
-	name = Joseph Orbegoso Pea
-	email = joe@trusktr.io
+[diff]
+	tool = meld
+[color]
+	ui = true
 [core]
 	editor = vim
 	autocrlf = input
