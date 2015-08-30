@@ -8,7 +8,7 @@
 [color]
 	ui = true
 [core]
-	editor = vim
+	editor = nvim
 	autocrlf = input
 [alias]
 	co = checkout
