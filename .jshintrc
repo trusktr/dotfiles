@@ -3,5 +3,6 @@
     "laxbreak": true,
     "laxcomma": true,
     "loopfunc": true,
-    "esnext": true
+    "esnext": true,
+    "-W058": true,
 }
