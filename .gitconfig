@@ -30,3 +30,5 @@
 	sattus = status
 	sttus = status
 	satus = status
+[credential]
+	helper = !/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/Cellar/git-credential-manager/1.6.0/libexec/git-credential-manager-1.6.0.jar
