@@ -34,6 +34,10 @@
     brew install python
     #pacman -S python
 
+# Node.js
+    brew install nodejs
+    #sudo pacman -S nodejs
+
 # Vim/Neovim
     cd ~
     ln -s ~/src/trusktr+dotfiles2/.vimrc/.vimrc
@@ -46,6 +50,8 @@
     #pacman -S neovim
 
     pip install neovim
+
+    sudo npm install -g jshint # use by neomake plugin.
 
 # ZSH
     git clone git@github.com:zsh-users/antigen.git zsh-users+antigen
@@ -61,21 +67,25 @@
 # GNU Coreutils (prefixed with g in OSX, already present in Linux)
     brew install coreutils
 
-# Node.js
-    brew install nodejs
-    #sudo pacman -S nodejs
-
 # Chrome
 
+    # if Mac OS X
     # TODO can probably be automated.
     echo
     echo " --- Install Chrome from chrome.google.com" # OS X
     echo
 
+    # if Arch Linux
     #pacman -S chromium # Arch Linux
+
+# iTerm (OS X only)
+    brew install Caskroom/cask/iterm2
 
 # Meteor
     curl https://install.meteor.com/ | sh
     sudo npm install -g mgp
 
 # TODO: karabiner and seil for OS X (keybaord modifications)
+
+# OS X settings (OS X only)
+defaults write -g ApplePressAndHoldEnabled -bool false
