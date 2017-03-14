@@ -31,23 +31,25 @@
     mkdir -p ~/src
     cd ~/src
     git clone trusktr@trusktr.io:~/src/trusktr+dotfiles1
-    git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions
     git clone --recursive git@github.com:trusktr/dotfiles trusktr+dotfiles2
 
-# Miscellaneous dotfiles
+# link dotfiles
     cd ~
     ln -s ~/src/trusktr+dotfiles1/.gitignore
     ln -s ~/src/trusktr+dotfiles1/.gitconfig
     ln -s ~/src/trusktr+dotfiles1/.editorconfig
     ln -s ~/src/trusktr+dotfiles1/.jshintrc
+    ln -s ~/src/trusktr+dotfiles1/.local
 
 # Vim/Neovim
+    cd ~/src
+    git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions
     cd ~
     ln -s ~/src/trusktr+dotfiles2/.vimrc/.vimrc
-    mkdir -p ~/.vim
-    ln -s ~/src/trusktr+vim-sessions ~/.vim/session
     mkdir -p ~/.config/nvim
     ln -s ~/.vimrc ~/.config/nvim/init.vim
+    mkdir -p ~/.vim
+    ln -s ~/src/trusktr+vim-sessions ~/.vim/session
 
     brew install libtool gettext
     brew install neovim/neovim/neovim
@@ -55,6 +57,7 @@
 
     pip install neovim
 
+    # TODO: move to vimrc.
     sudo npm install -g jshint # use by neomake plugin.
 
 # ZSH
