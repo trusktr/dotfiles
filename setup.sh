@@ -92,3 +92,4 @@
 
 # OS X settings (OS X only)
 defaults write -g ApplePressAndHoldEnabled -bool false
+# TODO: iterm settings, etc
