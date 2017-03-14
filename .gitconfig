@@ -18,17 +18,16 @@
 	sta = status
 	stat = status
 	statu = status
-	status = status
 	statsu = status
-	dif = diff
 	staus = status
 	statis = status
 	stauts = status
-	l = log
-	pul = pull
-	d = diff
 	sattus = status
 	sttus = status
 	satus = status
+	dif = diff
+	l = log
+	pul = pull
+	d = diff
 [credential]
 	helper = !/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/Cellar/git-credential-manager/1.6.0/libexec/git-credential-manager-1.6.0.jar
