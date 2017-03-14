@@ -27,6 +27,8 @@
 	satus = status
 	dif = diff
 	l = log
+	logg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ll = logg
 	pul = pull
 	d = diff
 [credential]
