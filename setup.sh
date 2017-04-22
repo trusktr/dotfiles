@@ -6,6 +6,9 @@
     # if Arch Linux
     #sudo pacman -Sy
 
+    # if ChromeOS
+    #wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
+
 # Git
 # TODO: separate into separate file, source if OS X.
 
@@ -18,12 +21,14 @@
 # Python
     brew install python
     #pacman -S python
+    #crew install python
 
 # Node.js
     brew install nodejs
     #sudo pacman -S nodejs
+    #crew install nodejs
 
-# GNU Coreutils (prefixed with g in OSX, already present in Linux)
+# macOS only: GNU Coreutils (prefixed with g in OSX, already present in Linux)
     brew install coreutils
 
 # Clone dotfiles
@@ -31,7 +36,7 @@
     mkdir -p ~/src
     cd ~/src
     git clone trusktr@trusktr.io:~/src/trusktr+dotfiles1
-    git clone --recursive git@github.com:trusktr/dotfiles trusktr+dotfiles2
+    git clone --recursive git@github.com:trusktr/dotfiles2 trusktr+dotfiles2
 
 # link dotfiles
     cd ~
@@ -54,11 +59,13 @@
     brew install libtool gettext
     brew install neovim/neovim/neovim
     #pacman -S neovim
+    #TODO: neovim for chromebrew
 
     pip install neovim
 
     # TODO: move to vimrc.
     sudo npm install -g jshint # use by neomake plugin.
+    #TODO: unable to install global NPM packages in ChromeOS, some permission problem
 
 # ZSH
     cd ~/src
@@ -67,6 +74,7 @@
     ln -s ~/src/trusktr+dotfiles2/.zshrc
     brew install zsh
     #sudo pacman -S zsh
+    #crew install zsh
 
     # Run once:
     # TODO: detect if ran already. For now, check manually and enable if needed.
@@ -89,7 +97,6 @@
 
 # Meteor
     curl https://install.meteor.com/ | sh
-    sudo npm install -g mgp
 
 # TODO: karabiner and seil for OS X (keybaord modifications)
 
