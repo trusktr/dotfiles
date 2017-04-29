@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+grep -EHrn ${@:1} --exclude='*.js.map' --exclude='*.hb.js' --exclude-dir='*node_modules*' --exclude-dir='*third_party*' --exclude='*.test.js' ./ | grep -v build/ | grep -v test_output/ | grep -v ui-core/out | grep -v audio-js/ext | grep -v .svn/ | grep -v webasset | grep -v alloy_lint

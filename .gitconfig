@@ -1,6 +1,6 @@
 [user]
-	email = joe@trusktr.io
-	name = Joseph Orbegoso Pea
+	name = joseph pea
+	email = jpea@imvu.com
 [push]
 	default = simple
 [diff]
@@ -17,18 +17,22 @@
 	st = status
 	sta = status
 	stat = status
+	stats = status
 	statu = status
-	status = status
 	statsu = status
-	dif = diff
 	staus = status
 	statis = status
 	stauts = status
-	l = log
-	pul = pull
-	d = diff
 	sattus = status
 	sttus = status
 	satus = status
+	dif = diff
+	l = log
+	logg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ll = logg
+	pul = pull
+	d = diff
 [credential]
 	helper = !/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/Cellar/git-credential-manager/1.6.0/libexec/git-credential-manager-1.6.0.jar
+[merge]
+	log = true

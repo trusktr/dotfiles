@@ -6,6 +6,9 @@
     # if Arch Linux
     #sudo pacman -Sy
 
+    # if ChromeOS
+    #wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
+
 # Git
 # TODO: separate into separate file, source if OS X.
 
@@ -15,57 +18,68 @@
     # if Arch Linux
     #sudo pacman -S git
 
+# Python
+    brew install python
+    #pacman -S python
+    #crew install python
+
+# Node.js
+    brew install nodejs
+    #sudo pacman -S nodejs
+    #crew install nodejs
+
+# macOS only: GNU Coreutils (prefixed with g in OSX, already present in Linux)
+    brew install coreutils
+
 # Clone dotfiles
 # TODO: consolidate into single repo.
     mkdir -p ~/src
     cd ~/src
     git clone trusktr@trusktr.io:~/src/trusktr+dotfiles1
-    git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions
-    git clone --recursive git@github.com:trusktr/dotfiles trusktr+dotfiles2
+    git clone --recursive git@github.com:trusktr/dotfiles2 trusktr+dotfiles2
 
-# Miscellaneous dotfiles
+# link dotfiles
     cd ~
     ln -s ~/src/trusktr+dotfiles1/.gitignore
     ln -s ~/src/trusktr+dotfiles1/.gitconfig
     ln -s ~/src/trusktr+dotfiles1/.editorconfig
     ln -s ~/src/trusktr+dotfiles1/.jshintrc
-
-# Python
-    brew install python
-    #pacman -S python
-
-# Node.js
-    brew install nodejs
-    #sudo pacman -S nodejs
+    ln -s ~/src/trusktr+dotfiles1/.local
 
 # Vim/Neovim
+    cd ~/src
+    git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions
     cd ~
     ln -s ~/src/trusktr+dotfiles2/.vimrc/.vimrc
-    mkdir -p ~/.vim
-    ln -s ~/src/trusktr+vim-sessions ~/.vim/session
     mkdir -p ~/.config/nvim
     ln -s ~/.vimrc ~/.config/nvim/init.vim
+    mkdir -p ~/.vim
+    ln -s ~/src/trusktr+vim-sessions ~/.vim/session
 
+    brew install libtool gettext
     brew install neovim/neovim/neovim
     #pacman -S neovim
+    #TODO: neovim for chromebrew
 
     pip install neovim
 
+    # TODO: move to vimrc.
     sudo npm install -g jshint # use by neomake plugin.
+    #TODO: unable to install global NPM packages in ChromeOS, some permission problem
 
 # ZSH
+    cd ~/src
     git clone git@github.com:zsh-users/antigen.git zsh-users+antigen
+    cd ~
     ln -s ~/src/trusktr+dotfiles2/.zshrc
     brew install zsh
     #sudo pacman -S zsh
+    #crew install zsh
 
     # Run once:
-    # TODO: detect if ran already.
+    # TODO: detect if ran already. For now, check manually and enable if needed.
     command -v zsh | sudo tee -a /etc/shells
     sudo chsh -s "$(command -v zsh)" "${USER}"
-
-# GNU Coreutils (prefixed with g in OSX, already present in Linux)
-    brew install coreutils
 
 # Chrome
 
@@ -83,9 +97,9 @@
 
 # Meteor
     curl https://install.meteor.com/ | sh
-    sudo npm install -g mgp
 
 # TODO: karabiner and seil for OS X (keybaord modifications)
 
 # OS X settings (OS X only)
 defaults write -g ApplePressAndHoldEnabled -bool false
+# TODO: iterm settings, etc
