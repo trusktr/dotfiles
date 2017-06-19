@@ -40,11 +40,15 @@
 
 # link dotfiles
     cd ~
+    ln -s ~/src/trusktr+dotfiles1/coffeelint.json
     ln -s ~/src/trusktr+dotfiles1/.gitignore
     ln -s ~/src/trusktr+dotfiles1/.gitconfig
     ln -s ~/src/trusktr+dotfiles1/.editorconfig
     ln -s ~/src/trusktr+dotfiles1/.jshintrc
-    ln -s ~/src/trusktr+dotfiles1/.local
+
+    mkdir -p ~/.local
+    cd ~/.local
+    ln -s ~/src/trusktr+dotfiles1/.local/bin
 
 # Vim/Neovim
     cd ~/src
