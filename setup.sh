@@ -45,6 +45,7 @@
     ln -s ~/src/trusktr+dotfiles1/.gitconfig
     ln -s ~/src/trusktr+dotfiles1/.editorconfig
     ln -s ~/src/trusktr+dotfiles1/.jshintrc
+    ln -s ~/src/trusktr+dotfiles1/.Xmodmap
 
     mkdir -p ~/.local
     cd ~/.local
