@@ -74,12 +74,13 @@
 
 # ZSH
     cd ~/src
-    git clone git@github.com:zsh-users/antigen.git zsh-users+antigen
+    git clone --branch v1.4.1 git@github.com:zsh-users/antigen.git zsh-users+antigen
     cd ~
     ln -s ~/src/trusktr+dotfiles2/.zshrc
     brew install zsh
     #sudo pacman -S zsh
     #crew install zsh
+    #sudo apt-get install zsh
 
     # Run once:
     # TODO: detect if ran already. For now, check manually and enable if needed.
@@ -96,6 +97,8 @@
 
     # if Arch Linux
     #pacman -S chromium # Arch Linux
+
+    # If Chrome OS, well, uh....
 
 # iTerm (OS X only)
     brew install Caskroom/cask/iterm2
