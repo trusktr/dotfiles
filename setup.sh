@@ -1,7 +1,7 @@
 # set up package management
 
     # if Mac OS X
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    #/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     # if Arch Linux
     #sudo pacman -Sy
@@ -13,29 +13,29 @@
 # TODO: separate into separate file, source if OS X.
 
     # if Mac OS X
-    brew install git
+    #brew install git
 
     # if Arch Linux
     #sudo pacman -S git
 
 # Python
-    brew install python
+    #brew install python
     #pacman -S python
     #crew install python
 
 # Node.js
-    brew install nodejs
+    #brew install nodejs
     #sudo pacman -S nodejs
     #crew install nodejs
 
 # macOS only: GNU Coreutils (prefixed with g in OSX, already present in Linux)
-    brew install coreutils
+    #brew install coreutils
 
 # Clone dotfiles
 # TODO: consolidate into single repo.
     mkdir -p ~/src
     cd ~/src
-    git clone trusktr@trusktr.io:~/src/trusktr+dotfiles1
+    #git clone trusktr@trusktr.io:~/src/trusktr+dotfiles1
     git clone --recursive git@github.com:trusktr/dotfiles2 trusktr+dotfiles2
 
 # link dotfiles
@@ -61,8 +61,8 @@
     mkdir -p ~/.vim
     ln -s ~/src/trusktr+vim-sessions ~/.vim/session
 
-    brew install libtool gettext
-    brew install neovim/neovim/neovim
+    #brew install libtool gettext
+    #brew install neovim/neovim/neovim
     #pacman -S neovim
     #TODO: neovim for chromebrew
 
@@ -77,7 +77,7 @@
     git clone --branch v1.4.1 git@github.com:zsh-users/antigen.git zsh-users+antigen
     cd ~
     ln -s ~/src/trusktr+dotfiles2/.zshrc
-    brew install zsh
+    #brew install zsh
     #sudo pacman -S zsh
     #crew install zsh
     #sudo apt-get install zsh
@@ -91,9 +91,9 @@
 
     # if Mac OS X
     # TODO can probably be automated.
-    echo
-    echo " --- Install Chrome from chrome.google.com" # OS X
-    echo
+    #echo
+    #echo " --- Install Chrome from chrome.google.com" # OS X
+    #echo
 
     # if Arch Linux
     #pacman -S chromium # Arch Linux
@@ -101,13 +101,13 @@
     # If Chrome OS, well, uh....
 
 # iTerm (OS X only)
-    brew install Caskroom/cask/iterm2
+    #brew install Caskroom/cask/iterm2
 
 # Meteor
-    curl https://install.meteor.com/ | sh
+    #curl https://install.meteor.com/ | sh
 
 # TODO: karabiner and seil for OS X (keybaord modifications)
 
 # OS X settings (OS X only)
-defaults write -g ApplePressAndHoldEnabled -bool false
+#defaults write -g ApplePressAndHoldEnabled -bool false
 # TODO: iterm settings, etc
