@@ -18,14 +18,19 @@
     # if Arch Linux
     #sudo pacman -S git
 
+    # Ubuntu
+    #sudo apt-get install git
+
 # Python
     #brew install python
     #pacman -S python
+    #sudo apt-get install python
     #crew install python
 
 # Node.js
     #brew install nodejs
     #sudo pacman -S nodejs
+    #sudo apt-get install nodejs nodejs-legacy npm
     #crew install nodejs
 
 # macOS only: GNU Coreutils (prefixed with g in OSX, already present in Linux)
