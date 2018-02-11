@@ -21,6 +21,9 @@
     # Ubuntu
     #sudo apt-get install git
 
+# libnotify (Windows Bash / Ubuntu)
+sudo apt-get install libnotify-bin
+
 # Python
     #brew install python
     #pacman -S python
