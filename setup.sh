@@ -18,14 +18,24 @@
     # if Arch Linux
     #sudo pacman -S git
 
+    # Ubuntu
+    #sudo apt-get install git
+
+# libnotify (Windows Bash / Ubuntu)
+sudo apt-get install libnotify-bin
+
 # Python
     #brew install python
+    #ln -s /usr/local/bin/python2 /usr/local/bin/python
+
     #pacman -S python
+    #sudo apt-get install python
     #crew install python
 
 # Node.js
     #brew install nodejs
     #sudo pacman -S nodejs
+    #sudo apt-get install nodejs nodejs-legacy npm
     #crew install nodejs
 
 # macOS only: GNU Coreutils (prefixed with g in OSX, already present in Linux)
@@ -45,7 +55,7 @@
     ln -s ~/src/trusktr+dotfiles1/.gitconfig
     ln -s ~/src/trusktr+dotfiles1/.editorconfig
     ln -s ~/src/trusktr+dotfiles1/.jshintrc
-    ln -s ~/src/trusktr+dotfiles1/.Xmodmap
+    ln -s ~/src/trusktr+dotfiles2/.Xmodmap
 
     mkdir -p ~/.local
     cd ~/.local
@@ -63,10 +73,13 @@
 
     #brew install libtool gettext
     #brew install neovim/neovim/neovim
+
     #pacman -S neovim
     #TODO: neovim for chromebrew
 
     pip install neovim
+    pip2 install neovim
+    pip3 install neovim
 
     # TODO: move to vimrc.
     sudo npm install -g jshint # use by neomake plugin.
