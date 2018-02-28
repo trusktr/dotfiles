@@ -26,6 +26,8 @@ sudo apt-get install libnotify-bin
 
 # Python
     #brew install python
+    #ln -s /usr/local/bin/python2 /usr/local/bin/python
+
     #pacman -S python
     #sudo apt-get install python
     #crew install python
