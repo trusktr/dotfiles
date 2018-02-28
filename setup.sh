@@ -73,10 +73,13 @@ sudo apt-get install libnotify-bin
 
     #brew install libtool gettext
     #brew install neovim/neovim/neovim
+
     #pacman -S neovim
     #TODO: neovim for chromebrew
 
     pip install neovim
+    pip2 install neovim
+    pip3 install neovim
 
     # TODO: move to vimrc.
     sudo npm install -g jshint # use by neomake plugin.
