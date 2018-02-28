@@ -72,6 +72,10 @@
     sudo npm install -g jshint # use by neomake plugin.
     #TODO: unable to install global NPM packages in ChromeOS, some permission problem
 
+    # ChromeOS Crouton
+    # TODO: Set up Go, then install croshclip so neovim can copy to to ChromeOS Clipboard
+    # https://github.com/acornejo/croshclip
+
 # ZSH
     cd ~/src
     git clone --branch v1.4.1 git@github.com:zsh-users/antigen.git zsh-users+antigen
