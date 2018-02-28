@@ -55,7 +55,7 @@ sudo apt-get install libnotify-bin
     ln -s ~/src/trusktr+dotfiles1/.gitconfig
     ln -s ~/src/trusktr+dotfiles1/.editorconfig
     ln -s ~/src/trusktr+dotfiles1/.jshintrc
-    ln -s ~/src/trusktr+dotfiles1/.Xmodmap
+    ln -s ~/src/trusktr+dotfiles2/.Xmodmap
 
     mkdir -p ~/.local
     cd ~/.local
