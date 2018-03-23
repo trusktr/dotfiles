@@ -5,8 +5,11 @@
 	default = simple
 [diff]
 	tool = meld
+	colorMoved = true
 [color]
 	ui = true
+[column]
+	ui = auto dense
 [core]
 	editor = nvim
 	autocrlf = input
