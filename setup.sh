@@ -22,13 +22,13 @@
     #sudo apt-get install git
 
 # libnotify (Windows Bash / Ubuntu)
-sudo apt-get install libnotify-bin
+#sudo apt-get install libnotify-bin
 
 # Python
     #brew install python
     #ln -s /usr/local/bin/python2 /usr/local/bin/python
 
-    #pacman -S python
+    #sudo pacman -S python
     #sudo apt-get install python
     #crew install python
 
@@ -74,16 +74,22 @@ sudo apt-get install libnotify-bin
     #brew install libtool gettext
     #brew install neovim/neovim/neovim
 
-    #pacman -S neovim
+    #sudo pacman -S neovim
     #TODO: neovim for chromebrew
 
     pip install neovim
     pip2 install neovim
     pip3 install neovim
 
-    # TODO: move to vimrc.
+    # things needed by Vim configuration
+    # TODO: move to vimrc?
+    # TODO: unable to install global NPM packages in ChromeOS, some permission problem
     sudo npm install -g jshint # use by neomake plugin.
-    #TODO: unable to install global NPM packages in ChromeOS, some permission problem
+    # --- for neovim-fuzzy
+    #brew install ripgrep
+    #brew install fzy
+    # --- for fzf.vim
+    #brew install fd
 
     # ChromeOS Crouton
     # TODO: Set up Go, then install croshclip so neovim can copy to to ChromeOS Clipboard
@@ -113,9 +119,14 @@ sudo apt-get install libnotify-bin
     #echo
 
     # if Arch Linux
-    #pacman -S chromium # Arch Linux
+    #sudo pacman -S chromium # Arch Linux
 
     # If Chrome OS, well, uh....
+
+# Firefox
+    #brew cask install firefox
+    #sudo pacman -S firefox
+    #sudo apt-get install firefox
 
 # iTerm (OS X only)
     #brew install Caskroom/cask/iterm2
@@ -128,3 +139,8 @@ sudo apt-get install libnotify-bin
 # OS X settings (OS X only)
 #defaults write -g ApplePressAndHoldEnabled -bool false
 # TODO: iterm settings, etc
+
+# Gimp
+#brew cask install gimp
+#sudo pacman -S gimp
+#sudo apt-get install gimp
