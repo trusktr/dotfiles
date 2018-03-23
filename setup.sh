@@ -95,6 +95,11 @@
     # TODO: Set up Go, then install croshclip so neovim can copy to to ChromeOS Clipboard
     # https://github.com/acornejo/croshclip
 
+    # oni vim
+    npm i -g oni # TODO there's a new OS-level package installer
+    mkdir -p ~/.oni
+    ln -s ~/src/trusktr+dotfiles1/.oni/config.js ~/.oni/config.js
+
 # ZSH
     cd ~/src
     git clone --branch v1.4.1 git@github.com:zsh-users/antigen.git zsh-users+antigen
