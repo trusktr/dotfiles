@@ -1,3 +1,7 @@
+# update if needed
+    #sudo pacman -Syu
+    #sudo apt-get update
+
 # set up package management
 
     # if Mac OS X
@@ -22,7 +26,7 @@
     #sudo apt-get install git
 
 # libnotify (Windows Bash / Ubuntu)
-#sudo apt-get install libnotify-bin
+    #sudo apt-get install libnotify-bin
 
 # Python
     #brew install python
@@ -35,7 +39,11 @@
 # Node.js
     #brew install nodejs
     #sudo pacman -S nodejs
-    #sudo apt-get install nodejs nodejs-legacy npm
+
+    # sometimes nodejs-legacy isn't available in some Ubuntus
+    # sudo apt-get install nodejs npm
+    # sudo apt-get install nodejs-legacy
+
     #crew install nodejs
 
 # macOS only: GNU Coreutils (prefixed with g in OSX, already present in Linux)
@@ -55,7 +63,7 @@
     ln -s ~/src/trusktr+dotfiles1/.gitconfig
     ln -s ~/src/trusktr+dotfiles1/.editorconfig
     ln -s ~/src/trusktr+dotfiles1/.jshintrc
-    ln -s ~/src/trusktr+dotfiles2/.Xmodmap
+    ln -s ~/src/trusktr+dotfiles1/.Xmodmap
 
     mkdir -p ~/.local
     cd ~/.local
@@ -73,17 +81,25 @@
 
     #brew install libtool gettext
     #brew install neovim/neovim/neovim
-
     #sudo pacman -S neovim
+
+    # # sudo apt-get install software-properties-common
+    # sudo add-apt-repository ppa:neovim-ppa/stable
+    # sudo apt-get install neovim
+    # sudo apt-get install python-dev python-pip python3-dev python3-pip
+
+
     #TODO: neovim for chromebrew
 
     pip install neovim
     pip2 install neovim
     pip3 install neovim
 
-    # things needed by Vim configuration
-    # TODO: move to vimrc?
-    # TODO: unable to install global NPM packages in ChromeOS, some permission problem
+    # TODO: move to vimrc.
+    # ripgrep for Find command (fzf or ctrlp plugins)
+    # sudo add-apt-repository ppa:x4121/ripgrep
+    # sudo apt-get update
+    # sudo apt-get install ripgrep
     sudo npm install -g jshint # use by neomake plugin.
     # --- for neovim-fuzzy
     #brew install ripgrep
@@ -124,7 +140,7 @@
     #echo
 
     # if Arch Linux
-    #sudo pacman -S chromium # Arch Linux
+    #sudo pacman -S chromium
 
     # If Chrome OS, well, uh....
 
