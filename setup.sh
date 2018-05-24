@@ -306,5 +306,5 @@ $isChromeOS=false
 # OS X settings
 
     if $isMacOS; then
-        sh ./scripts/macOSPrefs.sh
+        curl https://raw.githubusercontent.com/trusktr/dotfiles/master/scripts/macOSPrefs.sh | sh
     fi
