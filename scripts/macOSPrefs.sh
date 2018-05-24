@@ -10,7 +10,7 @@
     defaults write -g AppleEnableSwipeNavigateWithScrolls -int 0
 
     # remap capslock to command
-    defaults -currentHost write -g com.apple.keyboard.modifiermapping.1452-632-0 -array-add "{
+    defaults -currentHost write -g com.apple.keyboard.modifiermapping.1452-632-0 -array "{
         HIDKeyboardModifierMappingDst = 30064771299;
         HIDKeyboardModifierMappingSrc = 30064771129;
     }"
