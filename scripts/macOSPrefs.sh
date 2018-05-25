@@ -38,10 +38,6 @@
 
     defaults write com.apple.spaces "spans-displays" -int 1
 
-    defaults write com.apple.Safari IncludeDevelopMenu -int 1
-    defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -int 1
-    defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -int 1
-
     defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '{
              "Bundle ID" = "com.apple.KeyboardViewer";
              InputSourceKind = "Non Keyboard Input Method";
@@ -58,6 +54,10 @@
 
     defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d  h:mm a"
 
+    # touchbar
+    defaults write com.apple.controlstrip FullCustomized -array NSTouchBarItemIdentifierFlexibleSpace com.apple.system.group.keyboard-brightness com.apple.system.screencapture com.apple.system.sleep
+    defaults write com.apple.controlstrip MiniCustomized -array com.apple.system.brightness com.apple.system.volume com.apple.system.mute
+
 # unavailable in System Preferences
 
     # disables the special character pop-up menu when pressing and holding
@@ -71,7 +71,13 @@ scutil --set HostName $HOSTNAME
 scutil --set LocalHostName $HOSTNAME
 scutil --set ComputerName $HOSTNAME
 
-# iTerm settings are save in ../configs/com.googlecode.iterm2.plist
+# Safari
+
+    defaults write com.apple.Safari IncludeDevelopMenu -int 1
+    defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -int 1
+    defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -int 1
+
+# iTerm settings are saved in ../configs/com.googlecode.iterm2.plist
 
     defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -int 1
     defaults write com.googlecode.iterm2 PrefsCustomFolder -string "/Users/trusktr/src/trusktr+dotfiles/configs"
