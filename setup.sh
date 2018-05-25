@@ -121,6 +121,7 @@ $isChromeOS=false
     ln -s ~/src/trusktr+dotfiles/.editorconfig
     ln -s ~/src/trusktr+dotfiles/.jshintrc
     ln -s ~/src/trusktr+dotfiles/.Xmodmap
+    ln -s ~/src/trusktr+dotfiles/.atom
 
     mkdir -p ~/.local
     cd ~/.local
