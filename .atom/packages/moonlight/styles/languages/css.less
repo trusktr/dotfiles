@@ -1,0 +1,45 @@
+.syntax--css {
+  .syntax--support {
+    &.syntax--constant {
+      color: @cyan;
+    }
+
+    &.syntax--property-name {
+      color: @blue;
+    }
+  }
+
+  .syntax--keyword {
+    &.syntax--unit {
+      color: @purple;
+    }
+  }
+
+  .syntax--constant {
+    &.syntax--color {
+      color: @cyan;
+
+      .syntax--punctuation {
+        color: currentColor;
+      }
+    }
+  }
+
+  .syntax--entity {
+    &.syntax--id {
+      color: @purple;
+    }
+  }
+
+  .syntax--punctuation {
+    &.syntax--delimiter {
+      color: @cyan;
+    }
+  }
+}
+
+.syntax--sass, .syntax--scss, .syntax--less {
+  &.syntax--variable {
+    color: @very-light-teal;
+  }
+}

@@ -1,0 +1,45 @@
+"*":
+  "base16-syntax":
+    scheme: "Chalk"
+    style: "Dark"
+  "city-lights-ui":
+    showTabsInTreeView: true
+  core:
+    autoHideMenuBar: true
+    disabledPackages: [
+      "highlight-selected"
+      "minimap-highlight-selected"
+      "toggle-quotes"
+    ]
+    telemetryConsent: "limited"
+    themes: [
+      "one-dark-ui"
+      "atom-material-syntax"
+    ]
+  editor:
+    scrollPastEnd: true
+    showIndentGuide: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "c1a20f5b-53ad-49a0-8851-4c8ee8d23ac0"
+  "hey-pane": {}
+  "highlight-selected": {}
+  minimap:
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+      "minimap-quick-highlight": true
+      "minimap-quick-highlightDecorationsZIndex": 0
+  "one-dark-ui":
+    fontSize: 14
+  "platformio-ide-terminal":
+    core:
+      scrollback: 100000
+    toggles:
+      autoClose: true
+  "vim-mode-plus":
+    keymapYToYankToLastCharacterOfLine: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
