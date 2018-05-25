@@ -144,10 +144,13 @@ $isChromeOS=false
     if $isMacOS; then
         brew install libtool gettext
         brew install neovim/neovim/neovim
+
+        brew install vim
     fi
 
     if $isArchLinux; then
         sudo pacman -S neovim
+        sudo pacman -S vim
     fi
 
     if $isUbuntu; then
@@ -155,6 +158,8 @@ $isChromeOS=false
         sudo add-apt-repository ppa:neovim-ppa/stable
         sudo apt-get install neovim
         sudo apt-get install python-dev python-pip python3-dev python3-pip
+
+        sudo apt-get install vim
     fi
 
     if $isChromeOS; then
@@ -243,6 +248,26 @@ $isChromeOS=false
     # TODO don't run if already set
     command -v zsh | sudo tee -a /etc/shells
     sudo chsh -s "$(command -v zsh)" "${USER}"
+
+# Atom editor (atom.io)
+
+    if $isMacOS; then
+        curl -LO `curl -s https://api.github.com/repos/atom/atom/releases/latest | grep browser_download_url | grep mac.zip | cut -d '"' -f 4`
+        unzip atom-mac.zip
+        sudo mv Atom.app /Applications/
+        rm atom-mac.zip
+    fi
+
+    if $isUbuntu; then
+        curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+        sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+        sudo apt-get update
+        sudo apt-get install atom # or atom-beta
+    fi
+
+    if $isArchLinux; then
+        sudo pacman -S atom
+    fi
 
 # Chrome
 
