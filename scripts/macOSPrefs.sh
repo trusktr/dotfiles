@@ -7,10 +7,20 @@
     defaults write -g InitialKeyRepeat -int 15
     defaults write -g KeyRepeat -int 1
     defaults write -g "com.apple.trackpad.scaling" -float "1.5"
+    defaults write -g "com.apple.mouse.scaling" -float "2.5"
     defaults write -g AppleEnableSwipeNavigateWithScrolls -int 0
 
-    # remap capslock to command
+    defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string TwoButton
+    defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture -int 1
+    defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode -string TwoButton
+    defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseOneFingerDoubleTapGesture -int 1
+
+    # remap capslock to command (for each keyboard)
     defaults -currentHost write -g com.apple.keyboard.modifiermapping.1452-632-0 -array "{
+        HIDKeyboardModifierMappingDst = 30064771299;
+        HIDKeyboardModifierMappingSrc = 30064771129;
+    }"
+    defaults -currentHost write -g com.apple.keyboard.modifiermapping.alt_handler_id-61 -array "{
         HIDKeyboardModifierMappingDst = 30064771299;
         HIDKeyboardModifierMappingSrc = 30064771129;
     }"
