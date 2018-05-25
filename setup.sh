@@ -19,28 +19,23 @@ isChromeOSCrouton=false; if $( exit $result ); then isChromeOSCrouton=true; fi
 # TODO
 $isChromeOS=false
 
-# update package lists
+# set up package management
+
+    if $isMacOS; then
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        brew tap homebrew/cask # add community packages
+    fi
 
     if $isArchLinux; then
         sudo pacman -Syu
     fi
 
-    if $isUbuntu; then
-        sudo apt-get update
-    fi
-
-# set up package management
-
-    if $isMacOS; then
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -Sy
-    fi
-
     if $isChromeOS; then
         wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
+    fi
+
+    if $isUbuntu; then
+        sudo apt-get update
     fi
 
 # Git
@@ -67,6 +62,7 @@ $isChromeOS=false
 
     if $isMacOS; then
         brew install python
+        brew install python@2
         #ln -s /usr/local/bin/python2 /usr/local/bin/python
     fi
 
@@ -252,10 +248,7 @@ $isChromeOS=false
 # Atom editor (atom.io)
 
     if $isMacOS; then
-        curl -LO `curl -s https://api.github.com/repos/atom/atom/releases/latest | grep browser_download_url | grep mac.zip | cut -d '"' -f 4`
-        unzip atom-mac.zip
-        sudo mv Atom.app /Applications/
-        rm atom-mac.zip
+        brew install homebrew/cask/atom
     fi
 
     if $isUbuntu; then
@@ -273,11 +266,7 @@ $isChromeOS=false
 
     # TODO a better way to install in macOS without popping open a window?
     if $isMacOS; then
-        curl https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg > googlechrome.dmg
-        mountedDisk=$(hdiutil attach googlechrome.dmg | tail -n 1 | cut -d ' ' -f 1)
-        sudo cp -r /Volumes/Google\ Chrome/Google\ Chrome.app /Applications/
-        hdiutil detach "$mountedDisk"
-        rm googlechrome.dmg
+        brew cask install google-chrome
     fi
 
     if $isArchLinux; then
@@ -300,10 +289,16 @@ $isChromeOS=false
         sudo apt-get install firefox
     fi
 
+# Slack
+
+    if $isMacOS; then
+        brew install homebrew/cask/slack
+    fi
+
 # iTerm (OS X only)
 
     if $isMacOS; then
-        brew install Caskroom/cask/iterm2
+        brew install homebrew/cask/iterm2
     fi
 
 # Meteor
