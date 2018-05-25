@@ -47,3 +47,4 @@
 	log = true
 [pager]
 	stash = false
+	branch = false
