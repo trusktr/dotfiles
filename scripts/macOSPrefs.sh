@@ -71,4 +71,7 @@ scutil --set HostName $HOSTNAME
 scutil --set LocalHostName $HOSTNAME
 scutil --set ComputerName $HOSTNAME
 
-# TODO: iterm settings, and other apps
+# iTerm settings are save in ../configs/com.googlecode.iterm2.plist
+
+    defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -int 1
+    defaults write com.googlecode.iterm2 PrefsCustomFolder -string "/Users/trusktr/src/trusktr+dotfiles/configs"
