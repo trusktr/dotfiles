@@ -6,7 +6,7 @@
     defaults write -g AppleSpacesSwitchOnActivate -int 0
     defaults write -g InitialKeyRepeat -int 15
     defaults write -g KeyRepeat -int 1
-    defaults write -g "com.apple.trackpad.scaling" -float "1.5"
+    defaults write -g "com.apple.trackpad.scaling" -float "2.5"
     defaults write -g "com.apple.mouse.scaling" -float "2.5"
     defaults write -g AppleEnableSwipeNavigateWithScrolls -int 0
 
@@ -46,6 +46,7 @@
 
     defaults write com.apple.dashboard "dashboard-enabled-state" -int 1
 
+    # spaces include displays, rather than displays having separate spaces
     defaults write com.apple.spaces "spans-displays" -int 1
 
     defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '{
