@@ -115,6 +115,7 @@ $isChromeOS=false
 # link dotfiles
 
     cd ~
+
     ln -s ~/src/trusktr+dotfiles/coffeelint.json
     ln -s ~/src/trusktr+dotfiles/.gitignore
     ln -s ~/src/trusktr+dotfiles/.gitconfig
@@ -124,8 +125,10 @@ $isChromeOS=false
     ln -s ~/src/trusktr+dotfiles/.atom
 
     mkdir -p ~/.local
-    cd ~/.local
-    ln -s ~/src/trusktr+dotfiles/.local/bin
+    ln -s ~/src/trusktr+dotfiles/.local/bin .local/bin
+
+    mkdir -p ~/.config
+    ln -s ~/src/trusktr+dotfiles/.config/karabiner .config/karabiner
 
 # Vim/Neovim
 
@@ -322,7 +325,11 @@ $isChromeOS=false
         sudo apt-get install gimp
     fi
 
-# TODO: karabiner and seil for OS X (keybaord modifications)
+# Karabiner Elements (keybaord remapping for macOS)
+
+    if $isMacOS; then
+        brew cask install karabiner-elements
+    fi
 
 # OS X settings
 

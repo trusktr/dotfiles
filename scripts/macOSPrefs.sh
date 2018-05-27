@@ -15,16 +15,6 @@
     defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode -string TwoButton
     defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseOneFingerDoubleTapGesture -int 1
 
-    # remap capslock to command (for each keyboard)
-    defaults -currentHost write -g com.apple.keyboard.modifiermapping.1452-632-0 -array "{
-        HIDKeyboardModifierMappingDst = 30064771299;
-        HIDKeyboardModifierMappingSrc = 30064771129;
-    }"
-    defaults -currentHost write -g com.apple.keyboard.modifiermapping.alt_handler_id-61 -array "{
-        HIDKeyboardModifierMappingDst = 30064771299;
-        HIDKeyboardModifierMappingSrc = 30064771129;
-    }"
-
     defaults write com.apple.dock autohide -int 1
     defaults write com.apple.dock largeresize -int 128
     defaults write com.apple.dock magnification -int 1

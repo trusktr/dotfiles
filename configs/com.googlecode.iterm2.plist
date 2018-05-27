@@ -13,13 +13,13 @@
 	<key>AutoHideTmuxClientSession</key>
 	<true/>
 	<key>Control</key>
-	<integer>7</integer>
+	<integer>1</integer>
 	<key>Default Bookmark Guid</key>
 	<string>EBFE4D5F-CD92-4817-A48F-B83D75690833</string>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>LeftCommand</key>
-	<integer>1</integer>
+	<integer>7</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<integer>1</integer>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -59,9 +59,9 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>572 341 796 473 0 0 1680 1028 </string>
+	<string>591 361 796 473 0 0 1680 1028 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1680 1050 0 0 1680 1028 </string>
+	<string>31 212 1270 775 0 0 1680 1028 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 0 1680 1050 0 0 1680 1028 </string>
 	<key>New Bookmarks</key>
@@ -384,20 +384,6 @@
 					<integer>11</integer>
 					<key>Text</key>
 					<string>0x7f</string>
-				</dict>
-				<key>0x60-0x40000</key>
-				<dict>
-					<key>Action</key>
-					<integer>1</integer>
-					<key>Text</key>
-					<string></string>
-				</dict>
-				<key>0x7e-0x60000</key>
-				<dict>
-					<key>Action</key>
-					<integer>3</integer>
-					<key>Text</key>
-					<string></string>
 				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
