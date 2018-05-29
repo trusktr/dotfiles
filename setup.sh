@@ -355,6 +355,10 @@ $isChromeOS=false
         if $isMacOS; then
             brew cask install docker
             brew install awscli
+
+            # for building node zmq package
+            brew install pkg-config
+            brew install zeromq
         fi
 
     fi
