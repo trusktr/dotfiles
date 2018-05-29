@@ -1,1 +1,15 @@
 *
+
+!.atom/
+!.config/karabiner
+!.local/
+!.oni/
+!configs/
+!scripts/
+!.editorconfig
+!.gitconfig
+!.gitignore
+!.jshintrc
+!README.md
+!coffeelint.json
+!setup.sh
