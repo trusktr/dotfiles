@@ -1,0 +1,46 @@
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Pane Browser'
+      'submenu': [
+        {
+          'label': 'Open',
+          'command': 'Pane Browser: Open'
+        }
+        {
+          'label': 'Open from clipboard',
+          'command': 'Pane Browser: Open from clipboard'
+        }
+        {
+          'label': 'Reload page',
+          'command': 'Pane Browser: Reload'
+        }
+        {
+          'label': 'Open Devtool',
+          'command': 'Pane Browser: Open devtool'
+        }
+        {
+          'label': 'Capture page',
+          'command': 'Pane Browser: Capture'
+        }
+        {
+          'label': 'Capture page @2x',
+          'command': 'Pane Browser: Capture @2x'
+        }
+        {
+          'label': 'Capture page @3x',
+          'command': 'Pane Browser: Capture @3x'
+        }
+      ]
+    ]
+  }
+]
+'context-menu':
+  'atom-pane-browser': [
+    {label: 'Reload', command: 'Pane Browser: Reload'}
+    {label: 'Open Devtool', command: 'Pane Browser: Open devtool'}
+    {label: 'Capture', command: 'Pane Browser: Capture'}
+    {label: 'Capture @2x', command: 'Pane Browser: Capture @2x'}
+    {label: 'Capture @3x', command: 'Pane Browser: Capture @3x'}
+  ]
