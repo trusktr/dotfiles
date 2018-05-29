@@ -1,4 +1,5 @@
 INSTALL_METEOR=false
+INSTALL_MAPPER_STUFF=true
 
 result=`uname`
 isMacOS=false; if [[ "$result" == 'Darwin' ]]; then isMacOS=true; fi
@@ -345,6 +346,17 @@ $isChromeOS=false
     if $isUbuntu; then
         # TODO
         echo
+    fi
+
+# mapper.ai stuff
+
+    if $INSTALL_MAPPER_STUFF; then
+
+        if $isMacOS; then
+            brew cask install docker
+            brew install awscli
+        fi
+
     fi
 
 # OS X settings
