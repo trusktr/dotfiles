@@ -9,24 +9,91 @@
  * http://lesscss.org
  */
 
+@deeppink: rgb(255,20,147);
+@lighterdeeppink: #f360af;
 
-/*
- * Examples
- * (To see them, uncomment and save)
- */
-
-// style the background color of the tree view
-.tree-view {
-  // background-color: whitesmoke;
+// give the editor a spin!
+.item-views {
+    perspective: 800px;
+    atom-text-editor {
+        transition: transform 3s cubic-bezier(0.925, 0.010, 0.095, 1.005);
+        transform: rotateY( 0deg );
+    }
 }
 
-// style the background and foreground colors on the atom-text-editor-element itself
 atom-text-editor {
-  // color: white;
-  // background-color: hsl(180, 24%, 12%);
+
+    // when not in a mini editor like command palette input, or other small text
+    // inputs.
+    &:not([mini]) {
+
+        // deeppink cursor, glows in INSERT mode
+        .cursor {
+            border-color: @deeppink;
+
+            &::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 100%;
+                background: fadeout( @deeppink, 0% );
+            }
+        }
+        &.insert-mode {
+            .cursor {
+                &::after {
+                    box-shadow: 0px 0px 60px 10px @deeppink;
+                    background: fadeout( @deeppink, 40% );
+                }
+            }
+        }
+
+    }
 }
 
-// style UI elements inside atom-text-editor
-atom-text-editor .cursor {
-  // border-color: red;
+// styles for highlight-line plugin
+atom-text-editor {
+    // The cursor line important to use rgba for opacity, also requires !important
+    // to override any theme.
+    .line.highlight-line {
+        // background: rgba(255, 0, 0, 0.3) !important;
+    }
+
+    // Replace 'solid', with 'dashed' or 'dotted' depending of what you have
+    // set in the settings page.
+
+    // This is for the bottom line (underline)
+    .line.highlight-line-multi-line-dashed-bottom {
+        border-bottom-color: @deeppink;
+    }
+
+    // This is for the top line when you have the selection borders enabled.
+    .line.highlight-line-multi-line-dashed-top {
+        border-top-color: @deeppink;
+    }
+}
+
+// Highlight cursor-line differently depending on current mode.
+.cursor-line-background(@mode, @color) {
+    atom-text-editor.vim-mode-plus.@{mode}.is-focused {
+        .line.cursor-line {
+            background-color: @color !important;
+        }
+    }
+}
+.cursor-line-background(normal-mode, fadeout(gray, 80%));
+.cursor-line-background(insert-mode, fadeout(@lighterdeeppink, 80%));
+.cursor-line-background(operator-pending-mode, fadeout(yellow, 80%));
+
+// styles for indent-guide-improved package
+.indent-guide-improved {
+    background-color: fadeout( white, 90% );
+
+    &.indent-guide-stack {
+        background-color: fadeout( white, 70% );
+
+        &.indent-guide-active {
+            background-color: fadeout( white, 40% );
+        }
+    }
 }

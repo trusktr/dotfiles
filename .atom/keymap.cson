@@ -31,9 +31,62 @@
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#configuring-with-cson
 
+# 'atom-text-editor.vim-mode-plus-input-char-waiting':
+#     ':': 'unset!'
+
+# TODO: maps for Linux/Windows
+
+'body':
+    'ctrl-\\': 'tree-view:toggle'
+    '\\ f': 'tree-view:toggle'
+
+    # vim-like tab mappings for atom-vim-like-tab plugin
+    'ctrl-h': 'atom-vim-like-tab:previous'
+    'ctrl-l': 'atom-vim-like-tab:next'
+
+'body.platform-darwin':
+    'ctrl-p': 'keystroke cmd-p'
+    'ctrl-P': 'keystroke cmd-P'
+
 '.editor.vim-mode-plus:not(.insert-mode)':
-    't c': 'atom-vim-like-tab:new' # mean 'tab create'
-    ': t a b c': 'atom-vim-like-tab:close'
-    't p': 'atom-vim-like-tab:previous'
-    't n': 'atom-vim-like-tab:next'
+
+    # vim-like tab mappings for atom-vim-like-tab plugin
+    # for some reason these only work in here, not in the .body section
+    'ctrl-t': 'atom-vim-like-tab:new'
+    'g T': 'atom-vim-like-tab:previous'
+    'g t': 'atom-vim-like-tab:next'
     'space t': 'atom-vim-like-tab:list'
+
+    # ':': 'command-palette:toggle'
+
+    'ctrl-k': 'keystroke 5 k'
+    'ctrl-j': 'keystroke 5 j'
+
+    'ctrl-/': 'editor:toggle-line-comments'
+    '\\ c space': 'editor:toggle-line-comments'
+
+    'alt-h': 'pane:decrease-size'
+    'alt-l': 'pane:increase-size'
+
+    'ctrl-w K': 'paner:move-pane-to-very-top'
+    'ctrl-w J': 'paner:move-pane-to-very-bottom'
+    'ctrl-w H': 'paner:move-pane-to-very-left'
+    'ctrl-w L': 'paner:move-pane-to-very-right'
+    'ctrl-w x': 'paner:exchange-pane-stay'
+
+'.editor.vim-mode-plus.visual-mode':
+    'alt-k': 'editor:move-line-up'
+    'alt-j': 'editor:move-line-down'
+
+# open fuzzy-find files in splits, new tab, or same tab (based on
+# https://github.com/atom/fuzzy-finder/issues/81)
+'.fuzzy-finder atom-text-editor[mini]':
+    'ctrl-v': 'pane:split-right'
+    'ctrl-s': 'pane:split-down'
+    'ctrl-t': 'core:confirm'
+    'enter': 'custom:replace-tab'
+
+    'ctrl-c': 'fuzzy-finder:toggle-file-finder'
+
+'.command-palette atom-text-editor[mini]':
+    'ctrl-c': 'command-palette:toggle'

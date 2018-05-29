@@ -24,6 +24,7 @@ $isChromeOS=false
     if $isMacOS; then
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew tap homebrew/cask # add community packages
+        brew tap homebrew/cask-fonts # add community fonts
     fi
 
     if $isArchLinux; then
@@ -329,6 +330,21 @@ $isChromeOS=false
 
     if $isMacOS; then
         brew cask install karabiner-elements
+    fi
+
+# inconsolata font
+
+    if $isMacOS; then
+        brew cask install font-inconsolata-nerd-font-mono
+    fi
+
+    if $isArchLinux; then
+        aura -S nerd-fonts-inconsolata
+    fi
+
+    if $isUbuntu; then
+        # TODO
+        echo
     fi
 
 # OS X settings

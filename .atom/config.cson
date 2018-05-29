@@ -7,9 +7,13 @@
   core:
     autoHideMenuBar: true
     disabledPackages: [
-      "highlight-selected"
-      "minimap-highlight-selected"
       "toggle-quotes"
+      "vim-mode-plus-ex-mode"
+      "atom-browser"
+      "atom-webbrowser"
+      "browser-plus"
+      "pane-browser"
+      "keymap-control"
     ]
     telemetryConsent: "limited"
     themes: [
@@ -17,19 +21,31 @@
       "atom-material-syntax"
     ]
   editor:
+    fontFamily: "Inconsolata Nerd Font Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 16
     scrollPastEnd: true
-    showIndentGuide: true
     tabLength: 4
   "exception-reporting":
     userId: "c1a20f5b-53ad-49a0-8851-4c8ee8d23ac0"
   "hey-pane": {}
-  "highlight-selected": {}
+  "highlight-line":
+    enableSelectionBorder: true
+    enableUnderline: true
+    underline: "dashed"
+  "highlight-selected":
+    hideHighlightOnSelectedWord: true
+    onlyHighlightWholeWords: false
+  "keymap-control":
+    allowPartialMatches: false
+  keystroke: {}
   minimap:
     plugins:
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
       "minimap-quick-highlight": true
       "minimap-quick-highlightDecorationsZIndex": 0
+      pigments: true
+      pigmentsDecorationsZIndex: 0
   "one-dark-ui":
     fontSize: 14
   "platformio-ide-terminal":
@@ -37,8 +53,13 @@
       scrollback: 100000
     toggles:
       autoClose: true
+  "quick-highlight":
+    highlightSelection: false
+  "tree-view-git-status": {}
   "vim-mode-plus":
+    automaticallyEscapeInsertModeOnActivePaneItemChange: true
     keymapYToYankToLastCharacterOfLine: true
+    wrapLeftRightMotion: true
   welcome:
     showOnStartup: false
   whitespace:
