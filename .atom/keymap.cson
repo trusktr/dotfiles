@@ -74,6 +74,9 @@
     'ctrl-w L': 'paner:move-pane-to-very-right'
     'ctrl-w x': 'paner:exchange-pane-stay'
 
+    'ctrl-w o': 'hey-pane:toggle-focus-of-active-pane'
+    'ctrl-w ctrl-o': 'hey-pane:toggle-focus-of-active-pane'
+
 '.editor.vim-mode-plus.visual-mode':
     'alt-k': 'editor:move-line-up'
     'alt-j': 'editor:move-line-down'
