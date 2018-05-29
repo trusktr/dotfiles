@@ -365,6 +365,13 @@ $isChromeOS=false
 
 # OS X settings
 
+
     if $isMacOS; then
+
+        # enable the `locate` command
+        sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+
+        # set default system and app preferences
         sudo sh -c "curl https://raw.githubusercontent.com/trusktr/dotfiles/master/scripts/macOSPrefs.sh | sh"
+
     fi
