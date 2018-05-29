@@ -31,9 +31,6 @@
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#configuring-with-cson
 
-# 'atom-text-editor.vim-mode-plus-input-char-waiting':
-#     ':': 'unset!'
-
 # TODO: maps for Linux/Windows
 
 'body':
@@ -84,10 +81,10 @@
 # open fuzzy-find files in splits, new tab, or same tab (based on
 # https://github.com/atom/fuzzy-finder/issues/81)
 '.fuzzy-finder atom-text-editor[mini]':
-    'ctrl-v': 'pane:split-right'
-    'ctrl-s': 'pane:split-down'
-    'ctrl-t': 'core:confirm'
-    'enter': 'custom:replace-tab'
+    # 'ctrl-v': 'pane:split-right'
+    # 'ctrl-s': 'pane:split-down'
+    # 'ctrl-t': 'core:confirm'
+    # 'enter': 'custom:replace-tab'
 
     'ctrl-c': 'fuzzy-finder:toggle-file-finder'
 
