@@ -18,7 +18,7 @@ result=$?
 isChromeOSCrouton=false; if $( exit $result ); then isChromeOSCrouton=true; fi
 
 # TODO
-$isChromeOS=false
+isChromeOS=false
 
 # set up package management
 
