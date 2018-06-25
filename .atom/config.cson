@@ -44,9 +44,17 @@
     fontSize: 16
     scrollPastEnd: true
     tabLength: 4
+  "exception-reporting":
+    userId: "603f14e1-a923-4cf4-93dc-bc56598e55dc"
   minimap:
     plugins:
       "git-diff": true
+      "git-diffDecorationsZIndex": 0
       "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
       "minimap-quick-highlight": true
+      "minimap-quick-highlightDecorationsZIndex": 0
       pigments: true
+      pigmentsDecorationsZIndex: 0
+  welcome:
+    showOnStartup: false
