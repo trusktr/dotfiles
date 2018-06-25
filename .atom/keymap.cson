@@ -32,18 +32,21 @@
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#configuring-with-cson
 
 # TODO: maps for Linux/Windows
-
-'body':
-    'ctrl-\\': 'tree-view:toggle'
+'body.platform-darwin atom-workspace, body.platform-darwin terminal-pane':
     '\\ f': 'tree-view:toggle'
 
-    # vim-like tab mappings for atom-vim-like-tab plugin
-    'ctrl-h': 'atom-vim-like-tab:previous'
-    'ctrl-l': 'atom-vim-like-tab:next'
-
-'body.platform-darwin':
     'ctrl-p': 'keystroke cmd-p'
     'ctrl-P': 'keystroke cmd-P'
+
+    'cmd-f': 'find-and-replace:toggle'
+    'cmd-F': 'project-find:toggle'
+
+    # vim-like tab mappings for atom-vim-like-tab plugin
+    # 'ctrl-h': 'atom-vim-like-tab:previous'
+    # 'ctrl-l': 'atom-vim-like-tab:next'
+    # moving in normal tabs instead of vim-like tabs for now, it has bugs
+    'ctrl-h': 'pane:show-previous-item'
+    'ctrl-l': 'pane:show-next-item'
 
 '.editor.vim-mode-plus:not(.insert-mode)':
 
@@ -74,9 +77,23 @@
     'ctrl-w o': 'hey-pane:toggle-focus-of-active-pane'
     'ctrl-w ctrl-o': 'hey-pane:toggle-focus-of-active-pane'
 
+    # similar to my vimrc bookmark settings
+    'm m': 'bookmarks:toggle-bookmark'
+    'm n': 'bookmarks:jump-to-next-bookmark'
+    'm p': 'bookmarks:jump-to-previous-bookmark'
+    'M M': 'bookmarks:view-all'
+
+    # '/': 'find-and-replace:show'
+
+    'ctrl-w c': 'core:close'
+    'ctrl-w ctrl-c': 'core:close'
+
 '.editor.vim-mode-plus.visual-mode':
     'alt-k': 'editor:move-line-up'
     'alt-j': 'editor:move-line-down'
+
+    # move to end of line like in normal mode
+    '$': 'keystroke $ h'
 
 # open fuzzy-find files in splits, new tab, or same tab (based on
 # https://github.com/atom/fuzzy-finder/issues/81)

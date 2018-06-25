@@ -1,7 +1,18 @@
 "*":
+  "advanced-open-file":
+    createDirectories: true
+    createFileInstantly: true
+    fuzzyMatch: true
+    helmDirSwitch: true
+  "atom-ide-ui":
+    "atom-ide-diagnostics-ui":
+      showDiagnosticTraces: true
   "base16-syntax":
     scheme: "Chalk"
     style: "Dark"
+  "bracket-matcher":
+    autocompleteBrackets: false
+    highlightMatchingLineNumber: true
   "city-lights-ui":
     showTabsInTreeView: true
   core:
@@ -14,19 +25,28 @@
       "browser-plus"
       "pane-browser"
       "keymap-control"
+      "platformio-ide-terminal"
+      "terminal-plus"
+      "atom-terminal-panel"
+      "file-type-icons"
+      "language-javascript-semantic"
+      "language-babel"
     ]
     telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
       "atom-material-syntax"
     ]
+    titleBar: "custom"
+    useTreeSitterParsers: true
   editor:
-    fontFamily: "Inconsolata Nerd Font Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontFamily: "Space Mono, Inconsolata Nerd Font Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
     fontSize: 16
     scrollPastEnd: true
     tabLength: 4
   "exception-reporting":
     userId: "c1a20f5b-53ad-49a0-8851-4c8ee8d23ac0"
+  "file-icons": {}
   "hey-pane": {}
   "highlight-line":
     enableSelectionBorder: true
@@ -39,8 +59,15 @@
   "keymap-control":
     allowPartialMatches: false
   keystroke: {}
+  "language-babel":
+    emmetCSSAutocomplete: true
+    taggedTemplateGrammar: [
+      "/* @html */:text.html.basic"
+    ]
   minimap:
     plugins:
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
       "minimap-quick-highlight": true
@@ -54,8 +81,27 @@
       scrollback: 100000
     toggles:
       autoClose: true
+  "project-plus":
+    newWindow: true
+    showPath: true
+  "project-viewer":
+    disclaimer:
+      v131: false
   "quick-highlight":
     highlightSelection: false
+  tabs: {}
+  "terminal-plus":
+    core:
+      scrollback: 1000000
+    style:
+      animationSpeed: 2
+      defaultPanelHeight: "600px"
+    toggles:
+      autoClose: true
+  "todo-show":
+    findTheseTodos: [
+      "TODO"
+    ]
   "tree-view-git-status": {}
   "vim-mode-plus":
     automaticallyEscapeInsertModeOnActivePaneItemChange: true

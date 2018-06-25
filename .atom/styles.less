@@ -21,7 +21,47 @@
     }
 }
 
+atom-pane-container atom-pane {
+    border-right-color: deeppink;
+    border-bottom-color: deeppink;
+}
+
+.tree-view {
+    .list-item {
+        line-height: 1.5em !important;
+    }
+    .selected:before {
+        height: 1.4em;
+    }
+}
+
+// highlight color
+@border: 2px;
+@padding-y: 0px;
+@padding-x: 2px;
+@pad-y: @border + @padding-y;
+@pad-x: @border + @padding-x;
+@bg: #FFDD00;
 atom-text-editor {
+    .highlight.vim-mode-plus-highlight-search .region {
+        box-sizing: content-box !important;
+        transform: translate( -@pad-x / 2, -@pad-y / 2 );
+        padding: @padding-y @padding-x !important;
+        border: none;
+        border-bottom: @border solid @bg;
+        border-radius: 0px;
+        // background: none;
+        background: fadeout( @bg, 80%);
+        // box-shadow: 0px 0px 10px 1px fadeout( @bg, 80% );
+    }
+}
+
+atom-text-editor {
+    --editor-line-height: 1.2em;
+
+    // prevents "fi" and "fl" sequences from smushing to a single column when
+    // using Space Mono font, etc
+    font-variant-ligatures: none;
 
     // when not in a mini editor like command palette input, or other small text
     // inputs.
@@ -37,6 +77,7 @@ atom-text-editor {
                 width: 100%;
                 height: 100%;
                 background: fadeout( @deeppink, 0% );
+                transition: box-shadow 1s, opacity 1s;
             }
         }
         &.insert-mode {
@@ -64,12 +105,13 @@ atom-text-editor {
 
     // This is for the bottom line (underline)
     .line.highlight-line-multi-line-dashed-bottom {
-        border-bottom-color: @deeppink;
+        border-bottom-color: fadeout( @deeppink, 50% );
     }
 
     // This is for the top line when you have the selection borders enabled.
     .line.highlight-line-multi-line-dashed-top {
-        border-top-color: @deeppink;
+        // border-top-color: @deeppink;
+        border-top-color: fadeout( @deeppink, 50% );
     }
 }
 

@@ -35,3 +35,6 @@ atom.commands.add '.editor.vim-mode-plus:not(.insert-mode)', 'custom:reset-norma
 
 atom.commands.add '.editor.vim-mode-plus:not(.insert-mode)', 'write:file', ->
     atom.commands.dispatch(@, "core:save")
+
+atom.commands.add 'body', 'custom:reload-file', ->
+    atom.workspace.getActiveTextEditor().buffer.reload()
