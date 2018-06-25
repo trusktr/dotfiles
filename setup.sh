@@ -340,7 +340,22 @@ $isChromeOS=false
     fi
 
     if $isArchLinux; then
-        aura -S nerd-fonts-inconsolata
+        sudo aura -S nerd-fonts-inconsolata
+    fi
+
+    if $isUbuntu; then
+        # TODO
+        echo
+    fi
+
+# The amazing Space Mono font
+
+    if $isMacOS; then
+        brew cask install font-space-mono
+    fi
+
+    if $isArchLinux; then
+        sudo pacman -S ttf-spacemono
     fi
 
     if $isUbuntu; then
@@ -363,8 +378,26 @@ $isChromeOS=false
 
     fi
 
-# OS X settings
+# Adobe
 
+    if $isMacOS; then
+        brew cask install adobe-creative-cloud
+        open '/usr/local/Caskroom/adobe-creative-cloud/latest/Creative Cloud Installer.app'
+    fi
+
+# GitHub
+
+    if $isMacOS; then
+        brew cask install github
+    fi
+
+# Google Drive Backup and Sync
+
+    if $isMacOS; then
+        brew cask install google-backup-and-sync
+    fi
+
+# OS X settings
 
     if $isMacOS; then
 
