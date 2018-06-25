@@ -22,7 +22,7 @@
     defaults write com.apple.dock magnification -int 1
     defaults write com.apple.dock mineffect -string scale
     defaults write com.apple.dock tilesize -int 128
-    defaults write com.apple.dock mru-spaces -int 0
+    defaults write com.apple.dock mru-spaces -int 1
     defaults write com.apple.dock expose-group-apps -int 1
     defaults write com.apple.dock showAppExposeGestureEnabled -int 1
 
