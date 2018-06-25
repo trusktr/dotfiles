@@ -44,70 +44,9 @@
     fontSize: 16
     scrollPastEnd: true
     tabLength: 4
-  "exception-reporting":
-    userId: "c1a20f5b-53ad-49a0-8851-4c8ee8d23ac0"
-  "file-icons": {}
-  "hey-pane": {}
-  "highlight-line":
-    enableSelectionBorder: true
-    enableUnderline: true
-    underline: "dashed"
-  "highlight-selected":
-    hideHighlightOnSelectedWord: true
-    onlyHighlightWholeWords: false
-  "ide-vue": {}
-  "keymap-control":
-    allowPartialMatches: false
-  keystroke: {}
-  "language-babel":
-    emmetCSSAutocomplete: true
-    taggedTemplateGrammar: [
-      "/* @html */:text.html.basic"
-    ]
   minimap:
     plugins:
       "git-diff": true
-      "git-diffDecorationsZIndex": 0
       "highlight-selected": true
-      "highlight-selectedDecorationsZIndex": 0
       "minimap-quick-highlight": true
-      "minimap-quick-highlightDecorationsZIndex": 0
       pigments: true
-      pigmentsDecorationsZIndex: 0
-  "one-dark-ui":
-    fontSize: 14
-  "platformio-ide-terminal":
-    core:
-      scrollback: 100000
-    toggles:
-      autoClose: true
-  "project-plus":
-    newWindow: true
-    showPath: true
-  "project-viewer":
-    disclaimer:
-      v131: false
-  "quick-highlight":
-    highlightSelection: false
-  tabs: {}
-  "terminal-plus":
-    core:
-      scrollback: 1000000
-    style:
-      animationSpeed: 2
-      defaultPanelHeight: "600px"
-    toggles:
-      autoClose: true
-  "todo-show":
-    findTheseTodos: [
-      "TODO"
-    ]
-  "tree-view-git-status": {}
-  "vim-mode-plus":
-    automaticallyEscapeInsertModeOnActivePaneItemChange: true
-    keymapYToYankToLastCharacterOfLine: true
-    wrapLeftRightMotion: true
-  welcome:
-    showOnStartup: false
-  whitespace:
-    ignoreWhitespaceOnCurrentLine: false
