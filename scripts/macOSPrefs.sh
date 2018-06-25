@@ -10,6 +10,7 @@
     defaults write -g "com.apple.trackpad.scaling" -float "2.5"
     defaults write -g "com.apple.mouse.scaling" -float "2.5"
     defaults write -g AppleEnableSwipeNavigateWithScrolls -int 0
+    defaults write -g AppleActionOnDoubleClick -string Maximize
 
     defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string TwoButton
     defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture -int 1
