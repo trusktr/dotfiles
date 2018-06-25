@@ -3,7 +3,7 @@
 
     defaults write -g AppleInterfaceStyle -string Dark
     defaults write -g AppleHighlightColor -string "1.000000 0.749020 0.823529"
-    defaults write -g AppleSpacesSwitchOnActivate -int 1
+    defaults write -g AppleSpacesSwitchOnActivate -int 0
     defaults write -g InitialKeyRepeat -int 15
     defaults write -g KeyRepeat -int 1
     defaults write -g "com.apple.trackpad.scaling" -float "2.5"
