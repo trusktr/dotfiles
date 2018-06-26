@@ -78,5 +78,8 @@
       "minimap-quick-highlightDecorationsZIndex": 0
       pigments: true
       pigmentsDecorationsZIndex: 0
+  "project-plus":
+    newWindow: true
+    showPath: true
   welcome:
     showOnStartup: false
