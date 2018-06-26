@@ -54,6 +54,43 @@ isChromeOS=false
         sudo apt-get install git
     fi
 
+# Clone dotfiles
+# TODO: consolidate into single repo.
+
+    mkdir -p ~/src
+    cd ~/src
+
+    git clone git@github.com:trusktr/dotfiles trusktr+dotfiles
+    git clone --recursive git@github.com:trusktr/dotfiles2 trusktr+dotfiles2
+
+# link dotfiles
+
+    cd ~
+
+    ln -s ~/src/trusktr+dotfiles/coffeelint.json
+    ln -s ~/src/trusktr+dotfiles/.gitignore
+    ln -s ~/src/trusktr+dotfiles/.gitconfig
+    ln -s ~/src/trusktr+dotfiles/.editorconfig
+    ln -s ~/src/trusktr+dotfiles/.jshintrc
+    ln -s ~/src/trusktr+dotfiles/.Xmodmap
+    ln -s ~/src/trusktr+dotfiles/.atom
+    ln -s ~/src/trusktr+dotfiles/.npmrc
+
+    mkdir -p ~/.local
+    ln -s ~/src/trusktr+dotfiles/.local/bin .local/bin
+
+    mkdir -p ~/.config
+    ln -s ~/src/trusktr+dotfiles/.config/karabiner .config/karabiner
+
+    cd ~/src
+    git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions
+    cd ~
+    ln -s ~/src/trusktr+dotfiles2/.vimrc/.vimrc
+    mkdir -p ~/.config/nvim
+    ln -s ~/.vimrc ~/.config/nvim/init.vim
+    mkdir -p ~/.vim
+    ln -s ~/src/trusktr+vim-sessions ~/.vim/session
+
 # libnotify (Windows Bash / Ubuntu)
 
     if $isUbuntu; then
@@ -83,7 +120,7 @@ isChromeOS=false
 # Node.js
 
     if $isMacOS; then
-        brew install nodejs
+        brew install node
     fi
 
     if $isArchLinux; then
@@ -105,43 +142,7 @@ isChromeOS=false
         brew install coreutils
     fi
 
-# Clone dotfiles
-# TODO: consolidate into single repo.
-
-    mkdir -p ~/src
-    cd ~/src
-
-    git clone git@github.com:trusktr/dotfiles trusktr+dotfiles
-    git clone --recursive git@github.com:trusktr/dotfiles2 trusktr+dotfiles2
-
-# link dotfiles
-
-    cd ~
-
-    ln -s ~/src/trusktr+dotfiles/coffeelint.json
-    ln -s ~/src/trusktr+dotfiles/.gitignore
-    ln -s ~/src/trusktr+dotfiles/.gitconfig
-    ln -s ~/src/trusktr+dotfiles/.editorconfig
-    ln -s ~/src/trusktr+dotfiles/.jshintrc
-    ln -s ~/src/trusktr+dotfiles/.Xmodmap
-    ln -s ~/src/trusktr+dotfiles/.atom
-
-    mkdir -p ~/.local
-    ln -s ~/src/trusktr+dotfiles/.local/bin .local/bin
-
-    mkdir -p ~/.config
-    ln -s ~/src/trusktr+dotfiles/.config/karabiner .config/karabiner
-
 # Vim/Neovim
-
-    cd ~/src
-    git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions
-    cd ~
-    ln -s ~/src/trusktr+dotfiles2/.vimrc/.vimrc
-    mkdir -p ~/.config/nvim
-    ln -s ~/.vimrc ~/.config/nvim/init.vim
-    mkdir -p ~/.vim
-    ln -s ~/src/trusktr+vim-sessions ~/.vim/session
 
     if $isMacOS; then
         brew install libtool gettext
@@ -213,14 +214,14 @@ isChromeOS=false
         fi
 
     # use by neomake plugin.
-    sudo npm install -g jshint
+    npm install -g jshint
 
     # ChromeOS Crouton
     # TODO: Set up Go, then install croshclip so neovim can copy to to ChromeOS Clipboard
     # https://github.com/acornejo/croshclip
 
     # oni vim
-    sudo npm i -g oni # TODO there's a new OS-level package installer
+    npm install -g oni # TODO there's a new OS-level package installer
     mkdir -p ~/.oni
     ln -s ~/src/trusktr+dotfiles/.oni/config.js ~/.oni/config.js
 
