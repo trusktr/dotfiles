@@ -67,20 +67,23 @@
     # a letter key.
     defaults write -g ApplePressAndHoldEnabled -bool false
 
+    # Safari
+
+        defaults write com.apple.Safari IncludeDevelopMenu -int 1
+        defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -int 1
+        defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -int 1
+
+    # iTerm settings are saved in ../configs/com.googlecode.iterm2.plist
+
+        defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -int 1
+        defaults write com.googlecode.iterm2 PrefsCustomFolder -string "/Users/trusktr/src/trusktr+dotfiles/configs"
+
+    # show battery percentage
+        defaults write com.apple.menuextra.battery ShowPercent -string YES
+
 # other settings
 
-HOSTNAME=Starhopper
-scutil --set HostName $HOSTNAME
-scutil --set LocalHostName $HOSTNAME
-scutil --set ComputerName $HOSTNAME
-
-# Safari
-
-    defaults write com.apple.Safari IncludeDevelopMenu -int 1
-    defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -int 1
-    defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -int 1
-
-# iTerm settings are saved in ../configs/com.googlecode.iterm2.plist
-
-    defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -int 1
-    defaults write com.googlecode.iterm2 PrefsCustomFolder -string "/Users/trusktr/src/trusktr+dotfiles/configs"
+    HOSTNAME=Starhopper
+    scutil --set HostName $HOSTNAME
+    scutil --set LocalHostName $HOSTNAME
+    scutil --set ComputerName $HOSTNAME
