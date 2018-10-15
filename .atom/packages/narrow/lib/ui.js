@@ -694,7 +694,8 @@ class Ui {
       const eof = editor.getEofBufferPosition()
       const text = (firstRender ? '' : '\n') + texts.join('\n')
       const range = [renderStartPosition, eof]
-      renderStartPosition = editor.setTextInBufferRange(range, text, {undo: 'skip'}).end
+      renderStartPosition = editor.setTextInBufferRange(range, text).end
+      editor.buffer.groupLastChanges()
       this.narrowEditor.setModifiedState(false)
     })
 
@@ -778,7 +779,9 @@ class Ui {
 
       if (selectFirstItem || !oldSelectedItem) {
         this.items.selectFirstNormalItem()
-        this.moveToPrompt()
+        if (!wasAtPrompt) {
+          this.moveToPrompt()
+        }
       } else {
         this.items.selectEqualLocationItem(oldSelectedItem)
         if (!this.items.hasSelectedItem()) {
