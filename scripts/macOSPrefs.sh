@@ -81,6 +81,10 @@
     # show battery percentage
         defaults write com.apple.menuextra.battery ShowPercent -string YES
 
+    # Finder preferences
+        defaults write com.apple.finder ShowPathbar -int 1
+        defaults write com.apple.finder ShowStatusBar -int 1
+
 # other settings
 
     HOSTNAME=Starhopper
