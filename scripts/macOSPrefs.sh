@@ -7,7 +7,7 @@
     defaults write -g AppleSpacesSwitchOnActivate -int 0
     defaults write -g InitialKeyRepeat -int 15
     defaults write -g KeyRepeat -int 1
-    defaults write -g "com.apple.trackpad.scaling" -float "2.5"
+    defaults write -g "com.apple.trackpad.scaling" -float "3"
     defaults write -g "com.apple.mouse.scaling" -float "2.5"
     defaults write -g AppleEnableSwipeNavigateWithScrolls -int 0
     defaults write -g AppleActionOnDoubleClick -string Maximize
