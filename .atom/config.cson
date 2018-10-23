@@ -32,6 +32,8 @@
   "base16-syntax":
     scheme: "Chalk"
     style: "Dark"
+  "better-git-blame":
+    searchInLayerEnabled: false
   "bracket-matcher":
     autocompleteBrackets: false
     highlightMatchingLineNumber: true
@@ -92,6 +94,8 @@
   "fast-eslint": {}
   "file-watcher": {}
   "flow-ide": {}
+  "git-blame":
+    columnWidth: 255
   "linter-eslint":
     disableWhenNoEslintConfig: false
     eslintrcPath: ".eslintrc.js"
@@ -110,7 +114,6 @@
       pigmentsDecorationsZIndex: 0
   "prettier-atom":
     formatOnSaveOptions:
-      enabled: true
       showInStatusBar: true
   "project-plus":
     newWindow: true
