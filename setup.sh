@@ -398,6 +398,61 @@ isChromeOS=false
         brew cask install google-backup-and-sync
     fi
 
+# Meld, diff tool
+
+    if $isMacOS; then
+        brew cask install meld
+    fi
+
+# Go programming language
+
+    if $isMacOS; then
+        brew install go
+    fi
+
+# Protobuf
+
+    if $isMacOS; then
+        brew install protobuf
+    fi
+
+# Haiku.ai
+
+    # TODO Install Haiku from DMG
+
+# XQuartz (X11 for macOS)
+
+    if $isMacOS; then
+        brew cask install xquartz
+    fi
+
+# xvfb (for headless X11 emulation, f.e. to run Karma+Electron headlessly)
+
+    if $isUbuntu; then
+        sudo apt-get install xvfb
+    fi
+
+# SkyFonts (sync Google Fonts to your system)
+
+    if $isMacOS; then
+        brew cask install skyfonts
+        open '/usr/local/Caskroom/skyfonts/5.9.2.1/Install SkyFonts.app'
+    fi
+
+#### Git GUIs
+
+    # GitKraken
+
+        brew cask install gitkraken
+
+    # Ungit
+
+        npm i -g ungit
+
+    # Fork
+
+        brew cask install fork
+
 # OS X settings
 
     if $isMacOS; then
