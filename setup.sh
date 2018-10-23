@@ -443,7 +443,9 @@ isChromeOS=false
 
     # GitKraken
 
-        brew cask install gitkraken
+        if $isMacOS; then
+            brew cask install gitkraken
+        fi
 
     # Ungit
 
@@ -451,7 +453,9 @@ isChromeOS=false
 
     # Fork
 
-        brew cask install fork
+        if $isMacOS; then
+            brew cask install fork
+        fi
 
 # OS X settings
 
