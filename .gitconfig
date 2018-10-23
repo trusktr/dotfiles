@@ -30,6 +30,7 @@
 	sattus = status
 	sttus = status
 	satus = status
+	sttaus = status
 	dif = diff
 	l = log
 	logg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
