@@ -23,6 +23,7 @@ isChromeOS=false
 # set up package management
 
     if $isMacOS; then
+        # TODO detect if homebrew is already installed, and don't re-install it.
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew tap homebrew/cask # add community packages
         brew tap homebrew/cask-fonts # add community fonts
