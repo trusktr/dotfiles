@@ -98,8 +98,10 @@
   "git-blame":
     columnWidth: 255
   "linter-eslint":
-    disableWhenNoEslintConfig: false
-    eslintrcPath: ".eslintrc.js"
+    disabling:
+      disableWhenNoEslintConfig: false
+    global:
+      eslintrcPath: ".eslintrc.js"
   "linter-ui-default":
     panelHeight: 406
     showPanel: true

@@ -1,3 +1,39 @@
+<a name="0.56.2"></a>
+## [0.56.2](https://github.com/prettier/prettier-atom/compare/v0.56.1...v0.56.2) (2018-12-06)
+
+
+### Bug Fixes
+
+* ensure we always pass a relative path to `ignore` pkg ([477d6aa](https://github.com/prettier/prettier-atom/commit/477d6aa)), closes [#473](https://github.com/prettier/prettier-atom/issues/473)
+
+
+
+<a name="0.56.1"></a>
+## [0.56.1](https://github.com/prettier/prettier-atom/compare/v0.56.0...v0.56.1) (2018-12-03)
+
+
+### Bug Fixes
+
+* properly format HTML and VUE files ([b91ea02](https://github.com/prettier/prettier-atom/commit/b91ea02)), closes [#467](https://github.com/prettier/prettier-atom/issues/467)
+
+
+
+<a name="0.56.0"></a>
+# [0.56.0](https://github.com/prettier/prettier-atom/compare/v0.55.2...v0.56.0) (2018-11-19)
+
+
+### Bug Fixes
+
+* **ignores:** ensure we always pass a relative string to the ignores package ([c6ad510](https://github.com/prettier/prettier-atom/commit/c6ad510))
+
+
+### Features
+
+* **prettier:** bump to version 1.15.2 ([c3ff578](https://github.com/prettier/prettier-atom/commit/c3ff578))
+* **prettier-eslint:** bump to version 8.8.2 ([de77987](https://github.com/prettier/prettier-atom/commit/de77987))
+
+
+
 <a name="0.55.2"></a>
 ## [0.55.2](https://github.com/prettier/prettier-atom/compare/v0.55.1...v0.55.2) (2018-08-23)
 
