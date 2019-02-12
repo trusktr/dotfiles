@@ -22,25 +22,21 @@ registry_1.addCommand("atom-text-editor", "typescript:check-all-files", deps => 
         const disp = client.on("syntaxDiag", evt => {
             if (cancelTimeout !== undefined)
                 window.clearTimeout(cancelTimeout);
-            cancelTimeout = window.setTimeout(cancel, 500);
-            files.delete(evt.file);
+            cancelTimeout = window.setTimeout(cancel, 2000);
+            if ("file" in evt)
+                files.delete(evt.file);
             updateStatus();
         });
-        const stp = deps.getStatusPanel();
-        stp.update({ progress: { max, value: 0 } });
-        client.execute("geterrForProject", { file, delay: 0 });
+        deps.reportProgress({ max, value: 0 });
+        await client.execute("geterrForProject", { file, delay: 0 });
         function cancel() {
             files.clear();
             updateStatus();
         }
         function updateStatus() {
-            if (files.size === 0) {
+            if (files.size === 0)
                 disp.dispose();
-                stp.update({ progress: undefined });
-            }
-            else {
-                stp.update({ progress: { max, value: max - files.size } });
-            }
+            deps.reportProgress({ max, value: max - files.size });
         }
     },
 }));

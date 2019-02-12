@@ -1,40 +1,37 @@
-import {debounce} from "lodash"
-import {Diagnostic, Location} from "typescript/lib/protocol"
+import {Point, Range} from "atom"
 import {IndieDelegate, Message} from "atom/linter"
-import {locationsToRange, isLocationInRange} from "./atom/utils"
-import {CompositeDisposable} from "atom"
+import {debounce} from "lodash"
 import * as path from "path"
+import {Diagnostic} from "typescript/lib/protocol"
+import {DiagnosticTypes} from "../client/clientResolver"
+import {locationsToRange, spanToRange} from "./atom/utils"
 
 /** Class that collects errors from all of the clients and pushes them to the Linter service */
 export class ErrorPusher {
   private linter?: IndieDelegate
   private errors: Map<string, Map<string, Diagnostic[]>> = new Map()
-  private unusedAsInfo = true
-  private subscriptions = new CompositeDisposable()
 
   constructor() {
-    this.subscriptions.add(
-      atom.config.observe("atom-typescript.unusedAsInfo", (unusedAsInfo: boolean) => {
-        this.unusedAsInfo = unusedAsInfo
-      }),
-    )
     this.pushErrors = debounce(this.pushErrors.bind(this), 100)
   }
 
-  /** Return any errors that cover the given location */
-  public getErrorsAt(filePath: string, loc: Location): Diagnostic[] {
-    const result: Diagnostic[] = []
+  public *getErrorsInRange(filePath: string, range: Range): IterableIterator<Diagnostic> {
     for (const prefixed of this.errors.values()) {
       const errors = prefixed.get(path.normalize(filePath))
-      if (errors) {
-        result.push(...errors.filter(err => isLocationInRange(loc, err)))
-      }
+      if (errors) yield* errors.filter(err => spanToRange(err).intersectsWith(range))
     }
-    return result
+  }
+
+  /** Return any errors that cover the given location */
+  public *getErrorsAt(filePath: string, loc: Point): IterableIterator<Diagnostic> {
+    for (const prefixed of this.errors.values()) {
+      const errors = prefixed.get(path.normalize(filePath))
+      if (errors) yield* errors.filter(err => spanToRange(err).containsPoint(loc))
+    }
   }
 
   /** Set errors. Previous errors with the same prefix and filePath are going to be replaced */
-  public setErrors(prefix: string, filePath: string, errors: Diagnostic[]) {
+  public setErrors(prefix: DiagnosticTypes, filePath: string, errors: Diagnostic[]) {
     let prefixed = this.errors.get(prefix)
     if (!prefixed) {
       prefixed = new Map()
@@ -46,11 +43,16 @@ export class ErrorPusher {
     this.pushErrors()
   }
 
-  /** Clear all errors */
-  public clear() {
-    if (this.linter) {
-      this.linter.clearMessages()
+  public clearFileErrors(filePath: string) {
+    for (const map of this.errors.values()) {
+      map.delete(filePath)
     }
+    this.pushErrors()
+  }
+
+  public clear() {
+    if (!this.linter) return
+    this.linter.clearMessages()
   }
 
   public setLinter(linter: IndieDelegate) {
@@ -59,12 +61,16 @@ export class ErrorPusher {
   }
 
   public dispose() {
-    this.subscriptions.dispose()
     this.clear()
+    if (this.linter) this.linter.dispose()
+    this.linter = undefined
   }
 
   private pushErrors() {
-    const errors: Message[] = []
+    if (this.linter) this.linter.setAllMessages(Array.from(this.getLinterErrors()))
+  }
+
+  private *getLinterErrors(): IterableIterator<Message> {
     const config = atom.config.get("atom-typescript")
 
     if (!config.suppressAllDiagnostics) {
@@ -80,26 +86,22 @@ export class ErrorPusher {
               start = end = {line: 1, offset: 1}
             }
 
-            errors.push({
-              severity: this.getSeverity(diagnostic),
+            yield {
+              severity: this.getSeverity(config.unusedAsInfo, diagnostic),
               excerpt: diagnostic.text,
               location: {
                 file: filePath,
                 position: locationsToRange(start, end),
               },
-            })
+            }
           }
         }
       }
     }
-
-    if (this.linter) {
-      this.linter.setAllMessages(errors)
-    }
   }
 
-  private getSeverity(diagnostic: Diagnostic) {
-    if (this.unusedAsInfo && diagnostic.code === 6133) return "info"
+  private getSeverity(unusedAsInfo: boolean, diagnostic: Diagnostic) {
+    if (unusedAsInfo && diagnostic.code === 6133) return "info"
     switch (diagnostic.category) {
       case "error":
         return "error"
