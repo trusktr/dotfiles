@@ -48,6 +48,13 @@
     'ctrl-h': 'pane:show-previous-item'
     'ctrl-l': 'pane:show-next-item'
 
+    '\\ t': 'termination:toggle'
+    '\\ \\ t': 'termination:new'
+
+'body .termination':
+    'ctrl-cmd-h': 'termination:prev'
+    'ctrl-cmd-l': 'termination:next'
+
 '.editor.vim-mode-plus:not(.insert-mode)':
 
     # vim-like tab mappings for atom-vim-like-tab plugin
