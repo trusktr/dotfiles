@@ -133,3 +133,7 @@
       runInsertedText: false
   welcome:
     showOnStartup: false
+  whitespace:
+    ensureSingleTrailingNewline: false
+    ignoreWhitespaceOnlyLines: true
+    removeTrailingWhitespace: false
