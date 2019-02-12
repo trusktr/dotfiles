@@ -48,6 +48,9 @@
     'ctrl-h': 'pane:show-previous-item'
     'ctrl-l': 'pane:show-next-item'
 
+    '\\ g': 'github:toggle-git-tab'
+    '\\ \\ g': 'github:toggle-github-tab'
+
     '\\ t': 'termination:toggle'
     '\\ \\ t': 'termination:new'
 
