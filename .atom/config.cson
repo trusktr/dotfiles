@@ -64,6 +64,7 @@
       "vim-mode-plus-ex-mode"
       "ide-typescript"
       "eslint-format"
+      "atom-domterm"
     ]
     excludeVcsIgnoredPaths: false
     ignoredNames: [
@@ -120,5 +121,14 @@
     showPath: true
   tabs:
     enableVcsColoring: true
+  termination:
+    core:
+      scrollback: 1000000
+    style:
+      animationSpeed: 0
+      theme: "one-dark"
+    toggles:
+      cloneTerminalPlus: false
+      runInsertedText: false
   welcome:
     showOnStartup: false
