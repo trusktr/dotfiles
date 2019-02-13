@@ -16,7 +16,7 @@
 	excludesfile = ~/.gitignore_global
 [alias]
 	co = checkout
-	br = branch
+	br = branch --sort=-committerdate
 	s = status
 	st = status
 	sta = status
