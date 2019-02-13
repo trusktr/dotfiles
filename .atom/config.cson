@@ -59,12 +59,14 @@
       "ide-html"
       "ide-json"
       "ide-vue"
-      "linter-ui-default"
       "autocomplete"
       "vim-mode-plus-ex-mode"
       "ide-typescript"
       "eslint-format"
       "atom-domterm"
+      "linter"
+      "linter-ui-default"
+      "linter-eslint"
     ]
     excludeVcsIgnoredPaths: false
     ignoredNames: [
