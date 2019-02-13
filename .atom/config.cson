@@ -115,6 +115,8 @@
       "git-diffDecorationsZIndex": 0
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
+      linter: true
+      linterDecorationsZIndex: 0
       "minimap-quick-highlight": true
       "minimap-quick-highlightDecorationsZIndex": 0
       pigments: true
