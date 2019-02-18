@@ -86,6 +86,10 @@
       "atom-material-syntax"
     ]
     titleBar: "custom"
+  "disable-keybindings":
+    prefixKeys: [
+      "ctrl-k"
+    ]
   editor:
     fontFamily: "Space Mono, Inconsolata Nerd Font Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
     scrollPastEnd: true
