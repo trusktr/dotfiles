@@ -1,11 +1,14 @@
 # TODO WINDOWS:
-#   - Install X11 server and desktop environment to use Ubuntu GUI apps, see
-#     the following for a guide on getting GUI apps running in WSL:
-#     https://github.com/QMonkey/wsl-tutorial
+#   - X11 Approach:
+#     - X11 server: https://sourceforge.net/projects/vcxsrv/
+#     - Install X11 server and desktop environment to use Ubuntu GUI apps, see
+#       the following for a guide on getting GUI apps running in WSL:
+#       https://github.com/QMonkey/wsl-tutorial
 #   - Install various other Windows stuff automatically using OneGet (AKA PackageManager).
 #   - Use the official Windows package mananager "OneGet" to install windows
 #     stuff. See how to use it with the Chocolatey package registry:
 #     https://www.reddit.com/r/sysadmin/comments/4gqq6q/add_chocolatey_repo_to_windows_10/
+#   - Customizing PowerShell prompt: https://hodgkins.io/ultimate-powershell-prompt-and-git-setup
 #
 # PowerShell steps using OneGet:
 #   Install-PackageProvider Chocolatey -Force
