@@ -1,3 +1,35 @@
+# TODO WINDOWS:
+#   - Install X11 server and desktop environment to use Ubuntu GUI apps, see
+#     the following for a guide on getting GUI apps running in WSL:
+#     https://github.com/QMonkey/wsl-tutorial
+#   - Install various other Windows stuff automatically using OneGet (AKA PackageManager).
+#   - Use the official Windows package mananager "OneGet" to install windows
+#     stuff. See how to use it with the Chocolatey package registry:
+#     https://www.reddit.com/r/sysadmin/comments/4gqq6q/add_chocolatey_repo_to_windows_10/
+#
+# PowerShell steps using OneGet:
+#   Install-PackageProvider Chocolatey -Force
+#   Install-Package Nodejs
+#   # etc..., I didn't have much luck with it.
+#
+# PowerShell steps using Chocolatey (works better):
+#   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force # run this line on new systems, default is "Restricted", skip if needed
+#   iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+#   # restart powershell so that choco command is available
+#   choco install -y nodejs
+#   choco install -y atom
+#   choco install -y git
+#   choco install -y nvim
+#   choco install -y git -params '"/GitAndUnixToolsOnPath"'
+#   choco install -y conemu
+#
+#   Install-PackageProvider NuGet -Force
+#   Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+#   Install-Module posh-git
+#
+# Link stuff
+#   cmd /c mklink /d $HOME\.atom $HOME\src\trusktr+dotfiles1\.atom
+
 INSTALL_METEOR=false
 INSTALL_MAPPER_STUFF=true
 
