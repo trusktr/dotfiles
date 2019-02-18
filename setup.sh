@@ -9,6 +9,7 @@
 #     stuff. See how to use it with the Chocolatey package registry:
 #     https://www.reddit.com/r/sysadmin/comments/4gqq6q/add_chocolatey_repo_to_windows_10/
 #   - Customizing PowerShell prompt: https://hodgkins.io/ultimate-powershell-prompt-and-git-setup
+#   - If there's any problems updating apt-get registry cache, see https://github.com/Microsoft/WSL/issues/640
 #
 # PowerShell steps using OneGet:
 #   Install-PackageProvider Chocolatey -Force
