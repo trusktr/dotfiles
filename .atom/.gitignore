@@ -5,3 +5,6 @@ storage
 .apm
 .node-gyp
 .npm
+
+# custom
+split-diff
