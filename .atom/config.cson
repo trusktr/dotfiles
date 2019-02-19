@@ -68,7 +68,6 @@
       "linter-ui-default"
       "linter-eslint"
     ]
-    excludeVcsIgnoredPaths: false
     ignoredNames: [
       ".git"
       ".hg"
