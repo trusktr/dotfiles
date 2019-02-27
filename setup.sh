@@ -479,13 +479,13 @@ isChromeOS=false
 # Java
 
     if $isMacOS; then
-        # latest version
+        # latest version, as `java` command
         brew cask install java
         
-        # version 8
+        # version 8, as `java8` command
         brew tap caskroom/versions
         brew cask install java8
-        sudo ln -s /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin/java /usr/bin/java8
+        sudo ln -s /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin/java ~/.local/bin/java8
     fi
 
 #### Git GUIs
