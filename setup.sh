@@ -439,6 +439,18 @@ isChromeOS=false
         brew cask install skyfonts
         open '/usr/local/Caskroom/skyfonts/5.9.2.1/Install SkyFonts.app'
     fi
+    
+# Java
+
+    if $isMacOS; then
+        # latest version
+        brew cask install java
+        
+        # version 8
+        brew tap caskroom/versions
+        brew cask install java8
+        sudo ln -s /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin/java /usr/bin/java8
+    fi
 
 #### Git GUIs
 
