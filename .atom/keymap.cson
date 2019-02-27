@@ -31,15 +31,11 @@
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#configuring-with-cson
 
-# TODO: maps for Linux/Windows
-'body.platform-darwin atom-workspace, body.platform-darwin terminal-pane':
+# TODO: maps for Linux
+
+# for all platforms
+'atom-workspace, terminal-pane':
     '\\ f': 'tree-view:toggle'
-
-    'ctrl-p': 'keystroke cmd-p'
-    'ctrl-P': 'keystroke cmd-P'
-
-    'cmd-f': 'find-and-replace:toggle'
-    'cmd-F': 'project-find:toggle'
 
     # vim-like tab mappings for atom-vim-like-tab plugin
     # 'ctrl-h': 'atom-vim-like-tab:previous'
@@ -53,6 +49,27 @@
 
     '\\ t': 'termination:toggle'
     '\\ \\ t': 'termination:new'
+    
+'.platform-darwin atom-workspace, .platform-darwin terminal-pane':
+    'ctrl-p': 'keystroke cmd-p'
+    'ctrl-P': 'keystroke cmd-P'
+    
+    'cmd-f': 'find-and-replace:toggle'
+    'cmd-F': 'project-find:toggle'
+    
+'.platform-win32 atom-workspace':
+    'alt-w': 'core:close' # similar to cmd-w in macOS for closing panes
+    
+    # override for Windows (why do we need this and not in macOS?)
+    'ctrl-alt-p': 'project-plus:toggle-project-finder'
+    
+    'alt-f': 'find-and-replace:toggle'
+    'alt-F': 'project-find:toggle'
+    
+# override for Windows (why do we need these for Windows, but not for macOS?)
+'.platform-win32 atom-workspace atom-text-editor':
+    'ctrl-l': 'pane:show-next-item'
+    'ctrl-,': 'settings-view:open'
 
 'body .termination':
     'ctrl-cmd-h': 'termination:prev'
@@ -117,3 +134,17 @@
 
 '.command-palette atom-text-editor[mini]':
     'ctrl-c': 'command-palette:toggle'
+    
+# stop emmet from taking over tab key in certain cases
+# See https://github.com/emmetio/emmet-atom/issues/225#issuecomment-82669798
+# {{
+
+# Stop emmet from hijacking tab from snippets and autocomplete
+'atom-text-editor.autocomplete-active:not([mini])':
+  'tab': 'autocomplete-plus:confirm'
+
+# Stop emmet from hijacking tab from snippet tab stops
+'atom-text-editor[data-grammar="text html basic"]:not([mini]), atom-text-editor[data-grammar~="jade"]:not([mini]), atom-text-editor[data-grammar~="css"]:not([mini]), atom-text-editor[data-grammar~="sass"]:not([mini])':
+  'tab': 'snippets:next-tab-stop'
+  
+# }}

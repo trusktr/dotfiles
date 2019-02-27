@@ -68,7 +68,6 @@
       "linter-ui-default"
       "linter-eslint"
     ]
-    excludeVcsIgnoredPaths: false
     ignoredNames: [
       ".git"
       ".hg"
@@ -86,6 +85,10 @@
       "atom-material-syntax"
     ]
     titleBar: "custom"
+  "disable-keybindings":
+    prefixKeys: [
+      "ctrl-k"
+    ]
   editor:
     fontFamily: "Space Mono, Inconsolata Nerd Font Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
     scrollPastEnd: true
