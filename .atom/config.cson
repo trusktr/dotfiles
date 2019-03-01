@@ -111,6 +111,7 @@
     panelHeight: 300
     showPanel: true
   minimap:
+    independentMinimapScroll: true
     plugins:
       "find-and-replace": true
       "find-and-replaceDecorationsZIndex": 0
@@ -124,6 +125,9 @@
       "minimap-quick-highlightDecorationsZIndex": 0
       pigments: true
       pigmentsDecorationsZIndex: 0
+    redrawDelay: 500
+    scrollAnimation: true
+    scrollAnimationDuration: 100
   "prettier-atom":
     formatOnSaveOptions:
       showInStatusBar: true
@@ -140,6 +144,7 @@
       theme: "one-dark"
     toggles:
       runInsertedText: false
+  "tree-view": {}
   welcome:
     showOnStartup: false
   whitespace:
