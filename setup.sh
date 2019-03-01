@@ -370,6 +370,7 @@ isChromeOS=false
 
     if $isMacOS; then
         brew cask install karabiner-elements
+        open /Applications/Karabiner-Elements.app
     fi
 
 # inconsolata font
