@@ -487,6 +487,12 @@ isChromeOS=false
         brew cask install java8
         sudo ln -s /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin/java ~/.local/bin/java8
     fi
+    
+# Kap, screen capture for macOS
+
+    if $isMacOS; then
+        brew cask install kap
+    fi
 
 #### Git GUIs
 
