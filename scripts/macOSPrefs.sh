@@ -85,6 +85,9 @@
         defaults write com.apple.finder ShowPathbar -int 1
         defaults write com.apple.finder ShowStatusBar -int 1
 
+    # Remove all items from the Dock
+        defaults write com.apple.dock persistent-apps -array
+
 # other settings
 
     HOSTNAME=Starhopper
