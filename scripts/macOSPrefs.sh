@@ -94,6 +94,6 @@
 # other settings
 
     HOSTNAME=Starhopper
-    scutil --set HostName $HOSTNAME
-    scutil --set LocalHostName $HOSTNAME
-    scutil --set ComputerName $HOSTNAME
+    sudo scutil --set HostName $HOSTNAME
+    sudo scutil --set LocalHostName $HOSTNAME
+    sudo scutil --set ComputerName $HOSTNAME

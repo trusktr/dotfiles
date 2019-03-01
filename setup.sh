@@ -526,6 +526,6 @@ isChromeOS=false
         sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
 
         # set default system and app preferences
-        sudo sh -c "curl https://raw.githubusercontent.com/trusktr/dotfiles/master/scripts/macOSPrefs.sh | sh"
+        curl https://raw.githubusercontent.com/trusktr/dotfiles/master/scripts/macOSPrefs.sh | sh
 
     fi
