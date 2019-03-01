@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+# NOTES
+# - to view all local settings: `defaults read`
+# - to view all global settings: `defaults read -g`
+
 # available in System Preferences
 
     defaults write -g AppleInterfaceStyle -string Dark
@@ -25,6 +29,8 @@
     defaults write com.apple.dock mru-spaces -int 1
     defaults write com.apple.dock expose-group-apps -int 1
     defaults write com.apple.dock showAppExposeGestureEnabled -int 1
+    # Remove all items from the Dock
+    defaults write com.apple.dock persistent-apps -array
 
     # set hot corners
     defaults write com.apple.dock "wvous-bl-corner" -int 11
@@ -84,9 +90,6 @@
     # Finder preferences
         defaults write com.apple.finder ShowPathbar -int 1
         defaults write com.apple.finder ShowStatusBar -int 1
-
-    # Remove all items from the Dock
-        defaults write com.apple.dock persistent-apps -array
 
 # other settings
 
