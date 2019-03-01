@@ -36,6 +36,7 @@
 
 INSTALL_METEOR=false
 INSTALL_MAPPER_STUFF=true
+JAVA=false
 
 result=`uname`
 isMacOS=false; if [[ "$result" == 'Darwin' ]]; then isMacOS=true; fi
@@ -478,14 +479,18 @@ isChromeOS=false
     
 # Java
 
-    if $isMacOS; then
-        # latest version, as `java` command
-        brew cask install java
-        
-        # version 8, as `java8` command
-        brew tap caskroom/versions
-        brew cask install java8
-        sudo ln -s /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin/java ~/.local/bin/java8
+    if $INSTALL_MAPPER_STUFF || $JAVA; then
+
+        if $isMacOS; then
+            # latest version, as `java` command
+            brew cask install java
+            
+            # version 8, as `java8` command
+            brew tap caskroom/versions
+            brew cask install java8
+            sudo ln -s /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin/java ~/.local/bin/java8
+        fi
+    
     fi
     
 # Kap, screen capture for macOS
