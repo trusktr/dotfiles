@@ -112,6 +112,7 @@
     showPanel: true
   minimap:
     independentMinimapScroll: true
+    moveCursorOnMinimapClick: true
     plugins:
       "find-and-replace": true
       "find-and-replaceDecorationsZIndex": 0
@@ -130,7 +131,6 @@
     scrollAnimationDuration: 100
   "prettier-atom":
     formatOnSaveOptions:
-      isDisabledIfNoConfigFile: true
       showInStatusBar: true
   "project-plus":
     newWindow: true
