@@ -3,6 +3,7 @@
 	email = joe@trusktr.io
 [push]
 	default = simple
+	followTags = true
 [diff]
 	tool = meld
 	colorMoved = true
