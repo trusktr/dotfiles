@@ -414,6 +414,9 @@ isChromeOS=false
             # for building node zmq package
             brew install pkg-config
             brew install zeromq
+            
+            # needed for Perception
+            brew install cmake
         fi
 
     fi
