@@ -102,6 +102,7 @@
   "flow-ide": {}
   "git-blame":
     columnWidth: 255
+  "highlight-line": {}
   "linter-eslint":
     disabling:
       disableWhenNoEslintConfig: false
@@ -135,6 +136,9 @@
   "project-plus":
     newWindow: true
     showPath: true
+  "split-diff":
+    colors:
+      addedColorSide: "right"
   tabs:
     enableVcsColoring: true
   termination:
