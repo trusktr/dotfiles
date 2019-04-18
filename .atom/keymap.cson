@@ -50,6 +50,10 @@
     '\\ t': 'termination:toggle'
     '\\ \\ t': 'termination:new'
     
+'atom-workspace atom-text-editor:not([mini])':
+    'ctrl-enter': 'typescript:go-to-declaration'
+    'shift-enter': 'typescript:go-to-declaration'
+    
 '.platform-darwin atom-workspace, .platform-darwin terminal-pane':
     'ctrl-p': 'keystroke cmd-p'
     'ctrl-P': 'keystroke cmd-P'
@@ -66,7 +70,8 @@
     'alt-f': 'find-and-replace:toggle'
     'alt-F': 'project-find:toggle'
     
-# override for Windows (why do we need these for Windows, but not for macOS?)
+# override for Windows, with higher selector specificity (why do we need these
+# for Windows, but not for macOS?)
 '.platform-win32 atom-workspace atom-text-editor':
     'ctrl-l': 'pane:show-next-item'
     'ctrl-,': 'settings-view:open'
