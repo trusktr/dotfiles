@@ -520,6 +520,12 @@ isChromeOS=false
         if $isMacOS; then
             brew cask install fork
         fi
+        
+# Spotify
+        
+if $isMacOS; then
+    brew cask install spotify
+fi
 
 # OS X settings
 
