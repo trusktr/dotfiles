@@ -409,6 +409,7 @@ isChromeOS=false
 
         if $isMacOS; then
             brew cask install docker
+            brew cask install kitematic
             brew install awscli
 
             # for building node zmq package
