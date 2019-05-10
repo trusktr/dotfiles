@@ -411,6 +411,7 @@ isChromeOS=false
             brew cask install docker
             brew cask install kitematic
             brew install awscli
+            brew cask install sketch
 
             # for building node zmq package
             brew install pkg-config
