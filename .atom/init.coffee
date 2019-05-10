@@ -32,6 +32,8 @@ atom.commands.add '.fuzzy-finder atom-text-editor[mini]', 'custom:replace-tab', 
 atom.commands.add '.editor.vim-mode-plus:not(.insert-mode)', 'custom:reset-normal-mode', ->
     atom.commands.dispatch(@, "vim-mode-plus:reset-normal-mode")
     atom.commands.dispatch(@, "quick-highlight:clear")
+    atom.commands.dispatch(@, "typescript:clear-errors")
+    atom.commands.dispatch(@, "typescript:check-all-files")
 
 atom.commands.add '.editor.vim-mode-plus:not(.insert-mode)', 'write:file', ->
     atom.commands.dispatch(@, "core:save")
