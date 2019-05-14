@@ -40,3 +40,11 @@ atom.commands.add '.editor.vim-mode-plus:not(.insert-mode)', 'write:file', ->
 
 atom.commands.add 'body', 'custom:reload-file', ->
     atom.workspace.getActiveTextEditor().buffer.reload()
+    
+# Adds support for checking JavaScript files with atom-typescript. See
+# https://github.com/TypeStrong/atom-typescript/blob/master/docs/faq.md#i-want-to-use-atom-typescript-with-javascript-too
+# CHANGE THE PACKAGE NAME IN THE NEXT LINE IF YOU'RE USING A DIFFERENT GRAMMAR
+# PACKAGE
+do (grammarPackageImUsing = "language-javascript") ->
+  atom.packages.onDidTriggerActivationHook "#{grammarPackageImUsing}:grammar-used", ->
+    atom.packages.triggerActivationHook 'language-typescript:grammar-used'

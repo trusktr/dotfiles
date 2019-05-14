@@ -29,6 +29,9 @@
         "pane:show-previous-item"
       ]
       scrollback: 100000
+  "atom-typescript":
+    allowJS: true
+    unusedAsInfo: false
   "base16-syntax":
     scheme: "Chalk"
     style: "Dark"
