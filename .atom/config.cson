@@ -103,6 +103,8 @@
   "fast-eslint": {}
   "file-watcher": {}
   "flow-ide": {}
+  "fuzzy-finder":
+    useRipGrep: true
   "git-blame":
     columnWidth: 255
   "highlight-line": {}
