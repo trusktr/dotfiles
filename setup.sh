@@ -409,7 +409,8 @@ isChromeOS=false
 
         if $isMacOS; then
             brew cask install docker
-            brew cask install kitematic
+            brew cask install kitematic # to manage docker images
+            brew cask install virtualbox # to run docker VMs in
             brew install awscli
             brew cask install sketch
 
@@ -480,6 +481,7 @@ isChromeOS=false
 
     if $isMacOS; then
         brew cask install skyfonts
+        # TODO we can't hard code the version, because it changes
         open '/usr/local/Caskroom/skyfonts/5.9.2.1/Install SkyFonts.app'
     fi
     
