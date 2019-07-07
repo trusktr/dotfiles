@@ -531,6 +531,18 @@ if $isMacOS; then
     brew cask install spotify
 fi
 
+# htop
+        
+if $isMacOS; then
+    brew install htop
+fi
+
+# Blender (blender.org)
+        
+if $isMacOS; then
+    brew cask install blender
+fi
+
 # OS X settings
 
     if $isMacOS; then
