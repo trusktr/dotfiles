@@ -137,7 +137,6 @@
     scrollAnimationDuration: 100
   "prettier-atom":
     formatOnSaveOptions:
-      enabled: true
       showInStatusBar: true
   "project-plus":
     newWindow: true

@@ -1,5 +1,11 @@
 @import 'syntax-variables';
 
+@keyframes flash {
+  from {
+    background-color: @blue;
+  }
+}
+
 atom-text-editor {
   background: radial-gradient(
     circle at 75% 15%,
@@ -8,8 +14,19 @@ atom-text-editor {
   );
   color: @syntax-text-color;
 
+  .highlight.find-result .region {
+    border: 1px solid @blue;
+    border-radius: 4px;
+  }
+
+  .highlight.current-result .region,
+  .highlight.current-result ~ .highlight.selection .region {
+    border: 2px solid @blue;
+    border-radius: 4px;
+  }
+
   .wrap-guide {
-    background-color: @syntax-indent-guide-color;
+    background-color: lighten(@syntax-indent-guide-color, 8%);
   }
 
   .indent-guide {
@@ -21,7 +38,7 @@ atom-text-editor {
   }
 
   .cursor-line {
-    background-color: fade(darken(@syntax-background-color, 20%), 20%);
+    background-color: @sytax-cursor-line-color;
   }
 
   .gutter {
@@ -30,11 +47,11 @@ atom-text-editor {
 
     .line-number {
       &.cursor-line {
-        background-color: darken(@syntax-background-color, 2.5%);
         color: @syntax-gutter-text-color-selected;
       }
 
       &.cursor-line-no-selection {
+        background-color: transparent;
         color: @syntax-gutter-text-color-selected;
       }
     }
@@ -58,6 +75,36 @@ atom-text-editor {
   .selection .region {
     background-color: @syntax-selection-color;
   }
+}
+
+// Mini editor
+atom-text-editor[mini] .scroll-view {
+  padding-left: 1px;
+}
+
+// Bracket Matcher
+atom-text-editor {
+  .highlights {
+  }
+
+  .highlight.bracket-matcher {
+    z-index: 1;
+  }
+
+  .highlight .region.bracket-matcher {
+    z-index: inherit;
+  }
+
+  .region.bracket-matcher {
+    border-bottom: 2px solid @blue;
+    z-index: 999999;
+    box-sizing: border-box;
+  }
+}
+
+// Misspelled word
+atom-text-editor .spell-check-misspelling .region {
+  z-index: auto;
 }
 
 atom-text-editor .search-results .syntax--marker .region {
@@ -96,9 +143,7 @@ atom-text-editor .search-results .syntax--marker.current-result .region {
   &.syntax--operator {
     color: @cyan;
 
-    &.syntax--logical,
-    &.syntax--comparison,
-    &.syntax--ternary {
+    &.syntax--logical {
       color: @purple;
     }
   }
@@ -161,7 +206,7 @@ atom-text-editor .search-results .syntax--marker.current-result .region {
   &.syntax--other.syntax--symbol {
     color: @green;
   }
-  
+
   &.syntax--character-class.syntax--regexp {
     color: @cyan;
   }
@@ -204,7 +249,7 @@ atom-text-editor .search-results .syntax--marker.current-result .region {
   color: @green;
 
   &.syntax--unquoted {
-    color: @very-light-gray;
+    color: @light-green;
   }
 
   &.syntax--regexp {
@@ -243,7 +288,7 @@ atom-text-editor .search-results .syntax--marker.current-result .region {
     }
 
     &.syntax--bold {
-      color: @light-orange;
+      color: @orange;
       font-weight: bold;
     }
 
@@ -280,7 +325,7 @@ atom-text-editor .search-results .syntax--marker.current-result .region {
 
 .syntax--support {
   &.syntax--class {
-    color: @orange;
+    color: @yellow;
   }
 
   &.syntax--function {
@@ -305,7 +350,7 @@ atom-text-editor .search-results .syntax--marker.current-result .region {
     }
 
     &.syntax--property {
-      color: @cyan;
+      color: @very-light-teal;
     }
   }
 
@@ -344,7 +389,7 @@ atom-text-editor .search-results .syntax--marker.current-result .region {
 
   &.syntax--name.syntax--class,
   &.syntax--name.syntax--type.syntax--class {
-    color: @orange;
+    color: @yellow;
   }
 
   &.syntax--name.syntax--section {
@@ -366,7 +411,7 @@ atom-text-editor .search-results .syntax--marker.current-result .region {
 
 .syntax--meta {
   &.syntax--class {
-    color: @light-orange;
+    color: @orange;
   }
 
   &.syntax--delimiter {
@@ -494,28 +539,4 @@ atom-text-editor .search-results .syntax--marker.current-result .region {
 
 .syntax--source.syntax--embedded {
   color: @very-light-gray;
-}
-
-// Mini editor
-atom-text-editor[mini] .scroll-view {
-  padding-left: 1px;
-}
-
-// Bracket Matcher
-atom-text-editor {
-  .highlight .region.bracket-matcher {
-    z-index: inherit;
-  }
-}
-
-.bracket-matcher .region {
-  border-bottom: 1px solid @syntax-cursor-color;
-  box-sizing: border-box;
-  background-color: fade(@syntax-text-color, 10%);
-  box-shadow: inset 0 -1px 0 @syntax-cursor-color;
-}
-
-// Misspelled word
-atom-text-editor .spell-check-misspelling .region {
-  z-index: auto;
 }

@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/git-plus/versions/8.1.0/tarball",
-  "_id": "git-plus@8.1.0",
+  "_from": "https://www.atom.io/api/packages/git-plus/versions/8.6.3/tarball",
+  "_id": "git-plus@8.6.3",
   "_inBundle": false,
-  "_integrity": "sha512-YD6sIq9VBg9o4mnH99oZ/WSD4jOi54ptQ6GG9Bz7SiCQev6MYg79RUf9/5tpJqhX0EC4tJH2Zlo7US1rX7Of6A==",
+  "_integrity": "sha512-GGnY5yWuzUZc8ikrWwMNzsoV6wwASqsFGYb95pxaClrfkJcRCUeCeNd42NKAclKIeizkI3ek0KpchfGBhFWgDQ==",
   "_location": "/git-plus",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/git-plus/versions/8.1.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/git-plus/versions/8.1.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/git-plus/versions/8.1.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/git-plus/versions/8.1.0/tarball"
+    "raw": "https://www.atom.io/api/packages/git-plus/versions/8.6.3/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/git-plus/versions/8.6.3/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/git-plus/versions/8.6.3/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/git-plus/versions/8.6.3/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/git-plus/versions/8.1.0/tarball",
-  "_shasum": "4adbce0fdc75e820294d5ea99e6049376bed0452",
-  "_spec": "https://www.atom.io/api/packages/git-plus/versions/8.1.0/tarball",
-  "_where": "/private/var/folders/mz/p31s4bw165jb70lgp73dcvzh0000gn/T/apm-install-dir-118921-59271-1c6a9sg.2i6k",
+  "_resolved": "https://www.atom.io/api/packages/git-plus/versions/8.6.3/tarball",
+  "_shasum": "30efb6f1fb43e6b45503a83d5f76b374e63f69b7",
+  "_spec": "https://www.atom.io/api/packages/git-plus/versions/8.6.3/tarball",
+  "_where": "/private/var/folders/kw/cfgh2ttj4bg_nsgymb5n5_n80000gn/T/apm-install-dir-11954-50357-1r6wzca.f0lh",
   "atomTranspilers": [
     {
       "glob": "{lib,spec}/**/*.js",
@@ -28,7 +28,6 @@
         "babel": {
           "presets": [
             "env",
-            "flow",
             "react"
           ],
           "plugins": [
@@ -42,6 +41,15 @@
           ],
           "babelrc": false
         }
+      }
+    },
+    {
+      "transpiler": "atom-ts-transpiler",
+      "glob": "{!(node_modules)/**/,}*.ts?(x)",
+      "options": {
+        "compilerOptions": {},
+        "cacheKeyFiles": [],
+        "verbose": false
       }
     }
   ],
@@ -59,26 +67,35 @@
       "versions": {
         "1.0.0": "consumeAutosave"
       }
+    },
+    "tree-view": {
+      "versions": {
+        "1.0.0": "consumeTreeView"
+      }
     }
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.51",
+    "@types/atom": "^1.31.0",
+    "@types/react": "^16.7.13",
     "ansi-to-html": "^0.4.1",
     "atom-babel6-transpiler": "^1.2.0",
     "atom-notify": "^1.1.0",
     "atom-select-list": "^0.7.1",
     "atom-space-pen-views": "^2.0.3",
+    "atom-ts-transpiler": "^1.5.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "classnames": "^2.2.6",
     "fs-plus": "^2.2.0",
     "fuzzaldrin": "^1.2.0",
     "linkify-urls": "^2.0.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "node-emoji": "^1.8.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "typescript": "^3.2.2",
     "underscore-plus": "^1.6.6"
   },
   "deprecated": false,
@@ -87,17 +104,17 @@
     "git-plus/output-view": "deserializeOutputView"
   },
   "devDependencies": {
+    "atom-transpiler-debug-tool": "^1.0.5",
     "babel-eslint": "^8.2.5",
     "eslint": "^5.0.1",
-    "eslint-plugin-flowtype": "^2.50.0",
     "eslint-plugin-react": "^7.10.0",
-    "flow-bin": "^0.75.0",
     "lint": "^1.1.2",
     "prettier": "^1.13.6",
-    "quibble": "^0.3.0"
+    "quibble": "^0.3.0",
+    "tslint": "^5.11.0"
   },
   "engines": {
-    "atom": ">= 1.17"
+    "atom": ">= 1.28"
   },
   "homepage": "https://github.com/akonwi/git-plus#readme",
   "keywords": [
@@ -107,8 +124,6 @@
   "main": "./lib/git-plus",
   "name": "git-plus",
   "prettier": {
-    "semi": false,
-    "singleQuote": true,
     "printWidth": 100
   },
   "providedServices": {
@@ -124,8 +139,8 @@
     "url": "git+https://github.com/akonwi/git-plus.git"
   },
   "scripts": {
-    "flow": "flow",
+    "debug": "atom-transpiler-debug-tool",
     "test": "eslint --fix \"lib/**/*.js\" \"spec/**/*.js\" && apm test"
   },
-  "version": "8.1.0"
+  "version": "8.6.3"
 }

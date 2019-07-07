@@ -1,43 +1,29 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/tmp/d-118420-1862-15o2c5a.d6u9ad1jor/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/tmp/d-118420-1862-15o2c5a.d6u9ad1jor/package.tgz",
-        "spec": "/tmp/d-118420-1862-15o2c5a.d6u9ad1jor/package.tgz",
-        "type": "local"
-      },
-      "/tmp/apm-install-dir-118420-1862-1qfmgj0.puhoxbt9"
-    ]
-  ],
-  "_from": "../d-118420-1862-15o2c5a.d6u9ad1jor/package.tgz",
-  "_id": "tomorrow-night-eighties-syntax@1.0.2",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+  "_id": "tomorrow-night-eighties-syntax@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-nMLjC6NE2E/9B6Ia4y6brR8QylLNoucAcmYD1xPcM6QnXm5a0h5u+K3ZoH+H5gD2BAPF9xXiTi4C5iVo1J/47Q==",
   "_location": "/tomorrow-night-eighties-syntax",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/tmp/d-118420-1862-15o2c5a.d6u9ad1jor/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/tmp/d-118420-1862-15o2c5a.d6u9ad1jor/package.tgz",
-    "spec": "/tmp/d-118420-1862-15o2c5a.d6u9ad1jor/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-118420-1862-15o2c5a.d6u9ad1jor/package.tgz",
-  "_shasum": "ba0548b0a703c69663bf79265f018d17fc59af26",
-  "_shrinkwrap": null,
-  "_spec": "/tmp/d-118420-1862-15o2c5a.d6u9ad1jor/package.tgz",
-  "_where": "/tmp/apm-install-dir-118420-1862-1qfmgj0.puhoxbt9",
+  "_resolved": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+  "_shasum": "3325ec027c43fd59074f3a0af3809c03242f7e55",
+  "_spec": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+  "_where": "/private/var/folders/kw/cfgh2ttj4bg_nsgymb5n5_n80000gn/T/apm-install-dir-11954-50879-q0rn02.u72i",
   "bugs": {
     "url": "https://github.com/rockymadden/tomorrow-night-eighties-syntax-theme/issues"
   },
+  "bundleDependencies": false,
   "contributors": [
     {
       "name": "Rocky Madden"
@@ -46,9 +32,8 @@
       "name": "Ryan Sobol"
     }
   ],
-  "dependencies": {},
+  "deprecated": false,
   "description": "Tomorrow Night Eighties syntax theme for Atom",
-  "devDependencies": {},
   "engines": {
     "atom": ">=1.13"
   },
@@ -62,13 +47,10 @@
   ],
   "license": "MIT",
   "name": "tomorrow-night-eighties-syntax",
-  "optionalDependencies": {},
-  "readme": "# Tomorrow Night Eighties Atom Syntax Theme\n\n[![APM][apm-img]][apm-url]\n[![Chat][chat-img]][chat-url]\n[![License][license-img]][license-url]\n\nAtom syntax theme using the ever popular Tomorrow Night Eighties colors:\n\n![](https://github.com/ChrisKempson/Tomorrow-Theme/raw/master/Images/Tomorrow-Night-Eighties-Palette.png)\n\n[apm-img]: https://img.shields.io/apm/v/tomorrow-night-eighties-syntax.svg?style=flat-square\n[apm-url]: https://atom.io/themes/tomorrow-night-eighties-syntax\n[chat-img]: https://img.shields.io/gitter/room/tomorrow-night-eighties-syntax-theme/Lobby.svg?style=flat-square\n[chat-url]: https://gitter.im/tomorrow-night-eighties-syntax-theme/Lobby\n[license-img]: https://img.shields.io/apm/l/tomorrow-night-eighties-syntax.svg?style=flat-square\n[license-url]: https://github.com/rockymadden/tomorrow-night-eighties-syntax-theme/blob/master/LICENSE\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rockymadden/tomorrow-night-eighties-syntax-theme.git"
   },
   "theme": "syntax",
-  "version": "1.0.2"
+  "version": "1.1.0"
 }

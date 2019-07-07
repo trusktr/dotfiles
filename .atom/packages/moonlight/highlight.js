@@ -1,19 +1,24 @@
-import Component from "component"
+import Highlighter from 'highlighter'
 
 /* Comment */
-class Highlight extends Component {
+class Moonlight extends Highlighter {
   constructor() {
     this.data = {
-      string: "hello",
+      string: 'hello',
       boolean: true && false,
       nil: undefined || null,
       regex: /^[12345](hello).+$/,
       number: -123456789,
-      function: (...numbers) => {
-        return Math.min(...numbers)
-      }
+      jsx: (
+        <Component prop="moonlight">
+          <div />
+        </Component>
+      ),
+      immutableConstant: ALL_CAPS,
+      function: (...numbers) =>
+        numbers.map(n => n + 2).filter(n => n <= numbers.length - 2)
     }
   }
 }
 
-export default Highlight
+export default Moonlight
