@@ -129,6 +129,30 @@ isChromeOS=false
     mkdir -p ~/.vim
     ln -s ~/src/trusktr+vim-sessions ~/.vim/session
 
+    ### VS Code settings
+        ## settings folder
+            if $isMacOS; then
+                mkdir -p ~/Library/Application\ Support/Code
+                ln -s ~/src/trusktr+dotfiles/home/.config/Code/User ~/Library/Application\ Support/Code/User
+            fi
+
+            if $isLinux; then
+                mkdir -p ~/.config/Code
+                ln -s ~/src/trusktr+dotfiles/home/.config/Code/User ~/.config/Code/User
+            fi
+
+            # TODO
+            # if $isWindows
+
+        ## extnsions folder
+            if $isMacOS || $isLinux; then
+                ln -s ~/src/trusktr+dotfiles/home/.vscode ~/.vscode
+            fi
+
+            # TODO
+            # if $isWindows
+            # %USERPROFILE%\.vscode\extensions
+
 # libnotify (Windows Bash / Ubuntu)
 
     if $isUbuntu; then

@@ -1,0 +1,104 @@
+{
+    "prettier.endOfLine": "lf",
+    "prettier.printWidth": 100,
+    "prettier.proseWrap": "always",
+    "prettier.semi": false,
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4,
+    "prettier.trailingComma": "es5",
+    "prettier.useTabs": true,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // Format a file on save. A formatter must be available, the file must not be saved after delay, and the editor must not be shutting down.
+    "editor.formatOnSave": true,
+
+    // vim settings {{{
+    "vim.normalModeKeyBindings": [
+        { "before": ["<leader>", "f"], "commands": ["workbench.action.toggleSidebarVisibility"] },
+
+        // switch tabs
+        { "before": ["<C-h>"], "after": ["g", "T"] },
+        { "before": ["<C-l>"], "after": ["g", "t"] },
+        { "before": ["<cmd-h>"], "after": ["g", "T"] },
+        { "before": ["<CMD-l>"], "after": ["g", "t"] },
+
+        // move 5 lines at a time
+        { "before": ["<C-k>"], "after": ["5", "k"] },
+        { "before": ["<C-j>"], "after": ["5", "j"] },
+
+        // clear search highligh on ctrl-c
+        // TODO how to make it work with cmd? see: https://github.com/VSCodeVim/Vim/issues/3813
+        { "before": ["<C-c>"], "after": ["<Esc>"], "commands": [":nohl"] }
+
+        // go to definition/declaration FIXME not working, https://github.com/VSCodeVim/Vim/issues/3814
+        // { "before": ["<shift-enter>"], "commands": [":nohl"] }
+    ],
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "rgba(238,60,145,0.4)",
+    "vim.hlsearch": true,
+    // "workbench.colorCustomizations": {
+    //     "statusBar.background": "#005f5f",
+    //     "statusBar.foreground": "#eeeeee",
+    //     "statusBar.noFolderBackground": "#005f5f",
+    //     "statusBar.debuggingBackground": "#005f5f"
+    // },
+    "vim.useSystemClipboard": true,
+    // }}}
+
+    // "indenticator.hover.peekBack": 10,
+    // "indenticator.inner.showHighlight": true,
+    // "indenticator.inner.color.light": "",
+    // "indenticator.color.dark": "#fff"
+
+    "editor.minimap.enabled": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.showSlider": "always",
+
+    "editor.renderIndentGuides": true,
+    "liveshare.focusBehavior": "prompt",
+    "git.confirmSync": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.quickOpen.preserveInput": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDragAndDrop": false,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.autofetch": true,
+    "editor.fontFamily": "Space Mono, Inconsolata Nerd Font Mono, Menlo, Consolas, DejaVu Sans Mono, monospace",
+    "workbench.tree.indent": 18,
+    "workbench.list.openMode": "doubleClick",
+    "workbench.list.horizontalScrolling": true,
+    "explorer.autoReveal": false,
+    "window.zoomLevel": 0,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "diffEditor.renderSideBySide": true,
+    "projectManager.openInNewWindowWhenClickingInStatusBar": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.renderLineHighlight": "all",
+    "workbench.iconTheme": "material-icon-theme",
+    "material-icon-theme.activeIconPack": "react",
+    "workbench.colorCustomizations": {},
+    "workbench.colorTheme": "Base16 Dark Eighties",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "typescript.experimental.useSeparateSyntaxServer": true,
+    "workbench.editor.tabSizing": "shrink",
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}

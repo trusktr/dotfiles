@@ -1,0 +1,62 @@
+{
+	"name": "grueling-hare",
+	"displayName": "Grueling Hare",
+	"description": "A set of light and dark themes of white and steel with burnt orange accents",
+	"version": "1.1.3",
+	"publisher": "pureux",
+	"author": {
+		"name": "Tim Franklin"
+	},
+	"engines": {
+		"vscode": "^1.25.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Grueling Hare Light",
+				"uiTheme": "vs",
+				"path": "./themes/Grueling Hare-color-theme.json"
+			},
+			{
+				"label": "Grueling Hare Dark",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Grueling Hare Dark-color-theme.json"
+			}
+		]
+	},
+	"bugs": {
+		"url": "https://github.com/pureux/grueling-hare/issues",
+		"email": "pureux@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pureux/grueling-hare.git"
+	},
+	"icon": "logo.png",
+	"galleryBanner": {
+		"color": "#e2e2e2",
+		"theme": "light"
+	},
+	"keywords": [
+		"theme",
+		"light",
+		"dark",
+		"minimal",
+		"simple",
+		"flat",
+		"steel",
+		"gray",
+		"grey",
+		"blue",
+		"orange",
+		"white"
+	],
+	"__metadata": {
+		"id": "b14c0a26-024e-4572-9440-07fd3dc97d4c",
+		"publisherId": "f3fd3ee5-7de1-4f41-9853-9f3262944dce",
+		"publisherDisplayName": "pureux"
+	}
+}
