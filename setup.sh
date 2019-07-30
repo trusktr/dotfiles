@@ -358,6 +358,11 @@ isChromeOS=false
         sudo apt-get install firefox
     fi
 
+# Edge
+    if $isMacOS; then
+        brew cask install microsoft-edge-dev
+    fi
+
 # Slack
 
     if $isMacOS; then
