@@ -332,6 +332,12 @@ isChromeOS=false
         sudo pacman -S atom
     fi
 
+# Visual Studio Code (VS Code)
+
+    if $isMacOS; then
+        brew cask install visual-studio-code
+    fi
+
 # Chrome
 
     # TODO a better way to install in macOS without popping open a window?
