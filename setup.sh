@@ -209,7 +209,7 @@ isChromeOS=false
 
     if $isMacOS; then
         brew install libtool gettext
-        brew install neovim/neovim/neovim
+        brew install neovim
 
         brew install vim
     fi
