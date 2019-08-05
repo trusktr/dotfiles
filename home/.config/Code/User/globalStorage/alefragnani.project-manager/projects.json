@@ -56,8 +56,8 @@
 		"enabled": true
 	},
 	{
-		"name": "trusktr+infamous",
-		"rootPath": "/Users/trusktr/src/trusktr+infamous",
+		"name": "infamous+infamous",
+		"rootPath": "/Users/trusktr/src/infamous+infamous",
 		"paths": [],
 		"group": "",
 		"enabled": true
@@ -84,8 +84,8 @@
 		"enabled": true
 	},
 	{
-		"name": "Signafy+mapper-kiosk",
-		"rootPath": "/Users/trusktr/src/Signafy+mapper-kiosk",
+		"name": "Signafy+mapper-replay",
+		"rootPath": "/Users/trusktr/src/Signafy+mapper-replay",
 		"paths": [],
 		"group": "",
 		"enabled": true
@@ -121,6 +121,27 @@
 	{
 		"name": "trusktr+dotfiles2",
 		"rootPath": "/Users/trusktr/src/trusktr+dotfiles2",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "trusktr+trusktr.io",
+		"rootPath": "/Users/trusktr/src/trusktr+trusktr.io",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "trusktr+at-at",
+		"rootPath": "/Users/trusktr/src/trusktr+at-at",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "lume+generator+lume",
+		"rootPath": "/Users/trusktr/src/lume+generator+lume",
 		"paths": [],
 		"group": "",
 		"enabled": true

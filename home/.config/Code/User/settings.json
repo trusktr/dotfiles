@@ -100,5 +100,15 @@
     "workbench.editor.tabSizing": "shrink",
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "workbench.sideBar.location": "left",
+    "workbench.activityBar.visible": true,
+    "editor.renderWhitespace": "none",
+    "vetur.format.defaultFormatter.html": "prettier",
+    "vetur.format.scriptInitialIndent": true,
+    "vetur.format.styleInitialIndent": true,
+    "html.format.indentInnerHtml": true,
+    "vetur.format.options.useTabs": true,
+    "vetur.format.options.tabSize": 4,
+    "javascript.updateImportsOnFileMove.enabled": "always"
 }
