@@ -452,6 +452,7 @@ isChromeOS=false
             brew cask install virtualbox # to run docker VMs in
             brew install awscli
             brew cask install sketch
+            brew cask install microsoft-teams
 
             # for building node zmq package
             brew install pkg-config
