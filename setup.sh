@@ -34,7 +34,10 @@
 # Link stuff
 #   cmd /c mklink /d $HOME\.atom $HOME\src\trusktr+dotfiles1\.atom
 
-INSTALL_METEOR=false
+# tell the script to exit when you press ctrl-c
+trap "exit" INT
+
+INSTALL_METEOR=true
 INSTALL_MAPPER_STUFF=true
 JAVA=false
 
@@ -453,7 +456,7 @@ isChromeOS=false
             # for building node zmq package
             brew install pkg-config
             brew install zeromq
-            
+
             # needed for Perception
             brew install cmake
         fi
@@ -520,7 +523,7 @@ isChromeOS=false
         # TODO we can't hard code the version, because it changes
         open '/usr/local/Caskroom/skyfonts/5.9.2.1/Install SkyFonts.app'
     fi
-    
+
 # Java
 
     if $INSTALL_MAPPER_STUFF || $JAVA; then
@@ -528,15 +531,15 @@ isChromeOS=false
         if $isMacOS; then
             # latest version, as `java` command
             brew cask install java
-            
+
             # version 8, as `java8` command
             brew tap caskroom/versions
             brew cask install java8
             sudo ln -s /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin/java ~/.local/bin/java8
         fi
-    
+
     fi
-    
+
 # Kap, screen capture for macOS
 
     if $isMacOS; then
@@ -560,24 +563,24 @@ isChromeOS=false
         if $isMacOS; then
             brew cask install fork
         fi
-        
+
 # Spotify
-        
-if $isMacOS; then
-    brew cask install spotify
-fi
+
+    if $isMacOS; then
+        brew cask install spotify
+    fi
 
 # htop
-        
-if $isMacOS; then
-    brew install htop
-fi
+
+    if $isMacOS; then
+        brew install htop
+    fi
 
 # Blender (blender.org)
-        
-if $isMacOS; then
-    brew cask install blender
-fi
+
+    if $isMacOS; then
+        brew cask install blender
+    fi
 
 # OS X settings
 
@@ -590,3 +593,7 @@ fi
         curl https://raw.githubusercontent.com/trusktr/dotfiles/master/scripts/macOSPrefs.sh | sh
 
     fi
+
+echo
+echo ' --- Setup complete! ---'
+echo
