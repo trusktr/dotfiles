@@ -1,0 +1,4 @@
+{ message:
+   'Starting Java server with: /Library/Java/JavaVirtualMachines/jdk-12.0.2.jdk/Contents/Home/bin/java --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED -Declipse.application=org.eclipse.jdt.ls.core.id1 -Dosgi.bundles.defaultStartLevel=4 -Declipse.product=org.eclipse.jdt.ls.core.product -Dfile.encoding=utf8 -noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -jar /Users/trusktr/src/trusktr+dotfiles/home/.vscode/extensions/redhat.java-0.50.0/server/plugins/org.eclipse.equinox.launcher_1.5.500.v20190715-1310.jar -configuration /Users/trusktr/src/trusktr+dotfiles/home/.vscode/extensions/redhat.java-0.50.0/server/config_mac -data /Users/trusktr/Library/Application Support/Code/User/workspaceStorage/fdf5227b7eda4d74baa9f86676e368ca/redhat.java/jdt_ws',
+  level: 'info',
+  timestamp: '2019-10-03 16:56:30.485' }

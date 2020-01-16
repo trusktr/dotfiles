@@ -4,6 +4,14 @@
     { "key": "\\ f", "command": "workbench.action.toggleSidebarVisibility" },
     { "key": "cmd+s", "command": "workbench.action.files.saveWithoutFormatting" },
 
+    // make cmd+c send ctrl+c in terminal
+    {
+        "key": "cmd+c",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u0003" },
+        "when": "terminalFocus"
+    },
+
     // cmd+c to ctrl+c in terminal
     {
         "key": "shift+cmd+c",

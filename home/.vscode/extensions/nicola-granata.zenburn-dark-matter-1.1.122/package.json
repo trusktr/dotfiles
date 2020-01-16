@@ -1,0 +1,463 @@
+{
+	"version": "1.1.122",
+	"publisher": "nicola-granata",
+	"license": "MIT",
+	"schema": "vscode://schemas/color-theme",
+	"author": {
+		"name": "Nicola Granata",
+		"email": "vscode.extensions@daemoncms.com",
+		"url": "https://github.com/nicolagranata"
+	},
+	"categories": [
+		"Themes"
+	],
+	"engines": {
+		"vscode": "^1.29.0"
+	},
+	"displayName": "Zenburn Dark Matter Theme",
+	"icon": "_gfx/zenburn-dark-matter-icon.png",
+	"description": "Zenburn token colors in different intensities and on different dark backgrounds to reduce eye strain.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nicolagranata/vscode-theme-zenburn-dark-matter.git",
+		"clean_url": "https://github.com/nicolagranata/vscode-theme-zenburn-dark-matter"
+	},
+	"keywords": [
+		"zenburn",
+		"dark background",
+		"dark theme",
+		"low blue light",
+		"low contrast",
+		"eye strain"
+	],
+	"name": "zenburn-dark-matter",
+	"contributes": {
+		"themes": [
+			{
+				"label": "Zenburn Dark Matter - Anthracite - Komodo",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-anthracite-komodo",
+				"path": "./themes/zenburn-dark-matter-anthracite-komodo-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Cold - Alcatraz",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-cold-alcatraz",
+				"path": "./themes/zenburn-dark-matter-cold-alcatraz-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Cold - Black Pond Has My Heart",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-cold-black-pond-has-my-heart",
+				"path": "./themes/zenburn-dark-matter-cold-black-pond-has-my-heart-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Cold - Burn",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-cold-burn",
+				"path": "./themes/zenburn-dark-matter-cold-burn-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Cold - Klimt",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-cold-klimt",
+				"path": "./themes/zenburn-dark-matter-cold-klimt-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Cold - Komodo",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-cold-komodo",
+				"path": "./themes/zenburn-dark-matter-cold-komodo-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Cold - Meabh",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-cold-meabh",
+				"path": "./themes/zenburn-dark-matter-cold-meabh-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Cold - Moai",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-cold-moai",
+				"path": "./themes/zenburn-dark-matter-cold-moai-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Cold - Mystic River",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-cold-mystic-river",
+				"path": "./themes/zenburn-dark-matter-cold-mystic-river-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Cold - Obsidian",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-cold-obsidian",
+				"path": "./themes/zenburn-dark-matter-cold-obsidian-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Cold - Viserion",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-cold-viserion",
+				"path": "./themes/zenburn-dark-matter-cold-viserion-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Deep Sea - Burn",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-deepsea-burn",
+				"path": "./themes/zenburn-dark-matter-deepsea-burn-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Deep Sea - Mystic River",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-deepsea-mystic-river",
+				"path": "./themes/zenburn-dark-matter-deepsea-mystic-river-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Deep Sea - Viserion",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-deepsea-viserion",
+				"path": "./themes/zenburn-dark-matter-deepsea-viserion-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - EclipseDS - Black Pond Has My Heart",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-eclipseds-black-pond-has-my-heart",
+				"path": "./themes/zenburn-dark-matter-eclipseds-black-pond-has-my-heart-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - EclipseDS - Klimt",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-eclipseds-klimt",
+				"path": "./themes/zenburn-dark-matter-eclipseds-klimt-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - EclipseDS - Komodo",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-eclipseds-komodo",
+				"path": "./themes/zenburn-dark-matter-eclipseds-komodo-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - EclipseDS - Meabh",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-eclipseds-meabh",
+				"path": "./themes/zenburn-dark-matter-eclipseds-meabh-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - EclipseDS - Obsidian",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-eclipseds-obsidian",
+				"path": "./themes/zenburn-dark-matter-eclipseds-obsidian-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Flat - Alcatraz",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-flat-alcatraz",
+				"path": "./themes/zenburn-dark-matter-flat-alcatraz-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Flat - Black Pond Has My Heart",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-flat-black-pond-has-my-heart",
+				"path": "./themes/zenburn-dark-matter-flat-black-pond-has-my-heart-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Flat - Burn",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-flat-burn",
+				"path": "./themes/zenburn-dark-matter-flat-burn-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Flat - Klimt",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-flat-klimt",
+				"path": "./themes/zenburn-dark-matter-flat-klimt-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Flat - Komodo",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-flat-komodo",
+				"path": "./themes/zenburn-dark-matter-flat-komodo-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Flat - Meabh",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-flat-meabh",
+				"path": "./themes/zenburn-dark-matter-flat-meabh-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Flat - Moai",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-flat-moai",
+				"path": "./themes/zenburn-dark-matter-flat-moai-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Flat - Mystic River",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-flat-mystic-river",
+				"path": "./themes/zenburn-dark-matter-flat-mystic-river-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Flat - Obsidian",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-flat-obsidian",
+				"path": "./themes/zenburn-dark-matter-flat-obsidian-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Flat - Viserion",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-flat-viserion",
+				"path": "./themes/zenburn-dark-matter-flat-viserion-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Insomnia - Black Pond Has My Heart",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-insomnia-black-pond-has-my-heart",
+				"path": "./themes/zenburn-dark-matter-insomnia-black-pond-has-my-heart-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Insomnia - Burn",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-insomnia-burn",
+				"path": "./themes/zenburn-dark-matter-insomnia-burn-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Insomnia - Komodo",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-insomnia-komodo",
+				"path": "./themes/zenburn-dark-matter-insomnia-komodo-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Insomnia - Meabh",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-insomnia-meabh",
+				"path": "./themes/zenburn-dark-matter-insomnia-meabh-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Insomnia - Moai",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-insomnia-moai",
+				"path": "./themes/zenburn-dark-matter-insomnia-moai-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Insomnia - Mystic River",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-insomnia-mystic-river",
+				"path": "./themes/zenburn-dark-matter-insomnia-mystic-river-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Insomnia - Obsidian",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-insomnia-obsidian",
+				"path": "./themes/zenburn-dark-matter-insomnia-obsidian-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Insomnia - Viserion",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-insomnia-viserion",
+				"path": "./themes/zenburn-dark-matter-insomnia-viserion-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Low Blue - Obsidian",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-lowblue-obsidian",
+				"path": "./themes/zenburn-dark-matter-lowblue-obsidian-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Midnight - Klimt",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-midnight-klimt",
+				"path": "./themes/zenburn-dark-matter-midnight-klimt-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Midnight - Viserion",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-midnight-viserion",
+				"path": "./themes/zenburn-dark-matter-midnight-viserion-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nadir - Alcatraz",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nadir-alcatraz",
+				"path": "./themes/zenburn-dark-matter-nadir-alcatraz-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nadir - Black Pond Has My Heart",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nadir-black-pond-has-my-heart",
+				"path": "./themes/zenburn-dark-matter-nadir-black-pond-has-my-heart-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nadir - Burn",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nadir-burn",
+				"path": "./themes/zenburn-dark-matter-nadir-burn-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nadir - Klimt",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nadir-klimt",
+				"path": "./themes/zenburn-dark-matter-nadir-klimt-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nadir - Komodo",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nadir-komodo",
+				"path": "./themes/zenburn-dark-matter-nadir-komodo-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nadir - Meabh",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nadir-meabh",
+				"path": "./themes/zenburn-dark-matter-nadir-meabh-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nadir - Moai",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nadir-moai",
+				"path": "./themes/zenburn-dark-matter-nadir-moai-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nadir - Mystic River",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nadir-mystic-river",
+				"path": "./themes/zenburn-dark-matter-nadir-mystic-river-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nadir - Obsidian",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nadir-obsidian",
+				"path": "./themes/zenburn-dark-matter-nadir-obsidian-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nadir - Viserion",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nadir-viserion",
+				"path": "./themes/zenburn-dark-matter-nadir-viserion-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nirvana - Alcatraz",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nirvana-alcatraz",
+				"path": "./themes/zenburn-dark-matter-nirvana-alcatraz-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nirvana - Black Pond Has My Heart",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nirvana-black-pond-has-my-heart",
+				"path": "./themes/zenburn-dark-matter-nirvana-black-pond-has-my-heart-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nirvana - Burn",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nirvana-burn",
+				"path": "./themes/zenburn-dark-matter-nirvana-burn-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nirvana - Klimt",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nirvana-klimt",
+				"path": "./themes/zenburn-dark-matter-nirvana-klimt-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nirvana - Komodo",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nirvana-komodo",
+				"path": "./themes/zenburn-dark-matter-nirvana-komodo-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nirvana - Meabh",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nirvana-meabh",
+				"path": "./themes/zenburn-dark-matter-nirvana-meabh-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nirvana - Moai",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nirvana-moai",
+				"path": "./themes/zenburn-dark-matter-nirvana-moai-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nirvana - Mystic River",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nirvana-mystic-river",
+				"path": "./themes/zenburn-dark-matter-nirvana-mystic-river-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nirvana - Obsidian",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nirvana-obsidian",
+				"path": "./themes/zenburn-dark-matter-nirvana-obsidian-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Nirvana - Viserion",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-nirvana-viserion",
+				"path": "./themes/zenburn-dark-matter-nirvana-viserion-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Warm - Alcatraz",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-warm-alcatraz",
+				"path": "./themes/zenburn-dark-matter-warm-alcatraz-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Warm - Black Pond Has My Heart",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-warm-black-pond-has-my-heart",
+				"path": "./themes/zenburn-dark-matter-warm-black-pond-has-my-heart-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Warm - Burn",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-warm-burn",
+				"path": "./themes/zenburn-dark-matter-warm-burn-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Warm - Klimt",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-warm-klimt",
+				"path": "./themes/zenburn-dark-matter-warm-klimt-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Warm - Komodo",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-warm-komodo",
+				"path": "./themes/zenburn-dark-matter-warm-komodo-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Warm - Meabh",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-warm-meabh",
+				"path": "./themes/zenburn-dark-matter-warm-meabh-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Warm - Moai",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-warm-moai",
+				"path": "./themes/zenburn-dark-matter-warm-moai-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Warm - Mystic River",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-warm-mystic-river",
+				"path": "./themes/zenburn-dark-matter-warm-mystic-river-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Warm - Obsidian",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-warm-obsidian",
+				"path": "./themes/zenburn-dark-matter-warm-obsidian-color-theme.json"
+			},
+			{
+				"label": "Zenburn Dark Matter - Warm - Viserion",
+				"uiTheme": "vs-dark",
+				"theme_id": "zenburn-dark-matter-warm-viserion",
+				"path": "./themes/zenburn-dark-matter-warm-viserion-color-theme.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "4d730143-452c-40d2-b93f-ae046c1a8481",
+		"publisherId": "2fdc9d2d-e285-49fd-9f42-a6a92806da99",
+		"publisherDisplayName": "Nicola Granata"
+	}
+}

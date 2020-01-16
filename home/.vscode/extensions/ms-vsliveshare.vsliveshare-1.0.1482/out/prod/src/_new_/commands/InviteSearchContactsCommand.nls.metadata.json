@@ -1,0 +1,9 @@
+{
+	"messages": [
+		"Type to search for contacts"
+	],
+	"keys": [
+		"searchContacts.placeholder"
+	],
+	"filePath": "src\\_new_\\commands\\InviteSearchContactsCommand"
+}

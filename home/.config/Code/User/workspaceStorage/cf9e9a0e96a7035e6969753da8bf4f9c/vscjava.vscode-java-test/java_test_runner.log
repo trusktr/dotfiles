@@ -1,0 +1,2 @@
+{"message":"Error: No delegateCommandHandler for vscode.java.test.get.testpath.","level":"error"}
+{"message":"Failed to get the test paths. Error: No delegateCommandHandler for vscode.java.test.get.testpath","level":"error"}

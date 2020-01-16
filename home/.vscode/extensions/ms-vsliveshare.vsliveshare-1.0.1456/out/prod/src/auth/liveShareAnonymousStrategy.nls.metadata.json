@@ -1,0 +1,13 @@
+{
+	"messages": [
+		"Read-only User",
+		"Continue as",
+		"Continue without signing in as a Read-only guest"
+	],
+	"keys": [
+		"anonymousAuthStrategy.readOnlyUser",
+		"anonymousAuthStrategy.continueAs",
+		"anonymousAuthStrategy.continueAsDescription"
+	],
+	"filePath": "src\\auth\\liveShareAnonymousStrategy"
+}

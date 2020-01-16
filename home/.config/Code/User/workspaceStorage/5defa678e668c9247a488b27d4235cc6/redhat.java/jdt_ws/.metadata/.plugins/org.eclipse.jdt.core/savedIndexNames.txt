@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+/Users/trusktr/src/trusktr+dotfiles/home/.config/Code/User/workspaceStorage/5defa678e668c9247a488b27d4235cc6/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core

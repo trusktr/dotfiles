@@ -1,0 +1,27 @@
+{
+	"messages": [
+		"delete other comments on the thread first",
+		"Live Share Session Comments",
+		"Cannot create comment thread",
+		"Cannot delete comment thread",
+		"Cannot reply",
+		"Cannot edit comment",
+		"Cannot save comment",
+		"Cannot cancel editing comment",
+		"Cannot delete comment",
+		"Participants:"
+	],
+	"keys": [
+		"commentManager.deleteOtherComments",
+		"commentManager.controllerLabel",
+		"commentManager.cannotCreateCommentThread",
+		"commentManager.cannotDeleteThread",
+		"commentManager.cannotReply",
+		"commentManager.cannotEditComment",
+		"commentManager.cannotSaveComment",
+		"commentManager.cannotCancelEditComment",
+		"commentManager.cannotDeleteComment",
+		"commentManager.participants"
+	],
+	"filePath": "src\\comments\\commentManager"
+}

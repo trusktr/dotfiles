@@ -1,0 +1,21 @@
+{
+	"messages": [
+		"Invited",
+		"Dismissed",
+		"Joining",
+		"Start collaboration session...",
+		"Comments ({0})",
+		" (Read-only)",
+		" (Anonymous & Read-only)"
+	],
+	"keys": [
+		"inviteContactStatus.invited",
+		"inviteContactStatus.dismissed",
+		"inviteContactStatus.joining",
+		"startCollaborationSession",
+		"SessionExplorer.CommentsLabel",
+		"guestNameViewlet.ReadOnlyLabel",
+		"guestNameViewlet.ReadOnlyAndAnonymousLabel"
+	],
+	"filePath": "src\\treeViews\\SessionExplorer"
+}

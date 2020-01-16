@@ -42,8 +42,8 @@
 		"enabled": true
 	},
 	{
-		"name": "trusktr+builder-js-package",
-		"rootPath": "/Users/trusktr/src/trusktr+builder-js-package",
+		"name": "infamous+builder-js-package",
+		"rootPath": "/Users/trusktr/src/infamous+builder-js-package",
 		"paths": [],
 		"group": "",
 		"enabled": true
@@ -77,8 +77,8 @@
 		"enabled": true
 	},
 	{
-		"name": "trusktr+readem",
-		"rootPath": "/Users/trusktr/src/trusktr+readem",
+		"name": "infamous+readem",
+		"rootPath": "/Users/trusktr/src/infamous+readem",
 		"paths": [],
 		"group": "",
 		"enabled": true
@@ -142,6 +142,41 @@
 	{
 		"name": "lume+generator+lume",
 		"rootPath": "/Users/trusktr/src/lume+generator+lume",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "QingWei-Li+vuep",
+		"rootPath": "/Users/trusktr/src/QingWei-Li+vuep",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "velodyne_sw+vella-object-detection",
+		"rootPath": "/Users/trusktr/src/velodyne_sw+vella-object-detection",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "velodyne_sw+vella-data-models",
+		"rootPath": "/Users/trusktr/src/velodyne_sw+vella-data-models",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "docsifyjs+docsify",
+		"rootPath": "/Users/trusktr/src/docsifyjs+docsify",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "infamous+element-behaviors",
+		"rootPath": "/Users/trusktr/src/infamous+element-behaviors",
 		"paths": [],
 		"group": "",
 		"enabled": true

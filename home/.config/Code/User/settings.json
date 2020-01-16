@@ -1,12 +1,4 @@
 {
-    "prettier.endOfLine": "lf",
-    "prettier.printWidth": 100,
-    "prettier.proseWrap": "always",
-    "prettier.semi": false,
-    "prettier.singleQuote": true,
-    "prettier.tabWidth": 4,
-    "prettier.trailingComma": "es5",
-    "prettier.useTabs": true,
     "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -38,6 +30,34 @@
         // go to definition/declaration FIXME not working, https://github.com/VSCodeVim/Vim/issues/3814
         // { "before": ["<shift-enter>"], "commands": [":nohl"] }
     ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // map u and <c-r> to VS Code's native undo/redo stack, instead of
+        // VSCodeVim's, because VSCodeVim's has issues
+        // (https://github.com/VSCodeVim/Vim/issues/1490)
+        // {{{
+        {
+            "before": ["u"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "undo",
+                    "args": []
+                }
+
+            ]
+        },
+        {
+            "before": ["<C-r>"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "redo",
+                    "args": []
+                }
+            ]
+        }
+        // }}}
+    ],
     "vim.highlightedyank.enable": true,
     "vim.highlightedyank.color": "rgba(238,60,145,0.4)",
     "vim.hlsearch": true,
@@ -62,7 +82,7 @@
     "editor.renderIndentGuides": true,
     "liveshare.focusBehavior": "prompt",
     "git.confirmSync": false,
-    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
     "editor.acceptSuggestionOnEnter": "off",
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingQuotes": "never",
@@ -90,7 +110,6 @@
     "workbench.iconTheme": "material-icon-theme",
     "material-icon-theme.activeIconPack": "react",
     "workbench.colorCustomizations": {},
-    "workbench.colorTheme": "Base16 Dark Eighties",
     "editor.quickSuggestions": {
         "other": true,
         "comments": true,
@@ -103,12 +122,31 @@
     },
     "workbench.sideBar.location": "left",
     "workbench.activityBar.visible": true,
-    "editor.renderWhitespace": "none",
+    "editor.renderWhitespace": "selection",
     "vetur.format.defaultFormatter.html": "prettier",
     "vetur.format.scriptInitialIndent": true,
     "vetur.format.styleInitialIndent": true,
     "html.format.indentInnerHtml": true,
     "vetur.format.options.useTabs": true,
     "vetur.format.options.tabSize": 4,
-    "javascript.updateImportsOnFileMove.enabled": "always"
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorTheme": "Noctis Minimus",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "vetur.format.enable": false,
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    "gitlens.codeLens.scopes": [
+        "document"
+    ],
+    "files.autoSave": "off",
+    "git.untrackedChanges": "separate",
+    "editor.renderControlCharacters": false,
+    "terminal.integrated.scrollback": 100000,
+    "python.jediEnabled": false
 }

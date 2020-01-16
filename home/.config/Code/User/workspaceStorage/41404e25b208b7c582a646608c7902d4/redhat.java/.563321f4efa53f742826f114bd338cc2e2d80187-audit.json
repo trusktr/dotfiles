@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 2
+    },
+    "auditLog": "/Users/trusktr/Library/Application Support/Code/User/workspaceStorage/41404e25b208b7c582a646608c7902d4/redhat.java/.563321f4efa53f742826f114bd338cc2e2d80187-audit.json",
+    "files": [
+        {
+            "date": 1570574860940,
+            "name": "/Users/trusktr/Library/Application Support/Code/User/workspaceStorage/41404e25b208b7c582a646608c7902d4/redhat.java/client.log.2019-10-08",
+            "hash": "f7a1f37fb61bb3d8babe60d5bc1227b3"
+        }
+    ]
+}

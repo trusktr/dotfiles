@@ -1,0 +1,9 @@
+{
+	"messages": [
+		"In a Live Share session"
+	],
+	"keys": [
+		"extension.liveshare.InLiveShareSession"
+	],
+	"filePath": "src\\treeViews\\ContactsProviderViewlet"
+}

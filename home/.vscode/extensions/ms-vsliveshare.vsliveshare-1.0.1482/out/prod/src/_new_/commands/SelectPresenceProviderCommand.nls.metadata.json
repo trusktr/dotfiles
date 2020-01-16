@@ -1,0 +1,9 @@
+{
+	"messages": [
+		"Select the presence provider to use"
+	],
+	"keys": [
+		"selectPresenceProviderCommand.placeHolder"
+	],
+	"filePath": "src\\_new_\\commands\\SelectPresenceProviderCommand"
+}
