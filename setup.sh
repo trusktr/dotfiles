@@ -60,6 +60,9 @@ isChromeOSCrouton=false; if $( exit $result ); then isChromeOSCrouton=true; fi
 # TODO
 isChromeOS=false
 
+# TODO
+isWindows=false
+
 # set up package management
 
     if $isMacOS; then
@@ -157,10 +160,38 @@ isChromeOS=false
             # if $isWindows
             # %USERPROFILE%\.vscode\extensions
 
+# Clone common projects I work on
+
+    cd ~/src
+
+    git clone git@github.com:infamous/infamous.git infamous+infamous
+    git clone git@github.com:infamous/glas.git infamous+glas
+    git clone git@github.com:infamous/generator-lume.git infamous+generator-lume
+    git clone git@github.com:infamous/builder-js-package.git infamous+builder-js-package
+    git clone git@github.com:infamous/custom-attributes.git infamous+custom-attributes
+    git clone git@github.com:infamous/element-behaviors.git infamous+element-behaviors
+    git clone git@github.com:infamous/readem.git infamous+readem
+
+    git clone git@github.com:trusktr/regexr.git trusktr+regexr
+    git clone git@github.com:trusktr/lowclass.git trusktr+lowclass
+    git clone git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io
+    git clone git@github.com:trusktr/parametric.git trusktr+parametric
+    git clone git@github.com:trusktr/at-at.git trusktr+at-at
+    git clone git@github.com:trusktr/james-bond.git trusktr+james-bond
+    git clone git@github.com:trusktr/animation-loop.git trusktr+animation-loop
+
+    cd ~
+
 # libnotify (Windows Bash / Ubuntu)
 
     if $isUbuntu; then
         sudo apt-get install libnotify-bin
+    fi
+
+# tree, to show folder structure in the terminal
+
+    if $isMacOS; then
+        brew install tree
     fi
 
 # Python
@@ -287,7 +318,7 @@ isChromeOS=false
     # https://github.com/acornejo/croshclip
 
     # oni vim
-    npm install -g oni # TODO there's a new OS-level package installer
+    brew cask install oni
     mkdir -p ~/.oni
     ln -s ~/src/trusktr+dotfiles/.oni/config.js ~/.oni/config.js
 
@@ -460,6 +491,21 @@ isChromeOS=false
 
             # needed for Perception
             brew install cmake
+
+            # Mapper Cloud Services
+            brew install kotlin
+            brew cask install oracle-jdk # different than java and java8 packages?
+        fi
+
+        if [ ! $isWindows ]; then
+            mkdir -p ~/src
+            cd ~/src
+
+            git clone git@github.com:Signafy/mapper-replay.git Signafy+mapper-replay
+            git clone git@github.com:Signafy/mapper-annotator.git Signafy+mapper-annotator
+            git clone git@github.com:Signafy/mapper-annotated-scene.git Signafy+mapper-annotated-scene
+            git clone git@github.com:Signafy/mapper-saffron.git Signafy+mapper-saffron
+            git clone git@github.com:Signafy/Perception.git Signafy+Perception
         fi
 
     fi
@@ -581,6 +627,13 @@ isChromeOS=false
 
     if $isMacOS; then
         brew cask install blender
+    fi
+
+# Watchman (installing this prevents problems with programs that watch for file
+# changes, see https://github.com/facebook/create-react-app/issues/4540)
+
+    if $isMacOS; then
+        brew install watchman
     fi
 
 # OS X settings
