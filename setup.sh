@@ -100,6 +100,7 @@ isWindows=false
     fi
 
 # Clone dotfiles
+# TODO see about managing dotfiles with nix home-manager on all platforms?
 # TODO: consolidate into single repo.
 
     mkdir -p ~/src
@@ -146,14 +147,22 @@ isWindows=false
             if $isLinux; then
                 mkdir -p ~/.config/Code
                 ln -s ~/src/trusktr+dotfiles/home/.config/Code/User ~/.config/Code/User
+                mkdir -p ~/.config/VSCodium
+                ln -s ~/src/trusktr+dotfiles/home/.config/VSCodium/User ~/.config/VSCodium/User
             fi
 
             # TODO
             # if $isWindows
 
-        ## extnsions folder
+        ## extensions folder
             if $isMacOS || $isLinux; then
+                # for proprietary VS Code
                 ln -s ~/src/trusktr+dotfiles/home/.vscode ~/.vscode
+            fi
+
+            if $isLinux; then
+                # for open-source VSCodium
+                ln -s ~/src/trusktr+dotfiles/home/.vscode ~/.vscode-oss
             fi
 
             # TODO
@@ -162,7 +171,8 @@ isWindows=false
 
 # Clone common projects I work on
 
-    cd ~/src
+    mkdir -p ~/src
+    pushd ~/src
 
     git clone git@github.com:infamous/infamous.git infamous+infamous
     git clone git@github.com:infamous/glas.git infamous+glas
@@ -172,6 +182,9 @@ isWindows=false
     git clone git@github.com:infamous/element-behaviors.git infamous+element-behaviors
     git clone git@github.com:infamous/readem.git infamous+readem
 
+    git clone git@github.com:trusktr/docsify.git docsifyjs+docsify
+
+    git clone git@github.com:trusktr/live-code.git trusktr+vue-editor
     git clone git@github.com:trusktr/regexr.git trusktr+regexr
     git clone git@github.com:trusktr/lowclass.git trusktr+lowclass
     git clone git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io
@@ -180,7 +193,7 @@ isWindows=false
     git clone git@github.com:trusktr/james-bond.git trusktr+james-bond
     git clone git@github.com:trusktr/animation-loop.git trusktr+animation-loop
 
-    cd ~
+    popd
 
 # libnotify (Windows Bash / Ubuntu)
 
@@ -242,7 +255,7 @@ isWindows=false
 # Vim/Neovim
 
     if $isMacOS; then
-        brew install libtool gettext
+        brew install libtool gettext # TODO why do we need these again?
         brew install neovim
 
         brew install vim
@@ -310,7 +323,7 @@ isWindows=false
             sudo pacman -S fd
         fi
 
-    # use by neomake plugin.
+    # used by neomake plugin.
     npm install -g jshint
 
     # ChromeOS Crouton
@@ -318,9 +331,12 @@ isWindows=false
     # https://github.com/acornejo/croshclip
 
     # oni vim
-    brew cask install oni
-    mkdir -p ~/.oni
-    ln -s ~/src/trusktr+dotfiles/.oni/config.js ~/.oni/config.js
+    # TODO other OSes. For now just macOS.
+    if $isMacOS; then
+        brew cask install oni
+        mkdir -p ~/.oni
+        ln -s ~/src/trusktr+dotfiles/.oni/config.js ~/.oni/config.js
+    fi
 
 # ZSH
     cd ~/src
@@ -345,7 +361,7 @@ isWindows=false
     fi
 
     # Set the default shell to zsh
-    # TODO don't run if already set
+    # TODO don't run if already set (f.e. for NixOS)
     command -v zsh | sudo tee -a /etc/shells
     sudo chsh -s "$(command -v zsh)" "${USER}"
 
@@ -499,13 +515,23 @@ isWindows=false
 
         if [ ! $isWindows ]; then
             mkdir -p ~/src
-            cd ~/src
+            pushd ~/src
 
-            git clone git@github.com:Signafy/mapper-replay.git Signafy+mapper-replay
-            git clone git@github.com:Signafy/mapper-annotator.git Signafy+mapper-annotator
-            git clone git@github.com:Signafy/mapper-annotated-scene.git Signafy+mapper-annotated-scene
-            git clone git@github.com:Signafy/mapper-saffron.git Signafy+mapper-saffron
-            git clone git@github.com:Signafy/Perception.git Signafy+Perception
+            git clone git@bitbucket.org:velodyne_sw/mapper-themes.git velodyne_sw+mapper-themes
+            git clone git@bitbucket.org:velodyne_sw/mapper-replay.git velodyne_sw+mapper-replay
+            git clone git@bitbucket.org:velodyne_sw/mapper-public-website.git velodyne_sw+mapper-public-website
+            git clone git@bitbucket.org:velodyne_sw/mapper-annotator.git velodyne_sw+mapper-annotator
+            git clone git@bitbucket.org:velodyne_sw/mapper-annotated-scene.git velodyne_sw+mapper-annotated-scene
+            git clone git@bitbucket.org:velodyne_sw/mapper-saffron.git velodyne_sw+mapper-saffron
+            git clone git@bitbucket.org:velodyne_sw/mapper-meridian.git velodyne_sw+mapper-meridian
+            git clone git@bitbucket.org:velodyne_sw/mapper-cloud-config.git velodyne_sw+mapper-cloud-config
+            git clone git@bitbucket.org:velodyne_sw/mapper-cloud-services.git velodyne_sw+mapper-cloud-services
+            git clone git@bitbucket.org:velodyne_sw/perception.git velodyne_sw+perception
+            git clone git@bitbucket.org:velodyne_sw/vella-data-models.git velodyne_sw+vella-data-models
+            git clone git@bitbucket.org:velodyne_sw/vella-object-detection.git velodyne_sw+vella-object-detection
+            git clone git@bitbucket.org:velodyne_sw/vellaviz.git velodyne_sw+vellaviz
+
+            popd
         fi
 
     fi
@@ -515,12 +541,6 @@ isWindows=false
     if $isMacOS; then
         brew cask install adobe-creative-cloud
         open '/usr/local/Caskroom/adobe-creative-cloud/latest/Creative Cloud Installer.app'
-    fi
-
-# GitHub
-
-    if $isMacOS; then
-        brew cask install github
     fi
 
 # Google Drive Backup and Sync
@@ -609,6 +629,12 @@ isWindows=false
 
         if $isMacOS; then
             brew cask install fork
+        fi
+
+    # GitHub
+
+        if $isMacOS; then
+            brew cask install github
         fi
 
 # Spotify
