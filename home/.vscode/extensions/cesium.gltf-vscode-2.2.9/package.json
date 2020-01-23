@@ -1,0 +1,386 @@
+{
+	"name": "gltf-vscode",
+	"displayName": "glTF Tools",
+	"description": "Tools for glTF and GLB 3D models",
+	"version": "2.2.9",
+	"publisher": "cesium",
+	"license": "Apache-2.0",
+	"repository": {
+		"url": "https://github.com/AnalyticalGraphicsInc/gltf-vscode"
+	},
+	"keywords": [
+		"glTF",
+		"glb",
+		"Khronos",
+		"3D",
+		"model"
+	],
+	"icon": "images/gltf.png",
+	"engines": {
+		"vscode": "^1.38.0"
+	},
+	"categories": [
+		"Formatters",
+		"Linters",
+		"Debuggers"
+	],
+	"galleryBanner": {
+		"color": "#383838",
+		"theme": "dark"
+	},
+	"activationEvents": [
+		"onView:gltfOutline",
+		"onLanguage:json",
+		"onCommand:gltf.inspectData",
+		"onCommand:gltf.importUri",
+		"onCommand:gltf.exportUri",
+		"onCommand:gltf.previewModel",
+		"onCommand:gltf.validateFile",
+		"onCommand:gltf.exportGlbFile",
+		"onCommand:gltf.importGlbFile"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"configuration": {
+			"title": "glTF configuration",
+			"properties": {
+				"glTF.defaultV1Engine": {
+					"type": "string",
+					"default": "Cesium",
+					"enum": [
+						"Babylon.js",
+						"Cesium",
+						"Three.js"
+					],
+					"description": "The default 3D engine that will be used when previewing a glTF 1.0 model.  You can always change the current engine within the preview pane."
+				},
+				"glTF.defaultV2Engine": {
+					"type": "string",
+					"default": "Babylon.js",
+					"enum": [
+						"Babylon.js",
+						"Cesium",
+						"Three.js"
+					],
+					"description": "The default 3D engine that will be used when previewing a glTF 2.0 model.  You can always change the current engine within the preview pane."
+				},
+				"glTF.Babylon.environment": {
+					"type": "string",
+					"default": "{extensionRootPath}environments/babylon/countrySpecularHDR.dds",
+					"description": "The path to a BabylonJS-ready DDS environment file.  See: https://doc.babylonjs.com/how_to/physically_based_rendering#creating-a-dds-environment-file-from-an-hdr-image"
+				},
+				"glTF.Three.environment": {
+					"type": "string",
+					"default": "{extensionRootPath}environments/threejs/Park2/{face}.jpg",
+					"description": "The path to a set of environment cube faces usable by ThreeJS.  Use {face} for the face name, and six files must exist with the following face names: posx, negx, posy, negy, posz, and negz."
+				},
+				"glTF.showToolbar3D": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show a button on the toolbar to activate the 3D Preview window."
+				},
+				"glTF.alwaysOverwriteDefaultFilename": {
+					"type": "boolean",
+					"default": false,
+					"description": "When creating a filesystem file from glTF or GLB import or export should a prompt be shown to select the result filename?"
+				},
+				"glTF.expandOutlineWithSelection": {
+					"type": "boolean",
+					"default": false,
+					"description": "When the editor selection changes the glTF outline will expand to include the current selection."
+				},
+				"glTF.Validation.enable": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "When true, automatically run the glTF Validator and report any found issues to the document problems window."
+				},
+				"glTF.Validation.debounce": {
+					"scope": "resource",
+					"type": "number",
+					"default": 500,
+					"description": "The number of milliseconds to wait for multiple requests to re-validate a glTF document."
+				},
+				"glTF.Validation.maxIssues": {
+					"scope": "resource",
+					"type": "number",
+					"default": 200,
+					"description": "Controls the maximum number of issues reported by the glTF Validator."
+				},
+				"glTF.Validation.ignoredIssues": {
+					"scope": "resource",
+					"type": "array",
+					"default": [],
+					"description": "Array of issue codes to ignore during validation.  See https://github.com/KhronosGroup/glTF-Validator/blob/master/ISSUES.md"
+				},
+				"glTF.Validation.severityOverrides": {
+					"scope": "resource",
+					"type": "object",
+					"default": {},
+					"description": "Override severity code of any glTF validation message by code.  See https://github.com/KhronosGroup/glTF-Validator/blob/master/ISSUES.md"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "gltf.inspectData",
+				"title": "glTF: Inspect Data"
+			},
+			{
+				"command": "gltf.importUri",
+				"title": "glTF: Import file as Data URI"
+			},
+			{
+				"command": "gltf.exportUri",
+				"title": "glTF: Export a Data URI to a file"
+			},
+			{
+				"command": "gltf.previewModel",
+				"title": "glTF: Preview 3D Model",
+				"icon": {
+					"dark": "./resources/dark/scene.svg",
+					"light": "./resources/light/scene.svg"
+				}
+			},
+			{
+				"command": "gltf.enableDebugMode",
+				"title": "glTF: Enable Debug Mode",
+				"icon": {
+					"dark": "./resources/dark/debug-disabled.svg",
+					"light": "./resources/light/debug-disabled.svg"
+				}
+			},
+			{
+				"command": "gltf.disableDebugMode",
+				"title": "glTF: Disable Debug Mode",
+				"icon": {
+					"dark": "./resources/dark/debug-enabled.svg",
+					"light": "./resources/light/debug-enabled.svg"
+				}
+			},
+			{
+				"command": "gltf.validateFile",
+				"title": "glTF: Validate a GLB or GLTF file"
+			},
+			{
+				"command": "gltf.exportGlbFile",
+				"title": "glTF: Export to GLB (Binary file)"
+			},
+			{
+				"command": "gltf.importGlbFile",
+				"title": "glTF: Import from GLB"
+			},
+			{
+				"command": "gltf.importAnimation",
+				"title": "glTF: Import animation"
+			},
+			{
+				"command": "gltf.exportAnimation",
+				"title": "glTF: Export animation"
+			},
+			{
+				"command": "gltfInspectData.copyAll",
+				"title": "Copy All"
+			},
+			{
+				"command": "gltfInspectData.copy",
+				"title": "Copy"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "gltf.inspectData",
+				"key": "alt+d",
+				"mac": "alt+d",
+				"when": "editorTextFocus && gltfFileActive"
+			},
+			{
+				"command": "gltf.previewModel",
+				"key": "alt+g",
+				"mac": "alt+g",
+				"when": "editorTextFocus && gltfFileActive"
+			},
+			{
+				"command": "gltf.exportGlbFile",
+				"key": "alt+shift+s e",
+				"mac": "alt+shift+s e",
+				"when": "editorTextFocus && gltfFileActive"
+			},
+			{
+				"command": "gltf.importAnimation",
+				"key": "alt+i",
+				"mac": "alt+i",
+				"when": "editorTextFocus && gltfFileActive"
+			},
+			{
+				"command": "gltf.exportAnimation",
+				"key": "alt+o",
+				"mac": "alt+o",
+				"when": "editorTextFocus && gltfFileActive"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "gltf.importGlbFile",
+					"group": "glTF"
+				},
+				{
+					"command": "gltf.validateFile",
+					"group": "glTF"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "gltf.previewModel",
+					"when": "gltfFileActive",
+					"group": "glTF"
+				},
+				{
+					"command": "gltf.inspectData",
+					"when": "gltfFileActive",
+					"group": "glTF"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "gltf.previewModel",
+					"when": "gltfFileActive && gltfShowToolbar3D",
+					"group": "navigation"
+				},
+				{
+					"command": "gltf.enableDebugMode",
+					"when": "gltfPreviewActive && !gltfDebugActive",
+					"group": "navigation"
+				},
+				{
+					"command": "gltf.disableDebugMode",
+					"when": "gltfPreviewActive && gltfDebugActive",
+					"group": "navigation"
+				}
+			],
+			"editor/title/context": [
+				{
+					"command": "gltf.previewModel",
+					"when": "gltfFileActive",
+					"group": "glTF"
+				},
+				{
+					"command": "gltf.inspectData",
+					"when": "gltfFileActive",
+					"group": "glTF"
+				},
+				{
+					"command": "gltf.importUri",
+					"when": "gltfFileActive",
+					"group": "glTF"
+				},
+				{
+					"command": "gltf.exportUri",
+					"when": "gltfFileActive",
+					"group": "glTF"
+				},
+				{
+					"command": "gltf.exportGlbFile",
+					"when": "gltfFileActive",
+					"group": "glTF"
+				},
+				{
+					"command": "gltf.importGlbFile",
+					"group": "glTF"
+				},
+				{
+					"command": "gltf.validateFile",
+					"group": "glTF"
+				}
+			],
+			"view/title": [
+				{
+					"command": "gltfInspectData.copyAll",
+					"when": "view == gltfInspectData"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "gltfInspectData.copy",
+					"when": "view == gltfInspectData"
+				}
+			]
+		},
+		"languages": [
+			{
+				"id": "json",
+				"extensions": [
+					".gltf"
+				]
+			}
+		],
+		"jsonValidation": [
+			{
+				"fileMatch": "*.gltf",
+				"url": "./schemas/glTF.chooser.schema.json"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "gltf",
+					"title": "glTF",
+					"icon": "resources/dark/tf-logo.svg"
+				}
+			]
+		},
+		"views": {
+			"gltf": [
+				{
+					"id": "gltfOutline",
+					"name": "Outline",
+					"when": "gltfActive"
+				},
+				{
+					"id": "gltfInspectData",
+					"name": "Inspect Data",
+					"when": "gltfActive"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"postinstall": "cd server && npm install && cd ..",
+		"compile": "tsc -p ./tsconfig.json && cd server && npm run installServer && cd .. && tsc -p server/tsconfig.json",
+		"compile:client": "tsc -p ./tsconfig.json",
+		"watch:client": "tsc -w -p ./tsconfig.json",
+		"compile:server": "cd server && npm run installServer && cd .. && tsc -p server/tsconfig.json",
+		"watch:server": "cd server && npm run installServer && cd .. && tsc -w -p server/tsconfig.json"
+	},
+	"devDependencies": {
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^12.12.14",
+		"@types/vscode": "^1.38.0",
+		"ajv": "^6.10.2",
+		"eslint": "^6.7.1",
+		"eslint-config-cesium": "^8.0.1",
+		"eslint-plugin-html": "^6.0.0",
+		"mocha": "^6.2.2",
+		"tslint": "^5.20.1",
+		"typescript": "^3.7.2",
+		"yargs": "^15.0.2"
+	},
+	"dependencies": {
+		"babylonjs": "^4.0.3",
+		"babylonjs-inspector": "^4.0.3",
+		"babylonjs-loaders": "^4.0.3",
+		"draco3dgltf": "1.3.4",
+		"gltf-import-export": "1.0.16",
+		"gltf-validator": "2.0.0-dev.3.2",
+		"json-source-map": "0.6.1",
+		"sprintf-js": "1.1.2",
+		"vscode-languageclient": "^5.2.1"
+	},
+	"__metadata": {
+		"id": "1a0e30d4-694d-464c-add0-c8bb7063b680",
+		"publisherId": "d391955c-8eb9-4dec-894b-521470678c3f",
+		"publisherDisplayName": "CesiumJS.org"
+	}
+}

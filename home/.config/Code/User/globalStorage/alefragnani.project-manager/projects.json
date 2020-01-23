@@ -1,184 +1,191 @@
 [
-	{
-		"name": "Signafy+mapper-annotator",
-		"rootPath": "/Users/trusktr/src/Signafy+mapper-annotator",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "Signafy+mapper-annotated-scene",
-		"rootPath": "/Users/trusktr/src/Signafy+mapper-annotated-scene",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "Signafy+mapper-saffron",
-		"rootPath": "/Users/trusktr/src/Signafy+mapper-saffron",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "infamous+glas",
-		"rootPath": "/Users/trusktr/src/infamous+glas",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "mrdoob+three.js",
-		"rootPath": "/Users/trusktr/src/mrdoob+three.js",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "Signafy+mapper-themes",
-		"rootPath": "/Users/trusktr/src/Signafy+mapper-themes",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "infamous+builder-js-package",
-		"rootPath": "/Users/trusktr/src/infamous+builder-js-package",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "trusktr+dotfiles",
-		"rootPath": "/Users/trusktr/src/trusktr+dotfiles",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "infamous+infamous",
-		"rootPath": "/Users/trusktr/src/infamous+infamous",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "Signafy+mapper-meridian",
-		"rootPath": "/Users/trusktr/src/Signafy+mapper-meridian",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "trusktr+lowclass",
-		"rootPath": "/Users/trusktr/src/trusktr+lowclass",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "infamous+readem",
-		"rootPath": "/Users/trusktr/src/infamous+readem",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "Signafy+mapper-replay",
-		"rootPath": "/Users/trusktr/src/Signafy+mapper-replay",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "meteor+meteor",
-		"rootPath": "/Users/trusktr/src/meteor+meteor",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "trusktr+regexr",
-		"rootPath": "/Users/trusktr/src/trusktr+regexr",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "trusktr+element-behaviors",
-		"rootPath": "/Users/trusktr/src/trusktr+element-behaviors",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "Signafy+Perception",
-		"rootPath": "/Users/trusktr/src/Signafy+Perception",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "trusktr+dotfiles2",
-		"rootPath": "/Users/trusktr/src/trusktr+dotfiles2",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "trusktr+trusktr.io",
-		"rootPath": "/Users/trusktr/src/trusktr+trusktr.io",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "trusktr+at-at",
-		"rootPath": "/Users/trusktr/src/trusktr+at-at",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "lume+generator+lume",
-		"rootPath": "/Users/trusktr/src/lume+generator+lume",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "QingWei-Li+vuep",
-		"rootPath": "/Users/trusktr/src/QingWei-Li+vuep",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "velodyne_sw+vella-object-detection",
-		"rootPath": "/Users/trusktr/src/velodyne_sw+vella-object-detection",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "velodyne_sw+vella-data-models",
-		"rootPath": "/Users/trusktr/src/velodyne_sw+vella-data-models",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "docsifyjs+docsify",
-		"rootPath": "/Users/trusktr/src/docsifyjs+docsify",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	},
-	{
-		"name": "infamous+element-behaviors",
-		"rootPath": "/Users/trusktr/src/infamous+element-behaviors",
-		"paths": [],
-		"group": "",
-		"enabled": true
-	}
+    {
+        "name": "velodyne_sw+mapper-annotator",
+        "rootPath": "/Users/trusktr/src/velodyne_sw+mapper-annotator",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "velodyne_sw+mapper-annotated-scene",
+        "rootPath": "/Users/trusktr/src/velodyne_sw+mapper-annotated-scene",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "velodyne_sw+mapper-saffron",
+        "rootPath": "/Users/trusktr/src/velodyne_sw+mapper-saffron",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "infamous+glas",
+        "rootPath": "/home/trusktr/src/infamous+glas",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "mrdoob+three.js",
+        "rootPath": "/Users/trusktr/src/mrdoob+three.js",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "velodyne_sw+mapper-themes",
+        "rootPath": "/Users/trusktr/src/velodyne_sw+mapper-themes",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "infamous+builder-js-package",
+        "rootPath": "/home/trusktr/src/infamous+builder-js-package",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "trusktr+dotfiles",
+        "rootPath": "/Users/trusktr/src/trusktr+dotfiles",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "infamous+infamous",
+        "rootPath": "/home/trusktr/src/lume+lume/packages/infamous",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "velodyne_sw+mapper-meridian",
+        "rootPath": "/Users/trusktr/src/velodyne_sw+mapper-meridian",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "trusktr+lowclass",
+        "rootPath": "/Users/trusktr/src/trusktr+lowclass",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "infamous+readem",
+        "rootPath": "/Users/trusktr/src/infamous+readem",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "velodyne_sw+mapper-replay",
+        "rootPath": "/home/trusktr/src/velodyne_sw+mapper-replay",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "meteor+meteor",
+        "rootPath": "/Users/trusktr/src/meteor+meteor",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "trusktr+regexr",
+        "rootPath": "/Users/trusktr/src/trusktr+regexr",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "trusktr+element-behaviors",
+        "rootPath": "/Users/trusktr/src/trusktr+element-behaviors",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "velodyne_sw+perception",
+        "rootPath": "/Users/trusktr/src/velodyne_sw+perception",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "trusktr+dotfiles2",
+        "rootPath": "/Users/trusktr/src/trusktr+dotfiles2",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "trusktr+trusktr.io",
+        "rootPath": "/Users/trusktr/src/trusktr+trusktr.io",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "trusktr+at-at",
+        "rootPath": "/Users/trusktr/src/trusktr+at-at",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "lume+generator+lume",
+        "rootPath": "/Users/trusktr/src/lume+generator+lume",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "QingWei-Li+vuep",
+        "rootPath": "/Users/trusktr/src/QingWei-Li+vuep",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "velodyne_sw+vella-object-detection",
+        "rootPath": "/Users/trusktr/src/velodyne_sw+vella-object-detection",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "velodyne_sw+vella-data-models",
+        "rootPath": "/Users/trusktr/src/velodyne_sw+vella-data-models",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "docsifyjs+docsify",
+        "rootPath": "/Users/trusktr/src/docsifyjs+docsify",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "infamous+element-behaviors",
+        "rootPath": "/Users/trusktr/src/infamous+element-behaviors",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "trusktr+nixpkgs",
+        "rootPath": "/home/trusktr/src/trusktr+nixpkgs",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    }
 ]

@@ -12,11 +12,23 @@
         "when": "terminalFocus"
     },
 
-    // cmd+c to ctrl+c in terminal
+    // copy text in terminal with shift+cmd+c 
     {
         "key": "shift+cmd+c",
         "command": "workbench.action.terminal.copySelection",
         "when": "terminalFocus && terminalTextSelected"
+    },
+
+    {
+        "key": "shift+ctrl+j",               
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+
+    {
+        "key": "shift+ctrl+k",               
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
     },
 
     // press shift+enter to go to definition under cursor
@@ -79,7 +91,17 @@
         "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
     },
     {
+        "key": "ctrl+j",
+        "command": "extension.vim_ctrl+j",
+        "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
+    },
+    {
         "key": "cmd+k",
+        "command": "extension.vim_ctrl+k",
+        "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+k",
         "command": "extension.vim_ctrl+k",
         "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
     },

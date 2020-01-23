@@ -14,18 +14,18 @@
         { "before": ["<leader>", "f"], "commands": ["workbench.action.toggleSidebarVisibility"] },
 
         // switch tabs
-        { "before": ["<C-h>"], "after": ["g", "T"] },
-        { "before": ["<C-l>"], "after": ["g", "t"] },
+        { "before": ["<c-h>"], "after": ["g", "T"] },
+        { "before": ["<c-l>"], "after": ["g", "t"] },
         { "before": ["<cmd-h>"], "after": ["g", "T"] },
-        { "before": ["<CMD-l>"], "after": ["g", "t"] },
+        { "before": ["<cmd-l>"], "after": ["g", "t"] },
 
         // move 5 lines at a time
-        { "before": ["<C-k>"], "after": ["5", "k"] },
-        { "before": ["<C-j>"], "after": ["5", "j"] },
+        { "before": ["<c-k>"], "after": ["5", "k"] },
+        { "before": ["<c-j>"], "after": ["5", "j"] },
 
         // clear search highligh on ctrl-c
         // TODO how to make it work with cmd? see: https://github.com/VSCodeVim/Vim/issues/3813
-        { "before": ["<C-c>"], "after": ["<Esc>"], "commands": [":nohl"] }
+        { "before": ["<c-c>"], "after": ["<Esc>"], "commands": [":nohl"] }
 
         // go to definition/declaration FIXME not working, https://github.com/VSCodeVim/Vim/issues/3814
         // { "before": ["<shift-enter>"], "commands": [":nohl"] }
@@ -148,5 +148,6 @@
     "git.untrackedChanges": "separate",
     "editor.renderControlCharacters": false,
     "terminal.integrated.scrollback": 100000,
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "explorer.confirmDelete": false
 }
