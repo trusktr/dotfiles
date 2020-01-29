@@ -149,5 +149,9 @@
     "editor.renderControlCharacters": false,
     "terminal.integrated.scrollback": 100000,
     "python.jediEnabled": false,
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "git-graph.commitOrdering": "topo",
+    "git-graph.dateFormat": "Relative",
+    "git-graph.fetchAvatars": true,
+    "git-graph.muteCommitsThatAreNotAncestorsOfHead": true
 }

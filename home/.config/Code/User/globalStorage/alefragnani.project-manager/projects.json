@@ -1,21 +1,21 @@
 [
     {
         "name": "velodyne_sw+mapper-annotator",
-        "rootPath": "/Users/trusktr/src/velodyne_sw+mapper-annotator",
+        "rootPath": "/home/trusktr/src/velodyne_sw+mapper-annotator",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "velodyne_sw+mapper-annotated-scene",
-        "rootPath": "/Users/trusktr/src/velodyne_sw+mapper-annotated-scene",
+        "rootPath": "/home/trusktr/src/velodyne_sw+mapper-annotated-scene",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "velodyne_sw+mapper-saffron",
-        "rootPath": "/Users/trusktr/src/velodyne_sw+mapper-saffron",
+        "rootPath": "/home/trusktr/src/velodyne_sw+mapper-saffron",
         "paths": [],
         "group": "",
         "enabled": true
@@ -29,28 +29,28 @@
     },
     {
         "name": "mrdoob+three.js",
-        "rootPath": "/Users/trusktr/src/mrdoob+three.js",
+        "rootPath": "/home/trusktr/src/mrdoob+three.js",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "velodyne_sw+mapper-themes",
-        "rootPath": "/Users/trusktr/src/velodyne_sw+mapper-themes",
+        "rootPath": "/home/trusktr/src/velodyne_sw+mapper-themes",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "infamous+builder-js-package",
-        "rootPath": "/home/trusktr/src/infamous+builder-js-package",
+        "rootPath": "/home/trusktr/src/lume+lume/packages/builder-js-package",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "trusktr+dotfiles",
-        "rootPath": "/Users/trusktr/src/trusktr+dotfiles",
+        "rootPath": "/home/trusktr/src/trusktr+dotfiles",
         "paths": [],
         "group": "",
         "enabled": true
@@ -64,21 +64,21 @@
     },
     {
         "name": "velodyne_sw+mapper-meridian",
-        "rootPath": "/Users/trusktr/src/velodyne_sw+mapper-meridian",
+        "rootPath": "/home/trusktr/src/velodyne_sw+mapper-meridian",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "trusktr+lowclass",
-        "rootPath": "/Users/trusktr/src/trusktr+lowclass",
+        "rootPath": "/home/trusktr/src/trusktr+lowclass",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "infamous+readem",
-        "rootPath": "/Users/trusktr/src/infamous+readem",
+        "rootPath": "/home/trusktr/src/lume+lume/packages/readem",
         "paths": [],
         "group": "",
         "enabled": true
@@ -92,91 +92,84 @@
     },
     {
         "name": "meteor+meteor",
-        "rootPath": "/Users/trusktr/src/meteor+meteor",
+        "rootPath": "/home/trusktr/src/meteor+meteor",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "trusktr+regexr",
-        "rootPath": "/Users/trusktr/src/trusktr+regexr",
-        "paths": [],
-        "group": "",
-        "enabled": true
-    },
-    {
-        "name": "trusktr+element-behaviors",
-        "rootPath": "/Users/trusktr/src/trusktr+element-behaviors",
+        "rootPath": "/home/trusktr/src/trusktr+regexr",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "velodyne_sw+perception",
-        "rootPath": "/Users/trusktr/src/velodyne_sw+perception",
+        "rootPath": "/home/trusktr/src/velodyne_sw+perception",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "trusktr+dotfiles2",
-        "rootPath": "/Users/trusktr/src/trusktr+dotfiles2",
+        "rootPath": "/home/trusktr/src/trusktr+dotfiles2",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "trusktr+trusktr.io",
-        "rootPath": "/Users/trusktr/src/trusktr+trusktr.io",
+        "rootPath": "/home/trusktr/src/trusktr+trusktr.io",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "trusktr+at-at",
-        "rootPath": "/Users/trusktr/src/trusktr+at-at",
+        "rootPath": "/home/trusktr/src/trusktr+at-at",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "lume+generator+lume",
-        "rootPath": "/Users/trusktr/src/lume+generator+lume",
+        "rootPath": "/home/trusktr/src/lume+generator+lume",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "QingWei-Li+vuep",
-        "rootPath": "/Users/trusktr/src/QingWei-Li+vuep",
+        "rootPath": "/home/trusktr/src/QingWei-Li+vuep",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "velodyne_sw+vella-object-detection",
-        "rootPath": "/Users/trusktr/src/velodyne_sw+vella-object-detection",
+        "rootPath": "/home/trusktr/src/velodyne_sw+vella-object-detection",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "velodyne_sw+vella-data-models",
-        "rootPath": "/Users/trusktr/src/velodyne_sw+vella-data-models",
+        "rootPath": "/home/trusktr/src/velodyne_sw+vella-data-models",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "docsifyjs+docsify",
-        "rootPath": "/Users/trusktr/src/docsifyjs+docsify",
+        "rootPath": "/home/trusktr/src/lume+lume/packages/docsifyjs+docsify",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
-        "name": "infamous+element-behaviors",
-        "rootPath": "/Users/trusktr/src/infamous+element-behaviors",
+        "name": "lume+element-behaviors",
+        "rootPath": "/home/trusktr/src/lume+lume/packages/element-behaviors",
         "paths": [],
         "group": "",
         "enabled": true
@@ -184,6 +177,20 @@
     {
         "name": "trusktr+nixpkgs",
         "rootPath": "/home/trusktr/src/trusktr+nixpkgs",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "velodyne_sw+vella-mantis-camera-client",
+        "rootPath": "/home/trusktr/src/velodyne_sw+vella-mantis-camera-client",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "lume+lume",
+        "rootPath": "/home/trusktr/src/lume+lume",
         "paths": [],
         "group": "",
         "enabled": true
