@@ -195,6 +195,12 @@ isWindows=false
 
     popd
 
+# direnv, for setting up env variables when entering directories. If in NixOS, useful with lorri.
+    # TODO
+    # if $isArchLinux; then
+        # sudo pacman -S direnv
+    # fi
+
 # libnotify (Windows Bash / Ubuntu)
 
     if $isUbuntu; then
