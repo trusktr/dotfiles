@@ -1,3 +1,750 @@
+# tell the script to exit immediately on any error rather than continuing to
+# the next command after the command with the error
+set -e
+
+# tell the script to exit when you press ctrl-c
+trap "exit" INT
+
+function quiet() {
+    "$@" &>/dev/null
+}
+
+function exists() {
+    quiet command -v "$@"
+}
+
+echo " >>>>>>>>>>>>>> Detecting environment."
+
+itExists=false
+if exists ls; then itExists=true; fi
+
+INSTALL_METEOR=true
+INSTALL_MAPPER_STUFF=true
+JAVA=false
+
+result=`uname`
+isMacOS=false
+if [[ "$result" == 'Darwin' ]]; then isMacOS=true; fi
+isLinux=false
+if [[ "$result" == 'Linux' ]]; then isLinux=true; fi
+
+echo detect pacman
+
+isArchLinux=false
+if exists pacman; then isArchLinux=true; fi
+
+echo detect apt-get
+
+isUbuntu=false
+if exists apt-get; then isUbuntu=true; fi
+
+echo detect crouton
+
+isChromeOSCrouton=false
+if exists croutonversion; then isChromeOSCrouton=true; fi
+
+isChromeOS=false # TODO
+
+isWindows=false # TODO
+
+# set up package management
+    echo " >>>>>>>>>>>>>> Set up package management."
+
+    if $isMacOS; then
+        if ! exists brew; then
+            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        fi
+        brew tap homebrew/cask # add community packages
+        brew tap homebrew/cask-fonts # add community fonts
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --refresh --sysupgrade
+        # TODO install pamac for the AUR (comes shipped by default with Manjaro Linux)
+        # TODO is aura better? Re-evaluate AUR helpers out some time.
+        # Maybe aura is better as we can tell it to have us look at each
+        # PKGBUILD file before installing, to verify things look secure.
+    fi
+
+    if $isChromeOS; then
+        wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
+    fi
+
+    if $isUbuntu; then
+      echo " >>>>>>>>>>>>>>  ------------------------- APT-GET "
+        sudo apt-get update
+    fi
+
+# Git
+    echo " >>>>>>>>>>>>>> Get git."
+
+    if $isMacOS; then
+        brew install git
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm git
+    fi
+
+    if $isUbuntu; then
+	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
+        sudo apt-get install git
+    fi
+
+# Clone dotfiles
+# TODO see about managing dotfiles with nix home-manager on all platforms?
+# TODO: consolidate into single repo.
+    echo " >>>>>>>>>>>>>> Clone and link dotfiles"
+
+    mkdir -p ~/src
+    cd ~/src
+
+    git clone git@github.com:trusktr/dotfiles trusktr+dotfiles
+    git clone --recursive git@github.com:trusktr/dotfiles2 trusktr+dotfiles2
+
+# link dotfiles
+
+    cd ~
+
+    ln -sf ~/src/trusktr+dotfiles/coffeelint.json
+    ln -sf ~/src/trusktr+dotfiles/.gitignore
+    ln -sf ~/src/trusktr+dotfiles/.gitconfig
+    ln -sf ~/src/trusktr+dotfiles/.editorconfig
+    ln -sf ~/src/trusktr+dotfiles/.jshintrc
+    ln -sf ~/src/trusktr+dotfiles/.Xmodmap
+    ln -sf ~/src/trusktr+dotfiles/.atom
+    ln -sf ~/src/trusktr+dotfiles/.npmrc
+
+    mkdir -p ~/.local
+    ln -sf ~/src/trusktr+dotfiles/.local/bin .local/bin
+
+    mkdir -p ~/.config
+    ln -sf ~/src/trusktr+dotfiles/.config/karabiner .config/karabiner
+
+    cd ~/src
+    git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions
+    cd ~
+    ln -sf ~/src/trusktr+dotfiles2/.vimrc/.vimrc
+    mkdir -p ~/.config/nvim
+    ln -sf ~/.vimrc ~/.config/nvim/init.vim
+    mkdir -p ~/.vim
+    ln -sf ~/src/trusktr+vim-sessions ~/.vim/session
+
+    ### VS Code settings
+        ## settings folder
+            if $isMacOS; then
+                mkdir -p ~/Library/Application\ Support/Code
+                ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User ~/Library/Application\ Support/Code/User
+            fi
+
+            if $isLinux; then
+                # Different distros name the non-proprietary build of VS Code with different names.
+
+                # For distros with proprietary VS Code
+                mkdir -p ~/.config/Code
+                ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User ~/.config/Code/User
+                # For distros like NixOS that name the open-source version of VSCode VSCodium
+                mkdir -p ~/.config/VSCodium
+                ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User ~/.config/VSCodium/User
+                # For distros like Manjaro that name the open-source version of VSCode "Code - OSS"
+                mkdir -p ~/.config/"Code - OSS"
+                ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User ~/.config/"Code - OSS"/User
+            fi
+
+            # TODO
+            # if $isWindows
+
+        ## extensions folder
+            if $isMacOS || $isLinux; then
+                # for proprietary VS Code
+                ln -sf ~/src/trusktr+dotfiles/home/.vscode ~/.vscode
+            fi
+
+            if $isLinux; then
+                # Both NixOS VSCodium and Manjaro "Code - OSS" look here
+                ln -sf ~/src/trusktr+dotfiles/home/.vscode ~/.vscode-oss
+            fi
+
+            # TODO
+            # if $isWindows
+            # %USERPROFILE%\.vscode\extensions
+
+# ZSH
+    echo " >>>>>>>>>>>>>> Set up ZSH."
+
+    cd ~/src
+    git clone --branch v1.4.1 git@github.com:zsh-users/antigen.git zsh-users+antigen
+    cd ~
+    ln -sf ~/src/trusktr+dotfiles2/.zshrc
+
+    if $isMacOS; then
+        brew install zsh
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm zsh
+    fi
+
+    if $isChromeOS; then
+        crew install zsh
+    fi
+
+    if $isUbuntu; then
+	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
+        sudo apt-get install zsh
+    fi
+
+    # Set the default shell to zsh
+    # TODO don't run if already set (f.e. for NixOS)
+    command -v zsh | sudo tee -a /etc/shells
+    sudo chsh -s "$(command -v zsh)" "${USER}"
+
+# Clone common projects I work on
+    echo " >>>>>>>>>>>>>> Clone common projects."
+
+    mkdir -p ~/src
+    pushd ~/src
+
+    git clone git@github.com:infamous/infamous.git infamous+infamous
+    git clone git@github.com:infamous/glas.git infamous+glas
+    git clone git@github.com:infamous/generator-lume.git infamous+generator-lume
+    git clone git@github.com:infamous/builder-js-package.git infamous+builder-js-package
+    git clone git@github.com:infamous/custom-attributes.git infamous+custom-attributes
+    git clone git@github.com:infamous/element-behaviors.git infamous+element-behaviors
+    git clone git@github.com:infamous/readem.git infamous+readem
+
+    git clone git@github.com:trusktr/docsify.git docsifyjs+docsify
+
+    git clone git@github.com:trusktr/live-code.git trusktr+vue-editor
+    git clone git@github.com:trusktr/regexr.git trusktr+regexr
+    git clone git@github.com:trusktr/lowclass.git trusktr+lowclass
+    git clone git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io
+    git clone git@github.com:trusktr/parametric.git trusktr+parametric
+    git clone git@github.com:trusktr/at-at.git trusktr+at-at
+    git clone git@github.com:trusktr/james-bond.git trusktr+james-bond
+    git clone git@github.com:trusktr/animation-loop.git trusktr+animation-loop
+
+    popd
+
+echo " >>>>>>>>>>>>>> Install a bunch of stuff."
+
+# direnv, for setting up env variables when entering directories. If in NixOS, useful with lorri.
+
+    if $isArchLinux; then
+        pamac build --no-confirm direnv
+    fi
+
+# libnotify, I use it for notifying when processes have finished in terminal
+
+    # TODO macOS
+
+    if $isUbuntu; then
+	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
+        sudo apt-get install libnotify-bin
+    fi
+
+    # Already installed in Manjaro Linux
+
+# tree, to show folder structure in the terminal
+
+    if $isMacOS; then
+        brew install tree
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm tree
+    fi
+
+# Python
+
+    if $isMacOS; then
+        brew install python
+        brew install python@2
+        #ln -sf /usr/local/bin/python2 /usr/local/bin/python
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm python
+    fi
+
+    if $isUbuntu; then
+	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
+        sudo apt-get install python
+    fi
+
+    if $isChromeOS; then
+        crew install python
+    fi
+
+# Node.js
+
+    if $isMacOS; then
+        brew install node
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm nodejs
+    fi
+
+    if $isUbuntu; then
+	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
+        sudo apt-get install nodejs npm
+        #sudo apt-get install nodejs-legacy # if needed
+    fi
+
+    if $isChromeOS; then
+        crew install nodejs
+    fi
+
+# Vim/Neovim
+
+    if $isMacOS; then
+        brew install libtool gettext # TODO why do we need these again?
+        brew install neovim
+
+        brew install vim
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm vim neovim
+    fi
+
+    if $isUbuntu; then
+	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
+        # sudo apt-get install software-properties-common # on older Ubuntus
+        sudo add-apt-repository ppa:neovim-ppa/stable
+        sudo apt-get install neovim
+        sudo apt-get install python-dev python-pip python3-dev python3-pip
+
+        sudo apt-get install vim
+    fi
+
+    if $isChromeOS; then
+        echo # TODO: neovim for chromebrew
+    fi
+
+    # TODO some OSes have pip3, others pip2, and possibly not `pip` aliased. Detect them so we don't error out here.
+    if $isArchLinux; then
+            sudo pacman --sync --noconfirm python-pynvim
+    else
+        pip install neovim
+    fi
+
+    # ripgrep and fzy, for fzf or ctrlp plugins
+    # TODO: vimrc can also install this stuff, if it isn't detected to exist
+
+        if $isUbuntu; then
+            sudo add-apt-repository ppa:x4121/ripgrep
+		echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
+            sudo apt-get update
+            sudo apt-get install ripgrep
+
+            wget https://github.com/jhawthorn/fzy/releases/download/0.9/fzy_0.9-1_amd64.deb
+            sudo dpkg -i fzy_0.9-1_amd64.deb
+        fi
+
+        # --- for neovim-fuzzy
+        if $isMacOS; then
+            brew install ripgrep
+            brew install fzy
+        fi
+
+        if $isArchLinux; then
+            sudo pacman --sync --noconfirm fzy ripgrep
+        fi
+
+    # fd for fzf.vim plugin
+
+        if $isUbuntu; then
+            wget https://github.com/sharkdp/fd/releases/download/v7.0.0/fd-musl_7.0.0_amd64.deb
+            sudo dpkg -i fd-musl_7.0.0_amd64.deb
+        fi
+
+        if $isMacOS; then
+            brew install fd
+        fi
+
+        if $isArchLinux; then
+            sudo pacman --sync --noconfirm fd
+        fi
+
+    # ChromeOS Crouton
+    # TODO: Set up Go, then install croshclip so neovim can copy to to ChromeOS Clipboard
+    # https://github.com/acornejo/croshclip
+
+    # oni vim
+    # TODO other OSes. For now just macOS.
+    if $isMacOS; then
+        brew cask install oni
+        mkdir -p ~/.oni
+        ln -sf ~/src/trusktr+dotfiles/.oni/config.js ~/.oni/config.js
+    fi
+
+# Atom editor (atom.io)
+
+    if $isMacOS; then
+        brew install homebrew/cask/atom
+    fi
+
+    if $isUbuntu; then
+        curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+        sudo sh -c 'echo " >>>>>>>>>>>>>> deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
+        sudo apt-get update
+        sudo apt-get install atom # or atom-beta
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm atom
+    fi
+
+# Visual Studio Code (VS Code)
+
+    if $isMacOS; then
+        brew cask install visual-studio-code
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm code # non-proprietary build
+    fi
+
+# Chrome
+
+    # TODO a better way to install in macOS without popping open a window?
+    if $isMacOS; then
+        brew cask install google-chrome
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm chromium
+    fi
+
+    # If we're already in Chrome OS, well, uh....
+
+# Firefox
+
+    if $isMacOS; then
+        brew cask install firefox
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm firefox
+    fi
+
+    if $isUbuntu; then
+	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
+        sudo apt-get install firefox
+    fi
+
+# Edge
+    if $isMacOS; then
+        brew cask install microsoft-edge-dev
+    fi
+
+    if $isArchLinux; then
+        echo #TODO MS Edge is not released for Linux yet
+    fi
+
+# Slack
+
+    if $isMacOS; then
+        brew install homebrew/cask/slack
+    fi
+
+    if $isArchLinux; then
+        pamac build --no-confirm slack-desktop
+    fi
+
+# Meteor
+
+    if $INSTALL_METEOR; then
+        curl https://install.meteor.com/ | sh
+    fi
+
+# Gimp
+
+    if $isMacOS; then
+        brew cask install gimp
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm gimp
+    fi
+
+    if $isUbuntu; then
+	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
+        sudo apt-get install gimp
+    fi
+
+# inconsolata font
+
+    if $isMacOS; then
+        brew cask install font-inconsolata-nerd-font-mono
+    fi
+
+    if $isArchLinux; then
+        pamac build --no-confirm nerd-fonts-inconsolata
+    fi
+
+    if $isUbuntu; then
+        echo # TODO
+    fi
+
+# The amazing Space Mono font
+
+    if $isMacOS; then
+        brew cask install font-space-mono
+    fi
+
+    if $isArchLinux; then
+        pamac build --no-confirm ttf-spacemono
+    fi
+
+    if $isUbuntu; then
+        echo # TODO
+    fi
+
+# Adobe
+
+    if $isMacOS; then
+        brew cask install adobe-creative-cloud
+        open '/usr/local/Caskroom/adobe-creative-cloud/latest/Creative Cloud Installer.app'
+    fi
+
+# Google Drive Backup and Sync
+
+    if $isMacOS; then
+        brew cask install google-backup-and-sync
+    fi
+
+# Meld, diff tool
+
+    if $isMacOS; then
+        brew cask install meld
+    fi
+    
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm meld
+    fi
+
+# Haiku.ai
+
+    if $isMacOS; then
+        echo # TODO Install Haiku from DMG
+    fi
+
+    if $isArchLinux; then
+        echo # TODO not on Linux yet
+    fi
+
+    if $isWindows; then
+        echo # TODO not on Windows yet
+    fi
+
+# xvfb (for headless X11 emulation, f.e. to run Karma+Electron headlessly)
+
+    if $isUbuntu; then
+	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
+        sudo apt-get install xvfb
+    fi
+
+    if $isArchLinux; then
+        # TODO this provides the xvfb-run command. What about the Xvfb command
+        # like in other distros? Is that the same? F.e. "xvfb" package in
+        # Ubuntu.
+        sudo pacman --sync --noconfirm xorg-server-xvfb
+    fi
+
+# Java
+
+    if $INSTALL_MAPPER_STUFF || $JAVA; then
+
+        if $isMacOS; then
+            # latest version, as `java` command
+            brew cask install java
+
+            # version 8, as `java8` command
+            brew tap caskroom/versions
+            brew cask install java8
+            sudo ln -sf /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin/java ~/.local/bin/java8
+        fi
+
+        if $isArchLinux; then
+            # TODO do we need Java 8 for mapper stuff?
+            sudo pacman --sync --noconfirm jre-openjdk
+        fi
+
+    fi
+
+#### Git GUIs
+
+    # GitKraken
+
+        if $isMacOS; then
+            brew cask install gitkraken
+        fi
+
+        if $isArchLinux; then
+            pamac build --no-confirm gitkraken
+        fi
+
+# Spotify
+
+    if $isMacOS; then
+        brew cask install spotify
+    fi
+
+    if $isArchLinux; then
+        pamac build --no-confirm spotify
+    fi
+
+# htop
+
+    if $isMacOS; then
+        brew install htop
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm htop
+    fi
+
+# Blender (blender.org)
+
+    if $isMacOS; then
+        brew cask install blender
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm blender
+    fi
+
+# Watchman (installing this prevents problems with programs that watch for file
+# changes, see https://github.com/facebook/create-react-app/issues/4540)
+
+    if $isMacOS; then
+        brew install watchman
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm watchman
+    fi
+
+# Linux Only
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm gestures
+    fi
+
+# macOS Only
+
+    # GNU Coreutils (prefixed with g in OSX, already present in Linux)
+
+        if $isMacOS; then
+            brew install coreutils
+        fi
+
+    # iTerm
+
+        if $isMacOS; then
+            brew install homebrew/cask/iterm2
+        fi
+
+    # Karabiner Elements (keyboard remapping for macOS)
+
+        if $isMacOS; then
+            brew cask install karabiner-elements
+            open /Applications/Karabiner-Elements.app
+        fi
+
+    # XQuartz (X11 for macOS)
+
+        if $isMacOS; then
+            brew cask install xquartz
+        fi
+
+    # SkyFonts (sync Google Fonts to your system)
+
+        if $isMacOS; then
+            brew cask install skyfonts
+            # TODO we can't hard code the version, because it changes
+            open '/usr/local/Caskroom/skyfonts/5.9.2.1/Install SkyFonts.app'
+        fi
+
+    # Kap, screen capture for macOS
+
+        if $isMacOS; then
+            brew cask install kap
+        fi
+
+    # OS X settings
+
+        if $isMacOS; then
+
+            # enable the `locate` command
+            sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+
+            # set default system and app preferences
+            curl https://raw.githubusercontent.com/trusktr/dotfiles/master/scripts/macOSPrefs.sh | sh
+
+        fi
+
+# mapper.ai stuff
+
+    if $INSTALL_MAPPER_STUFF; then
+        echo " >>>>>>>>>>>>>> Install Velodyne stuff."
+
+        if $isMacOS; then
+            brew cask install docker
+            brew cask install kitematic # to manage docker images
+            brew cask install virtualbox # to run docker VMs in
+            brew install awscli
+            brew cask install sketch
+            brew cask install microsoft-teams
+
+            # for building node zmq package
+            brew install pkg-config
+            brew install zeromq
+
+            # needed for Perception
+            brew install cmake
+
+            # Mapper Cloud Services
+            brew install kotlin
+            brew cask install oracle-jdk # different than java and java8 packages?
+
+            brew install protobuf
+        fi
+
+        if $isArchLinux; then
+            sudo pacman --sync --noconfirm docker virtualbox aws-cli zeromq pkg-config cmake kotlin protobuf
+            pamac build --no-confirm kitematic
+        fi
+
+        mkdir -p ~/src
+        pushd ~/src
+
+        git clone git@bitbucket.org:velodyne_sw/mapper-themes.git velodyne_sw+mapper-themes
+        git clone git@bitbucket.org:velodyne_sw/mapper-replay.git velodyne_sw+mapper-replay
+        git clone git@bitbucket.org:velodyne_sw/mapper-public-website.git velodyne_sw+mapper-public-website
+        git clone git@bitbucket.org:velodyne_sw/mapper-annotator.git velodyne_sw+mapper-annotator
+        git clone git@bitbucket.org:velodyne_sw/mapper-annotated-scene.git velodyne_sw+mapper-annotated-scene
+        git clone git@bitbucket.org:velodyne_sw/mapper-saffron.git velodyne_sw+mapper-saffron
+        git clone git@bitbucket.org:velodyne_sw/mapper-meridian.git velodyne_sw+mapper-meridian
+        git clone git@bitbucket.org:velodyne_sw/mapper-cloud-config.git velodyne_sw+mapper-cloud-config
+        git clone git@bitbucket.org:velodyne_sw/mapper-cloud-services.git velodyne_sw+mapper-cloud-services
+        git clone git@bitbucket.org:velodyne_sw/perception.git velodyne_sw+perception
+        git clone git@bitbucket.org:velodyne_sw/vella-data-models.git velodyne_sw+vella-data-models
+        git clone git@bitbucket.org:velodyne_sw/vella-object-detection.git velodyne_sw+vella-object-detection
+        git clone git@bitbucket.org:velodyne_sw/vellaviz.git velodyne_sw+vellaviz
+
+        popd
+
+    fi
+
+echo
+echo ' --- Setup complete! ---'
+echo
+
 # TODO WINDOWS:
 #   - X11 Approach:
 #     - X11 server: https://sourceforge.net/projects/vcxsrv/
@@ -33,653 +780,3 @@
 #
 # Link stuff
 #   cmd /c mklink /d $HOME\.atom $HOME\src\trusktr+dotfiles1\.atom
-
-# tell the script to exit when you press ctrl-c
-trap "exit" INT
-
-INSTALL_METEOR=true
-INSTALL_MAPPER_STUFF=true
-JAVA=false
-
-result=`uname`
-isMacOS=false; if [[ "$result" == 'Darwin' ]]; then isMacOS=true; fi
-isLinux=false; if [[ "$result" == 'Linux' ]]; then isLinux=true; fi
-
-which pacman 2>/dev/null 1>/dev/null
-result=$?
-isArchLinux=false; if $( exit $result ); then isArchLinux=true; fi
-
-which apt-get 2>/dev/null 1>/dev/null
-result=$?
-isUbuntu=false; if $( exit $result ); then isUbuntu=true; fi
-
-which croutonversion 2>/dev/null 1>/dev/null
-result=$?
-isChromeOSCrouton=false; if $( exit $result ); then isChromeOSCrouton=true; fi
-
-# TODO
-isChromeOS=false
-
-# TODO
-isWindows=false
-
-# set up package management
-
-    if $isMacOS; then
-        if [ ! $(command -v brew) ]; then
-            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        fi
-        brew tap homebrew/cask # add community packages
-        brew tap homebrew/cask-fonts # add community fonts
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -Syu
-    fi
-
-    if $isChromeOS; then
-        wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
-    fi
-
-    if $isUbuntu; then
-        sudo apt-get update
-    fi
-
-# Git
-
-    if $isMacOS; then
-        brew install git
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -S git
-    fi
-
-    if $isUbuntu; then
-        sudo apt-get install git
-    fi
-
-# Clone dotfiles
-# TODO see about managing dotfiles with nix home-manager on all platforms?
-# TODO: consolidate into single repo.
-
-    mkdir -p ~/src
-    cd ~/src
-
-    git clone git@github.com:trusktr/dotfiles trusktr+dotfiles
-    git clone --recursive git@github.com:trusktr/dotfiles2 trusktr+dotfiles2
-
-# link dotfiles
-
-    cd ~
-
-    ln -s ~/src/trusktr+dotfiles/coffeelint.json
-    ln -s ~/src/trusktr+dotfiles/.gitignore
-    ln -s ~/src/trusktr+dotfiles/.gitconfig
-    ln -s ~/src/trusktr+dotfiles/.editorconfig
-    ln -s ~/src/trusktr+dotfiles/.jshintrc
-    ln -s ~/src/trusktr+dotfiles/.Xmodmap
-    ln -s ~/src/trusktr+dotfiles/.atom
-    ln -s ~/src/trusktr+dotfiles/.npmrc
-
-    mkdir -p ~/.local
-    ln -s ~/src/trusktr+dotfiles/.local/bin .local/bin
-
-    mkdir -p ~/.config
-    ln -s ~/src/trusktr+dotfiles/.config/karabiner .config/karabiner
-
-    cd ~/src
-    git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions
-    cd ~
-    ln -s ~/src/trusktr+dotfiles2/.vimrc/.vimrc
-    mkdir -p ~/.config/nvim
-    ln -s ~/.vimrc ~/.config/nvim/init.vim
-    mkdir -p ~/.vim
-    ln -s ~/src/trusktr+vim-sessions ~/.vim/session
-
-    ### VS Code settings
-        ## settings folder
-            if $isMacOS; then
-                mkdir -p ~/Library/Application\ Support/Code
-                ln -s ~/src/trusktr+dotfiles/home/.config/Code/User ~/Library/Application\ Support/Code/User
-            fi
-
-            if $isLinux; then
-                mkdir -p ~/.config/Code
-                ln -s ~/src/trusktr+dotfiles/home/.config/Code/User ~/.config/Code/User
-                mkdir -p ~/.config/VSCodium
-                ln -s ~/src/trusktr+dotfiles/home/.config/VSCodium/User ~/.config/VSCodium/User
-            fi
-
-            # TODO
-            # if $isWindows
-
-        ## extensions folder
-            if $isMacOS || $isLinux; then
-                # for proprietary VS Code
-                ln -s ~/src/trusktr+dotfiles/home/.vscode ~/.vscode
-            fi
-
-            if $isLinux; then
-                # for open-source VSCodium
-                ln -s ~/src/trusktr+dotfiles/home/.vscode ~/.vscode-oss
-            fi
-
-            # TODO
-            # if $isWindows
-            # %USERPROFILE%\.vscode\extensions
-
-# Clone common projects I work on
-
-    mkdir -p ~/src
-    pushd ~/src
-
-    git clone git@github.com:infamous/infamous.git infamous+infamous
-    git clone git@github.com:infamous/glas.git infamous+glas
-    git clone git@github.com:infamous/generator-lume.git infamous+generator-lume
-    git clone git@github.com:infamous/builder-js-package.git infamous+builder-js-package
-    git clone git@github.com:infamous/custom-attributes.git infamous+custom-attributes
-    git clone git@github.com:infamous/element-behaviors.git infamous+element-behaviors
-    git clone git@github.com:infamous/readem.git infamous+readem
-
-    git clone git@github.com:trusktr/docsify.git docsifyjs+docsify
-
-    git clone git@github.com:trusktr/live-code.git trusktr+vue-editor
-    git clone git@github.com:trusktr/regexr.git trusktr+regexr
-    git clone git@github.com:trusktr/lowclass.git trusktr+lowclass
-    git clone git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io
-    git clone git@github.com:trusktr/parametric.git trusktr+parametric
-    git clone git@github.com:trusktr/at-at.git trusktr+at-at
-    git clone git@github.com:trusktr/james-bond.git trusktr+james-bond
-    git clone git@github.com:trusktr/animation-loop.git trusktr+animation-loop
-
-    popd
-
-# direnv, for setting up env variables when entering directories. If in NixOS, useful with lorri.
-    # TODO
-    # if $isArchLinux; then
-        # sudo pacman -S direnv
-    # fi
-
-# libnotify (Windows Bash / Ubuntu)
-
-    if $isUbuntu; then
-        sudo apt-get install libnotify-bin
-    fi
-
-# tree, to show folder structure in the terminal
-
-    if $isMacOS; then
-        brew install tree
-    fi
-
-# Python
-
-    if $isMacOS; then
-        brew install python
-        brew install python@2
-        #ln -s /usr/local/bin/python2 /usr/local/bin/python
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -S python
-    fi
-
-    if $isUbuntu; then
-        sudo apt-get install python
-    fi
-
-    if $isChromeOS; then
-        crew install python
-    fi
-
-# Node.js
-
-    if $isMacOS; then
-        brew install node
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -S nodejs
-    fi
-
-    if $isUbuntu; then
-        sudo apt-get install nodejs npm
-        #sudo apt-get install nodejs-legacy # if needed
-    fi
-
-    if $isChromeOS; then
-        crew install nodejs
-    fi
-
-# macOS only: GNU Coreutils (prefixed with g in OSX, already present in Linux)
-
-    if $isMacOS; then
-        brew install coreutils
-    fi
-
-# Vim/Neovim
-
-    if $isMacOS; then
-        brew install libtool gettext # TODO why do we need these again?
-        brew install neovim
-
-        brew install vim
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -S neovim
-        sudo pacman -S vim
-    fi
-
-    if $isUbuntu; then
-        # sudo apt-get install software-properties-common # on older Ubuntus
-        sudo add-apt-repository ppa:neovim-ppa/stable
-        sudo apt-get install neovim
-        sudo apt-get install python-dev python-pip python3-dev python3-pip
-
-        sudo apt-get install vim
-    fi
-
-    if $isChromeOS; then
-        # TODO: neovim for chromebrew
-        echo
-    fi
-
-    # TODO some OSes have pip, others pip2. Detect them so we don't error out here.
-    pip install neovim
-    pip2 install neovim
-    pip3 install neovim
-
-    # ripgrep and fzy, for fzf or ctrlp plugins
-    # TODO: vimrc can also install this stuff, if it isn't detected to exist
-
-        if $isUbuntu; then
-            sudo add-apt-repository ppa:x4121/ripgrep
-            sudo apt-get update
-            sudo apt-get install ripgrep
-
-            wget https://github.com/jhawthorn/fzy/releases/download/0.9/fzy_0.9-1_amd64.deb
-            sudo dpkg -i fzy_0.9-1_amd64.deb
-        fi
-
-        # --- for neovim-fuzzy
-        if $isMacOS; then
-            brew install ripgrep
-            brew install fzy
-        fi
-
-        if $isArchLinux; then
-            sudo pacman -S ripgrep
-            sudo pacman -S fzy
-        fi
-
-    # fd for fzf.vim plugin
-
-        if $isUbuntu; then
-            wget https://github.com/sharkdp/fd/releases/download/v7.0.0/fd-musl_7.0.0_amd64.deb
-            sudo dpkg -i fd-musl_7.0.0_amd64.deb
-        fi
-
-        if $isMacOS; then
-            brew install fd
-        fi
-
-        if $isArchLinux; then
-            sudo pacman -S fd
-        fi
-
-    # used by neomake plugin.
-    npm install -g jshint
-
-    # ChromeOS Crouton
-    # TODO: Set up Go, then install croshclip so neovim can copy to to ChromeOS Clipboard
-    # https://github.com/acornejo/croshclip
-
-    # oni vim
-    # TODO other OSes. For now just macOS.
-    if $isMacOS; then
-        brew cask install oni
-        mkdir -p ~/.oni
-        ln -s ~/src/trusktr+dotfiles/.oni/config.js ~/.oni/config.js
-    fi
-
-# ZSH
-    cd ~/src
-    git clone --branch v1.4.1 git@github.com:zsh-users/antigen.git zsh-users+antigen
-    cd ~
-    ln -s ~/src/trusktr+dotfiles2/.zshrc
-
-    if $isMacOS; then
-        brew install zsh
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -S zsh
-    fi
-
-    if $isChromeOS; then
-        crew install zsh
-    fi
-
-    if $isUbuntu; then
-        sudo apt-get install zsh
-    fi
-
-    # Set the default shell to zsh
-    # TODO don't run if already set (f.e. for NixOS)
-    command -v zsh | sudo tee -a /etc/shells
-    sudo chsh -s "$(command -v zsh)" "${USER}"
-
-# Atom editor (atom.io)
-
-    if $isMacOS; then
-        brew install homebrew/cask/atom
-    fi
-
-    if $isUbuntu; then
-        curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-        sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
-        sudo apt-get update
-        sudo apt-get install atom # or atom-beta
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -S atom
-    fi
-
-# Visual Studio Code (VS Code)
-
-    if $isMacOS; then
-        brew cask install visual-studio-code
-    fi
-
-# Chrome
-
-    # TODO a better way to install in macOS without popping open a window?
-    if $isMacOS; then
-        brew cask install google-chrome
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -S chromium
-    fi
-
-    # If Chrome OS, well, uh....
-
-# Firefox
-
-    if $isMacOS; then
-        brew cask install firefox
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -S firefox
-    fi
-
-    if $isUbuntu; then
-        sudo apt-get install firefox
-    fi
-
-# Edge
-    if $isMacOS; then
-        brew cask install microsoft-edge-dev
-    fi
-
-# Slack
-
-    if $isMacOS; then
-        brew install homebrew/cask/slack
-    fi
-
-# iTerm (OS X only)
-
-    if $isMacOS; then
-        brew install homebrew/cask/iterm2
-    fi
-
-# Meteor
-
-    if $INSTALL_METEOR; then
-        curl https://install.meteor.com/ | sh
-    fi
-
-# Gimp
-
-    if $isMacOS; then
-        brew cask install gimp
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -S gimp
-    fi
-
-    if $isUbuntu; then
-        sudo apt-get install gimp
-    fi
-
-# Karabiner Elements (keybaord remapping for macOS)
-
-    if $isMacOS; then
-        brew cask install karabiner-elements
-        open /Applications/Karabiner-Elements.app
-    fi
-
-# inconsolata font
-
-    if $isMacOS; then
-        brew cask install font-inconsolata-nerd-font-mono
-    fi
-
-    if $isArchLinux; then
-        sudo aura -S nerd-fonts-inconsolata
-    fi
-
-    if $isUbuntu; then
-        # TODO
-        echo
-    fi
-
-# The amazing Space Mono font
-
-    if $isMacOS; then
-        brew cask install font-space-mono
-    fi
-
-    if $isArchLinux; then
-        sudo pacman -S ttf-spacemono
-    fi
-
-    if $isUbuntu; then
-        # TODO
-        echo
-    fi
-
-# mapper.ai stuff
-
-    if $INSTALL_MAPPER_STUFF; then
-
-        if $isMacOS; then
-            brew cask install docker
-            brew cask install kitematic # to manage docker images
-            brew cask install virtualbox # to run docker VMs in
-            brew install awscli
-            brew cask install sketch
-            brew cask install microsoft-teams
-
-            # for building node zmq package
-            brew install pkg-config
-            brew install zeromq
-
-            # needed for Perception
-            brew install cmake
-
-            # Mapper Cloud Services
-            brew install kotlin
-            brew cask install oracle-jdk # different than java and java8 packages?
-        fi
-
-        if [ ! $isWindows ]; then
-            mkdir -p ~/src
-            pushd ~/src
-
-            git clone git@bitbucket.org:velodyne_sw/mapper-themes.git velodyne_sw+mapper-themes
-            git clone git@bitbucket.org:velodyne_sw/mapper-replay.git velodyne_sw+mapper-replay
-            git clone git@bitbucket.org:velodyne_sw/mapper-public-website.git velodyne_sw+mapper-public-website
-            git clone git@bitbucket.org:velodyne_sw/mapper-annotator.git velodyne_sw+mapper-annotator
-            git clone git@bitbucket.org:velodyne_sw/mapper-annotated-scene.git velodyne_sw+mapper-annotated-scene
-            git clone git@bitbucket.org:velodyne_sw/mapper-saffron.git velodyne_sw+mapper-saffron
-            git clone git@bitbucket.org:velodyne_sw/mapper-meridian.git velodyne_sw+mapper-meridian
-            git clone git@bitbucket.org:velodyne_sw/mapper-cloud-config.git velodyne_sw+mapper-cloud-config
-            git clone git@bitbucket.org:velodyne_sw/mapper-cloud-services.git velodyne_sw+mapper-cloud-services
-            git clone git@bitbucket.org:velodyne_sw/perception.git velodyne_sw+perception
-            git clone git@bitbucket.org:velodyne_sw/vella-data-models.git velodyne_sw+vella-data-models
-            git clone git@bitbucket.org:velodyne_sw/vella-object-detection.git velodyne_sw+vella-object-detection
-            git clone git@bitbucket.org:velodyne_sw/vellaviz.git velodyne_sw+vellaviz
-
-            popd
-        fi
-
-    fi
-
-# Adobe
-
-    if $isMacOS; then
-        brew cask install adobe-creative-cloud
-        open '/usr/local/Caskroom/adobe-creative-cloud/latest/Creative Cloud Installer.app'
-    fi
-
-# Google Drive Backup and Sync
-
-    if $isMacOS; then
-        brew cask install google-backup-and-sync
-    fi
-
-# Meld, diff tool
-
-    if $isMacOS; then
-        brew cask install meld
-    fi
-
-# Go programming language
-
-    if $isMacOS; then
-        brew install go
-    fi
-
-# Protobuf
-
-    if $isMacOS; then
-        brew install protobuf
-    fi
-
-# Haiku.ai
-
-    # TODO Install Haiku from DMG
-
-# XQuartz (X11 for macOS)
-
-    if $isMacOS; then
-        brew cask install xquartz
-    fi
-
-# xvfb (for headless X11 emulation, f.e. to run Karma+Electron headlessly)
-
-    if $isUbuntu; then
-        sudo apt-get install xvfb
-    fi
-
-# SkyFonts (sync Google Fonts to your system)
-
-    if $isMacOS; then
-        brew cask install skyfonts
-        # TODO we can't hard code the version, because it changes
-        open '/usr/local/Caskroom/skyfonts/5.9.2.1/Install SkyFonts.app'
-    fi
-
-# Java
-
-    if $INSTALL_MAPPER_STUFF || $JAVA; then
-
-        if $isMacOS; then
-            # latest version, as `java` command
-            brew cask install java
-
-            # version 8, as `java8` command
-            brew tap caskroom/versions
-            brew cask install java8
-            sudo ln -s /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin/java ~/.local/bin/java8
-        fi
-
-    fi
-
-# Kap, screen capture for macOS
-
-    if $isMacOS; then
-        brew cask install kap
-    fi
-
-#### Git GUIs
-
-    # GitKraken
-
-        if $isMacOS; then
-            brew cask install gitkraken
-        fi
-
-    # Ungit
-
-        npm i -g ungit
-
-    # Fork
-
-        if $isMacOS; then
-            brew cask install fork
-        fi
-
-    # GitHub
-
-        if $isMacOS; then
-            brew cask install github
-        fi
-
-# Spotify
-
-    if $isMacOS; then
-        brew cask install spotify
-    fi
-
-# htop
-
-    if $isMacOS; then
-        brew install htop
-    fi
-
-# Blender (blender.org)
-
-    if $isMacOS; then
-        brew cask install blender
-    fi
-
-# Watchman (installing this prevents problems with programs that watch for file
-# changes, see https://github.com/facebook/create-react-app/issues/4540)
-
-    if $isMacOS; then
-        brew install watchman
-    fi
-
-# OS X settings
-
-    if $isMacOS; then
-
-        # enable the `locate` command
-        sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
-
-        # set default system and app preferences
-        curl https://raw.githubusercontent.com/trusktr/dotfiles/master/scripts/macOSPrefs.sh | sh
-
-    fi
-
-echo
-echo ' --- Setup complete! ---'
-echo
