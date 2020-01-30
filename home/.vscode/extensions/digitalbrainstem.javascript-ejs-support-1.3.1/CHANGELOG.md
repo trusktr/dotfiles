@@ -1,5 +1,28 @@
 # CHANGE LOG #
 
+## 1.3.1 ##
+
+- Fix single lines with mutliple ejs tags. 
+- Before: script would not capture inner tag causing " to be js not html. 
+
+```html
+<button class="<% ... %>"><% ... %></button>
+
+```
+
+## 1.3.0 ##
+
+- Change ejs tag type so they stand out in html code.
+- Note: Will only show difference in some themes.
+- Add php blocking regex so valid php does not get triggered.
+- EJS tags inside of block comments will show as regular ejs tags now.
+
+```html
+<% /* %> <-- Will be colored correctly
+Anything here will be commented out
+--> <% */ %>
+```
+
 ## 1.2.1 ##
 
 - Add support for comment sections

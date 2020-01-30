@@ -1,5 +1,6 @@
 {
 	"whatsNewUri": "",
 	"isInternal": false,
-	"canCollectPII": false
+	"canCollectPII": false,
+	"showLauncherError": true
 }
