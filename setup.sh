@@ -87,7 +87,6 @@ isWindows=false # TODO
     fi
 
     if $isUbuntu; then
-	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
         sudo apt-get install git
     fi
 
@@ -190,7 +189,6 @@ isWindows=false # TODO
     fi
 
     if $isUbuntu; then
-	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
         sudo apt-get install zsh
     fi
 
@@ -239,7 +237,6 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     # TODO macOS
 
     if $isUbuntu; then
-	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
         sudo apt-get install libnotify-bin
     fi
 
@@ -268,7 +265,6 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isUbuntu; then
-	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
         sudo apt-get install python
     fi
 
@@ -287,7 +283,6 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isUbuntu; then
-	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
         sudo apt-get install nodejs npm
         #sudo apt-get install nodejs-legacy # if needed
     fi
@@ -310,7 +305,6 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isUbuntu; then
-	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
         # sudo apt-get install software-properties-common # on older Ubuntus
         sudo add-apt-repository ppa:neovim-ppa/stable
         sudo apt-get install neovim
@@ -335,7 +329,6 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
         if $isUbuntu; then
             sudo add-apt-repository ppa:x4121/ripgrep
-		echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
             sudo apt-get update
             sudo apt-get install ripgrep
 
@@ -389,7 +382,6 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     if $isUbuntu; then
         curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
         sudo sh -c 'echo " >>>>>>>>>>>>>> deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
-	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
         sudo apt-get update
         sudo apt-get install atom # or atom-beta
     fi
@@ -432,7 +424,6 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isUbuntu; then
-	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
         sudo apt-get install firefox
     fi
 
@@ -472,7 +463,6 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isUbuntu; then
-	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
         sudo apt-get install gimp
     fi
 
@@ -544,7 +534,6 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 # xvfb (for headless X11 emulation, f.e. to run Karma+Electron headlessly)
 
     if $isUbuntu; then
-	echo " >>>>>>>>>>>>>>  -------------------------------------- SUDO APT-GET COMMAND"
         sudo apt-get install xvfb
     fi
 
