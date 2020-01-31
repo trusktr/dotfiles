@@ -203,17 +203,12 @@ isWindows=false # TODO
     mkdir -p ~/src
     pushd ~/src
 
-    git clone git@github.com:infamous/infamous.git infamous+infamous
+    git clone --recursive git@github.com:infamous/umbrella.git lume+umbrella
+    # TODO move the rest into lume+umbrella
     git clone git@github.com:infamous/glas.git infamous+glas
     git clone git@github.com:infamous/generator-lume.git infamous+generator-lume
-    git clone git@github.com:infamous/builder-js-package.git infamous+builder-js-package
     git clone git@github.com:infamous/custom-attributes.git infamous+custom-attributes
-    git clone git@github.com:infamous/element-behaviors.git infamous+element-behaviors
-    git clone git@github.com:infamous/readem.git infamous+readem
 
-    git clone git@github.com:trusktr/docsify.git docsifyjs+docsify
-
-    git clone git@github.com:trusktr/live-code.git trusktr+vue-editor
     git clone git@github.com:trusktr/regexr.git trusktr+regexr
     git clone git@github.com:trusktr/lowclass.git trusktr+lowclass
     git clone git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io
