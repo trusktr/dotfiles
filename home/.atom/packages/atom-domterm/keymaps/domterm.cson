@@ -1,0 +1,27 @@
+# Keybindings require three things to be fully defined: A selector that is
+# matched against the focused element, the keystroke and the command to
+# execute.
+#
+# Below is a basic keybinding which registers on all platforms by applying to
+# the root workspace element.
+
+# For more detailed documentation see
+# https://atom.io/docs/latest/behind-atom-keymaps-in-depth
+#'atom-workspace':
+#  'ctrl-alt-o': 'domterm:toggle'
+
+# The follow are only relevant when usingWebview is true.
+# Otherwise (when using an iframe) we get native bindings by default.
+# Note this is quite incomplete.  It would be nice to use
+# "native-key-bindings" but that doesn't seem to work for webview.
+'.domterm':
+  'ctrl-b': 'native!'
+  'ctrl-f': 'native!'
+  'ctrl-k': 'native!'
+  'backspace': 'native!'
+  'delete': 'native!'
+  'ctrl-shift-pageup': 'native!'
+  'ctrl-shift-pagedown': 'native!'
+  'ctrl-shift-a': 'native!'
+
+#'ctrl-shift-i': 'native!'

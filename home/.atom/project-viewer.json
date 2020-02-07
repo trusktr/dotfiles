@@ -1,0 +1,19 @@
+{
+  "info": {
+    "version": "1.0.15",
+    "updated": "2018-06-07T02:46:37.125Z"
+  },
+  "root": [
+    {
+      "type": "project",
+      "name": "trusktr+infamous",
+      "icon": "icon-light-bulb",
+      "color": "#f75468",
+      "devMode": false,
+      "config": {},
+      "paths": [
+        "/Users/trusktr/src/trusktr+infamous"
+      ]
+    }
+  ]
+}

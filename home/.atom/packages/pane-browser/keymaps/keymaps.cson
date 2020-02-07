@@ -1,0 +1,10 @@
+'atom-workspace':
+    'ctrl-alt-b': 'Pane Browser: Open'
+    'ctrl-alt-c': 'Pane Browser: Open from clipboard'
+
+'.platform-darwin atom-pane atom-pane-browser':
+    'cmd-r': 'Pane Browser: Reload'
+    'cmd-alt-i': 'Pane Browser: Open devtool'
+'.platform-windows atom-pane atom-pane-browser':
+    'ctrl-r': 'Pane Browser: Reload'
+    'ctrl-alt-i': 'Pane Browser: Open devtool'

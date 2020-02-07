@@ -1,0 +1,113 @@
+{
+  "_from": "https://www.atom.io/api/packages/imdone-atom/versions/2.4.33/tarball",
+  "_id": "imdone-atom@2.4.33",
+  "_inBundle": false,
+  "_integrity": "sha512-MQNgLRJ2isSkMDG4zG1acx9/UJ2e8UhokSJDkXaZivs/mM1A2W/2Cq6eCP+/6qZtNlwL4YiCxdIq/4lMxNEHVw==",
+  "_location": "/imdone-atom",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/imdone-atom/versions/2.4.33/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/imdone-atom/versions/2.4.33/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/imdone-atom/versions/2.4.33/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/imdone-atom/versions/2.4.33/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/imdone-atom/versions/2.4.33/tarball",
+  "_shasum": "77bdf875794ad92542f477f631d8536e586cba8a",
+  "_spec": "https://www.atom.io/api/packages/imdone-atom/versions/2.4.33/tarball",
+  "_where": "/private/var/folders/kw/cfgh2ttj4bg_nsgymb5n5_n80000gn/T/apm-install-dir-11954-50477-15y1j9w.sjvah",
+  "author": {
+    "name": "Jesse Piascik",
+    "email": "jesse@imdone.io",
+    "url": "https://imdone.io"
+  },
+  "bugs": {
+    "url": "https://github.com/imdone/imdone-atom/issues"
+  },
+  "bundleDependencies": false,
+  "coffeelintConfig": {
+    "max_line_length": {
+      "level": "warn",
+      "value": 120
+    }
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "atom-space-pen-views": "^2.0.5",
+    "chokidar": "2.0.3",
+    "chrono-node": "^1.3.5",
+    "debug": "^2.2.0",
+    "engine.io": "^1.5.4",
+    "engine.io-client": "^1.6.4",
+    "fs-plus": "^2.8.1",
+    "git-up": "^2.0.1",
+    "ignore": "^3.3.7",
+    "imdone-core": "1.5.2",
+    "json-editor": "^0.7.28",
+    "keen-tracking": "^1.4.0",
+    "laconic": "^0.2.2",
+    "lodash": "^4.17.0",
+    "loophole": "^1.1.0",
+    "minimatch": "^3.0.0",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.21.0",
+    "nedb": "^1.8.0",
+    "node-schedule": "^1.3.0",
+    "pusher-js": "^3.0.0",
+    "regex-parser": "^2.2.9",
+    "sortablejs": "1.7.0",
+    "superagent": "^2.3.0",
+    "superagent-no-cache": "^0.1.0",
+    "wait-until": "0.0.2"
+  },
+  "deprecated": false,
+  "description": "A kanban board with an invisible user interface. It's cards and lists are made from TODOs in your code, markdown and text files.",
+  "deserializers": {
+    "ImdoneAtomView": "createImdoneAtomView"
+  },
+  "devDependencies": {
+    "doctoc": "^1.3.0"
+  },
+  "engines": {
+    "atom": ">=1.2.4 <2.0.0"
+  },
+  "homepage": "https://github.com/imdone/imdone-atom#readme",
+  "keywords": [
+    "kanban",
+    "agile",
+    "scrum",
+    "todo",
+    "fixme",
+    "tasks",
+    "productivity",
+    "issues",
+    "flow",
+    "zone",
+    "waffle",
+    "github issues",
+    "webhooks"
+  ],
+  "license": "MIT",
+  "main": "./lib/imdone-atom",
+  "name": "imdone-atom",
+  "providedServices": {
+    "imdone": {
+      "description": "Extend imdone with project and task level buttons",
+      "versions": {
+        "1.0.0": "provideService"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imdone/imdone-atom.git"
+  },
+  "scripts": {
+    "build": "doctoc --github --title '### **Table of Contents**' README.md"
+  },
+  "version": "2.4.33"
+}

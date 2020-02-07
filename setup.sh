@@ -105,20 +105,20 @@ isWindows=false # TODO
 
     cd ~
 
-    ln -sf ~/src/trusktr+dotfiles/coffeelint.json
-    ln -sf ~/src/trusktr+dotfiles/.gitignore
-    ln -sf ~/src/trusktr+dotfiles/.gitconfig
-    ln -sf ~/src/trusktr+dotfiles/.editorconfig
-    ln -sf ~/src/trusktr+dotfiles/.jshintrc
-    ln -sf ~/src/trusktr+dotfiles/.Xmodmap
-    ln -sf ~/src/trusktr+dotfiles/.atom
-    ln -sf ~/src/trusktr+dotfiles/.npmrc
+    ln -sf ~/src/trusktr+dotfiles/home/coffeelint.json
+    ln -sf ~/src/trusktr+dotfiles/home/.gitignore
+    ln -sf ~/src/trusktr+dotfiles/home/.gitconfig
+    ln -sf ~/src/trusktr+dotfiles/home/.editorconfig
+    ln -sf ~/src/trusktr+dotfiles/home/.jshintrc
+    ln -sf ~/src/trusktr+dotfiles/home/.Xmodmap
+    ln -sf ~/src/trusktr+dotfiles/home/.atom
+    ln -sf ~/src/trusktr+dotfiles/home/.npmrc
 
     mkdir -p ~/.local
-    ln -sf ~/src/trusktr+dotfiles/.local/bin .local/bin
+    ln -sf ~/src/trusktr+dotfiles/home/.local/bin .local/bin
 
     mkdir -p ~/.config
-    ln -sf ~/src/trusktr+dotfiles/.config/karabiner .config/karabiner
+    ln -sf ~/src/trusktr+dotfiles/home/.config/karabiner .config/karabiner
 
     cd ~/src
     git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions
@@ -365,7 +365,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     if $isMacOS; then
         brew cask install oni
         mkdir -p ~/.oni
-        ln -sf ~/src/trusktr+dotfiles/.oni/config.js ~/.oni/config.js
+        ln -sf ~/src/trusktr+dotfiles/home/.oni/config.js ~/.oni/config.js
     fi
 
 # Atom editor (atom.io)

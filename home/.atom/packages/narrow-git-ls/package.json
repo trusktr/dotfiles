@@ -1,0 +1,91 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/tmp/d-118420-7609-lzhyc3.4w9c1k0529/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/tmp/d-118420-7609-lzhyc3.4w9c1k0529/package.tgz",
+        "spec": "/tmp/d-118420-7609-lzhyc3.4w9c1k0529/package.tgz",
+        "type": "local"
+      },
+      "/tmp/apm-install-dir-118420-7609-w3annw.j3go315rk9"
+    ]
+  ],
+  "_from": "../d-118420-7609-lzhyc3.4w9c1k0529/package.tgz",
+  "_id": "narrow-git-ls@0.2.0",
+  "_inCache": true,
+  "_location": "/narrow-git-ls",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/tmp/d-118420-7609-lzhyc3.4w9c1k0529/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/tmp/d-118420-7609-lzhyc3.4w9c1k0529/package.tgz",
+    "spec": "/tmp/d-118420-7609-lzhyc3.4w9c1k0529/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-118420-7609-lzhyc3.4w9c1k0529/package.tgz",
+  "_shasum": "aeb46e037f888a3480db39aa001ca2d6db34a241",
+  "_shrinkwrap": null,
+  "_spec": "/tmp/d-118420-7609-lzhyc3.4w9c1k0529/package.tgz",
+  "_where": "/tmp/apm-install-dir-118420-7609-w3annw.j3go315rk9",
+  "activationCommands": {
+    "atom-text-editor": [
+      "narrow:git-ls"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/t9md/atom-narrow-git-ls/issues"
+  },
+  "consumedServices": {
+    "narrow": {
+      "versions": {
+        "2.0.0": "consumeNarrow"
+      }
+    }
+  },
+  "dependencies": {},
+  "description": "narrow provider to open files",
+  "devDependencies": {
+    "prettier": "^1.10.2",
+    "standard": "^10.0.3"
+  },
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "homepage": "https://github.com/t9md/atom-narrow-git-ls#readme",
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "narrow-git-ls",
+  "optionalDependencies": {},
+  "readme": "# narrow-git-ls\n\n- Plugin for [narrow](https://atom.io/packages/narrow).\n- Provide `git ls` files as item.\n\n![narrow-git-ls](https://raw.githubusercontent.com/t9md/t9md/2f54f7689c534b6cdfcadda28c584d01524ffbc2/img/atom-narrow/provider-git-ls.gif)\n\n\n## Keymaps\n\nNo default keymap.  \nSet keymap in your `keymap.cson` by yourself.  \nThis is my keymap  \n\n```coffeescript\n'atom-text-editor.vim-mode-plus:not(.insert-mode)':\n  'ctrl-p': 'narrow:git-ls'\n```\n\n## Known issue\n\n[works only in `text-editor` scope](https://github.com/t9md/atom-narrow/issues/259)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t9md/atom-narrow-git-ls.git"
+  },
+  "scripts": {
+    "lint": "standard lib/*.js lib/**/*.js spec/*.js"
+  },
+  "standard": {
+    "env": {
+      "atomtest": true,
+      "browser": true,
+      "jasmine": true,
+      "node": true
+    },
+    "globals": [
+      "atom"
+    ],
+    "ignore": [
+      "spec/fixtures/*"
+    ]
+  },
+  "version": "0.2.0"
+}

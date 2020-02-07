@@ -7,7 +7,7 @@ getting myself set up on a new machine.
 ## Set it up
 
 - Make a new SSH key on the new machine, if needed.
-- Add the public SSH key to GitHub as well as to trusktr@trusktr.io.
+- Add the public SSH key to GitHub, BitBucket, and trusktr@trusktr.io.
 - Then:
 
   ```sh
@@ -16,4 +16,5 @@ getting myself set up on a new machine.
 
 Notes
 
-- The `configs/com.googlecode.iterm2.plist` file is saved from iTerm, not edited manually.
+- The `configs/com.googlecode.iterm2.plist` file is saved from iTerm, not
+  edited manually. This is also manually imported into iterm2.

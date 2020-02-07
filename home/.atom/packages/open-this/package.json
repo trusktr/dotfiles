@@ -1,0 +1,69 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/tmp/d-118420-7673-vqpyiz.9kkkgwrk9/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/tmp/d-118420-7673-vqpyiz.9kkkgwrk9/package.tgz",
+        "spec": "/tmp/d-118420-7673-vqpyiz.9kkkgwrk9/package.tgz",
+        "type": "local"
+      },
+      "/tmp/apm-install-dir-118420-7673-13kfsyu.lqch6ez5mi"
+    ]
+  ],
+  "_from": "../d-118420-7673-vqpyiz.9kkkgwrk9/package.tgz",
+  "_id": "open-this@0.5.0",
+  "_inCache": true,
+  "_location": "/open-this",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/tmp/d-118420-7673-vqpyiz.9kkkgwrk9/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/tmp/d-118420-7673-vqpyiz.9kkkgwrk9/package.tgz",
+    "spec": "/tmp/d-118420-7673-vqpyiz.9kkkgwrk9/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-118420-7673-vqpyiz.9kkkgwrk9/package.tgz",
+  "_shasum": "6b46e8f11114bac69191fa4bf504159b6b178294",
+  "_shrinkwrap": null,
+  "_spec": "/tmp/d-118420-7673-vqpyiz.9kkkgwrk9/package.tgz",
+  "_where": "/tmp/apm-install-dir-118420-7673-13kfsyu.lqch6ez5mi",
+  "activationCommands": {
+    "atom-workspace": [
+      "open-this:here",
+      "open-this:split-down",
+      "open-this:split-right"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/t9md/atom-open-this/issues"
+  },
+  "dependencies": {
+    "fs-plus": "^2.8.1"
+  },
+  "description": "Open file under cursor like `gf`(Vim), `C-x C-f`(Emacs)",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "homepage": "https://github.com/t9md/atom-open-this#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "open-this",
+  "optionalDependencies": {},
+  "readme": "# open-this [![Build Status](https://travis-ci.org/t9md/atom-open-this.svg)](https://travis-ci.org/t9md/atom-open-this)\n\nOpen file under cursor.  \nLike `gf` on Vim, `C-x C-f` on Emacs.\n\n![gif](https://raw.githubusercontent.com/t9md/t9md/27a8b5d0b7dc4e080e615467e0daf3727c991835/img/atom-open-this.gif)\n\n# How to use.\n\n1. Place cursor on filename in text like on `./styles-element` in following code.\n2. Invoke `open-this:here` via command palette or keymap.\n3. file `./styles-element` opened in current pane.\n\n```coffeescript\nStylesElement = require './styles-element'\nStorageFolder = require './storage-folder'\n```\n\n# Keymap\n\nNo default keymap, copy and paste to your `keymap.cson` from following example.\n\n* Normal user\n\n```coffeescript\n'atom-workspace atom-text-editor:not([mini])':\n  'cmd-k f f': 'open-this:here'\n  'cmd-k f d': 'open-this:split-down'\n  'cmd-k f r': 'open-this:split-right'\n```\n\n* [vim-mode](https://atom.io/packages/vim-mode) user.\n\n```coffeescript\n'atom-text-editor.vim-mode.normal-mode':\n  'g f':      'open-this:here'\n  'ctrl-w f': 'open-this:split-down'\n  'ctrl-w F': 'open-this:split-right'\n```\n\n* [vim-mode-plus](https://atom.io/packages/vim-mode-plus) user.\n\n```coffeescript\n'atom-text-editor.vim-mode-plus.normal-mode':\n  'g f':      'open-this:here'\n  'ctrl-w f': 'open-this:split-down'\n  'ctrl-w F': 'open-this:split-right'\n```\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t9md/atom-open-this.git"
+  },
+  "version": "0.5.0"
+}
