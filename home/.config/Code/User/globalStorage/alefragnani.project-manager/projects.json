@@ -1,14 +1,14 @@
 [
     {
         "name": "velodyne_sw+mapper-annotator",
-        "rootPath": "/home/trusktr/src/velodyne_sw+mapper-annotator",
+        "rootPath": "/home/trusktr/src/velodyne_sw+vella-frontend-projects/apps/mapper-annotator",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "velodyne_sw+mapper-annotated-scene",
-        "rootPath": "/home/trusktr/src/velodyne_sw+mapper-annotated-scene",
+        "rootPath": "/home/trusktr/src/velodyne_sw+vella-frontend-projects/pkgs/mapper-annotated-scene",
         "paths": [],
         "group": "",
         "enabled": true
@@ -43,7 +43,7 @@
     },
     {
         "name": "infamous+builder-js-package",
-        "rootPath": "/home/trusktr/src/lume+lume/packages/builder-js-package",
+        "rootPath": "/home/trusktr/src/lume+umbrella/packages/builder-js-package",
         "paths": [],
         "group": "",
         "enabled": true
@@ -57,7 +57,7 @@
     },
     {
         "name": "infamous+infamous",
-        "rootPath": "/home/trusktr/src/lume+lume/packages/infamous",
+        "rootPath": "/home/trusktr/src/lume+umbrella/packages/infamous",
         "paths": [],
         "group": "",
         "enabled": true
@@ -78,7 +78,7 @@
     },
     {
         "name": "infamous+readem",
-        "rootPath": "/home/trusktr/src/lume+lume/packages/readem",
+        "rootPath": "/home/trusktr/src/lume+umbrella/packages/readem",
         "paths": [],
         "group": "",
         "enabled": true
@@ -162,14 +162,14 @@
     },
     {
         "name": "docsifyjs+docsify",
-        "rootPath": "/home/trusktr/src/lume+lume/packages/docsifyjs+docsify",
+        "rootPath": "/home/trusktr/src/lume+umbrella/packages/docsifyjs+docsify",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
         "name": "lume+element-behaviors",
-        "rootPath": "/home/trusktr/src/lume+lume/packages/element-behaviors",
+        "rootPath": "/home/trusktr/src/lume+umbrella/packages/element-behaviors",
         "paths": [],
         "group": "",
         "enabled": true
@@ -189,8 +189,8 @@
         "enabled": true
     },
     {
-        "name": "lume+lume",
-        "rootPath": "/home/trusktr/src/lume+lume",
+        "name": "lume+umbrella",
+        "rootPath": "/home/trusktr/src/lume+umbrella",
         "paths": [],
         "group": "",
         "enabled": true
