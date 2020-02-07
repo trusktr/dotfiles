@@ -19,7 +19,7 @@ itExists=false
 if exists ls; then itExists=true; fi
 
 INSTALL_METEOR=true
-INSTALL_MAPPER_STUFF=true
+INSTALL_WORK_STUFF=true
 JAVA=false
 
 result=`uname`
@@ -541,7 +541,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
 # Java
 
-    if $INSTALL_MAPPER_STUFF || $JAVA; then
+    if $INSTALL_WORK_STUFF || $JAVA; then
 
         if $isMacOS; then
             # latest version, as `java` command
@@ -674,7 +674,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
 # mapper.ai stuff
 
-    if $INSTALL_MAPPER_STUFF; then
+    if $INSTALL_WORK_STUFF; then
         echo " >>>>>>>>>>>>>> Install Velodyne stuff."
 
         if $isMacOS; then
@@ -701,7 +701,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
         if $isArchLinux; then
             sudo pacman --sync --noconfirm docker virtualbox aws-cli zeromq pkg-config cmake kotlin protobuf
-            pamac build --no-confirm kitematic
+            pamac build --no-confirm kitematic zoom
         fi
 
         mkdir -p ~/src
