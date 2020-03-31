@@ -1,0 +1,53 @@
+{
+  "_from": "https://www.atom.io/api/packages/tree-view-git-status/versions/1.5.2/tarball",
+  "_id": "tree-view-git-status@1.5.2",
+  "_inBundle": false,
+  "_integrity": "sha512-CVhQWjGcwXfIhP9LV9RRXbNSHuIsqRLabW6HvUcyzsbLyDZsf371a7r/v9Nf8hZbsOwROoRuUW+HNd5SyOSN2g==",
+  "_location": "/tree-view-git-status",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/tree-view-git-status/versions/1.5.2/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/tree-view-git-status/versions/1.5.2/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/tree-view-git-status/versions/1.5.2/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/tree-view-git-status/versions/1.5.2/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/tree-view-git-status/versions/1.5.2/tarball",
+  "_shasum": "a01a5c3b4e8ed9b02e8eff7ebae0aac9f2d6ec6c",
+  "_spec": "https://www.atom.io/api/packages/tree-view-git-status/versions/1.5.2/tarball",
+  "_where": "/private/var/folders/kw/cfgh2ttj4bg_nsgymb5n5_n80000gn/T/apm-install-dir-11954-50910-1hl8y4l.ecmb",
+  "bugs": {
+    "url": "https://github.com/subesokun/atom-tree-view-git-status/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "fs-plus": "^3.0.0",
+    "temp": "^0.8.3"
+  },
+  "deprecated": false,
+  "description": "Show the Git repository status in the Atom tree-view",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.7.0"
+  },
+  "homepage": "https://github.com/subesokun/atom-tree-view-git-status#readme",
+  "keywords": [
+    "tree-view",
+    "git",
+    "vcs",
+    "scm",
+    "productivity"
+  ],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "tree-view-git-status",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subesokun/atom-tree-view-git-status.git"
+  },
+  "version": "1.5.2"
+}

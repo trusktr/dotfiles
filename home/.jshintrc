@@ -1,0 +1,6 @@
+{
+    "asi": true,
+    "loopfunc": true,
+    "esversion": 6,
+    "-W058": true,
+}

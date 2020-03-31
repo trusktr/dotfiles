@@ -1,0 +1,161 @@
+{
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // vim settings {{{
+    "vim.normalModeKeyBindings": [
+        { "before": ["<leader>", "f"], "commands": ["workbench.action.toggleSidebarVisibility"] },
+
+        // switch tabs
+        { "before": ["<c-h>"], "after": ["g", "T"] },
+        { "before": ["<c-l>"], "after": ["g", "t"] },
+        { "before": ["<cmd-h>"], "after": ["g", "T"] },
+        { "before": ["<cmd-l>"], "after": ["g", "t"] },
+
+        // move 5 lines at a time
+        { "before": ["<c-k>"], "after": ["5", "k"] },
+        { "before": ["<c-j>"], "after": ["5", "j"] },
+
+        // clear search highligh on ctrl-c
+        // TODO how to make it work with cmd? see: https://github.com/VSCodeVim/Vim/issues/3813
+        { "before": ["<c-c>"], "after": ["<Esc>"], "commands": [":nohl"] }
+
+        // go to definition/declaration FIXME not working, https://github.com/VSCodeVim/Vim/issues/3814
+        // { "before": ["<shift-enter>"], "commands": [":nohl"] }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // map u and <c-r> to VS Code's native undo/redo stack, instead of
+        // VSCodeVim's, because VSCodeVim's has issues
+        // (https://github.com/VSCodeVim/Vim/issues/1490)
+        // {{{
+        {
+            "before": ["u"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "undo",
+                    "args": []
+                }
+
+            ]
+        },
+        {
+            "before": ["<C-r>"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "redo",
+                    "args": []
+                }
+            ]
+        }
+        // }}}
+    ],
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "rgba(238,60,145,0.4)",
+    "vim.hlsearch": true,
+    // "workbench.colorCustomizations": {
+    //     "statusBar.background": "#005f5f",
+    //     "statusBar.foreground": "#eeeeee",
+    //     "statusBar.noFolderBackground": "#005f5f",
+    //     "statusBar.debuggingBackground": "#005f5f"
+    // },
+    "vim.useSystemClipboard": true,
+    // }}}
+
+    // "indenticator.hover.peekBack": 10,
+    // "indenticator.inner.showHighlight": true,
+    // "indenticator.inner.color.light": "",
+    // "indenticator.color.dark": "#fff"
+
+    "editor.minimap.enabled": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.showSlider": "always",
+
+    "editor.renderIndentGuides": true,
+    "liveshare.focusBehavior": "prompt",
+    "git.confirmSync": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.quickOpen.preserveInput": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDragAndDrop": false,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.autofetch": true,
+    "editor.fontFamily": "Space Mono, Inconsolata Nerd Font Mono, Menlo, Consolas, DejaVu Sans Mono, monospace",
+    "terminal.integrated.lineHeight": 0.5,
+    "workbench.tree.indent": 18,
+    "workbench.list.openMode": "doubleClick",
+    "workbench.list.horizontalScrolling": true,
+    "explorer.autoReveal": false,
+    "window.zoomLevel": 0,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "diffEditor.renderSideBySide": true,
+    "projectManager.openInNewWindowWhenClickingInStatusBar": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.renderLineHighlight": "all",
+    "workbench.iconTheme": "material-icon-theme",
+    "material-icon-theme.activeIconPack": "react",
+    "workbench.colorCustomizations": {},
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "typescript.experimental.useSeparateSyntaxServer": true,
+    "workbench.editor.tabSizing": "shrink",
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.sideBar.location": "left",
+    "workbench.activityBar.visible": true,
+    "editor.renderWhitespace": "selection",
+    "vetur.format.defaultFormatter.html": "prettier",
+    "vetur.format.scriptInitialIndent": true,
+    "vetur.format.styleInitialIndent": true,
+    "html.format.indentInnerHtml": true,
+    "vetur.format.options.useTabs": true,
+    "vetur.format.options.tabSize": 4,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorTheme": "Noctis Minimus",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "vetur.format.enable": false,
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    "gitlens.codeLens.scopes": [
+        "document"
+    ],
+    "files.autoSave": "off",
+    "git.untrackedChanges": "separate",
+    "editor.renderControlCharacters": false,
+    "terminal.integrated.scrollback": 100000,
+    "python.jediEnabled": false,
+    "explorer.confirmDelete": false,
+    "git-graph.commitOrdering": "author-date",
+    "git-graph.dateFormat": "Relative",
+    "git-graph.fetchAvatars": true,
+    "git-graph.muteCommitsThatAreNotAncestorsOfHead": true,
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "javascript.preferences.importModuleSpecifier": "relative",
+    "editor.formatOnSave": true,
+    "git-graph.autoCenterCommitDetailsView": false,
+    "git.detectSubmodulesLimit": 1000,
+    "git.supportCancellation": true
+}

@@ -1,0 +1,50 @@
+{
+  "_from": "https://www.atom.io/api/packages/file-watcher/versions/2.0.0/tarball",
+  "_id": "file-watcher@2.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-PJwy8JSzH5zcMmk6ZB9TZzOlD2GnVikM+urQXbP/5LqSydgB9RBdYB+ETN2uSOdRA1QBzxiM1U+qs2/vTviwwA==",
+  "_location": "/file-watcher",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/file-watcher/versions/2.0.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/file-watcher/versions/2.0.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/file-watcher/versions/2.0.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/file-watcher/versions/2.0.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/file-watcher/versions/2.0.0/tarball",
+  "_shasum": "666879eda3a64523cefbc3b159c32a74fc4f43c4",
+  "_spec": "https://www.atom.io/api/packages/file-watcher/versions/2.0.0/tarball",
+  "_where": "/private/var/folders/kw/cfgh2ttj4bg_nsgymb5n5_n80000gn/T/apm-install-dir-11954-50275-w2hl89.iggra",
+  "bugs": {
+    "url": "https://github.com/lwblackledge/file-watcher/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Notifications when an open file has changed on disk and Atom has pending changes.",
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
+  },
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "homepage": "https://github.com/lwblackledge/file-watcher#readme",
+  "license": "MIT",
+  "main": "./lib/init",
+  "name": "file-watcher",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lwblackledge/file-watcher.git"
+  },
+  "version": "2.0.0"
+}

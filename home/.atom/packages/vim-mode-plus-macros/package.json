@@ -1,0 +1,67 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/tmp/d-118420-6027-kprqnw.8cx29e8kt9/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/tmp/d-118420-6027-kprqnw.8cx29e8kt9/package.tgz",
+        "spec": "/tmp/d-118420-6027-kprqnw.8cx29e8kt9/package.tgz",
+        "type": "local"
+      },
+      "/tmp/apm-install-dir-118420-6027-zghzng.blfvsa714i"
+    ]
+  ],
+  "_from": "../d-118420-6027-kprqnw.8cx29e8kt9/package.tgz",
+  "_id": "vim-mode-plus-macros@0.1.2",
+  "_inCache": true,
+  "_location": "/vim-mode-plus-macros",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/tmp/d-118420-6027-kprqnw.8cx29e8kt9/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/tmp/d-118420-6027-kprqnw.8cx29e8kt9/package.tgz",
+    "spec": "/tmp/d-118420-6027-kprqnw.8cx29e8kt9/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-118420-6027-kprqnw.8cx29e8kt9/package.tgz",
+  "_shasum": "d0ad9b3028a699ef246e5d436bab001f7f276554",
+  "_shrinkwrap": null,
+  "_spec": "/tmp/d-118420-6027-kprqnw.8cx29e8kt9/package.tgz",
+  "_where": "/tmp/apm-install-dir-118420-6027-zghzng.blfvsa714i",
+  "activationCommands": {
+    "atom-workspace": "vim-mode-plus-macros:start-recording-macro"
+  },
+  "bugs": {
+    "url": "https://github.com/calebmeyer/vim-mode-plus-macros/issues"
+  },
+  "dependencies": {},
+  "description": "Implements macros for vim mode plus",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/calebmeyer/vim-mode-plus-macros#readme",
+  "keywords": [
+    "macro",
+    "macros",
+    "vim-mode-plus"
+  ],
+  "license": "MIT",
+  "main": "./lib/vim-mode-plus-macros",
+  "name": "vim-mode-plus-macros",
+  "optionalDependencies": {},
+  "readme": "# Macros for vim mode plus\nThis package is still under construction, but the basic functionality works. You can create a single macro and apply it many times.\n\nSearching with `/` definitely doesn't work yet.\n\n## Install\n`apm install vim-mode-plus-macros` at the command line, or `ctrl-,`, click on install, then type vim-mode-plus-macros and click install.\n\nMake sure you also have vim-mode-plus installed, this package requires it.\n\n## Usage\n`q` in normal mode to start recording a macro\n\n`q` in normal mode while recording a macro to stop recording the macro\n\n`@` to apply the macro\n\n## Roadmap\n- [x] a macro can be recorded\n- [x] a macro can be replayed\n- [x] macros can include typing in insert mode\n- [x] indicate macro recording state to user\n- [ ] macros can be saved to (and recalled from) the 26 letters (e.g. `qa` and `@a`)\n- [ ] macros can be named and saved (maybe use a fuzzy finder?)\n- [ ] specs\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calebmeyer/vim-mode-plus-macros.git"
+  },
+  "version": "0.1.2"
+}
