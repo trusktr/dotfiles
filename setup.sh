@@ -114,7 +114,6 @@ isWindows=false # TODO
     cd ~
 
     ln -sf ~/src/trusktr+dotfiles/home/coffeelint.json
-    ln -sf ~/src/trusktr+dotfiles/home/.gitignore
     ln -sf ~/src/trusktr+dotfiles/home/.gitconfig
     ln -sf ~/src/trusktr+dotfiles/home/.editorconfig
     ln -sf ~/src/trusktr+dotfiles/home/.jshintrc
