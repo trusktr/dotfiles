@@ -122,7 +122,7 @@ isWindows=false # TODO
     ln -sf ~/src/trusktr+dotfiles/home/.npmrc
 
     mkdir -p ~/.local
-    ln -sf ~/src/trusktr+dotfiles/home/.local/bin .local/bin
+    pushd ~/.local && ln -sf ~/src/trusktr+dotfiles/home/.local/bin && popd
 
     mkdir -p ~/.config
     cd ~/.config
@@ -156,7 +156,7 @@ isWindows=false # TODO
         ## settings folder
             if $isMacOS; then
                 mkdir -p ~/Library/Application\ Support/Code
-                ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User ~/Library/Application\ Support/Code/User
+                pushd ~/Library/Application\ Support/Code && ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User && popd
             fi
 
             if $isLinux; then
@@ -164,13 +164,15 @@ isWindows=false # TODO
 
                 # For distros with proprietary VS Code
                 mkdir -p ~/.config/Code
-                ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User ~/.config/Code/User
+                pushd ~/.config/Code && ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User && popd
+
                 # For distros like NixOS that name the open-source version of VSCode VSCodium
                 mkdir -p ~/.config/VSCodium
-                ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User ~/.config/VSCodium/User
+                pushd ~/.config/VSCodium && ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User && popd
+
                 # For distros like Manjaro that name the open-source version of VSCode "Code - OSS"
                 mkdir -p ~/.config/"Code - OSS"
-                ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User ~/.config/"Code - OSS"/User
+                pushd ~/.config/"Code - OSS" && ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User && popd
             fi
 
             # TODO
