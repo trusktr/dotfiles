@@ -2,6 +2,9 @@
 # the next command after the command with the error
 set -e
 
+# print each command being executed
+set -x
+
 # tell the script to exit when you press ctrl-c
 trap "exit" INT
 
@@ -59,11 +62,16 @@ isWindows=false # TODO
     fi
 
     if $isArchLinux; then
-        sudo pacman --sync --refresh --sysupgrade
+        sudo pacman --sync --refresh --sysupgrade --noconfirm
+
         # TODO install pamac for the AUR (comes shipped by default with Manjaro Linux)
         # TODO is aura better? Re-evaluate AUR helpers out some time.
         # Maybe aura is better as we can tell it to have us look at each
         # PKGBUILD file before installing, to verify things look secure.
+
+        # enable pamac AUR support
+        sudo sed --in-place "s/#EnableAUR/EnableAUR/" "/etc/pamac.conf"
+        sudo sed --in-place "s/#CheckAURUpdates/CheckAURUpdates/" "/etc/pamac.conf"
     fi
 
     if $isChromeOS; then
@@ -98,8 +106,8 @@ isWindows=false # TODO
     mkdir -p ~/src
     cd ~/src
 
-    git clone git@github.com:trusktr/dotfiles trusktr+dotfiles
-    git clone --recursive git@github.com:trusktr/dotfiles2 trusktr+dotfiles2
+    git clone git@github.com:trusktr/dotfiles trusktr+dotfiles || true
+    git clone --recursive git@github.com:trusktr/dotfiles2 trusktr+dotfiles2 || true
 
 # link dotfiles
 
@@ -126,14 +134,18 @@ isWindows=false # TODO
 
     if $isLinux; then
         ln -sf ~/src/trusktr+dotfiles/home/.config/alacritty
+        rm -rf dconf
         ln -sf ~/src/trusktr+dotfiles/home/.config/dconf
+        rm -rf gtk-2.0
         ln -sf ~/src/trusktr+dotfiles/home/.config/gtk-2.0
+        rm -rf gtk-3.0
         ln -sf ~/src/trusktr+dotfiles/home/.config/gtk-3.0
+        rm -rf gtk-4.0
         ln -sf ~/src/trusktr+dotfiles/home/.config/gtk-4.0
     fi
 
     cd ~/src
-    git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions
+    git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions || true
     cd ~
     ln -sf ~/src/trusktr+dotfiles2/.vimrc/.vimrc
     mkdir -p ~/.config/nvim
@@ -184,7 +196,7 @@ isWindows=false # TODO
     echo " >>>>>>>>>>>>>> Set up ZSH."
 
     cd ~/src
-    git clone --branch v1.4.1 git@github.com:zsh-users/antigen.git zsh-users+antigen
+    git clone --branch v1.4.1 git@github.com:zsh-users/antigen.git zsh-users+antigen || true
     cd ~
     ln -sf ~/src/trusktr+dotfiles2/.zshrc
 
@@ -216,23 +228,23 @@ isWindows=false # TODO
     pushd ~/src
 
     # LUME
-    git clone --recursive git@github.com:infamous/umbrella.git lume+umbrella
+    git clone --recursive git@github.com:infamous/umbrella.git lume+umbrella || true
     # TODO move the rest into lume+umbrella
-    git clone git@github.com:infamous/glas.git infamous+glas
-    git clone git@github.com:infamous/generator-lume.git infamous+generator-lume
-    git clone git@github.com:infamous/custom-attributes.git infamous+custom-attributes
+    git clone git@github.com:infamous/glas.git infamous+glas || true
+    git clone git@github.com:infamous/generator-lume.git infamous+generator-lume || true
+    git clone git@github.com:infamous/custom-attributes.git infamous+custom-attributes || true
 
     # Other personal projects
-    git clone git@github.com:trusktr/animation-loop.git trusktr+animation-loop
-    git clone git@github.com:trusktr/at-at.git trusktr+at-at
-    git clone git@github.com:trusktr/parametric.git trusktr+parametric
-    git clone git@github.com:trusktr/regexr.git trusktr+regexr
-    git clone git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io
+    git clone git@github.com:trusktr/animation-loop.git trusktr+animation-loop || true
+    git clone git@github.com:trusktr/at-at.git trusktr+at-at || true
+    git clone git@github.com:trusktr/parametric.git trusktr+parametric || true
+    git clone git@github.com:trusktr/regexr.git trusktr+regexr || true
+    git clone git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io || true
 
     # Projects I contribute to
-    git clone git@github.com:trusktr/meteor.git meteor+meteor
-    git clone git@github.com:trusktr/three.js.git mrdoob+three.js
-    git clone git@github.com:trusktr/harp.gl-meteor.git trusktr+sk8earth-harp
+    git clone git@github.com:trusktr/meteor.git meteor+meteor || true
+    git clone git@github.com:trusktr/three.js.git mrdoob+three.js || true
+    git clone git@github.com:trusktr/harp.gl-meteor.git trusktr+sk8earth-harp || true
 
     popd
 
@@ -737,19 +749,19 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         mkdir -p ~/src
         pushd ~/src
 
-        git clone git@bitbucket.org:velodyne_sw/autodrive.git velodyne_sw+autodrive
-        git clone git@bitbucket.org:velodyne_sw/mapper-cloud-config.git velodyne_sw+mapper-cloud-config
-        git clone git@bitbucket.org:velodyne_sw/mapper-cloud-services.git velodyne_sw+mapper-cloud-services
-        git clone git@bitbucket.org:velodyne_sw/mapper-meridian.git velodyne_sw+mapper-meridian
-        git clone git@bitbucket.org:velodyne_sw/mapper-public-website.git velodyne_sw+mapper-public-website
-        git clone git@bitbucket.org:velodyne_sw/mapper-replay.git velodyne_sw+mapper-replay
-        git clone git@bitbucket.org:velodyne_sw/mapper-saffron.git velodyne_sw+mapper-saffron
-        git clone git@bitbucket.org:velodyne_sw/perception.git velodyne_sw+perception
-        git clone git@bitbucket.org:velodyne_sw/vella-data-models.git velodyne_sw+vella-data-models
-        git clone git@bitbucket.org:velodyne_sw/vella-frontend-projects.git velodyne_sw+autodrive --recursive
-        git clone git@bitbucket.org:velodyne_sw/vella-object-detection.git velodyne_sw+vella-object-detection
-        git clone git@bitbucket.org:velodyne_sw/vella-offline-data-processing.git velodyne_sw+vella-offline-data-processing
-        git clone git@bitbucket.org:velodyne_sw/vellaviz.git velodyne_sw+vellaviz
+        git clone git@bitbucket.org:velodyne_sw/autodrive.git velodyne_sw+autodrive || true
+        git clone git@bitbucket.org:velodyne_sw/mapper-cloud-config.git velodyne_sw+mapper-cloud-config || true
+        git clone git@bitbucket.org:velodyne_sw/mapper-cloud-services.git velodyne_sw+mapper-cloud-services || true
+        git clone git@bitbucket.org:velodyne_sw/mapper-meridian.git velodyne_sw+mapper-meridian || true
+        git clone git@bitbucket.org:velodyne_sw/mapper-public-website.git velodyne_sw+mapper-public-website || true
+        git clone git@bitbucket.org:velodyne_sw/mapper-replay.git velodyne_sw+mapper-replay || true
+        git clone git@bitbucket.org:velodyne_sw/mapper-saffron.git velodyne_sw+mapper-saffron || true
+        git clone git@bitbucket.org:velodyne_sw/perception.git velodyne_sw+perception || true
+        git clone git@bitbucket.org:velodyne_sw/vella-data-models.git velodyne_sw+vella-data-models || true
+        git clone git@bitbucket.org:velodyne_sw/vella-frontend-projects.git velodyne_sw+autodrive --recursive || true
+        git clone git@bitbucket.org:velodyne_sw/vella-object-detection.git velodyne_sw+vella-object-detection || true
+        git clone git@bitbucket.org:velodyne_sw/vella-offline-data-processing.git velodyne_sw+vella-offline-data-processing || true
+        git clone git@bitbucket.org:velodyne_sw/vellaviz.git velodyne_sw+vellaviz || true
 
         popd
 
