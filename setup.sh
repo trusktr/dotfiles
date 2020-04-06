@@ -344,7 +344,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
     # TODO some OSes have pip3, others pip2, and possibly not `pip` aliased. Detect them so we don't error out here.
     if $isArchLinux; then
-            sudo pacman --sync --noconfirm python-pynvim
+        sudo pacman --sync --noconfirm python-pynvim
     else
         pip install neovim
     fi
@@ -397,6 +397,9 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         mkdir -p ~/.oni
         ln -sf ~/src/trusktr+dotfiles/home/.oni/config.js ~/.oni/config.js
     fi
+
+    # install plugins automatically
+    nvim +PlugInstall +UpdateRemotePlugins +qa
 
 # Atom editor (atom.io)
 
