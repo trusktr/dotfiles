@@ -763,6 +763,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         git clone git@bitbucket.org:velodyne_sw/perception.git velodyne_sw+perception || true
         git clone git@bitbucket.org:velodyne_sw/vella-data-models.git velodyne_sw+vella-data-models || true
         git clone git@bitbucket.org:velodyne_sw/vella-frontend-projects.git velodyne_sw+vella-frontend-projects --recursive || true
+        git clone git@bitbucket.org:velodyne_sw/vella-mantis-camera-client.git velodyne_sw+vella-mantis-camera-client || true
         git clone git@bitbucket.org:velodyne_sw/vella-object-detection.git velodyne_sw+vella-object-detection || true
         git clone git@bitbucket.org:velodyne_sw/vella-offline-data-processing.git velodyne_sw+vella-offline-data-processing || true
         git clone git@bitbucket.org:velodyne_sw/vellaviz.git velodyne_sw+vellaviz || true
