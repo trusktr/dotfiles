@@ -317,8 +317,8 @@ cursor:
 shell:
  program: nvim
  args:
-   # - "+execute 'normal! :term<enter>i'"
-   - +term
+   - '+execute "normal! :term\<enter>i"' # works
+   # - "+execute 'normal! :term\<enter>i'" # doesn't work
 
 # Startup directory
 #
