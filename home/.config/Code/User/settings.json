@@ -76,7 +76,9 @@
     "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
 
-    "editor.renderIndentGuides": true,
+    // disable this because it conflicts with a plugin that makes better indent guides
+    "editor.renderIndentGuides": false,
+
     "liveshare.focusBehavior": "prompt",
     "git.confirmSync": false,
     "diffEditor.ignoreTrimWhitespace": true,
