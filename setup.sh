@@ -761,6 +761,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         git clone git@bitbucket.org:velodyne_sw/mapper-replay.git velodyne_sw+mapper-replay || true
         git clone git@bitbucket.org:velodyne_sw/mapper-saffron.git velodyne_sw+mapper-saffron || true
         git clone git@bitbucket.org:velodyne_sw/perception.git velodyne_sw+perception || true
+        git clone git@bitbucket.org:velodyne_sw/semantic-mapping-and-localization.git velodyne_sw+semantic-mapping-and-localization || true
         git clone git@bitbucket.org:velodyne_sw/vella-data-models.git velodyne_sw+vella-data-models || true
         git clone git@bitbucket.org:velodyne_sw/vella-frontend-projects.git velodyne_sw+vella-frontend-projects --recursive || true
         git clone git@bitbucket.org:velodyne_sw/vella-mantis-camera-client.git velodyne_sw+vella-mantis-camera-client || true
