@@ -1,0 +1,212 @@
+[
+	{
+		"name": "velodyne_sw+mapper-annotator",
+		"rootPath": "/home/trusktr/src/velodyne_sw+vella-frontend-projects/apps/mapper-annotator",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "velodyne_sw+mapper-annotated-scene",
+		"rootPath": "/home/trusktr/src/velodyne_sw+vella-frontend-projects/pkgs/mapper-annotated-scene",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "velodyne_sw+mapper-saffron",
+		"rootPath": "/home/trusktr/src/velodyne_sw+mapper-saffron",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "infamous+glas",
+		"rootPath": "/home/trusktr/src/infamous+glas",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "mrdoob+three.js",
+		"rootPath": "/home/trusktr/src/mrdoob+three.js",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "velodyne_sw+mapper-themes",
+		"rootPath": "/home/trusktr/src/velodyne_sw+mapper-themes",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "infamous+builder-js-package",
+		"rootPath": "/home/trusktr/src/lume+umbrella/packages/builder-js-package",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "trusktr+dotfiles",
+		"rootPath": "/home/trusktr/src/trusktr+dotfiles",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "infamous+infamous",
+		"rootPath": "/home/trusktr/src/lume+umbrella/packages/infamous",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "velodyne_sw+mapper-meridian",
+		"rootPath": "/home/trusktr/src/velodyne_sw+mapper-meridian",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "trusktr+lowclass",
+		"rootPath": "/home/trusktr/src/lume+umbrella/packages/lowclass",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "infamous+readem",
+		"rootPath": "/home/trusktr/src/lume+umbrella/packages/readem",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "velodyne_sw+mapper-replay",
+		"rootPath": "/home/trusktr/src/velodyne_sw+mapper-replay",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "meteor+meteor",
+		"rootPath": "/home/trusktr/src/meteor+meteor",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "trusktr+regexr",
+		"rootPath": "/home/trusktr/src/trusktr+regexr",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "velodyne_sw+perception",
+		"rootPath": "/home/trusktr/src/velodyne_sw+perception",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "trusktr+dotfiles2",
+		"rootPath": "/home/trusktr/src/trusktr+dotfiles2",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "trusktr+trusktr.io",
+		"rootPath": "/home/trusktr/src/trusktr+trusktr.io",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "trusktr+at-at",
+		"rootPath": "/home/trusktr/src/trusktr+at-at",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "lume+generator+lume",
+		"rootPath": "/home/trusktr/src/lume+generator+lume",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "QingWei-Li+vuep",
+		"rootPath": "/home/trusktr/src/QingWei-Li+vuep",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "velodyne_sw+vella-object-detection",
+		"rootPath": "/home/trusktr/src/velodyne_sw+vella-object-detection",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "velodyne_sw+vella-data-models",
+		"rootPath": "/home/trusktr/src/velodyne_sw+vella-data-models",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "docsifyjs+docsify",
+		"rootPath": "/home/trusktr/src/lume+umbrella/packages/docsifyjs+docsify",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "lume+element-behaviors",
+		"rootPath": "/home/trusktr/src/lume+umbrella/packages/element-behaviors",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "trusktr+nixpkgs",
+		"rootPath": "/home/trusktr/src/trusktr+nixpkgs",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "velodyne_sw+vella-mantis-camera-client",
+		"rootPath": "/home/trusktr/src/velodyne_sw+vella-mantis-camera-client",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "lume+umbrella",
+		"rootPath": "/home/trusktr/src/lume+umbrella",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "lume+website",
+		"rootPath": "/home/trusktr/src/lume+umbrella/apps/website",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	},
+	{
+		"name": "lume+element",
+		"rootPath": "/home/trusktr/src/lume+umbrella/packages/element",
+		"paths": [],
+		"group": "",
+		"enabled": true
+	}
+]
