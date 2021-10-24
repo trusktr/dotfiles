@@ -38,10 +38,10 @@ echo detect pacman
 isArchLinux=false
 if exists pacman; then isArchLinux=true; fi
 
-echo detect apt-get
+echo detect apt
 
-isUbuntu=false
-if exists apt-get; then isUbuntu=true; fi
+isDebianLike=false
+if exists apt; then isDebianLike=true; fi
 
 echo detect crouton
 
@@ -83,9 +83,8 @@ isWindows=false # TODO
         wget -q -O - https://raw.github.com/skycocker/chromebrew/master/install.sh | bash
     fi
 
-    if $isUbuntu; then
-      echo " >>>>>>>>>>>>>>  ------------------------- APT-GET "
-        sudo apt-get update
+    if $isDebianLike; then
+        sudo apt update
     fi
 
 # Git
@@ -99,8 +98,8 @@ isWindows=false # TODO
         sudo pacman --sync --noconfirm git
     fi
 
-    if $isUbuntu; then
-        sudo apt-get install git
+    if $isDebianLike; then
+        sudo apt install git
     fi
 
 # Clone dotfiles
@@ -218,8 +217,8 @@ isWindows=false # TODO
         crew install zsh
     fi
 
-    if $isUbuntu; then
-        sudo apt-get install zsh
+    if $isDebianLike; then
+        sudo apt install zsh
     fi
 
     # Set the default shell to zsh
@@ -248,7 +247,7 @@ isWindows=false # TODO
     # Projects I contribute to
     git clone git@github.com:trusktr/meteor.git meteor+meteor || true
     git clone git@github.com:trusktr/three.js.git mrdoob+three.js || true
-    # git clone git@github.com:trusktr/harp.gl-meteor.git trusktr+sk8earth-harp || true // TODO mapapp
+    git clone git@github.com:trusktr/mapapp.git mapapp+mappapp || true
 
     popd
 
@@ -264,8 +263,8 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
     # TODO macOS
 
-    if $isUbuntu; then
-        sudo apt-get install libnotify-bin
+    if $isDebianLike; then
+        sudo apt install libnotify-bin
     fi
 
     # Already installed in Manjaro Linux
@@ -292,8 +291,8 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo pacman --sync --noconfirm python
     fi
 
-    if $isUbuntu; then
-        sudo apt-get install python
+    if $isDebianLike; then
+        sudo apt install python
     fi
 
     if $isChromeOS; then
@@ -310,14 +309,18 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo pacman --sync --noconfirm nodejs
     fi
 
-    if $isUbuntu; then
-        sudo apt-get install nodejs npm
-        #sudo apt-get install nodejs-legacy # if needed
+    if $isDebianLike; then
+        sudo apt install nodejs npm
+        #sudo apt install nodejs-legacy # if needed
     fi
 
     if $isChromeOS; then
         crew install nodejs
     fi
+    
+    # Get the latest
+    npm i -g npm
+    n latest
 
 # Vim/Neovim
 
@@ -332,13 +335,13 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo pacman --sync --noconfirm vim neovim
     fi
 
-    if $isUbuntu; then
-        # sudo apt-get install software-properties-common # on older Ubuntus
+    if $isDebianLike; then
+        # sudo apt install software-properties-common # on older Ubuntus
         sudo add-apt-repository ppa:neovim-ppa/stable
-        sudo apt-get install neovim
-        sudo apt-get install python-dev python-pip python3-dev python3-pip
+        sudo apt install neovim
+        sudo apt install python-dev python-pip python3-dev python3-pip
 
-        sudo apt-get install vim
+        sudo apt install vim
     fi
 
     if $isChromeOS; then
@@ -355,13 +358,13 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     # ripgrep and fzy, for fzf or ctrlp plugins
     # TODO: vimrc can also install this stuff, if it isn't detected to exist
 
-        if $isUbuntu; then
+        if $isDebianLike; then
             sudo add-apt-repository ppa:x4121/ripgrep
-            sudo apt-get update
-            sudo apt-get install ripgrep
+            sudo apt update
+            sudo apt install ripgrep
 
             wget https://github.com/jhawthorn/fzy/releases/download/0.9/fzy_0.9-1_amd64.deb
-            sudo dpkg -i fzy_0.9-1_amd64.deb
+            sudo apt install fzy_0.9-1_amd64.deb
         fi
 
         # --- for neovim-fuzzy
@@ -376,7 +379,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
     # fd for fzf.vim plugin
 
-        if $isUbuntu; then
+        if $isDebianLike; then
             wget https://github.com/sharkdp/fd/releases/download/v7.0.0/fd-musl_7.0.0_amd64.deb
             sudo dpkg -i fd-musl_7.0.0_amd64.deb
         fi
@@ -410,11 +413,12 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         brew install homebrew/cask/atom
     fi
 
-    if $isUbuntu; then
+    if $isDebianLike; then
+        # See https://flight-manual.atom.io/getting-started/sections/installing-atom/#debian-and-ubuntu-debapt
         curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
         sudo sh -c 'echo " >>>>>>>>>>>>>> deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
-        sudo apt-get update
-        sudo apt-get install atom # or atom-beta
+        sudo apt update
+        sudo apt install atom # or atom-beta
     fi
 
     if $isArchLinux; then
@@ -454,8 +458,8 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo pacman --sync --noconfirm firefox
     fi
 
-    if $isUbuntu; then
-        sudo apt-get install firefox
+    if $isDebianLike; then
+        sudo apt install firefox
     fi
 
 # Edge
@@ -465,6 +469,10 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
     if $isArchLinux; then
         echo #TODO MS Edge is not released for Linux yet
+    fi
+
+    if $isDebianLike; then
+        sudo apt install firefox
     fi
 
 # Slack
@@ -480,7 +488,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 # Meteor
 
     if $INSTALL_METEOR; then
-        curl https://install.meteor.com/ | sh
+        npm install --global meteor
     fi
 
 # Gimp
@@ -493,8 +501,8 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo pacman --sync --noconfirm gimp
     fi
 
-    if $isUbuntu; then
-        sudo apt-get install gimp
+    if $isDebianLike; then
+        sudo apt install gimp
     fi
 
 # Inkscape
@@ -507,8 +515,8 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo pacman --sync --noconfirm inkscape
     fi
 
-    if $isUbuntu; then
-        sudo apt-get install inkscape
+    if $isDebianLike; then
+        sudo apt install inkscape
     fi
 
 # inconsolata font
@@ -521,7 +529,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         pamac build --no-confirm nerd-fonts-inconsolata
     fi
 
-    if $isUbuntu; then
+    if $isDebianLike; then
         echo # TODO
     fi
 
@@ -535,7 +543,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         pamac build --no-confirm ttf-spacemono
     fi
 
-    if $isUbuntu; then
+    if $isDebianLike; then
         echo # TODO
     fi
 
@@ -578,8 +586,12 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
 # xvfb (for headless X11 emulation, f.e. to run Karma+Electron headlessly)
 
-    if $isUbuntu; then
-        sudo apt-get install xvfb
+    if $isMacOS; then
+        echo # TODO
+    fi
+
+    if $isDebianLike; then
+        sudo apt install xvfb
     fi
 
     if $isArchLinux; then
@@ -812,7 +824,7 @@ echo
 #     stuff. See how to use it with the Chocolatey package registry:
 #     https://www.reddit.com/r/sysadmin/comments/4gqq6q/add_chocolatey_repo_to_windows_10/
 #   - Customizing PowerShell prompt: https://hodgkins.io/ultimate-powershell-prompt-and-git-setup
-#   - If there's any problems updating apt-get registry cache, see https://github.com/Microsoft/WSL/issues/640
+#   - If there's any problems updating apt's registry cache, see https://github.com/Microsoft/WSL/issues/640
 #
 # PowerShell steps using OneGet:
 #   Install-PackageProvider Chocolatey -Force
