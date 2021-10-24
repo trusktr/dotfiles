@@ -103,15 +103,13 @@ isWindows=false # TODO
     fi
 
 # Clone dotfiles
-# TODO see about managing dotfiles with nix home-manager on all platforms?
 # TODO: consolidate into single repo.
     echo " >>>>>>>>>>>>>> Clone and link dotfiles"
 
     mkdir -p ~/src
     cd ~/src
 
-    git clone git@github.com:trusktr/dotfiles trusktr+dotfiles || true
-    git clone --recursive git@github.com:trusktr/dotfiles2 trusktr+dotfiles2 || true
+    git clone --depth 1 --single-branch git@github.com:trusktr/dotfiles trusktr+dotfiles || true
 
 # link dotfiles
 
@@ -150,7 +148,7 @@ isWindows=false # TODO
     cd ~/src
     git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions || true
     cd ~
-    ln -sf ~/src/trusktr+dotfiles2/.vimrc/.vimrc
+    ln -sf ~/src/trusktr+dotfiles/home/.vimrc
     mkdir -p ~/.config/nvim
     ln -sf ~/.vimrc ~/.config/nvim/init.vim
     mkdir -p ~/.vim
@@ -203,7 +201,7 @@ isWindows=false # TODO
     cd ~/src
     git clone --branch v1.4.1 git@github.com:zsh-users/antigen.git zsh-users+antigen || true
     cd ~
-    ln -sf ~/src/trusktr+dotfiles2/.zshrc
+    ln -sf ~/src/trusktr+dotfiles/home/.zshrc
 
     if $isMacOS; then
         brew install zsh
