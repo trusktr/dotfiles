@@ -226,26 +226,32 @@ isWindows=false # TODO
 
 # Clone common projects I work on
     echo " >>>>>>>>>>>>>> Clone common projects."
+    
+    cloneLUME=true
+    cloneOther=false
 
     mkdir -p ~/src
     pushd ~/src
 
     # LUME
-    git clone --recursive git@github.com:lume/lume.git lume+lume || true
-    # TODO move the rest into lume+lume
-    git clone git@github.com:lume/generator-lume.git lume+generator-lume || true
+    if $cloneLUME; then
+        git clone --recursive git@github.com:lume/lume.git lume+lume || true
+        # TODO move the rest into lume+lume
+        git clone git@github.com:lume/generator-lume.git lume+generator-lume || true
+    fi
 
-    # Other personal projects
-    git clone git@github.com:trusktr/animation-loop.git trusktr+animation-loop || true
-    git clone git@github.com:trusktr/at-at.git trusktr+at-at || true
-    git clone git@github.com:trusktr/parametric.git trusktr+parametric || true
-    git clone git@github.com:trusktr/regexr.git trusktr+regexr || true
-    git clone git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io || true
+    # Other projects
+    if $cloneOther; then
+        git clone git@github.com:trusktr/animation-loop.git trusktr+animation-loop || true
+        git clone git@github.com:trusktr/at-at.git trusktr+at-at || true
+        git clone git@github.com:trusktr/parametric.git trusktr+parametric || true
+        git clone git@github.com:trusktr/regexr.git trusktr+regexr || true
+        git clone git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io || true
+        git clone git@github.com:trusktr/mapapp.git mapapp+mappapp || true
 
-    # Projects I contribute to
-    git clone git@github.com:trusktr/meteor.git meteor+meteor || true
-    git clone git@github.com:trusktr/three.js.git mrdoob+three.js || true
-    git clone git@github.com:trusktr/mapapp.git mapapp+mappapp || true
+        git clone git@github.com:trusktr/meteor.git meteor+meteor || true
+        git clone git@github.com:trusktr/three.js.git mrdoob+three.js || true
+    fi
 
     popd
 
