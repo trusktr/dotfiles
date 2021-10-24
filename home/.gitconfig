@@ -42,6 +42,7 @@
 	sp = stash pop
 	su = status -uno
 	unpushed = log --branches --not --remotes --no-walk --decorate --oneline
+	stuat = status
 ; Enable only if using credential manager.
 ;[credential]
 	;helper = !/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/Cellar/git-credential-manager/1.6.0/libexec/git-credential-manager-1.6.0.jar
@@ -57,3 +58,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[pull]
+	rebase = false
+[init]
+	templatedir = /home/trusktr/.git-template

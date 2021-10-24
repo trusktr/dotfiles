@@ -1,5 +1,3 @@
+# ignore everything, and we'll forcefully add what we need to track, for now
 **/*
-
 !.gitignore
-!vscodevim.vim/
-!alefragnani.project-manager/

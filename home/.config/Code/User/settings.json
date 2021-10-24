@@ -8,7 +8,8 @@
 
     // vim settings {{{
     "vim.normalModeKeyBindings": [
-        { "before": ["<leader>", "f"], "commands": ["workbench.action.toggleSidebarVisibility"] },
+        // TODO, re-enable, but see the one in keybindings.json. This one works only in the editor, but not in other parts of the UI.
+        // { "before": ["<leader>", "f"], "commands": ["workbench.action.toggleSidebarVisibility"] },
 
         // switch tabs
         { "before": ["<c-h>"], "after": ["g", "T"] },
@@ -40,7 +41,6 @@
                     "command": "undo",
                     "args": []
                 }
-
             ]
         },
         {
@@ -76,12 +76,8 @@
     "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
 
-    // disable this because it conflicts with a plugin that makes better indent guides
-    "editor.renderIndentGuides": false,
-
     "liveshare.focusBehavior": "prompt",
     "git.confirmSync": false,
-    "diffEditor.ignoreTrimWhitespace": true,
     "editor.acceptSuggestionOnEnter": "off",
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingQuotes": "never",
@@ -99,7 +95,6 @@
     "workbench.list.openMode": "doubleClick",
     "workbench.list.horizontalScrolling": true,
     "explorer.autoReveal": false,
-    "window.zoomLevel": 0,
     "editor.acceptSuggestionOnCommitCharacter": false,
     "diffEditor.renderSideBySide": true,
     "projectManager.openInNewWindowWhenClickingInStatusBar": true,
@@ -133,17 +128,14 @@
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.colorTheme": "Noctis Minimus",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "vetur.format.enable": false,
     "java.configuration.checkProjectSettingsExclusions": false,
     "atomKeymap.promptV3Features": true,
     "editor.multiCursorModifier": "ctrlCmd",
-    "editor.formatOnPaste": true,
-    "gitlens.codeLens.scopes": [
-        "document"
-    ],
+    "editor.formatOnPaste": false,
+    "gitlens.codeLens.scopes": ["document"],
     "files.autoSave": "off",
     "git.untrackedChanges": "separate",
     "editor.renderControlCharacters": false,
@@ -156,8 +148,49 @@
     "git-graph.muteCommitsThatAreNotAncestorsOfHead": true,
     "typescript.preferences.importModuleSpecifier": "relative",
     "javascript.preferences.importModuleSpecifier": "relative",
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "git-graph.autoCenterCommitDetailsView": false,
     "git.detectSubmodulesLimit": 1000,
-    "git.supportCancellation": true
+    "git.supportCancellation": true,
+    "window.newWindowDimensions": "offset",
+    "terminal.integrated.rendererType": "dom",
+    "todohighlight.isEnable": true,
+    "todo-tree.tree.showScanModeButton": false,
+    "todo-tree.general.statusBar": "current file",
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorTheme": "Base16 Dark Monokai",
+    "prettier.vueIndentScriptAndStyle": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.lintTask.enable": true,
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    "vscode-neovim.mouseSelectionStartVisualMode": true,
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
+    "projectManager.git.baseFolders": [
+        "~/src/",
+        "~/src/lume+lume/packages/"
+    ],
+
+    // ESLINT
+    "eslint.format.enable": true,
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]"
+    ],
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnType": false
 }
