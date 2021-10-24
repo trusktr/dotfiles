@@ -1,3 +1,5 @@
+# TODO try Vim mode for command line, https://github.com/jeffreytse/zsh-vi-mode !
+
 # tell the script to exit immediately on any error rather than continuing to
 # the next command after the command with the error
 set -e
@@ -22,7 +24,7 @@ itExists=false
 if exists ls; then itExists=true; fi
 
 INSTALL_METEOR=true
-INSTALL_WORK_STUFF=true
+INSTALL_WORK_STUFF=false
 JAVA=false
 
 result=`uname`
@@ -62,6 +64,9 @@ isWindows=false # TODO
     fi
 
     if $isArchLinux; then
+        # Set pacman up with the fastest servers.
+        sudo pacman-mirrors --api --protocol https --fasttrack
+
         sudo pacman --sync --refresh --sysupgrade --noconfirm
 
         # TODO install pamac for the AUR (comes shipped by default with Manjaro Linux)
@@ -229,11 +234,9 @@ isWindows=false # TODO
     pushd ~/src
 
     # LUME
-    git clone --recursive git@github.com:infamous/umbrella.git lume+umbrella || true
-    # TODO move the rest into lume+umbrella
-    git clone git@github.com:infamous/glas.git infamous+glas || true
-    git clone git@github.com:infamous/generator-lume.git infamous+generator-lume || true
-    git clone git@github.com:infamous/custom-attributes.git infamous+custom-attributes || true
+    git clone --recursive git@github.com:lume/lume.git lume+lume || true
+    # TODO move the rest into lume+lume
+    git clone git@github.com:lume/generator-lume.git lume+generator-lume || true
 
     # Other personal projects
     git clone git@github.com:trusktr/animation-loop.git trusktr+animation-loop || true
@@ -245,7 +248,7 @@ isWindows=false # TODO
     # Projects I contribute to
     git clone git@github.com:trusktr/meteor.git meteor+meteor || true
     git clone git@github.com:trusktr/three.js.git mrdoob+three.js || true
-    git clone git@github.com:trusktr/harp.gl-meteor.git trusktr+sk8earth-harp || true
+    # git clone git@github.com:trusktr/harp.gl-meteor.git trusktr+sk8earth-harp || true // TODO mapapp
 
     popd
 
@@ -494,6 +497,20 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo apt-get install gimp
     fi
 
+# Inkscape
+
+    if $isMacOS; then
+        brew cask install inkscape
+    fi
+
+    if $isArchLinux; then
+        sudo pacman --sync --noconfirm inkscape
+    fi
+
+    if $isUbuntu; then
+        sudo apt-get install inkscape
+    fi
+
 # inconsolata font
 
     if $isMacOS; then
@@ -668,6 +685,12 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo pacman --sync --noconfirm gestures
     fi
 
+    # Add my user to the input group
+    # TODO not needed for Pop_os? Needed for Manjaro? Needs a conditional.
+    # if $isLinux; then
+    #     sudo usermod --append --groups=input `whoami`
+    # fi
+
 # macOS Only
 
     # GNU Coreutils (prefixed with g in OSX, already present in Linux)
@@ -747,7 +770,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
         if $isArchLinux; then
             sudo pacman --sync --noconfirm docker virtualbox aws-cli zeromq pkg-config cmake kotlin protobuf
-            pamac build --no-confirm kitematic zoom
+            pamac build --no-confirm kitematic zoom conan
         fi
 
         mkdir -p ~/src
