@@ -227,27 +227,39 @@ isWindows=false # TODO
 # Clone common projects I work on
     echo " >>>>>>>>>>>>>> Clone common projects."
     
-    cloneLUME=true
-    cloneOther=false
+    cloneCurrentProjects=true
+    cloneOtherProjects=false
 
     mkdir -p ~/src
     pushd ~/src
 
     # LUME
-    if $cloneLUME; then
+    if $cloneCurrentProjects; then
         git clone --recursive git@github.com:lume/lume.git lume+lume || true
-        # TODO move the rest into lume+lume
-        git clone git@github.com:lume/generator-lume.git lume+generator-lume || true
+        git clone --recursive git@github.com:aspkg/website.git aspkg+website || true
+        git clone --recursive git@github.com:aspkg/ecmassembly.git aspkg+ecmassembly || true
+        git clone --recursive git@github.com:aspkg/website.git aspkg+website || true
+        git clone --recursive git@github.com:lume/asdom.git lume+asdom || true
+        git clone --recursive git@github.com:lume/create.git lume+create || true
+        git clone --recursive git@github.com:lume/lume.community.git lume+lume.community || true
+        git clone --recursive git@github.com:tweenjs/tween.js.git tweenjs+tween.js || true
+        git clone --recursive git@github.com:felixmariotto/three-mesh-ui.git felixmariotto+three-mesh-ui || true
+        git clone --recursive git@github.com:trusktr/mapapp.git mapapp+mappapp || true
+        git clone --recursive git@github.com:trusktr/bison-game.git trusktr+bison-game || true
     fi
 
     # Other projects
-    if $cloneOther; then
+    if $cloneOtherProjects; then
+        # TODO move the rest into lume+lume
+        git clone git@github.com:lume/generator-lume.git lume+generator-lume || true
+
         git clone git@github.com:trusktr/animation-loop.git trusktr+animation-loop || true
         git clone git@github.com:trusktr/at-at.git trusktr+at-at || true
         git clone git@github.com:trusktr/parametric.git trusktr+parametric || true
         git clone git@github.com:trusktr/regexr.git trusktr+regexr || true
         git clone git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io || true
-        git clone git@github.com:trusktr/mapapp.git mapapp+mappapp || true
+
+        git clone --recursive git@github.com:trusktr/littlewargame-maps.git trusktr+littlewargame-maps || true
 
         git clone git@github.com:trusktr/meteor.git meteor+meteor || true
         git clone git@github.com:trusktr/three.js.git mrdoob+three.js || true
@@ -607,7 +619,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
 # Java
 
-    if $INSTALL_WORK_STUFF || $JAVA; then
+    if $JAVA; then
 
         if $isMacOS; then
             # latest version, as `java` command
@@ -757,57 +769,26 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
         fi
 
-# mapper.ai stuff
+# Work stuff
 
     if $INSTALL_WORK_STUFF; then
-        echo " >>>>>>>>>>>>>> Install Velodyne stuff."
-
-        if $isMacOS; then
-            brew cask install docker
-            brew cask install kitematic # to manage docker images
-            brew cask install virtualbox # to run docker VMs in
-            brew install awscli
-            brew cask install sketch
-            brew cask install microsoft-teams
-
-            # for building node zmq package
-            brew install pkg-config
-            brew install zeromq
-
-            # needed for Perception
-            brew install cmake
-
-            # Mapper Cloud Services
-            brew install kotlin
-            brew cask install oracle-jdk # different than java and java8 packages?
-
-            brew install protobuf
-        fi
-
-        if $isArchLinux; then
-            sudo pacman --sync --noconfirm docker virtualbox aws-cli zeromq pkg-config cmake kotlin protobuf
-            pamac build --no-confirm kitematic zoom conan
-        fi
+        echo " >>>>>>>>>>>>>> Install work stuff."
 
         mkdir -p ~/src
         pushd ~/src
 
-        git clone git@bitbucket.org:velodyne_sw/autodrive.git velodyne_sw+autodrive || true
-        git clone git@bitbucket.org:velodyne_sw/mapper-cloud-config.git velodyne_sw+mapper-cloud-config || true
-        git clone git@bitbucket.org:velodyne_sw/mapper-cloud-services.git velodyne_sw+mapper-cloud-services || true
-        git clone git@bitbucket.org:velodyne_sw/mapper-meridian.git velodyne_sw+mapper-meridian || true
-        git clone git@bitbucket.org:velodyne_sw/mapper-public-website.git velodyne_sw+mapper-public-website || true
-        git clone git@bitbucket.org:velodyne_sw/mapper-replay.git velodyne_sw+mapper-replay || true
-        git clone git@bitbucket.org:velodyne_sw/mapper-saffron.git velodyne_sw+mapper-saffron || true
-        git clone git@bitbucket.org:velodyne_sw/perception.git velodyne_sw+perception || true
-        git clone git@bitbucket.org:velodyne_sw/semantic-mapping-and-localization.git velodyne_sw+semantic-mapping-and-localization || true
-        git clone git@bitbucket.org:velodyne_sw/vella-data-models.git velodyne_sw+vella-data-models || true
-        git clone git@bitbucket.org:velodyne_sw/vella-frontend-projects.git velodyne_sw+vella-frontend-projects --recursive || true
-        git clone git@bitbucket.org:velodyne_sw/vella-mantis-camera-client.git velodyne_sw+vella-mantis-camera-client || true
-        git clone git@bitbucket.org:velodyne_sw/vella-object-detection.git velodyne_sw+vella-object-detection || true
-        git clone git@bitbucket.org:velodyne_sw/vella-offline-data-processing.git velodyne_sw+vella-offline-data-processing || true
-        git clone git@bitbucket.org:velodyne_sw/vella-python-utils.git velodyne_sw+vella-python-utils || true
-        git clone git@bitbucket.org:velodyne_sw/vellaviz.git velodyne_sw+vellaviz || true
+        git clone git@bitbucket.org:Abster101/apres_openmct.git nasa+apres_openmct || true
+        pushd nasa+apres_openmct
+        git remote add trusktr git@github.com:trusktr/apres_openmct.git
+        git fetch && git fetch trusktr
+        popd
+
+        cloneSomeWorkStuff=false
+
+        if $cloneSomeWorkStuff; then
+            git clone git@bitbucket.org:trusktr/isaac_umbrella.git nasa+isaac+isaac_umbrella || true
+            git clone git@bitbucket.org:nasa/openmct.git nasa+openmct || true
+        fi
 
         popd
 
