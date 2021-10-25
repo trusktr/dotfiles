@@ -1,0 +1,22 @@
+name: build and package
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-package:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install
+      - run: npm install -g vsce
+      - run: npm install -g antlr4ts-cli
+      - run: antlr4ts -o "../src/_generated" "AntlrGlslLexer.g4"
+        working-directory: ./syntaxes
+      - run: antlr4ts -o "../src/_generated" -no-listener -visitor "AntlrGlslParser.g4"
+        working-directory: ./syntaxes
+      - run: vsce package
