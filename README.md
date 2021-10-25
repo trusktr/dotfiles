@@ -11,7 +11,7 @@ getting myself set up on a new machine.
 - Then:
 
   ```sh
-  curl https://raw.githubusercontent.com/trusktr/dotfiles/master/setup.sh | sh
+  curl https://raw.githubusercontent.com/trusktr/dotfiles/master/setup.sh | bash
   ```
 
 Notes

@@ -11,6 +11,7 @@ set -x
 trap "exit" INT
 
 function quiet() {
+    # run a command without any output
     "$@" &>/dev/null
 }
 
@@ -84,7 +85,11 @@ isWindows=false # TODO
     fi
 
     if $isDebianLike; then
-        sudo apt update
+        # Pop_os comes with libreoffice. Remove it before upgrading so we don't waste time upgrading it just to remove it.
+        sudo apt remove --yes `apt list --installed | grep libreoffice | cut -d / -f 1 | xargs`
+
+        sudo apt update --yes
+        sudo apt upgrade --yes
     fi
 
 # Git
@@ -99,7 +104,7 @@ isWindows=false # TODO
     fi
 
     if $isDebianLike; then
-        sudo apt install git
+        sudo apt install --yes git
     fi
 
 # Clone dotfiles
@@ -217,7 +222,7 @@ isWindows=false # TODO
     fi
 
     if $isDebianLike; then
-        sudo apt install zsh
+        sudo apt install --yes zsh
     fi
 
     # Set the default shell to zsh
@@ -281,7 +286,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     # TODO macOS
 
     if $isDebianLike; then
-        sudo apt install libnotify-bin
+        sudo apt install --yes libnotify-bin
     fi
 
     # Already installed in Manjaro Linux
@@ -309,7 +314,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isDebianLike; then
-        sudo apt install python
+        sudo apt install --yes python
     fi
 
     if $isChromeOS; then
@@ -327,17 +332,22 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isDebianLike; then
-        sudo apt install nodejs npm
-        #sudo apt install nodejs-legacy # if needed
+        sudo apt install --yes nodejs npm
+        #sudo apt install --yes nodejs-legacy # if needed
     fi
 
     if $isChromeOS; then
         crew install nodejs
     fi
     
-    # Get the latest
-    npm i -g npm
+    # Get the latest npm and node
+    # First update Node, in case a new npm would break on an older version of node.
+    npm install --global n
+    export N_PREFIX=~/.n-node-versions
     n latest
+    # Then update npm.
+    npm install --global npm
+    npm install --global npm # one more time in case the new npm improves the installation layout compared to the last one.
 
 # Vim/Neovim
 
@@ -353,12 +363,11 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isDebianLike; then
-        # sudo apt install software-properties-common # on older Ubuntus
-        sudo add-apt-repository ppa:neovim-ppa/stable
-        sudo apt install neovim
-        sudo apt install python-dev python-pip python3-dev python3-pip
+        sudo add-apt-repository --yes ppa:neovim-ppa/unstable
+        sudo apt install --yes neovim
+        sudo apt install --yes python3-dev python3-pip
 
-        sudo apt install vim
+        sudo apt install --yes vim
     fi
 
     if $isChromeOS; then
@@ -376,12 +385,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     # TODO: vimrc can also install this stuff, if it isn't detected to exist
 
         if $isDebianLike; then
-            sudo add-apt-repository ppa:x4121/ripgrep
-            sudo apt update
-            sudo apt install ripgrep
-
-            wget https://github.com/jhawthorn/fzy/releases/download/0.9/fzy_0.9-1_amd64.deb
-            sudo apt install fzy_0.9-1_amd64.deb
+            sudo apt install --yes ripgrep fzy
         fi
 
         # --- for neovim-fuzzy
@@ -397,8 +401,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     # fd for fzf.vim plugin
 
         if $isDebianLike; then
-            wget https://github.com/sharkdp/fd/releases/download/v7.0.0/fd-musl_7.0.0_amd64.deb
-            sudo dpkg -i fd-musl_7.0.0_amd64.deb
+            sudo apt install --yes fd-find
         fi
 
         if $isMacOS; then
@@ -426,20 +429,24 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
 # Atom editor (atom.io)
 
-    if $isMacOS; then
-        brew install homebrew/cask/atom
-    fi
+    installAtom=false
 
-    if $isDebianLike; then
-        # See https://flight-manual.atom.io/getting-started/sections/installing-atom/#debian-and-ubuntu-debapt
-        curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-        sudo sh -c 'echo " >>>>>>>>>>>>>> deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
-        sudo apt update
-        sudo apt install atom # or atom-beta
-    fi
+    if $installAtom; then
+        if $isMacOS; then
+            brew install homebrew/cask/atom
+        fi
 
-    if $isArchLinux; then
-        sudo pacman --sync --noconfirm atom
+        if $isDebianLike; then
+            # See https://flight-manual.atom.io/getting-started/sections/installing-atom/#debian-and-ubuntu-debapt
+            curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+            sudo sh -c 'echo " >>>>>>>>>>>>>> deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+            sudo apt update --yes
+            sudo apt install --yes atom # or atom-beta
+        fi
+
+        if $isArchLinux; then
+            sudo pacman --sync --noconfirm atom
+        fi
     fi
 
 # Visual Studio Code (VS Code)
@@ -452,6 +459,10 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo pacman --sync --noconfirm code # non-proprietary build
     fi
 
+    if $isDebianLike; then
+        sudo apt install --yes code # pop_os only, not Ubuntu
+    fi
+
 # Chrome
 
     # TODO a better way to install in macOS without popping open a window?
@@ -461,6 +472,10 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
     if $isArchLinux; then
         sudo pacman --sync --noconfirm chromium
+    fi
+
+    if $isDebianLike; then
+        sudo apt install --yes google-chrome-stable # pop_os only, not Ubuntu
     fi
 
     # If we're already in Chrome OS, well, uh....
@@ -476,10 +491,11 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isDebianLike; then
-        sudo apt install firefox
+        sudo apt install --yes firefox
     fi
 
 # Edge
+
     if $isMacOS; then
         brew cask install microsoft-edge-dev
     fi
@@ -489,7 +505,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isDebianLike; then
-        sudo apt install firefox
+        echo # TODO
     fi
 
 # Slack
@@ -500,6 +516,10 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
     if $isArchLinux; then
         pamac build --no-confirm slack-desktop
+    fi
+
+    if $isDebianLike; then
+        sudo apt install --yes slack-desktop
     fi
 
 # Meteor
@@ -519,7 +539,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isDebianLike; then
-        sudo apt install gimp
+        sudo apt install --yes gimp
     fi
 
 # Inkscape
@@ -533,7 +553,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isDebianLike; then
-        sudo apt install inkscape
+        sudo apt install --yes inkscape
     fi
 
 # inconsolata font
@@ -561,7 +581,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isDebianLike; then
-        echo # TODO
+        echo # TODO install typecatcher or fontfinder, explained here https://linoxide.com/google-fonts-ubuntu/
     fi
 
 # Adobe
@@ -587,6 +607,10 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo pacman --sync --noconfirm meld
     fi
 
+    if $isDebianLike; then
+        sudo apt install --yes meld
+    fi
+
 # Haiku.ai
 
     if $isMacOS; then
@@ -608,7 +632,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     if $isDebianLike; then
-        sudo apt install xvfb
+        sudo apt install --yes xvfb
     fi
 
     if $isArchLinux; then
@@ -642,26 +666,32 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 #### Git GUIs
 
     # GitKraken
+    
+        installGitKraken=false
+        
+        if $installGitKraken; then
 
-        if $isMacOS; then
-            brew cask install gitkraken
-        fi
+            if $isMacOS; then
+                brew cask install gitkraken
+            fi
 
-        if $isArchLinux; then
-            pamac build --no-confirm gitkraken
+            if $isArchLinux; then
+                pamac build --no-confirm gitkraken
+            fi
+
+            if $isDebianLike; then
+                wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
+                sudo dpkg -i gitkraken-amd64.deb || true
+                rm gitkraken-amd64.deb
+            fi
+            
         fi
 
 # Spotify
 
-    if $isMacOS; then
-        brew cask install spotify
-    fi
+    # Obsolete: Get the PWA web app.
 
-    if $isArchLinux; then
-        pamac build --no-confirm spotify
-    fi
-
-# htop
+# htop, bashtop
 
     if $isMacOS; then
         brew install htop
@@ -669,6 +699,10 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
     if $isArchLinux; then
         sudo pacman --sync --noconfirm htop
+    fi
+
+    if $isDebianLike; then
+        sudo apt install --yes htop bashtop
     fi
 
 # Blender (blender.org)
@@ -679,6 +713,10 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
     if $isArchLinux; then
         sudo pacman --sync --noconfirm blender
+    fi
+
+    if $isDebianLike; then
+        sudo apt install --yes blender
     fi
 
 # Watchman (installing this prevents problems with programs that watch for file
@@ -692,6 +730,10 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo pacman --sync --noconfirm watchman
     fi
 
+    if $isDebianLike; then
+        sudo apt install --yes watchman
+    fi
+
 # enable or install `locate` command
 
     if $isMacOS; then
@@ -702,10 +744,18 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         sudo pacman --sync --noconfirm mlocate
     fi
 
+    if $isDebianLike; then
+        sudo apt install --yes mlocate
+    fi
+
 # Alacritty Terminal Emulator
 
     if $isArchLinux; then
         sudo pacman --sync --noconfirm alacritty
+    fi
+
+    if $isDebianLike; then
+        sudo apt install --yes alacritty
     fi
 
 # Linux Only
@@ -715,7 +765,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     fi
 
     # Add my user to the input group
-    # TODO not needed for Pop_os? Needed for Manjaro? Needs a conditional.
+    # TODO needed for Pop_os? Needed for Manjaro? Needs a conditional.
     # if $isLinux; then
     #     sudo usermod --append --groups=input `whoami`
     # fi
@@ -793,6 +843,12 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
         popd
 
+    fi
+    
+# cleanup
+    
+    if $isDebianLike; then
+        sudo apt autoremove --yes
     fi
 
 echo
