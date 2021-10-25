@@ -160,7 +160,7 @@
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.colorTheme": "Base16 Dark Monokai",
+    "workbench.colorTheme": "Base16 Dark Chalk",
     "prettier.vueIndentScriptAndStyle": true,
     "eslint.alwaysShowStatus": true,
     "eslint.lintTask.enable": true,
