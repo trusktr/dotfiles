@@ -196,7 +196,7 @@ if glob(s:VIMROOT."/bundle/") != ""
 
                     " COMPLETION/SNIPPETS
                         Plug 'vim-scripts/SyntaxComplete', {'commit': '192a6c160a4f8968182952dd711e9006e76ae0da'}
-                        Plug 'tomtom/tlib_vim', {'commit': 'a071b6d41b20069a3520e0d101194a752968973b'} " required by garbas/vim-snipmate
+                        Plug 'tomtom/tlib_vim', {'commit': '70c4e222464020edc2809c932b488daaf891eeef'} " required by garbas/vim-snipmate
                         Plug 'marcweber/vim-addon-mw-utils', {'commit': '6aaf4fee472db7cbec6d2c8eea69fdf3a8f8a75d'} " required by garbas/vim-snipmate
                         Plug 'garbas/vim-snipmate', {'commit': 'b80367fefc2188c9d6c4a9eb1830360b09e13476'}
                         Plug 'honza/vim-snippets', {'commit': 'b62dfce8449d8a8196720ddd3cfecbca8bb7fe45'}
@@ -676,7 +676,7 @@ if glob(s:VIMROOT."/bundle/") != ""
 
                 " BEGIN TEXT_NAVIGATION {
                     " works in VS Code too.
-                    Plug 'asvetliakov/vim-easymotion', {'commit': '05122f08c6a553992f7b0a9ad88016a89f51548a'}
+                    Plug 'asvetliakov/vim-easymotion', {'commit': '34fb922c3cf5e88cff3f0824005e219dce83ea6f'}
 
                     " BEGIN BOOKMARKS {
                     " Not needed in VS Code
@@ -743,7 +743,7 @@ if glob(s:VIMROOT."/bundle/") != ""
                 " Not needed in VS Code
                 " TODO VSCODE: enable only the text navigation features in VS Code
                 if !s:isVSCodeNeoVim
-                    Plug 'tpope/vim-fugitive', {'commit': '0e35c9bbc78159318e7b7ffd228f09a96afb8fde'}
+                    Plug 'tpope/vim-fugitive', {'commit': '30933405bbc77877d714260f4ad1cd4dadf34532'}
 
                     " TODO: make Git work like Gpedit! for fugitive.
                         cabbrev git Gpedit!
