@@ -117,6 +117,7 @@ isWindows=false # TODO
 
     ln -sf ~/src/trusktr+dotfiles/home/coffeelint.json
     ln -sf ~/src/trusktr+dotfiles/home/.gitconfig
+    ln -sf ~/src/trusktr+dotfiles/home/.git-template
     ln -sf ~/src/trusktr+dotfiles/home/.editorconfig
     ln -sf ~/src/trusktr+dotfiles/home/.jshintrc
     ln -sf ~/src/trusktr+dotfiles/home/.Xmodmap

@@ -61,4 +61,4 @@
 [pull]
 	rebase = false
 [init]
-	templatedir = /home/trusktr/.git-template
+	templatedir = ~/.git-template
