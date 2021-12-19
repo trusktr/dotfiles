@@ -141,8 +141,9 @@ isWindows=false # TODO
 
     if $isLinux; then
         ln -sf ~/src/trusktr+dotfiles/home/.config/alacritty
-        rm -rf dconf
-        ln -sf ~/src/trusktr+dotfiles/home/.config/dconf
+        # TODO set dconf settings using commands, so as not to copy superfluous settings from OS to OS.
+        # rm -rf dconf
+        # ln -sf ~/src/trusktr+dotfiles/home/.config/dconf
         rm -rf gtk-2.0
         ln -sf ~/src/trusktr+dotfiles/home/.config/gtk-2.0
         rm -rf gtk-3.0
