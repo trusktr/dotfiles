@@ -102,7 +102,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.renderLineHighlight": "all",
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "Monokai Pro Icons",
     "material-icon-theme.activeIconPack": "react",
     "workbench.colorCustomizations": {},
     "editor.quickSuggestions": {
@@ -134,7 +134,7 @@
     "java.configuration.checkProjectSettingsExclusions": false,
     "atomKeymap.promptV3Features": true,
     "editor.multiCursorModifier": "ctrlCmd",
-    "editor.formatOnPaste": false,
+    "editor.formatOnPaste": true,
     "gitlens.codeLens.scopes": ["document"],
     "files.autoSave": "off",
     "git.untrackedChanges": "separate",
@@ -148,7 +148,7 @@
     "git-graph.muteCommitsThatAreNotAncestorsOfHead": true,
     "typescript.preferences.importModuleSpecifier": "relative",
     "javascript.preferences.importModuleSpecifier": "relative",
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "git-graph.autoCenterCommitDetailsView": false,
     "git.detectSubmodulesLimit": 1000,
     "git.supportCancellation": true,
@@ -160,7 +160,7 @@
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.colorTheme": "Base16 Dark Chalk",
+    "workbench.colorTheme": "Monokai Pro",
     "prettier.vueIndentScriptAndStyle": true,
     "eslint.alwaysShowStatus": true,
     "eslint.lintTask.enable": true,
@@ -192,5 +192,5 @@
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.formatOnType": false
+    "editor.formatOnType": true
 }
