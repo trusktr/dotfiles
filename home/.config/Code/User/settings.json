@@ -192,5 +192,8 @@
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.formatOnType": true
+    "editor.formatOnType": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.guides.highlightActiveIndentation": false
 }

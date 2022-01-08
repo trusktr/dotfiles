@@ -354,8 +354,10 @@
 		}
 	],
 	"__metadata": {
+		"installedTimestamp": 1640844188147,
 		"id": "f38fdd1c-7ee2-47b1-90b9-77ecc90d4bff",
 		"publisherId": "74365139-d24d-4d0a-8377-c28643f7a216",
-		"publisherDisplayName": "Microsoft"
+		"publisherDisplayName": "Microsoft",
+		"isPreReleaseVersion": false
 	}
 }

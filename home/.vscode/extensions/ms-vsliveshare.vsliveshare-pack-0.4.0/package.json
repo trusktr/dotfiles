@@ -37,8 +37,10 @@
 		"ms-vsliveshare.vsliveshare-audio"
 	],
 	"__metadata": {
+		"installedTimestamp": 1640844188497,
 		"id": "87caf16b-d487-45c0-877d-573fe319b015",
 		"publisherId": "74365139-d24d-4d0a-8377-c28643f7a216",
-		"publisherDisplayName": "Microsoft"
+		"publisherDisplayName": "Microsoft",
+		"isPreReleaseVersion": false
 	}
 }
