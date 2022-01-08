@@ -34,6 +34,9 @@ if [[ "$result" == 'Darwin' ]]; then isMacOS=true; fi
 isLinux=false
 if [[ "$result" == 'Linux' ]]; then isLinux=true; fi
 
+isPopOS=false
+if echo $result | grep pop-os; then isPopOS=true; fi
+
 echo detect pacman
 
 isArchLinux=false
@@ -142,22 +145,15 @@ isWindows=false # TODO
     if $isLinux; then
         ln -sf ~/src/trusktr+dotfiles/home/.config/alacritty
 
-        # TODO load dconf settings from a file, so as not to copy superfluous
-        # settings from OS to OS.
-        #
-        # use "dconf dump / > one.conf", edit setings, then "dconf dump / >
-        # two.conf", then diff the files to see which lines to save into a file
-        # that we'll load instead of linking the whole dconf database.
-        #
-        # rm -rf dconf
-        # ln -sf ~/src/trusktr+dotfiles/home/.config/dconf
-
-        rm -rf gtk-2.0
-        ln -sf ~/src/trusktr+dotfiles/home/.config/gtk-2.0
-        rm -rf gtk-3.0
-        ln -sf ~/src/trusktr+dotfiles/home/.config/gtk-3.0
-        rm -rf gtk-4.0
-        ln -sf ~/src/trusktr+dotfiles/home/.config/gtk-4.0
+        if $isPopOS; then true;
+        else
+            rm -rf gtk-2.0
+            ln -sf ~/src/trusktr+dotfiles/home/.config/gtk-2.0
+            rm -rf gtk-3.0
+            ln -sf ~/src/trusktr+dotfiles/home/.config/gtk-3.0
+            rm -rf gtk-4.0
+            ln -sf ~/src/trusktr+dotfiles/home/.config/gtk-4.0
+        fi
     fi
 
     cd ~/src
@@ -241,7 +237,7 @@ isWindows=false # TODO
 
 # Clone common projects I work on
     echo " >>>>>>>>>>>>>> Clone common projects."
-    
+
     cloneCurrentProjects=true
     cloneOtherProjects=false
 
@@ -261,6 +257,10 @@ isWindows=false # TODO
         git clone --recursive git@github.com:felixmariotto/three-mesh-ui.git felixmariotto+three-mesh-ui || true
         git clone --recursive git@github.com:trusktr/mapapp.git mapapp+mappapp || true
         git clone --recursive git@github.com:trusktr/bison-game.git trusktr+bison-game || true
+        git clone --recursive git@github.com:davedbase/solid-primitives.git davedbase+solid-primitives || true
+        git clone --recursive git@github.com:tjjfvi/escad.git tjjfvi+escad || true
+        git clone --recursive git@github.com:XRFoundation/XREngine.git XRFoundation+XREngine || true
+        git clone --recursive git@github.com:trusktr/animation-loop.git trusktr+animation-loop || true
     fi
 
     # Other projects
@@ -348,11 +348,12 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     if $isChromeOS; then
         crew install nodejs
     fi
-    
+
     # Get the latest npm and node
     # First update Node, in case a new npm would break on an older version of node.
     npm install --global n
     export N_PREFIX=~/.n-node-versions
+    export PATH=~/.npm-packages/bin:$PATH # needed so that binaries installed are available for ths script. After install, zshrc has this in PATH.
     n latest
     # Then update npm.
     npm install --global npm
@@ -611,7 +612,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     if $isMacOS; then
         brew cask install meld
     fi
-    
+
     if $isArchLinux; then
         sudo pacman --sync --noconfirm meld
     fi
@@ -675,9 +676,9 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 #### Git GUIs
 
     # GitKraken
-    
+
         installGitKraken=false
-        
+
         if $installGitKraken; then
 
             if $isMacOS; then
@@ -693,7 +694,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
                 sudo dpkg -i gitkraken-amd64.deb || true
                 rm gitkraken-amd64.deb
             fi
-            
+
         fi
 
 # Spotify
@@ -769,15 +770,97 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
 # Linux Only
 
+    # Increase the number of filesystem watchers allowed. See https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
+    if $isArchLinux; then
+        # For Arch see https://gist.github.com/tbjgolden/c53ca37f3bc2fab8c930183310918c8c
+        echo
+    else
+        sudo cat fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf
+        sudo sysctl -p
+    fi
+
     if $isArchLinux; then
         sudo pacman --sync --noconfirm gestures
     fi
+
+    # Gnome Tweak Tool, for additional settings.
+
+        if $isArchLinux; then
+            sudo pacman --sync --noconfirm gnome-tweaks
+        fi
+
+        if $isDebianLike; then
+            sudo apt install --yes gnome-tweak-tool
+        fi
 
     # Add my user to the input group
     # TODO needed for Pop_os? Needed for Manjaro? Needs a conditional.
     # if $isLinux; then
     #     sudo usermod --append --groups=input `whoami`
     # fi
+
+    # Gnome Settings
+
+        dconf load / <<- GNOME_SETTINGS
+
+        [org/gnome/desktop/input-sources]
+        xkb-options=['ctrl:swapcaps']
+
+        [org/gnome/desktop/interface]
+        clock-show-weekday=true
+        enable-hot-corners=true
+        show-battery-percentage=true
+
+        [org/gnome/desktop/peripherals/mouse]
+        natural-scroll=true
+
+        [org/gnome/desktop/peripherals/touchpad]
+        disable-while-typing=false
+        natural-scroll=true
+        speed=0.33823529411764697
+
+        [org/gnome/desktop/wm/preferences]
+        button-layout='appmenu:minimize,maximize,close'
+        resize-with-right-button=false
+        visual-bell=true
+
+        [org/gnome/settings-daemon/plugins/power]
+        power-button-action='suspend'
+        sleep-inactive-ac-timeout=2700
+        sleep-inactive-ac-type='suspend'
+        sleep-inactive-battery-timeout=900
+        sleep-inactive-battery-type='suspend'
+
+        [org/gnome/nautilus/icon-view]
+        captions=['size', 'date_modified', 'none']
+
+        [org/gnome/nautilus/list-view]
+        default-zoom-level='small'
+        use-tree-view=true
+
+        [org/gnome/nautilus/preferences]
+        default-folder-viewer='list-view'
+
+GNOME_SETTINGS
+
+        if $isPopOS; then
+            dconf load / <<- POP_OS_SETTINGS
+
+            [org/gnome/shell]
+            disabled-extensions=['pop-cosmic@system76.com', 'cosmic-workspaces@system76.com', 'cosmic-dock@system76.com']
+            favorite-apps=@as []
+
+            [org/gnome/shell/extensions/dash-to-dock]
+            click-action='minimize-or-previews'
+            dash-max-icon-size=128
+            dock-fixed=false
+            intellihide=true
+
+            [org/gnome/shell/extensions/pop-shell]
+            active-hint=true
+
+POP_OS_SETTINGS
+        fi
 
 # macOS Only
 
@@ -853,9 +936,9 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
         popd
 
     fi
-    
+
 # cleanup
-    
+
     if $isDebianLike; then
         sudo apt autoremove --yes
     fi
