@@ -1,6 +1,8 @@
 # TODO try Vim mode for command line, https://github.com/jeffreytse/zsh-vi-mode !
 #
-# TODO notify-send alternative for macOS for OS-level terminal notifications
+# TODO notify-send alternative for macOS for OS-level terminal notifications.
+# https://www.google.com/search?q=homebrew+notify-send
+# https://formulae.brew.sh/formula/terminal-notifier
 
 # Features
 
