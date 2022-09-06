@@ -1,4 +1,21 @@
 # TODO try Vim mode for command line, https://github.com/jeffreytse/zsh-vi-mode !
+#
+# TODO notify-send alternative for macOS for OS-level terminal notifications
+
+# Features
+
+    installAtom=false
+    installSlack=false
+    installAdobe=false
+    installGoogleDrive=false
+    INSTALL_METEOR=true
+    INSTALL_WORK_STUFF=false
+    JAVA=false
+    installGitKraken=false
+    installBlender=false
+
+    cloneCurrentProjects=true
+    cloneOtherProjects=false
 
 # tell the script to exit immediately on any error rather than continuing to
 # the next command after the command with the error
@@ -21,21 +38,14 @@ function exists() {
 
 echo " >>>>>>>>>>>>>> Detecting environment."
 
-itExists=false
-if exists ls; then itExists=true; fi
-
-INSTALL_METEOR=true
-INSTALL_WORK_STUFF=false
-JAVA=false
-
-result=`uname`
+unameResult=`uname`
 isMacOS=false
-if [[ "$result" == 'Darwin' ]]; then isMacOS=true; fi
+if [[ "$unameResult" == 'Darwin' ]]; then isMacOS=true; fi
 isLinux=false
-if [[ "$result" == 'Linux' ]]; then isLinux=true; fi
+if [[ "$unameResult" == 'Linux' ]]; then isLinux=true; fi
 
 isPopOS=false
-if echo $result | grep pop-os; then isPopOS=true; fi
+if echo $unameResult | grep pop-os; then isPopOS=true; fi
 
 echo detect pacman
 
@@ -44,8 +54,9 @@ if exists pacman; then isArchLinux=true; fi
 
 echo detect apt
 
+# detecting apt-get instead of apt because new macOS comes with an apt command
 isDebianLike=false
-if exists apt; then isDebianLike=true; fi
+if exists apt-get; then isDebianLike=true; fi
 
 echo detect crouton
 
@@ -61,8 +72,12 @@ isWindows=false # TODO
 
     if $isMacOS; then
         if ! exists brew; then
-            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+            echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/trusktr/.zprofile
+            eval "$(/opt/homebrew/bin/brew shellenv)"
         fi
+
         brew tap homebrew/cask # add community packages
         brew tap homebrew/cask-fonts # add community fonts
     fi
@@ -111,7 +126,6 @@ isWindows=false # TODO
     fi
 
 # Clone dotfiles
-# TODO: consolidate into single repo.
     echo " >>>>>>>>>>>>>> Clone and link dotfiles"
 
     mkdir -p ~/src
@@ -215,7 +229,7 @@ isWindows=false # TODO
     ln -sf ~/src/trusktr+dotfiles/home/.zshrc
 
     if $isMacOS; then
-        brew install zsh
+        brew install zsh || true
     fi
 
     if $isArchLinux; then
@@ -238,9 +252,6 @@ isWindows=false # TODO
 # Clone common projects I work on
     echo " >>>>>>>>>>>>>> Clone common projects."
 
-    cloneCurrentProjects=true
-    cloneOtherProjects=false
-
     mkdir -p ~/src
     pushd ~/src
 
@@ -258,26 +269,24 @@ isWindows=false # TODO
         git clone --recursive git@github.com:trusktr/mapapp.git mapapp+mappapp || true
         git clone --recursive git@github.com:trusktr/bison-game.git trusktr+bison-game || true
         git clone --recursive git@github.com:davedbase/solid-primitives.git davedbase+solid-primitives || true
-        git clone --recursive git@github.com:tjjfvi/escad.git tjjfvi+escad || true
-        git clone --recursive git@github.com:XRFoundation/XREngine.git XRFoundation+XREngine || true
         git clone --recursive git@github.com:trusktr/animation-loop.git trusktr+animation-loop || true
+        git clone --recursive git@github.com:lume/generator-lume.git lume+generator-lume || true
+        git clone --recursive git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io || true
     fi
 
     # Other projects
     if $cloneOtherProjects; then
-        # TODO move the rest into lume+lume
-        git clone git@github.com:lume/generator-lume.git lume+generator-lume || true
+        git clone --recursive git@github.com:tjjfvi/escad.git tjjfvi+escad || true
+        git clone --recursive git@github.com:XRFoundation/XREngine.git XRFoundation+XREngine || true
 
-        git clone git@github.com:trusktr/animation-loop.git trusktr+animation-loop || true
-        git clone git@github.com:trusktr/at-at.git trusktr+at-at || true
-        git clone git@github.com:trusktr/parametric.git trusktr+parametric || true
-        git clone git@github.com:trusktr/regexr.git trusktr+regexr || true
-        git clone git@github.com:trusktr/trusktr.io.git trusktr+trusktr.io || true
+        git clone --recursive git@github.com:trusktr/at-at.git trusktr+at-at || true
+        git clone --recursive git@github.com:trusktr/parametric.git trusktr+parametric || true
+        git clone --recursive git@github.com:trusktr/regexr.git trusktr+regexr || true
 
         git clone --recursive git@github.com:trusktr/littlewargame-maps.git trusktr+littlewargame-maps || true
 
-        git clone git@github.com:trusktr/meteor.git meteor+meteor || true
-        git clone git@github.com:trusktr/three.js.git mrdoob+three.js || true
+        git clone --recursive git@github.com:trusktr/meteor.git meteor+meteor || true
+        git clone --recursive git@github.com:trusktr/three.js.git mrdoob+three.js || true
     fi
 
     popd
@@ -314,8 +323,6 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
     if $isMacOS; then
         brew install python
-        brew install python@2
-        #ln -sf /usr/local/bin/python2 /usr/local/bin/python
     fi
 
     if $isArchLinux; then
@@ -353,7 +360,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     # First update Node, in case a new npm would break on an older version of node.
     npm install --global n
     export N_PREFIX=~/.n-node-versions
-    export PATH=~/.npm-packages/bin:$PATH # needed so that binaries installed are available for ths script. After install, zshrc has this in PATH.
+    export PATH=~/.npm-packages/bin:$PATH # needed so that binaries installed are available for this script. After install, zshrc has this in PATH.
     n latest
     # Then update npm.
     npm install --global npm
@@ -388,7 +395,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     if $isArchLinux; then
         sudo pacman --sync --noconfirm python-pynvim
     else
-        pip install neovim
+        pip install neovim || pip3 install neovim
     fi
 
     # ripgrep and fzy, for fzf or ctrlp plugins
@@ -426,20 +433,23 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     # TODO: Set up Go, then install croshclip so neovim can copy to to ChromeOS Clipboard
     # https://github.com/acornejo/croshclip
 
-    # oni vim
+    # oni vim (https://onivim.io)
     # TODO other OSes. For now just macOS.
     if $isMacOS; then
-        brew cask install oni
-        mkdir -p ~/.oni
-        ln -sf ~/src/trusktr+dotfiles/home/.oni/config.js ~/.oni/config.js
+        #brew install --cask oni
+        #mkdir -p ~/.oni
+        #ln -sf ~/src/trusktr+dotfiles/home/.oni/config.js ~/.oni/config.js
+
+        # https://github.com/onivim/oni2/issues/767
+        brew tap marblenix/onivim2
+        brew install --cask onivim2
     fi
 
     # install plugins automatically
-    nvim +PlugInstall +UpdateRemotePlugins +qa
+    nvim +PlugInstall +UpdateRemotePlugins '+qa!'
 
 # Atom editor (atom.io)
 
-    installAtom=false
 
     if $installAtom; then
         if $isMacOS; then
@@ -462,7 +472,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 # Visual Studio Code (VS Code)
 
     if $isMacOS; then
-        brew cask install visual-studio-code
+        brew install --cask visual-studio-code
     fi
 
     if $isArchLinux; then
@@ -476,9 +486,9 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 # Chrome
 
     # TODO a better way to install in macOS without popping open a window?
-    if $isMacOS; then
-        brew cask install google-chrome
-    fi
+    #if $isMacOS; then
+        #brew install --cask google-chrome
+    #fi
 
     if $isArchLinux; then
         sudo pacman --sync --noconfirm chromium
@@ -493,7 +503,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 # Firefox
 
     if $isMacOS; then
-        brew cask install firefox
+        brew install --cask firefox
     fi
 
     if $isArchLinux; then
@@ -507,11 +517,11 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 # Edge
 
     if $isMacOS; then
-        brew cask install microsoft-edge-dev
+        brew install --cask microsoft-edge
     fi
 
     if $isArchLinux; then
-        echo #TODO MS Edge is not released for Linux yet
+        echo #TODO MS Edge for Linux
     fi
 
     if $isDebianLike; then
@@ -520,28 +530,37 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
 # Slack
 
-    if $isMacOS; then
-        brew install homebrew/cask/slack
-    fi
 
-    if $isArchLinux; then
-        pamac build --no-confirm slack-desktop
-    fi
-
-    if $isDebianLike; then
-        sudo apt install --yes slack-desktop
+    if $installSlack; then
+        if $isMacOS; then
+            brew install homebrew/cask/slack
+        fi
+    
+        if $isArchLinux; then
+            pamac build --no-confirm slack-desktop
+        fi
+    
+        if $isDebianLike; then
+            sudo apt install --yes slack-desktop
+        fi
     fi
 
 # Meteor
 
     if $INSTALL_METEOR; then
-        npm install --global meteor
+        if ! exists meteor; then
+            if $isLinux || $isMacOS; then
+                    curl https://install.meteor.com/ | sh
+            else
+                npm install --global meteor
+            fi
+        fi
     fi
 
 # Gimp
 
     if $isMacOS; then
-        brew cask install gimp
+        brew install --cask gimp
     fi
 
     if $isArchLinux; then
@@ -555,7 +574,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 # Inkscape
 
     if $isMacOS; then
-        brew cask install inkscape
+        brew install --cask inkscape
     fi
 
     if $isArchLinux; then
@@ -569,7 +588,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 # inconsolata font
 
     if $isMacOS; then
-        brew cask install font-inconsolata-nerd-font-mono
+        brew install --cask font-inconsolata-nerd-font
     fi
 
     if $isArchLinux; then
@@ -583,7 +602,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 # The amazing Space Mono font
 
     if $isMacOS; then
-        brew cask install font-space-mono
+        brew install --cask font-space-mono
     fi
 
     if $isArchLinux; then
@@ -596,21 +615,27 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
 # Adobe
 
-    if $isMacOS; then
-        brew cask install adobe-creative-cloud
-        open '/usr/local/Caskroom/adobe-creative-cloud/latest/Creative Cloud Installer.app'
+
+    if $installAdobe; then
+        if $isMacOS; then
+            brew install --cask adobe-creative-cloud
+            open '/usr/local/Caskroom/adobe-creative-cloud/latest/Creative Cloud Installer.app'
+        fi
     fi
 
 # Google Drive Backup and Sync
 
-    if $isMacOS; then
-        brew cask install google-backup-and-sync
+
+    if $installGoogleDrive; then
+        if $isMacOS; then
+            brew install --cask google-backup-and-sync
+        fi
     fi
 
 # Meld, diff tool
 
     if $isMacOS; then
-        brew cask install meld
+        brew install --cask meld
     fi
 
     if $isArchLinux; then
@@ -638,7 +663,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 # xvfb (for headless X11 emulation, f.e. to run Karma+Electron headlessly)
 
     if $isMacOS; then
-        echo # TODO
+        echo # not needed, Mac supports X
     fi
 
     if $isDebianLike; then
@@ -658,11 +683,11 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
         if $isMacOS; then
             # latest version, as `java` command
-            brew cask install java
+            brew install --cask java
 
             # version 8, as `java8` command
             brew tap caskroom/versions
-            brew cask install java8
+            brew install --cask java8
             sudo ln -sf /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin/java ~/.local/bin/java8
         fi
 
@@ -677,12 +702,10 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
     # GitKraken
 
-        installGitKraken=false
-
         if $installGitKraken; then
 
             if $isMacOS; then
-                brew cask install gitkraken
+                brew install --cask gitkraken
             fi
 
             if $isArchLinux; then
@@ -717,16 +740,18 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
 # Blender (blender.org)
 
-    if $isMacOS; then
-        brew cask install blender
-    fi
+    if $installBlender; then
+        if $isMacOS; then
+            brew install --cask blender
+        fi
 
-    if $isArchLinux; then
-        sudo pacman --sync --noconfirm blender
-    fi
+        if $isArchLinux; then
+            sudo pacman --sync --noconfirm blender
+        fi
 
-    if $isDebianLike; then
-        sudo apt install --yes blender
+        if $isDebianLike; then
+            sudo apt install --yes blender
+        fi
     fi
 
 # Watchman (installing this prevents problems with programs that watch for file
@@ -770,172 +795,143 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
 # Linux Only
 
-    # Increase the number of filesystem watchers allowed. See https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
-    if $isArchLinux; then
-        # For Arch see https://gist.github.com/tbjgolden/c53ca37f3bc2fab8c930183310918c8c
-        echo
-    else
-        sudo cat fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf
-        sudo sysctl -p
-    fi
+    if $isLinux; then
 
-    if $isArchLinux; then
-        sudo pacman --sync --noconfirm gestures
-    fi
-
-    # Gnome Tweak Tool, for additional settings.
+        # Increase the number of filesystem watchers allowed. See https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
+        if $isArchLinux; then
+            # For Arch see https://gist.github.com/tbjgolden/c53ca37f3bc2fab8c930183310918c8c
+            echo
+        else
+            sudo cat fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf
+            sudo sysctl -p
+        fi
 
         if $isArchLinux; then
-            sudo pacman --sync --noconfirm gnome-tweaks
+            sudo pacman --sync --noconfirm gestures
         fi
 
-        if $isDebianLike; then
-            sudo apt install --yes gnome-tweak-tool
-        fi
+        # Gnome Tweak Tool, for additional settings.
 
-    # Add my user to the input group
-    # TODO needed for Pop_os? Needed for Manjaro? Needs a conditional.
-    # if $isLinux; then
-    #     sudo usermod --append --groups=input `whoami`
-    # fi
+            if $isArchLinux; then
+                sudo pacman --sync --noconfirm gnome-tweaks
+            fi
 
-    # Gnome Settings
+            if $isDebianLike; then
+                sudo apt install --yes gnome-tweak-tool
+            fi
 
-        dconf load / <<- GNOME_SETTINGS
+        # Add my user to the input group
+        # TODO needed for Pop_os? Needed for Manjaro? Needs a conditional.
+        # if $isLinux; then
+        #     sudo usermod --append --groups=input `whoami`
+        # fi
 
-        [org/gnome/desktop/input-sources]
-        xkb-options=['ctrl:swapcaps']
+        # Gnome Settings
 
-        [org/gnome/desktop/interface]
-        clock-show-weekday=true
-        enable-hot-corners=true
-        show-battery-percentage=true
+            dconf load / <<- GNOME_SETTINGS
 
-        [org/gnome/desktop/peripherals/mouse]
-        natural-scroll=true
+            [org/gnome/desktop/input-sources]
+            xkb-options=['ctrl:swapcaps']
 
-        [org/gnome/desktop/peripherals/touchpad]
-        disable-while-typing=false
-        natural-scroll=true
-        speed=0.33823529411764697
+            [org/gnome/desktop/interface]
+            clock-show-weekday=true
+            enable-hot-corners=true
+            show-battery-percentage=true
 
-        [org/gnome/desktop/wm/preferences]
-        button-layout='appmenu:minimize,maximize,close'
-        resize-with-right-button=false
-        visual-bell=true
+            [org/gnome/desktop/peripherals/mouse]
+            natural-scroll=true
 
-        [org/gnome/settings-daemon/plugins/power]
-        power-button-action='suspend'
-        sleep-inactive-ac-timeout=2700
-        sleep-inactive-ac-type='suspend'
-        sleep-inactive-battery-timeout=900
-        sleep-inactive-battery-type='suspend'
+            [org/gnome/desktop/peripherals/touchpad]
+            disable-while-typing=false
+            natural-scroll=true
+            speed=0.33823529411764697
 
-        [org/gnome/nautilus/icon-view]
-        captions=['size', 'date_modified', 'none']
+            [org/gnome/desktop/wm/preferences]
+            button-layout='appmenu:minimize,maximize,close'
+            resize-with-right-button=false
+            visual-bell=true
 
-        [org/gnome/nautilus/list-view]
-        default-zoom-level='small'
-        use-tree-view=true
+            [org/gnome/settings-daemon/plugins/power]
+            power-button-action='suspend'
+            sleep-inactive-ac-timeout=2700
+            sleep-inactive-ac-type='suspend'
+            sleep-inactive-battery-timeout=900
+            sleep-inactive-battery-type='suspend'
 
-        [org/gnome/nautilus/preferences]
-        default-folder-viewer='list-view'
+            [org/gnome/nautilus/icon-view]
+            captions=['size', 'date_modified', 'none']
+
+            [org/gnome/nautilus/list-view]
+            default-zoom-level='small'
+            use-tree-view=true
+
+            [org/gnome/nautilus/preferences]
+            default-folder-viewer='list-view'
 
 GNOME_SETTINGS
 
-        if $isPopOS; then
-            dconf load / <<- POP_OS_SETTINGS
+            if $isPopOS; then
+                dconf load / <<- POP_OS_SETTINGS
 
-            [org/gnome/shell]
-            disabled-extensions=['pop-cosmic@system76.com', 'cosmic-workspaces@system76.com', 'cosmic-dock@system76.com']
-            favorite-apps=@as []
+                [org/gnome/shell]
+                disabled-extensions=['pop-cosmic@system76.com', 'cosmic-workspaces@system76.com', 'cosmic-dock@system76.com']
+                favorite-apps=@as []
 
-            [org/gnome/shell/extensions/dash-to-dock]
-            click-action='minimize-or-previews'
-            dash-max-icon-size=128
-            dock-fixed=false
-            intellihide=true
+                [org/gnome/shell/extensions/dash-to-dock]
+                click-action='minimize-or-previews'
+                dash-max-icon-size=128
+                dock-fixed=false
+                intellihide=true
 
-            [org/gnome/shell/extensions/pop-shell]
-            active-hint=true
+                [org/gnome/shell/extensions/pop-shell]
+                active-hint=true
 
 POP_OS_SETTINGS
-        fi
+            fi
+    fi
 
 # macOS Only
 
-    # GNU Coreutils (prefixed with g in OSX, already present in Linux)
 
-        if $isMacOS; then
+    if $isMacOS; then
+
+        # GNU Coreutils (prefixed with g in OSX, already present in Linux)
+
             brew install coreutils
-        fi
 
-    # iTerm
+        # iTerm
 
-        if $isMacOS; then
             brew install homebrew/cask/iterm2
-        fi
 
-    # Karabiner Elements (keyboard remapping for macOS)
+        # Karabiner Elements (keyboard remapping for macOS)
 
-        if $isMacOS; then
-            brew cask install karabiner-elements
+            brew install --cask karabiner-elements
             open /Applications/Karabiner-Elements.app
-        fi
 
-    # XQuartz (X11 for macOS)
+        # XQuartz (X11 for macOS)
 
-        if $isMacOS; then
-            brew cask install xquartz
-        fi
+            brew install --cask xquartz
 
-    # SkyFonts (sync Google Fonts to your system)
+        # SkyFonts (sync Google Fonts to your system)
 
-        if $isMacOS; then
-            brew cask install skyfonts
+            brew install --cask skyfonts
             # TODO we can't hard code the version, because it changes
-            open '/usr/local/Caskroom/skyfonts/5.9.2.1/Install SkyFonts.app'
-        fi
+            #open '/usr/local/Caskroom/skyfonts/5.9.2.1/Install SkyFonts.app'
 
-    # Kap, screen capture for macOS
+        # Kap, screen capture for macOS
 
-        if $isMacOS; then
-            brew cask install kap
-        fi
+            brew install --cask kap
 
-    # OS X settings
-
-        if $isMacOS; then
+        # OS X settings
 
             # set default system and app preferences
             curl https://raw.githubusercontent.com/trusktr/dotfiles/master/scripts/macOSPrefs.sh | sh
 
-        fi
+    fi
 
 # Work stuff
 
-    if $INSTALL_WORK_STUFF; then
-        echo " >>>>>>>>>>>>>> Install work stuff."
-
-        mkdir -p ~/src
-        pushd ~/src
-
-        git clone git@bitbucket.org:Abster101/apres_openmct.git nasa+apres_openmct || true
-        pushd nasa+apres_openmct
-        git remote add trusktr git@github.com:trusktr/apres_openmct.git
-        git fetch && git fetch trusktr
-        popd
-
-        cloneSomeWorkStuff=false
-
-        if $cloneSomeWorkStuff; then
-            git clone git@bitbucket.org:trusktr/isaac_umbrella.git nasa+isaac+isaac_umbrella || true
-            git clone git@bitbucket.org:nasa/openmct.git nasa+openmct || true
-        fi
-
-        popd
-
-    fi
+    # .......
 
 # cleanup
 
@@ -947,38 +943,3 @@ echo
 echo ' --- Setup complete! ---'
 echo
 
-# TODO WINDOWS:
-#   - X11 Approach:
-#     - X11 server: https://sourceforge.net/projects/vcxsrv/
-#     - Install X11 server and desktop environment to use Ubuntu GUI apps, see
-#       the following for a guide on getting GUI apps running in WSL:
-#       https://github.com/QMonkey/wsl-tutorial
-#   - Install various other Windows stuff automatically using OneGet (AKA PackageManager).
-#   - Use the official Windows package mananager "OneGet" to install windows
-#     stuff. See how to use it with the Chocolatey package registry:
-#     https://www.reddit.com/r/sysadmin/comments/4gqq6q/add_chocolatey_repo_to_windows_10/
-#   - Customizing PowerShell prompt: https://hodgkins.io/ultimate-powershell-prompt-and-git-setup
-#   - If there's any problems updating apt's registry cache, see https://github.com/Microsoft/WSL/issues/640
-#
-# PowerShell steps using OneGet:
-#   Install-PackageProvider Chocolatey -Force
-#   Install-Package Nodejs
-#   # etc..., I didn't have much luck with it.
-#
-# PowerShell steps using Chocolatey (works better):
-#   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force # run this line on new systems, default is "Restricted", skip if needed
-#   iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
-#   # restart powershell so that choco command is available
-#   choco install -y nodejs
-#   choco install -y atom
-#   choco install -y git
-#   choco install -y nvim
-#   choco install -y git -params '"/GitAndUnixToolsOnPath"'
-#   choco install -y conemu
-#
-#   Install-PackageProvider NuGet -Force
-#   Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-#   Install-Module posh-git
-#
-# Link stuff
-#   cmd /c mklink /d $HOME\.atom $HOME\src\trusktr+dotfiles1\.atom

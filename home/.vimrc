@@ -209,8 +209,9 @@ if glob(s:VIMROOT."/bundle/") != ""
                             endif
 
                             if has('python3')
-                                Plug 'Shougo/deoplete.nvim', {'commit': '18704083452e14f3b84b5df127ecb3ce5f8552a8', 'do': ':UpdateRemotePlugins' } " neovim with python support only
-                                    let g:deoplete#enable_at_startup = 1
+                                "TODO install broke
+                                "Plug 'Shougo/deoplete.nvim', {'commit': '18704083452e14f3b84b5df127ecb3ce5f8552a8', 'do': ':UpdateRemotePlugins' } " neovim with python support only
+                                    "let g:deoplete#enable_at_startup = 1
                             endif
                         endif
 
