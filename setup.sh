@@ -260,6 +260,12 @@ isWindows=false # TODO
     # LUME
     if $cloneCurrentProjects; then
         git clone --recursive git@github.com:lume/lume.git lume+lume || true
+        # needed for lume/glas
+        if $isMacOS; then
+            brew install libpng
+            brew install pkg-config
+        fi
+
         git clone --recursive git@github.com:aspkg/website.git aspkg+website || true
         git clone --recursive git@github.com:aspkg/ecmassembly.git aspkg+ecmassembly || true
         git clone --recursive git@github.com:aspkg/website.git aspkg+website || true
