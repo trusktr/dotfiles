@@ -1,0 +1,41 @@
+{
+	"name": "one-moon",
+	"displayName": "One Moon",
+	"description": "A dark theme inspired by Atom's One Dark theme",
+	"version": "1.2.0",
+	"publisher": "ThisNameWasTaken",
+	"engines": {
+		"vscode": "^1.35.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"icon": "images/icon-128.png",
+	"galleryBanner": {
+		"theme": "dark",
+		"color": "#242b2e"
+	},
+	"contributes": {
+		"themes": [
+			{
+				"label": "One Moon",
+				"uiTheme": "vs-dark",
+				"path": "./themes/one-moon-color-theme.json"
+			}
+		]
+	},
+	"repository": {
+		"url": "https://github.com/ThisNameWasTaken/one-moon",
+		"type": "git"
+	},
+	"bugs": {
+		"url": "https://github.com/ThisNameWasTaken/one-moon/issues",
+		"type": "git"
+	},
+	"__metadata": {
+		"id": "4e65d957-cc41-43fb-b04c-e51bb1e46a73",
+		"publisherId": "f7e8e381-d27c-4006-abaf-5eb368483f9c",
+		"publisherDisplayName": "ThisNameWasTaken",
+		"size": 4128219
+	}
+}

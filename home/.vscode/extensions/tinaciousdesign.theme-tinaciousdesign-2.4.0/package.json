@@ -1,0 +1,72 @@
+{
+	"name": "theme-tinaciousdesign",
+	"displayName": "Tinacious Design theme",
+	"description": "🌈 A dark theme and a light theme with fun colours.",
+	"version": "2.4.0",
+	"publisher": "tinaciousdesign",
+	"repository": "https://github.com/tinacious/vscode-tinacious-design-syntax",
+	"scripts": {
+		"json": "node ./scripts/generate_json_support.js"
+	},
+	"engines": {
+		"vscode": "^1.5.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"bright",
+		"fun",
+		"pink",
+		"accessible",
+		"a11y"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Tinacious Design",
+				"uiTheme": "vs-dark",
+				"path": "/themes/Tinacious Design-color-theme.json"
+			},
+			{
+				"label": "Tinacious Design (Light)",
+				"uiTheme": "vs",
+				"path": "./themes/Tinacious Design (Light)-color-theme.json"
+			},
+			{
+				"label": "Tinacious Design (legacy, 2016)",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Tinacious-Design.tmTheme"
+			},
+			{
+				"label": "Tinacious Design (Light)  (legacy, 2017)",
+				"uiTheme": "vs",
+				"path": "./themes/Tinacious-Design-Light.tmTheme"
+			},
+			{
+				"label": "Tinacious Design (High Contrast)",
+				"uiTheme": "vs-dark",
+				"path": "/themes/Tinacious-Design-High-Contrast-color-theme.json"
+			}
+		]
+	},
+	"icon": "icon.png",
+	"devDependencies": {
+		"generator-code": "^1.2.12",
+		"vsce": "^1.83.0",
+		"yo": "^3.1.1"
+	},
+	"__metadata": {
+		"id": "2d7381e3-ca4b-430c-a6cf-0d8ee0643f64",
+		"publisherId": "55a40ffa-f322-44cf-b1a4-1736a36bde73",
+		"publisherDisplayName": "Tinacious Design",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1714871913648,
+		"pinned": false,
+		"source": "gallery",
+		"size": 7094271
+	}
+}

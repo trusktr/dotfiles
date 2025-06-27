@@ -1,0 +1,56 @@
+{
+	"name": "plastic-slate",
+	"displayName": "Plastic Slate",
+	"description": "A simple theme with cute colors.",
+	"version": "1.10.0",
+	"publisher": "kayteh",
+	"engines": {
+		"vscode": "^1.12.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Plastic Slate",
+				"uiTheme": "vs-dark",
+				"path": "./themes/plastic-theme.json"
+			},
+			{
+				"label": "Plastic Slate - deprioritised punctuation",
+				"uiTheme": "vs-dark",
+				"path": "./themes/plastic-theme-punctuation.json"
+			}
+		]
+	},
+	"bugs": {
+		"url": "https://github.com/kayteh/plastic-slate/issues"
+	},
+	"icon": "images/icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kayteh/plastic-slate"
+	},
+	"devDependencies": {
+		"lite-server": "^2.3.0",
+		"vsce": "^1.39.0"
+	},
+	"scripts": {
+		"docs": "lite-server",
+		"vspublish": "vsce publish"
+	},
+	"__metadata": {
+		"id": "fee88d69-e94c-4b9e-a8c8-dbb0852ed05e",
+		"publisherId": "207de2b0-2fa6-4cfe-9922-9bf08a119df5",
+		"publisherDisplayName": "kayteh",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1714870240441,
+		"pinned": false,
+		"source": "gallery",
+		"size": 4593183
+	}
+}

@@ -1,0 +1,61 @@
+{
+	"name": "astronomy-theme",
+	"displayName": "Astronomy",
+	"description": "A dichromatic warm/neutral/cool theme for Visual Studio Code",
+	"publisher": "DragWx",
+	"icon": "astronomy-icon.png",
+	"version": "0.5.4",
+	"engines": {
+		"vscode": "^1.33.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"dark",
+		"light",
+		"minimal",
+		"color blind"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Astronomy",
+				"uiTheme": "vs-dark",
+				"path": "./themes/astronomy-standard-color-theme.json"
+			},
+			{
+				"label": "Astronomy Colorblind",
+				"uiTheme": "vs-dark",
+				"path": "./themes/astronomy-colorblind-color-theme.json"
+			},
+			{
+				"label": "Astronomy Light",
+				"uiTheme": "vs",
+				"path": "./themes/astronomy-light-standard-color-theme.json"
+			}
+		]
+	},
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/DragWx/vsc-astronomy-theme.git"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"gulp": "^4.0.2",
+		"mustache": "^4.2.0"
+	},
+	"__metadata": {
+		"id": "05b841a9-dd2f-444a-80fb-c4ad0d4d4dfb",
+		"publisherId": "5cc559a0-7298-4ba1-9497-040e4cb96d77",
+		"publisherDisplayName": "DragWx",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": true,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1662442889760,
+		"size": 66986
+	}
+}

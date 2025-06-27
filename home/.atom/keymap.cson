@@ -1,0 +1,155 @@
+# Your keymap
+#
+# Atom keymaps work similarly to style sheets. Just as style sheets use
+# selectors to apply styles to elements, Atom keymaps use selectors to associate
+# keystrokes with events in specific contexts. Unlike style sheets however,
+# each selector can only be declared once.
+#
+# You can create a new keybinding in this file by typing "key" and then hitting
+# tab.
+#
+# Here's an example taken from Atom's built-in keymap:
+#
+# 'atom-text-editor':
+#   'enter': 'editor:newline'
+#
+# 'atom-workspace':
+#   'ctrl-shift-p': 'core:move-up'
+#   'ctrl-p': 'core:move-down'
+#
+# You can find more information about keymaps in these guides:
+# * http://flight-manual.atom.io/using-atom/sections/basic-customization/#customizing-keybindings
+# * http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth/
+#
+# If you're having trouble with your keybindings not working, try the
+# Keybinding Resolver: `Cmd+.` on macOS and `Ctrl+.` on other platforms. See the
+# Debugging Guide for more information:
+# * http://flight-manual.atom.io/hacking-atom/sections/debugging/#check-the-keybindings
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# http://flight-manual.atom.io/using-atom/sections/basic-customization/#configuring-with-cson
+
+# TODO: maps for Linux
+
+# for all platforms
+'atom-workspace, terminal-pane':
+    '\\ f': 'tree-view:toggle'
+
+    # vim-like tab mappings for atom-vim-like-tab plugin
+    # 'ctrl-h': 'atom-vim-like-tab:previous'
+    # 'ctrl-l': 'atom-vim-like-tab:next'
+    # moving in normal tabs instead of vim-like tabs for now, it has bugs
+    'ctrl-h': 'pane:show-previous-item'
+    'ctrl-l': 'pane:show-next-item'
+
+    '\\ g': 'github:toggle-git-tab'
+    '\\ \\ g': 'github:toggle-github-tab'
+
+    '\\ t': 'termination:toggle'
+    '\\ \\ t': 'termination:new'
+    
+'atom-workspace atom-text-editor:not([mini])':
+    'ctrl-enter': 'typescript:go-to-declaration'
+    'shift-enter': 'typescript:go-to-declaration'
+    
+'.platform-darwin atom-workspace, .platform-darwin terminal-pane':
+    'ctrl-p': 'keystroke cmd-p'
+    'ctrl-P': 'keystroke cmd-P'
+    
+    'cmd-f': 'find-and-replace:toggle'
+    'cmd-F': 'project-find:toggle'
+    
+'.platform-win32 atom-workspace':
+    'alt-w': 'core:close' # similar to cmd-w in macOS for closing panes
+    
+    # override for Windows (why do we need this and not in macOS?)
+    'ctrl-alt-p': 'project-plus:toggle-project-finder'
+    
+    'alt-f': 'find-and-replace:toggle'
+    'alt-F': 'project-find:toggle'
+    
+# override for Windows, with higher selector specificity (why do we need these
+# for Windows, but not for macOS?)
+'.platform-win32 atom-workspace atom-text-editor':
+    'ctrl-l': 'pane:show-next-item'
+    'ctrl-,': 'settings-view:open'
+
+'body .termination':
+    'ctrl-cmd-h': 'termination:prev'
+    'ctrl-cmd-l': 'termination:next'
+
+'.editor.vim-mode-plus:not(.insert-mode)':
+
+    # vim-like tab mappings for atom-vim-like-tab plugin
+    # for some reason these only work in here, not in the .body section
+    'ctrl-t': 'atom-vim-like-tab:new'
+    'g T': 'atom-vim-like-tab:previous'
+    'g t': 'atom-vim-like-tab:next'
+    'space t': 'atom-vim-like-tab:list'
+
+    # ':': 'command-palette:toggle'
+
+    'ctrl-k': 'keystroke 5 k'
+    'ctrl-j': 'keystroke 5 j'
+
+    'ctrl-/': 'editor:toggle-line-comments'
+    '\\ c space': 'editor:toggle-line-comments'
+
+    'alt-h': 'pane:decrease-size'
+    'alt-l': 'pane:increase-size'
+
+    'ctrl-w K': 'paner:move-pane-to-very-top'
+    'ctrl-w J': 'paner:move-pane-to-very-bottom'
+    'ctrl-w H': 'paner:move-pane-to-very-left'
+    'ctrl-w L': 'paner:move-pane-to-very-right'
+    'ctrl-w x': 'paner:exchange-pane-stay'
+
+    'ctrl-w o': 'hey-pane:toggle-focus-of-active-pane'
+    'ctrl-w ctrl-o': 'hey-pane:toggle-focus-of-active-pane'
+
+    # similar to my vimrc bookmark settings
+    'm m': 'bookmarks:toggle-bookmark'
+    'm n': 'bookmarks:jump-to-next-bookmark'
+    'm p': 'bookmarks:jump-to-previous-bookmark'
+    'M M': 'bookmarks:view-all'
+
+    # '/': 'find-and-replace:show'
+
+    'ctrl-w c': 'core:close'
+    'ctrl-w ctrl-c': 'core:close'
+
+'.editor.vim-mode-plus.visual-mode':
+    'alt-k': 'editor:move-line-up'
+    'alt-j': 'editor:move-line-down'
+
+    # move to end of line like in normal mode
+    '$': 'keystroke $ h'
+
+# open fuzzy-find files in splits, new tab, or same tab (based on
+# https://github.com/atom/fuzzy-finder/issues/81)
+'.fuzzy-finder atom-text-editor[mini]':
+    # 'ctrl-v': 'pane:split-right'
+    # 'ctrl-s': 'pane:split-down'
+    # 'ctrl-t': 'core:confirm'
+    # 'enter': 'custom:replace-tab'
+
+    'ctrl-c': 'fuzzy-finder:toggle-file-finder'
+
+'.command-palette atom-text-editor[mini]':
+    'ctrl-c': 'command-palette:toggle'
+    
+# stop emmet from taking over tab key in certain cases
+# See https://github.com/emmetio/emmet-atom/issues/225#issuecomment-82669798
+# {{
+
+# Stop emmet from hijacking tab from snippets and autocomplete
+'atom-text-editor.autocomplete-active:not([mini])':
+  'tab': 'autocomplete-plus:confirm'
+
+# Stop emmet from hijacking tab from snippet tab stops
+'atom-text-editor[data-grammar="text html basic"]:not([mini]), atom-text-editor[data-grammar~="jade"]:not([mini]), atom-text-editor[data-grammar~="css"]:not([mini]), atom-text-editor[data-grammar~="sass"]:not([mini])':
+  'tab': 'snippets:next-tab-stop'
+  
+# }}

@@ -1,0 +1,51 @@
+{
+	"name": "hybrid-next-plus",
+	"displayName": "Hybrid Next Plus",
+	"description": "Hybrid Next Plus Theme for VS Code.",
+	"version": "1.0.1",
+	"publisher": "toshimaru",
+	"engines": {
+		"vscode": "^1.25.0"
+	},
+	"author": {
+		"name": "toshimaru",
+		"email": "me@toshimaru.net",
+		"url": "https://toshimaru.net/"
+	},
+	"homepage": "https://github.com/toshimaru/hybrid-next-plus",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/toshimaru/hybrid-next-plus.git"
+	},
+	"bugs": {
+		"url": "https://github.com/toshimaru/hybrid-next-plus/issues"
+	},
+	"license": "MIT",
+	"categories": [
+		"Themes"
+	],
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#232c31",
+		"theme": "dark"
+	},
+	"keywords": [
+		"hybrid"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Hybrid Next Plus",
+				"uiTheme": "vs-dark",
+				"path": "./themes/hybrid-next-plus-color-theme.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "0082f7c4-94cd-4868-8145-bffb749aadcf",
+		"publisherId": "7a4f79c6-b74e-4e44-b817-7c730a1b968d",
+		"publisherDisplayName": "toshimaru",
+		"installedTimestamp": 1635169288736,
+		"size": 635594
+	}
+}

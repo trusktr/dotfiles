@@ -1,0 +1,60 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/tmp/d-118420-5912-7juu7y.2wca49ggb9/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/tmp/d-118420-5912-7juu7y.2wca49ggb9/package.tgz",
+        "spec": "/tmp/d-118420-5912-7juu7y.2wca49ggb9/package.tgz",
+        "type": "local"
+      },
+      "/tmp/apm-install-dir-118420-5912-1ky622u.yadwc4ygb9"
+    ]
+  ],
+  "_from": "../d-118420-5912-7juu7y.2wca49ggb9/package.tgz",
+  "_id": "ex-mode-sort@1.0.0",
+  "_inCache": true,
+  "_location": "/ex-mode-sort",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/tmp/d-118420-5912-7juu7y.2wca49ggb9/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/tmp/d-118420-5912-7juu7y.2wca49ggb9/package.tgz",
+    "spec": "/tmp/d-118420-5912-7juu7y.2wca49ggb9/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-118420-5912-7juu7y.2wca49ggb9/package.tgz",
+  "_shasum": "c6dd5431c8189a34af94ad69988c7b3ed998ce4f",
+  "_shrinkwrap": null,
+  "_spec": "/tmp/d-118420-5912-7juu7y.2wca49ggb9/package.tgz",
+  "_where": "/tmp/apm-install-dir-118420-5912-1ky622u.yadwc4ygb9",
+  "bugs": {
+    "url": "https://github.com/bspaulding/atom-ex-mode-sort/issues"
+  },
+  "dependencies": {},
+  "description": "Adds :sort to atom's vim-mode's ex-mode.",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/bspaulding/atom-ex-mode-sort#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./lib/atom-ex-mode-sort",
+  "name": "ex-mode-sort",
+  "optionalDependencies": {},
+  "readme": "# ex-mode-sort package\n\nAdds the `:sort` command to [ex-mode](https://atom.io/packages/ex-mode)\n\n# Use\n\nInstall both [vim-mode](https://atom.io/packages/vim-mode) and [ex-mode](https://atom.io/packages/ex-mode). Type `:` in command mode. Enter `sort`.\n\nBy default, as in vim, sort is case sensitive. For a case insensitive sort, pass the `i` flag: `:sort i`.\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bspaulding/atom-ex-mode-sort.git"
+  },
+  "version": "1.0.0"
+}

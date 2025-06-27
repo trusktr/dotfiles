@@ -1,0 +1,69 @@
+[user]
+	name = Joe Pea
+	email = joe@trusktr.io
+[push]
+	default = simple
+	followTags = true
+	recurseSubmodules = check
+	autoSetupRemote = true
+[diff]
+	tool = meld
+	colorMoved = true
+[color]
+	ui = true
+[column]
+	ui = auto dense
+[core]
+	editor = nvim
+	autocrlf = input
+	excludesfile = ~/.gitignore_global
+[alias]
+	co = checkout
+	br = branch --sort=committerdate
+	s = status
+	st = status
+	sta = status
+	stat = status
+	stats = status
+	statu = status
+	statsu = status
+	staus = status
+	statis = status
+	stauts = status
+	sattus = status
+	sttus = status
+	satus = status
+	sttaus = status
+	dif = diff
+	l = log
+	logg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ll = logg
+	pul = pull
+	d = diff
+	sl = stash list
+	sp = stash pop
+	su = status -uno
+	unpushed = log --branches --not --remotes --no-walk --decorate --oneline
+	stuat = status
+	pushall = !git remote | xargs -L1 -I R git push R
+; Enable only if using credential manager.
+;[credential]
+	;helper = !/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/Cellar/git-credential-manager/1.6.0/libexec/git-credential-manager-1.6.0.jar
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[merge]
+	log = true
+[pager]
+	stash = false
+	branch = false
+[pull]
+	rebase = false
+[init]
+	templatedir = ~/.git-template
+[http]
+	postBuffer = 157286400
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

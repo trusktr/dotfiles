@@ -1,0 +1,35 @@
+{
+	"name": "hybrid-theme",
+	"displayName": "Hybrid",
+	"description": "A Hybrid Color Theme ",
+	"version": "0.0.7",
+	"icon": "icon.png",
+	"publisher": "shanejarvie",
+	"repository": {
+		"url": "https://github.com/sjarvie/vim-hybrid-vscode-theme"
+	},
+	"author": {
+		"name": "Shane Jarvie"
+	},
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Hybrid",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Hybrid-color-theme.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "6347959b-e7e6-4505-8bca-030c93235355",
+		"publisherId": "7d6168a4-2357-4599-871f-6a8e4ea4df86",
+		"publisherDisplayName": "shanejarvie",
+		"size": 220226
+	}
+}

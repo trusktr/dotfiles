@@ -1,0 +1,32 @@
+{
+    "$schema" : "http://json-schema.org/draft-04/schema",
+    "title" : "KHR_xmp glTF extension -- DO NOT USE. Archived extension, superseded by KHR_xmp_json_ld.",
+    "type" : "object",
+    "allOf" : [
+        {
+            "$ref" : "../../glTFProperty.schema.json"
+        }
+    ],
+    "properties" : {
+        "@context" : {
+            "type" : "object",
+            "additionalProperties" : true,
+            "description" : "Dictionary mapping XMP namespace names to the URI where they are defined"
+        },
+        "packets" : {
+            "type" : "array",
+            "items" : {
+                "type" : "object",
+                "additionalProperties" : true,
+                "description" : "Dictionary of XMP metadata properties. Property names take the form `xmp_namespace_name:property_name`"
+            },
+            "minItems" : 1
+        },
+        "extensions" : {},
+        "extras" : {}
+    },
+    "required" : [
+        "packets",
+        "@context"
+    ]
+}

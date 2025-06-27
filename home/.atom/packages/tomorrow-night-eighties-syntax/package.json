@@ -1,0 +1,56 @@
+{
+  "_from": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+  "_id": "tomorrow-night-eighties-syntax@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-nMLjC6NE2E/9B6Ia4y6brR8QylLNoucAcmYD1xPcM6QnXm5a0h5u+K3ZoH+H5gD2BAPF9xXiTi4C5iVo1J/47Q==",
+  "_location": "/tomorrow-night-eighties-syntax",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+  "_shasum": "3325ec027c43fd59074f3a0af3809c03242f7e55",
+  "_spec": "https://www.atom.io/api/packages/tomorrow-night-eighties-syntax/versions/1.1.0/tarball",
+  "_where": "/private/var/folders/kw/cfgh2ttj4bg_nsgymb5n5_n80000gn/T/apm-install-dir-11954-50879-q0rn02.u72i",
+  "bugs": {
+    "url": "https://github.com/rockymadden/tomorrow-night-eighties-syntax-theme/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Rocky Madden"
+    },
+    {
+      "name": "Ryan Sobol"
+    }
+  ],
+  "deprecated": false,
+  "description": "Tomorrow Night Eighties syntax theme for Atom",
+  "engines": {
+    "atom": ">=1.13"
+  },
+  "homepage": "https://github.com/rockymadden/tomorrow-night-eighties-syntax-theme",
+  "keywords": [
+    "tomorrow",
+    "night",
+    "eighties",
+    "syntax",
+    "theme"
+  ],
+  "license": "MIT",
+  "name": "tomorrow-night-eighties-syntax",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rockymadden/tomorrow-night-eighties-syntax-theme.git"
+  },
+  "theme": "syntax",
+  "version": "1.1.0"
+}

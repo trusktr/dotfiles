@@ -1,0 +1,33 @@
+{
+    "$schema" : "http://json-schema.org/draft-04/schema",
+    "title" : "Uniform Value -- DO NOT USE. Archived extension, superseded by glTF PBR materials.",
+    "oneOf" : [
+        {
+            "type" : [
+                "number",
+                "boolean"
+            ]
+        },
+        {
+            "type" : "array",
+            "items" : {
+                "type" : [
+                    "number"
+                ]
+            },
+            "minItems" : 1
+        },
+        {
+            "type" : "array",
+            "items" : {
+                "type" : [
+                    "boolean"
+                ]
+            },
+            "minItems" : 1
+        },
+        {
+            "$ref" : "../../textureInfo.schema.json"
+        }
+    ]
+}

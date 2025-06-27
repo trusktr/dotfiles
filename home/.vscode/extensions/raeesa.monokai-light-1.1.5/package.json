@@ -1,0 +1,53 @@
+{
+	"name": "monokai-light",
+	"displayName": "Monokai Light Theme",
+	"description": "A light, bright, Monokai-inspired theme.",
+	"version": "1.1.5",
+	"publisher": "raeesa",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/raeesahub/monokai-light"
+	},
+	"keywords": [
+		"theme",
+		"light theme",
+		"light",
+		"bright",
+		"minimal",
+		"monokai",
+		"sublime"
+	],
+	"icon": "images/monokai-light.png",
+	"galleryBanner": {
+		"color": "#2C2B2C",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "^1.57.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Monokai Light",
+				"uiTheme": "vs",
+				"path": "./themes/Monokai Light-color-theme.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "69e4f232-ad7b-47cc-a536-286fc08cef4f",
+		"publisherId": "530576a5-916d-48dc-bd0a-7406225a98f3",
+		"publisherDisplayName": "Raeesa Qureshi",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1714870600022,
+		"pinned": false,
+		"source": "gallery",
+		"size": 930126
+	}
+}

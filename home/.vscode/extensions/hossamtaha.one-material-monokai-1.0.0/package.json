@@ -1,0 +1,45 @@
+{
+	"name": "one-material-monokai",
+	"displayName": "One Material Monokai Theme",
+	"description": "A cross between One Monokai and material theme",
+	"version": "1.0.0",
+	"publisher": "hossamtaha",
+	"engines": {
+		"vscode": "^1.13.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"icon": "logo.png",
+	"contributes": {
+		"themes": [
+			{
+				"label": "One Material Monokai",
+				"uiTheme": "vs-dark",
+				"path": "./themes/OneMaterialMonokai-color-theme.json"
+			}
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hossamt93/vscode-one-material-monokai.git"
+	},
+	"bugs": {
+		"url": "https://github.com/hossamt93/vscode-one-material-monokai/issues"
+	},
+	"homepage": "https://github.com/hossamt93/vscode-one-material-monokai/blob/master/README.md",
+	"keywords": [
+		"Vscode",
+		"Theme",
+		"Material",
+		"Monokai"
+	],
+	"author": "Hossam Taha <hossamtaha771@gmail.com>",
+	"license": "MIT",
+	"__metadata": {
+		"id": "df134df2-5a77-4105-af52-ee6ff2dc4df9",
+		"publisherId": "1d9e53f8-9837-4a89-99f0-56aae1bb688d",
+		"publisherDisplayName": "Hossam Taha",
+		"size": 561046
+	}
+}

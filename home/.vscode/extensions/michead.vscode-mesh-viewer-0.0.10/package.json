@@ -1,0 +1,89 @@
+{
+	"name": "vscode-mesh-viewer",
+	"displayName": "vscode-mesh-viewer",
+	"description": "Render 3D models within VS Code",
+	"author": {
+		"name": "Simone Riccardelli",
+		"url": "https://github.com/michead"
+	},
+	"publisher": "michead",
+	"version": "0.0.10",
+	"engines": {
+		"vscode": "^1.17.0"
+	},
+	"preview": true,
+	"icon": "docs/icon.png",
+	"galleryBanner": {
+		"color": "#000",
+		"theme": "dark"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"webgl",
+		"3d"
+	],
+	"activationEvents": [
+		"onCommand:extension.openMeshPreview"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.openMeshPreview",
+				"title": "Open Mesh Preview"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"when": "resourceLangId == 'obj'",
+					"command": "extension.openMeshPreview",
+					"group": "navigation"
+				}
+			]
+		},
+		"languages": [
+			{
+				"id": "obj",
+				"extensions": [
+					".obj"
+				],
+				"aliases": [
+					"OBJ"
+				],
+				"mimetypes": [
+					"text/plain"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"lint": "tslint -t stylish src/**/*.ts"
+	},
+	"devDependencies": {
+		"@types/node": "^7.0.43",
+		"tslint": "^5.9.1",
+		"typescript": "^2.5.2",
+		"vscode": "^1.1.5"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/michead/vscode-mesh-viewer"
+	},
+	"bugs": {
+		"url": "https://github.com/michead/vscode-mesh-viewer/issues"
+	},
+	"__metadata": {
+		"id": "73639c4c-6037-44f9-86a9-c8363673a11c",
+		"publisherId": "c4216f70-0cf8-4f0a-8865-9fa30528f88d",
+		"publisherDisplayName": "Simone Riccardelli",
+		"size": 1358563
+	}
+}

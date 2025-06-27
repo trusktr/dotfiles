@@ -1,0 +1,61 @@
+{
+    "title": "Capslock as Control or Command, Right Option as Capslock",
+    "rules": [
+        {
+            "description": "Capslock as Control in Terminal or similar apps, Right Option as Capslock",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.apple\\.Terminal$",
+                                "^com\\.googlecode\\.iterm2$",
+                                "^co\\.zeit\\.hyperterm$",
+                                "^co\\.zeit\\.hyper$",
+                                "^io\\.alacritty$",
+                                "^net\\.kovidgoyal\\.kitty$",
+                                "^com\\.github\\.atom$"
+                            ]
+                        }
+                    ],
+                    "from": {
+                        "key_code": "caps_lock",
+                        "modifiers": { "optional": [ "any" ] }
+                    },
+                    "to": [ { "key_code": "left_control" } ],
+                    "to_if_alone": [ { "key_code": "caps_lock" } ]
+                }
+            ]
+        },
+        {
+            "description": "Capslock as Command in non-Terminal or similar apps, Right Option as Capslock",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_unless",
+                            "bundle_identifiers": [
+                                "^com\\.apple\\.Terminal$",
+                                "^com\\.googlecode\\.iterm2$",
+                                "^co\\.zeit\\.hyperterm$",
+                                "^co\\.zeit\\.hyper$",
+                                "^io\\.alacritty$",
+                                "^net\\.kovidgoyal\\.kitty$",
+                                "^com\\.github\\.atom$"
+                            ]
+                        }
+                    ],
+                    "from": {
+                        "key_code": "caps_lock",
+                        "modifiers": { "optional": [ "any" ] }
+                    },
+                    "to": [ { "key_code": "left_command" } ],
+                    "to_if_alone": [ { "key_code": "caps_lock" } ]
+                }
+            ]
+        }
+    ]
+}

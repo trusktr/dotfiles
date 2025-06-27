@@ -1,0 +1,59 @@
+{
+	"name": "ra-spring",
+	"displayName": "Ra Spring Light Theme",
+	"description": "Here is the best theme for your eye care!",
+	"version": "1.2.0",
+	"engines": {
+		"vscode": "^1.39.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Ra Spring",
+				"uiTheme": "vs",
+				"path": "./themes/ra-spring.json"
+			}
+		]
+	},
+	"publisher": "rahmanyerli",
+	"author": {
+		"name": "Rahman Yerli"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "GitHub",
+		"url": "https://github.com/rahmanyerli/ra-spring"
+	},
+	"icon": "images/ra.png",
+	"galleryBanner": {
+		"color": "#CC9933",
+		"theme": "dark"
+	},
+	"keywords": [
+		"ra spring",
+		"raspring",
+		"ra-spring",
+		"ra spring theme",
+		"theme",
+		"ra",
+		"dark theme",
+		"vscode theme",
+		"vscode dark theme"
+	],
+	"__metadata": {
+		"id": "6bb5b1bb-5da0-41b5-9e2b-b897a45868b3",
+		"publisherId": "b98989fd-8df3-48cd-900b-a4d2e243e95c",
+		"publisherDisplayName": "Rahman Yerli",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1714870422710,
+		"pinned": false,
+		"source": "gallery",
+		"size": 390167
+	}
+}

@@ -1,0 +1,113 @@
+{
+	"name": "classdiagram-ts",
+	"displayName": "classdiagram-ts",
+	"description": "Generates class diagram for typescript projects",
+	"version": "0.1.67",
+	"publisher": "AlexShen",
+	"site": "https://shenz.visualstudio.com/",
+	"icon": "resource/icon.png",
+	"engines": {
+		"vscode": "^1.0.0"
+	},
+	"keywords": [
+		"classdiagram",
+		"UML",
+		"TypeScript",
+		"Diagram",
+		"Class"
+	],
+	"categories": [
+		"Visualization"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"repository": "https://github.com/shenAwesome",
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "tsd.showDiagram",
+				"title": "Show Diagram",
+				"icon": {
+					"light": "resource/light/diagram.svg",
+					"dark": "resource/dark/diagram.svg"
+				}
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"when": "explorerResourceIsFolder",
+					"command": "tsd.showDiagram",
+					"group": "tsd"
+				},
+				{
+					"when": "resourceLangId  == typescript || resourceLangId  == typescriptreact",
+					"command": "tsd.showDiagram",
+					"group": "tsd"
+				}
+			],
+			"editor/title": [
+				{
+					"when": "resourceLangId  == typescript || resourceLangId  == typescriptreact",
+					"command": "tsd.showDiagram",
+					"group": "navigation"
+				}
+			]
+		}
+	},
+	"_scripts": {
+		"vscode:prepublish": "yarn run package",
+		"compile": "webpack",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"test-compile": "tsc -p ./",
+		"test-watch": "tsc -watch -p ./",
+		"pretest": "yarn run test-compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
+		"webpack-dev": "webpack --mode development --watch",
+		"build": "webpack --mode production",
+		"_webpack": "webpack --mode development",
+		"_watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/find-up": "^4.0.0",
+		"@types/glob": "^7.1.1",
+		"@types/lodash": "^4.14.138",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.0.0",
+		"chokidar": "^3.4.1",
+		"find-up": "^4.1.0",
+		"glob": "^7.1.4",
+		"lodash": "^4.17.11",
+		"mocha": "^6.1.4",
+		"recursive-readdir-sync": "^1.0.6",
+		"reflect-metadata": "^0.1.13",
+		"ts-loader": "^8.0.1",
+		"ts-morph": "^14.0.0",
+		"tslint": "^5.12.1",
+		"vscode-test": "^1.0.2",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.12",
+		"typescript": "^4.6.2"
+	},
+	"dependencies": {},
+	"__metadata": {
+		"id": "88a2b659-4503-4bad-ae9b-1b8c7f766c90",
+		"publisherId": "b195ff95-7867-4b85-9b4f-d608bae5444e",
+		"publisherDisplayName": "AlexShen",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": true,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1662442890747,
+		"size": 6399151
+	}
+}

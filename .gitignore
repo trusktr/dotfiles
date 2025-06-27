@@ -1,0 +1,10 @@
+.DS_Store
+
+home/.config/Code/User/workspaceStorage
+home/.config/Code/User/globalStorage
+home/.config/Code/User/History
+home/.config/Code/User/sync
+
+# stuff for the current job, added via job-related steps
+home/.local/bin/uv
+home/.local/bin/uvx

@@ -1,0 +1,367 @@
+# Extension Configuration
+
+Starting with version `0.4.0`, various aspects of this extension can be configured. You can configure such aspects by adding configuration settings to your `settings.json` 
+
+Configuration properties introduced in newer versions will be documented as such.
+
+This document describes the various configuration settings available
+
+## map.preview.defaultBaseLayer
+
+Type: `string`
+
+Valid Values:
+ * `"stamen-toner"` ([Stamen Toner](https://docs.stadiamaps.com/map-styles/stamen-toner/))
+ * `"stamen-terrain"` ([Stamen Terrain](https://docs.stadiamaps.com/map-styles/stamen-terrain/))
+ * `"stamen-water"` ([Stamen Watercolor](https://docs.stadiamaps.com/map-styles/stamen-watercolor/))
+ * `"stadia-alidade-smooth"` ([Stadia Maps - Alidade Smooth](https://docs.stadiamaps.com/map-styles/alidade-smooth/))
+ * `"stadia-alidade-smooth-dark"` ([Stadia Maps - Alidade Smooth Dark](https://docs.stadiamaps.com/map-styles/alidade-smooth-dark/))
+ * `"stadia-outdoors"` ([Stadia Maps - Outdoors](https://docs.stadiamaps.com/map-styles/outdoors/))
+ * `"stadia-osm-bright"` ([Stadia Maps - OSM Bright](https://docs.stadiamaps.com/map-styles/osm-bright))
+ * `"bing-aerial"` (Bing Maps - Aerials)
+ * `"bing-aerial-with-label"` (Bing Maps - Aerials with Labels)
+ * `"bing-road"` (Bing Maps - Road)
+ * `"bing-canvas-dark"` (Bing Maps - Dark)
+ * `"osm"` ([OpenStreetMap](http://www.openstreetmap.org/))
+
+Default Value: `"osm"` (as of `0.6.0`, was formerly `"stamen-toner"`)
+
+Description: The default base layer to use for map previews
+
+## map.preview.apikeys.stadiamaps
+
+> This setting was introduced in `0.6.0`
+
+Type: `string`
+
+Default Value: `null`
+
+Description: The Stadia Maps API key. If not set, the following layer types will not be availabe in the layer switcher:
+
+ * `"stadia-alidade-smooth"`
+ * `"stadia-alidade-smooth-dark"`
+ * `"stadia-outdoors"`
+ * `"stadia-osm-bright"`
+ * `"stamen-toner"` (as of `0.7.0`)
+ * `"stamen-terrain"` (as of `0.7.0`)
+ * `"stamen-water"` (as of `0.7.0`)
+
+## map.preview.apikeys.bing
+
+> This setting was introduced in `0.6.0`
+
+Type: `string`
+
+Default Value: `null`
+
+Description: The Bing Maps API key. If not set, the following layer types will not be availabe in the layer switcher:
+
+ * `"bing-aerial"`
+ * `"bing-aerial-with-label"`
+ * `"bing-road"`
+ * `"bing-canvas-dark"`
+
+## map.preview.customLayers.base
+
+> This setting was introduced in `0.6.0`
+
+Type: `array`
+
+Default Value: `[]`
+
+Description: An array of custom base layer definitions. The sub item schema is currently:
+
+```
+{
+    "name": "string", // The name of the base layer
+    "kind": "string", // The kind of base layer: Either "xyz" or "wmts"
+    "sourceParams": [ // Parameters specific to the base layer. Described as a series of name/value pairs
+        { "name": "string", "value": "string" },
+        ...
+        { "name": "string", "value": "string" }
+    ]
+}
+```
+
+The current set of minimum required source parameters is listed below
+
+| Layer Kind | Name | Description | Version introduced |
+|---|---|---|---|
+|`xyz`|`url`|URL template. Must include `{x}`, `{y}` or `{-y}`, and `{z}` placeholders|`0.6.0`|
+|`wmts`|`wmts:capabilitiesUrl`|The capabilities document URL for the WMTS service|`0.6.0`|
+|`wmts`|`layer`|The WMTS layer name|`0.6.0`|
+
+Additional optional parameters that can be specified for a given layer can be found here:
+ * [XYZ](https://openlayers.org/en/latest/apidoc/module-ol_source_XYZ-XYZ.html)
+ * [WMTS](https://openlayers.org/en/latest/apidoc/module-ol_source_WMTS.html)
+ * Please note: Due to current vscode configuration schema limitations, only `string` parameters documented above can be set at the moment. It is not possible to define parameters that are not `string` based.
+
+> NOTE: Due to vscode configuration schema limitations, it is not possible to make a custom base layer visible by default (through the `map.preview.defaultBaseLayer` configuration setting). A map preview will always start with such layers initially not visible.
+
+### Configuration example
+
+```
+    "map.preview.customLayers.base": [
+        // XYZ layer example
+        {
+            "name": "ESRI World Topo",
+            "kind": "xyz",
+            "sourceParams": [
+                {
+                    "name": "url",
+                    "value": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
+                },
+                {
+                    "name": "attributions",
+                    "value": "Tiles © <a href='https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer'>ArcGIS</a>"
+                }
+            ]
+        },
+        // WMTS layer example
+        {
+            "name": "GA WMTS",
+            "kind": "wmts",
+            "sourceParams": [
+                {
+                    "name": "wmts:capabilitiesUrl",
+                    "value": "https://services.ga.gov.au/gis/rest/services/NationalBaseMap_NoLabels/MapServer/WMTS/1.0.0/WMTSCapabilities.xml"
+                },
+                {
+                    "name": "layer",
+                    "value": "NationalBaseMap_NoLabels"
+                }
+            ]
+        }
+    ]
+```
+
+## map.preview.debug.dumpContentPath
+
+Type: `string`
+
+Default Value: `null`
+
+Description: A file path to dump the current preview content to. Used for debugging purposes. Disabled (`null`) by default
+
+## map.preview.coordinateDisplay.projection
+
+Type: `string`
+
+Default Value: `"EPSG:4326"`
+
+Description: The projection to use (default: [EPSG:4326](http://epsg.io/4326))
+
+## map.preview.coordinateDisplay.format
+
+Type: `string`
+
+Default Value: `"Lat: {y}, Lng: {x}"`
+
+Description: A format string describing how coordinates are to be formatted. The format string must contain the `{x}` and `{y}` coordinate placeholder tokens
+
+## map.preview.style.line.stroke.color
+
+Type: `string`
+
+Default Value: `"rgba(49, 159, 211, 1)"`
+
+Description: The default color to use for line strokes. This is an `rgba(r, g, b, a)` expression. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.style.line.stroke.width
+
+Type: `number`
+
+Default Value: `2`
+
+Description: The default thickness of line strokes. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.style.polygon.stroke.color
+
+Type: `string`
+
+Default Value: `"rgba(49, 159, 211, 1)"`
+
+Description: The default color to use for polygon borders. This is an `rgba(r, g, b, a)` expression. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.style.polygon.stroke.width
+
+Type: `number`
+
+Default Value: `2`
+
+Description: The default thickness of polygon borders. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.style.polygon.fill.color
+
+Type: `string`
+
+Default Value: `"rgba(49, 159, 211, 0.1)"`
+
+Description: The default color to use for polygon fills. This is an `rgba(r, g, b, a)` expression. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.style.point.radius
+
+Type: `number`
+
+Default Value: `5`
+
+Description: The default point radius in screen-space. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.style.point.stroke.color
+
+Type: `string`
+
+Default Value: `"rgba(49, 159, 211, 1)"`
+
+Description: The default color to use for point borders. This is an `rgba(r, g, b, a)` expression. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.style.point.stroke.width
+
+Type: `number`
+
+Default Value: `2`
+
+Description: The default thickness of point borders. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.style.point.fill.color
+
+Type: `string`
+
+Default Value: `"rgba(49, 159, 211, 0.2)"`
+
+Description: The default color to use for point fills. This is an `rgba(r, g, b, a)` expression. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.selectionStyle.line.stroke.color
+
+Type: `string`
+
+Default Value: `"rgba(255, 0, 0, 1)"`
+
+Description: The default color to use for line strokes for selected features. This is an `rgba(r, g, b, a)` expression. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.selectionStyle.line.stroke.width
+
+Type: `number`
+
+Default Value: `2`
+
+Description: The default thickness of line strokes for selected features. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.selectionStyle.polygon.stroke.color
+
+Type: `string`
+
+Default Value: `"rgba(255, 0, 0, 1)"`
+
+Description: The default color to use for polygon borders for selected features. This is an `rgba(r, g, b, a)` expression. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.selectionStyle.polygon.stroke.width
+
+Type: `number`
+
+Default Value: `2`
+
+Description: The default thickness of polygon borders for selected features. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.selectionStyle.polygon.fill.color
+
+Type: `string`
+
+Default Value: `"rgba(255, 0, 0, 0.1)"`
+
+Description: The default color to use for polygon fills for selected features. This is an `rgba(r, g, b, a)` expression. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.selectionStyle.point.stroke.color
+
+Type: `string`
+
+Default Value: `"rgba(255, 0, 0, 1)"`
+
+Description: The default color to use for point borders for selected features. This is an `rgba(r, g, b, a)` expression. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.selectionStyle.point.stroke.width
+
+Type: `number`
+
+Default Value: `2`
+
+Description: The default thickness of point borders for selected features. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.selectionStyle.point.fill.color
+
+Type: `string`
+
+Default Value: `"rgba(255, 0, 0, 0.2)"`
+
+Description: The default color to use for point fills for selected features. This is an `rgba(r, g, b, a)` expression. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+## map.preview.style.vertex.enabled (new in 0.5.0)
+
+Type: `boolean`
+
+Default Value: `false`
+
+Description: Controls whether to style vertices in line/polygon features.
+
+## map.preview.style.vertex.radius (new in 0.4.7)
+
+Type: `number`
+
+Default Value: `3`
+
+Description: The default vertex radius in screen-space. Used to style vertices in lines and polygon layers. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+> For 0.5.0 onwards: If `map.preview.style.vertex.enabled` is `false`, this setting has no effect
+
+## map.preview.style.vertex.fill.color  (new in 0.4.7)
+
+Type: `string`
+
+Default Value: `"rgba(49, 159, 211, 1)"`
+
+Description: The default vertex color. Used to style vertices in lines and polygon layers. NOTE: Doesn't affect KML if its features have been configured with inline styles
+
+> For 0.5.0 onwards: If `map.preview.style.vertex.enabled` is `false`, this setting has no effect
+
+## map.preview.projections (new in 0.5.0)
+
+Type: `array (of { "epsgCode": number, "definition": string })`
+
+Default Value: `[]`
+
+Description: A list of additional map projections to register with this extension. Such projections can be used with the `Map Preview (with projection)` command
+
+For example, to register the [EPSG:28355 projection](https://epsg.io/28355), you would set this property as follows:
+
+```
+"map.preview.projections": [
+    { "epsgCode": 28355, "definition": "+proj=utm +zone=55 +south +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs" }
+]
+```
+
+## map.preview.csvColumnAliases
+
+Type: `array (of { "xColumn": string, "yColumn": string })`
+
+Default Value: 
+
+```
+[
+    { "xColumn": "x", "yColumn": "y" },
+    { "xColumn": "lon", "yColumn": "lat" },
+    { "xColumn": "long", "yColumn": "lat" },
+    { "xColumn": "lng", "yColumn": "lat" },
+    { "xColumn": "longitude", "yColumn": "latitude" },
+    { "xColumn": "easting", "yColumn": "northing" }
+]
+```
+
+Description: A list of case-insensitive column name pairs to look for X/Y coordinates when attempting to preview a given CSV file. If no column pair match is found, the document content is not considered as a CSV and the extension will move on to the other supported format drivers one-by-one
+
+## map.preview.declutterLabels
+
+Type: `boolean`
+
+Default Value: `false`
+
+Description: If set to `true`, the preview vector layer will have decluttering enabled, which will prevent rendering of features whose labels overlap with others. This is useful for data like point-heavy KML files where the point density is such that labels are illegible at the higher zoom levels, but as you zoom in closer, more points and labels are able to be shown.
