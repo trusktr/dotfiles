@@ -380,7 +380,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     # First update Node, in case a new npm would break on an older version of node.
     npm install --global n
     export N_PREFIX=~/.n-node-versions
-    export PATH=~/.npm-packages/bin:$PATH # needed so that binaries installed are available for this script. After install, zshrc has this in PATH.
+    export PATH=~/.npm-global/bin:$PATH # needed so that binaries installed are available for this script. After install, zshrc has this in PATH.
     n latest
     # Then update npm.
     npm install --global npm

@@ -1,5 +1,6 @@
 .DS_Store
 
+# do not sync sensitive information regarding private/proprietary projects
 home/.config/Code/User/workspaceStorage
 home/.config/Code/User/globalStorage
 home/.config/Code/User/History
