@@ -22,11 +22,15 @@
 # the next command after the command with the error
 set -e
 
-# print each command being executed
-set -x
+# print each command being executed when debugging
+# set -x
 
 # tell the script to exit when you press ctrl-c
 trap "exit" INT
+
+# This is false in places like CI (f.e. GitHub Actions).
+IS_INTERACTIVE=false
+if tty -s; then IS_INTERACTIVE=true; fi
 
 function quiet() {
     # run a command without any output
@@ -35,6 +39,11 @@ function quiet() {
 
 function exists() {
     quiet command -v "$@"
+}
+
+function confirm() {
+	echo "$@"
+	if $IS_INTERACTIVE; then read -rp "Press enter/return to continue..."; fi
 }
 
 echo " >>>>>>>>>>>>>> Detecting environment."
@@ -151,17 +160,28 @@ isWindows=false # TODO
 
     cd ~
 
-    ln -sf ~/src/trusktr+dotfiles/home/coffeelint.json
-    ln -sf ~/src/trusktr+dotfiles/home/.gitconfig
-    ln -sf ~/src/trusktr+dotfiles/home/.git-template
-    ln -sf ~/src/trusktr+dotfiles/home/.editorconfig
-    ln -sf ~/src/trusktr+dotfiles/home/.jshintrc
-    ln -sf ~/src/trusktr+dotfiles/home/.Xmodmap
     ln -sf ~/src/trusktr+dotfiles/home/.atom
-    ln -sf ~/src/trusktr+dotfiles/home/.npmrc
+    ln -sf ~/src/trusktr+dotfiles/home/.editorconfig
+    ln -sf ~/src/trusktr+dotfiles/home/.git-template
+    ln -sf ~/src/trusktr+dotfiles/home/.gitconfig
+    ln -sf ~/src/trusktr+dotfiles/home/.jshintrc
+    # ln -sf ~/src/trusktr+dotfiles/home/.npmrc # disabled for now because work installs nvm which controls ~/.npmrc (run work setup.sh first)
+    ln -sf ~/src/trusktr+dotfiles/home/.Xmodmap
+    ln -sf ~/src/trusktr+dotfiles/home/coffeelint.json
 
     mkdir -p ~/.local
-    pushd ~/.local && ln -sf ~/src/trusktr+dotfiles/home/.local/bin && popd
+    pushd ~/.local
+    # this may pre-exist if we run work scripts first
+    if ! [ -L bin ] && [ -d bin ]; then
+        confirm 'There was already a ~/.local/bin folder. Replacing replacing with link to dotfiles, and moving content into the new link folder.'
+        mv bin tmp
+        ln -s ~/src/trusktr+dotfiles/home/.local/bin
+        mv tmp/* bin/
+        rmdir tmp
+    else
+        ln -sf ~/src/trusktr+dotfiles/home/.local/bin
+    fi
+    popd
 
     mkdir -p ~/.config
     cd ~/.config
@@ -185,7 +205,7 @@ isWindows=false # TODO
     fi
 
     cd ~/src
-    git clone trusktr@trusktr.io:~/src/trusktr+vim-sessions || true
+    git clone git@github.com:trusktr/vim-sessions.git trusktr+vim-sessions || true
     cd ~
     ln -sf ~/src/trusktr+dotfiles/home/.vimrc
     mkdir -p ~/.config/nvim
@@ -197,7 +217,11 @@ isWindows=false # TODO
         ## settings folder
             if $isMacOS; then
                 mkdir -p ~/Library/Application\ Support/Code
-                pushd ~/Library/Application\ Support/Code && ln -sf ~/src/trusktr+dotfiles/home/.config/Code/User && popd
+                pushd ~/Library/Application\ Support/Code
+                if [ -e User ]; then confirm 'Removing existing VS Code User/ folder and linking to dotfiles.'; fi
+                rm -rf User/
+                ln -s ~/src/trusktr+dotfiles/home/.config/Code/User
+                popd
             fi
 
             if $isLinux; then
@@ -222,7 +246,9 @@ isWindows=false # TODO
         ## extensions folder
             if $isMacOS || $isLinux; then
                 # for proprietary VS Code
-                ln -sf ~/src/trusktr+dotfiles/home/.vscode ~/.vscode
+                if [ -e ~/.vscode ]; then confirm 'Removing existing ~/.vscode and linking to dotfiles.'; fi
+                rm -rf ~/.vscode
+                ln -s ~/src/trusktr+dotfiles/home/.vscode ~/.vscode
             fi
 
             if $isLinux; then
@@ -315,6 +341,10 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
 
 # direnv, for setting up env variables when entering directories. If in NixOS, useful with lorri.
 
+    if $isMacOS; then
+        brew install direnv
+    fi
+
     if $isArchLinux; then
         pamac build --no-confirm direnv
     fi
@@ -380,6 +410,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     # First update Node, in case a new npm would break on an older version of node.
     npm install --global n
     export N_PREFIX=~/.n-node-versions
+    # This does nothing right now, as nvm manages node/npm for work (run work setup.sh first)
     export PATH=~/.npm-global/bin:$PATH # needed so that binaries installed are available for this script. After install, zshrc has this in PATH.
     n latest
     # Then update npm.
@@ -454,7 +485,7 @@ echo " >>>>>>>>>>>>>> Install a bunch of stuff."
     # https://github.com/acornejo/croshclip
 
     # install plugins automatically
-    #nvim +PlugInstall +UpdateRemotePlugins '+qa!'
+    nvim +PlugInstall +UpdateRemotePlugins '+qa!'
 
 # Atom editor (atom.io)
 
