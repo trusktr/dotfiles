@@ -1,1 +1,0 @@
-import{k as m,l as d,U as a}from"./SpinnerAugment-BJAAUt-n.js";const e="dark",n="light";function o(t){t===a.dark?(document.documentElement.classList.add(e),document.documentElement.classList.remove(n)):(document.documentElement.classList.add(n),document.documentElement.classList.remove(e))}let s;s===void 0&&(s=function(){const t=m(c=>{o(c)});return o(d()),t}());
