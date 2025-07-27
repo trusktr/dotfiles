@@ -1,0 +1,1 @@
+import{m as c,o as d,U as a}from"./SpinnerAugment-BabBY7Bc.js";const e="dark",n="light";function o(t){t===a.dark?(document.documentElement.classList.add(e),document.documentElement.classList.remove(n)):(document.documentElement.classList.add(n),document.documentElement.classList.remove(e))}let m;m===void 0&&(m=function(){const t=c(s=>{o(s)});return o(d()),t}());

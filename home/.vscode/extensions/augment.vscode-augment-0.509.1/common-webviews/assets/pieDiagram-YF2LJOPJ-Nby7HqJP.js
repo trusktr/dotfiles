@@ -1,0 +1,30 @@
+import{p as E}from"./chunk-TMUBEWPD-DkQtbaBm.js";import{X as y,O,aF as L,D as N,q as V,r as q,s as I,g as X,c as _,b as G,_ as m,l as z,x as H,d as J,E as K,I as Q,a5 as U,k as Y}from"./AugmentMessage-Di_Kmf6X.js";import{p as Z}from"./gitGraph-YCYPL57B-DHOz3yEk.js";import{d as B}from"./arc-mWwJhIsa.js";import{o as tt}from"./ordinal-_rw2EY4v.js";import"./IconButtonAugment-BWzxrdzR.js";import"./SpinnerAugment-BabBY7Bc.js";import"./CardAugment-B7fI1EE0.js";import"./chevron-down-B9g-ZGaN.js";import"./index-DnWNe8sB.js";import"./message-broker-Dx8UxbWC.js";import"./async-messaging-CsT0vcQC.js";import"./BaseTextInput-Dk-F7F-I.js";import"./types-CGlLNakm.js";import"./file-paths-CQpuL8tC.js";import"./mcp-logo-DNG5QXIW.js";import"./folder-opened-DbsKhPOa.js";import"./CalloutAugment-ZzZthhv9.js";import"./index-D5lciLJy.js";import"./diff-utils-bRJIBtWZ.js";import"./LanguageIcon-D0LBlvox.js";import"./preload-helper-Dv6uf1Os.js";import"./index-CFTpsjcb.js";import"./keypress-DD1aQVr0.js";import"./await_block-Dc0aY7DH.js";import"./go-to-website-mini-gXKPjvg1.js";import"./types-DDm27S8B.js";import"./utils-E8zi4hZO.js";import"./ra-diff-ops-model-CQHwK6Wi.js";import"./CollapseButtonAugment-DdValADQ.js";import"./ButtonAugment-u1MR_mwc.js";import"./MaterialIcon-G7e4NuQP.js";import"./CopyButton-B4LorAmz.js";import"./copy-B5lFSWuj.js";import"./ellipsis-DtxZ6mYw.js";import"./IconFilePath-DEkRsHUx.js";import"./next-edit-types-904A5ehg.js";import"./Filespan-DaI4iCxN.js";import"./augment-logo-Bqc9wUYf.js";import"./pen-to-square-D3OQt-OK.js";import"./TextAreaAugment-Cxs_Xyaq.js";import"./_baseUniq-D0Dk81B1.js";import"./_basePickBy-yVuqO_Um.js";import"./clone-BtwGwBZy.js";import"./init-g68aIKmP.js";function et(t,a){return a<t?-1:a>t?1:a>=t?0:NaN}function at(t){return t}var W=N.pie,R={sections:new Map,showData:!1,config:W},M=R.sections,F=R.showData,rt=structuredClone(W),P={getConfig:m(()=>structuredClone(rt),"getConfig"),clear:m(()=>{M=new Map,F=R.showData,H()},"clear"),setDiagramTitle:V,getDiagramTitle:q,setAccTitle:I,getAccTitle:X,setAccDescription:_,getAccDescription:G,addSection:m(({label:t,value:a})=>{M.has(t)||(M.set(t,a),z.debug(`added new section: ${t}, with value: ${a}`))},"addSection"),getSections:m(()=>M,"getSections"),setShowData:m(t=>{F=t},"setShowData"),getShowData:m(()=>F,"getShowData")},it=m((t,a)=>{E(t,a),a.setShowData(t.showData),t.sections.map(a.addSection)},"populateDb"),nt={parse:m(async t=>{const a=await Z("pie",t);z.debug(a),it(a,P)},"parse")},ot=m(t=>`
+  .pieCircle{
+    stroke: ${t.pieStrokeColor};
+    stroke-width : ${t.pieStrokeWidth};
+    opacity : ${t.pieOpacity};
+  }
+  .pieOuterCircle{
+    stroke: ${t.pieOuterStrokeColor};
+    stroke-width: ${t.pieOuterStrokeWidth};
+    fill: none;
+  }
+  .pieTitleText {
+    text-anchor: middle;
+    font-size: ${t.pieTitleTextSize};
+    fill: ${t.pieTitleTextColor};
+    font-family: ${t.fontFamily};
+  }
+  .slice {
+    font-family: ${t.fontFamily};
+    fill: ${t.pieSectionTextColor};
+    font-size:${t.pieSectionTextSize};
+    // fill: white;
+  }
+  .legend text {
+    fill: ${t.pieLegendTextColor};
+    font-family: ${t.fontFamily};
+    font-size: ${t.pieLegendTextSize};
+  }
+`,"getStyles"),lt=m(t=>{const a=[...t.entries()].map(l=>({label:l[0],value:l[1]})).sort((l,u)=>u.value-l.value);return function(){var l=at,u=et,c=null,w=y(0),S=y(O),$=y(0);function r(e){var i,s,n,A,g,p=(e=L(e)).length,v=0,D=new Array(p),d=new Array(p),f=+w.apply(this,arguments),C=Math.min(O,Math.max(-O,S.apply(this,arguments)-f)),h=Math.min(Math.abs(C)/p,$.apply(this,arguments)),b=h*(C<0?-1:1);for(i=0;i<p;++i)(g=d[D[i]=i]=+l(e[i],i,e))>0&&(v+=g);for(u!=null?D.sort(function(x,T){return u(d[x],d[T])}):c!=null&&D.sort(function(x,T){return c(e[x],e[T])}),i=0,n=v?(C-p*b)/v:0;i<p;++i,f=A)s=D[i],A=f+((g=d[s])>0?g*n:0)+b,d[s]={data:e[s],index:i,value:g,startAngle:f,endAngle:A,padAngle:h};return d}return r.value=function(e){return arguments.length?(l=typeof e=="function"?e:y(+e),r):l},r.sortValues=function(e){return arguments.length?(u=e,c=null,r):u},r.sort=function(e){return arguments.length?(c=e,u=null,r):c},r.startAngle=function(e){return arguments.length?(w=typeof e=="function"?e:y(+e),r):w},r.endAngle=function(e){return arguments.length?(S=typeof e=="function"?e:y(+e),r):S},r.padAngle=function(e){return arguments.length?($=typeof e=="function"?e:y(+e),r):$},r}().value(l=>l.value)(a)},"createPieArcs"),Zt={parser:nt,db:P,renderer:{draw:m((t,a,l,u)=>{z.debug(`rendering pie chart
+`+t);const c=u.db,w=J(),S=K(c.getConfig(),w.pie),$=18,r=450,e=r,i=Q(a),s=i.append("g");s.attr("transform","translate(225,225)");const{themeVariables:n}=w;let[A]=U(n.pieOuterStrokeWidth);A??(A=2);const g=S.textPosition,p=Math.min(e,r)/2-40,v=B().innerRadius(0).outerRadius(p),D=B().innerRadius(p*g).outerRadius(p*g);s.append("circle").attr("cx",0).attr("cy",0).attr("r",p+A/2).attr("class","pieOuterCircle");const d=c.getSections(),f=lt(d),C=[n.pie1,n.pie2,n.pie3,n.pie4,n.pie5,n.pie6,n.pie7,n.pie8,n.pie9,n.pie10,n.pie11,n.pie12],h=tt(C);s.selectAll("mySlices").data(f).enter().append("path").attr("d",v).attr("fill",o=>h(o.data.label)).attr("class","pieCircle");let b=0;d.forEach(o=>{b+=o}),s.selectAll("mySlices").data(f).enter().append("text").text(o=>(o.data.value/b*100).toFixed(0)+"%").attr("transform",o=>"translate("+D.centroid(o)+")").style("text-anchor","middle").attr("class","slice"),s.append("text").text(c.getDiagramTitle()).attr("x",0).attr("y",-200).attr("class","pieTitleText");const x=s.selectAll(".legend").data(h.domain()).enter().append("g").attr("class","legend").attr("transform",(o,k)=>"translate(216,"+(22*k-22*h.domain().length/2)+")");x.append("rect").attr("width",$).attr("height",$).style("fill",h).style("stroke",h),x.data(f).append("text").attr("x",22).attr("y",14).text(o=>{const{label:k,value:j}=o.data;return c.getShowData()?`${k} [${j}]`:k});const T=512+Math.max(...x.selectAll("text").nodes().map(o=>(o==null?void 0:o.getBoundingClientRect().width)??0));i.attr("viewBox",`0 0 ${T} 450`),Y(i,r,T,S.useMaxWidth)},"draw")},styles:ot};export{Zt as diagram};
